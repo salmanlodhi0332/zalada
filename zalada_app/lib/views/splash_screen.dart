@@ -25,12 +25,13 @@ class _splash_screenState extends State<splash_screen> {
 
   String? token;
   isloggedcheck() async {
-    Page_Navigation().Screen(context, Onboard_One());
+    Page_Navigation().Page_ReplaceNavigation(context, Onboard_One());
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

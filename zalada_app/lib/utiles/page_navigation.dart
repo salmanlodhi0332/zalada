@@ -3,18 +3,19 @@ import 'package:get/get.dart';
 import 'package:page_transition/page_transition.dart';
 
 class Page_Navigation {
-  // card_navigation(BuildContext context, Widget childwidget) {
-  //   return Navigator.push(
-  //     context,
-  //     PageTransition(
-  //       type: PageTransitionType.bottomToTop,
-  //       child: childwidget,
-  //       isIos: true,
-  //       duration: Duration(milliseconds: 500),
-  //       reverseDuration: Duration(milliseconds: 400),
-  //     ),
-  //   );
-  // }
+  Page_ReplaceNavigation(BuildContext context, Widget childwidget) {
+    return Navigator.push(
+      context,
+      PageTransition(
+        type: PageTransitionType.rightToLeft,
+        child: childwidget,
+        isIos: true,
+        duration: Duration(milliseconds: 500),
+        reverseDuration: Duration(milliseconds: 400),
+      ),
+    );
+  }
+
   card_navigation(BuildContext context, Widget childwidget) {
     return Navigator.push(
       context,
@@ -34,8 +35,6 @@ class Page_Navigation {
   //     ),
   //   );
   // }
-
-
 
   Screen(BuildContext context, Widget childwidget) {
     return Navigator.push(
@@ -57,15 +56,15 @@ class Page_Navigation {
   //   );
   // }
 
-  void Page_PushAndReplaceNavigation(BuildContext context, Widget childWidget) {
-    Navigator.pushAndRemoveUntil(
-      context,
-      MaterialPageRoute(
-        builder: (context) => childWidget,
-      ),
-      (route) => false,
-    );
-  }
+  // void Page_ReplaceNavigation(BuildContext context, Widget childWidget) {
+
+  //   Navigator.pushReplacement(
+  //     context,
+  //     MaterialPageRoute(
+  //       builder: (context) => childWidget,
+  //     ),
+  //   );
+  // }
 
   // void Page_PushAndReplaceNavigation(BuildContext context, Widget childWidget) {
   //   Navigator.pushAndRemoveUntil(

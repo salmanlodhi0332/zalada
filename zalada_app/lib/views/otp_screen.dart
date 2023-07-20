@@ -7,6 +7,8 @@ import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/utiles/getxcontroller.dart';
 
+import '../auth/otp_bottom_bar.dart';
+import '../custom/back_button.dart';
 import '../custom/button_widget.dart';
 
 class OTP_Screen extends StatefulWidget {
@@ -48,20 +50,15 @@ class _OTP_ScreenState extends State<OTP_Screen> {
           'otp'.tr,
           style: TextStyle(color: Theme.of(context).hintColor),
         ),
-        leading: Container(
-          child: Icon(
-            Icons.arrow_back,
-            color: Theme.of(context).hintColor,
-          ),
-          decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(
-                  color: Theme.of(context).disabledColor.withOpacity(0.3))),
+        leading: back_button(
+          ontap: () {
+            Get.back();
+          },
         ),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+      body: ListView(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        // crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
             child: Image.asset('assets/images/OTP.png'),
@@ -89,24 +86,23 @@ class _OTP_ScreenState extends State<OTP_Screen> {
                   fontWeight: FontWeight.w700),
             )
           ])).px(50).py(20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              otp_box(context, controller1),
-              otp_box(context, controller2),
-              otp_box(context, controller3),
-              otp_box(context, controller4)
-            ],
+          SingleChildScrollView(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                otp_box(context, controller1),
+                otp_box(context, controller2),
+                otp_box(context, controller3),
+                otp_box(context, controller4)
+              ],
+            ),
           ),
           Obx(() => Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   controller.countdown == 0
                       ? TextButton(
-                          onPressed: () {
-                            controller.startTimer();
-                          },
-                          child: Text('resend_code'.tr))
+                          onPressed: () {}, child: Text('resend_code'.tr))
                       : Text(
                           'recent_code'.tr,
                           style: TextStyle(
@@ -123,21 +119,30 @@ class _OTP_ScreenState extends State<OTP_Screen> {
           Button_Widget(
             width: width,
             title: 'continue'.tr,
+            tap: () {
+              Get.bottomSheet(
+                OTP_Bottom_Bar(),
+                isScrollControlled: true,
+              );
+            },
           )
         ],
       ).px(50),
     );
   }
 
-  Container otp_box(BuildContext context, TextEditingController controller) {
+  Container otp_box(
+    BuildContext context,
+    TextEditingController controller,
+  ) {
     return Container(
       decoration: BoxDecoration(
           border: Border.all(
             color: Theme.of(context).disabledColor.withOpacity(0.5),
           ),
           borderRadius: BorderRadius.circular(10)),
-      height: 68,
-      width: 68,
+      height: 60,
+      width: 60,
       child: Center(
         child: TextFormField(
           controller: controller,

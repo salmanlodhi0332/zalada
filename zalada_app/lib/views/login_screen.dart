@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/custom/botton_widget.dart';
+import 'package:zalada_app/views/otp_screen.dart';
+import 'package:zalada_app/views/registeration_screen.dart';
 
 import '../custom/other_loginbtn_widget.dart';
 import '../custom/textfeild_widget.dart';
+import '../utiles/page_navigation.dart';
 
 class login_screen extends StatefulWidget {
   const login_screen({super.key});
@@ -72,10 +75,15 @@ class _login_screenState extends State<login_screen> {
               SizedBox(
                 height: 20,
               ),
-              Text(
-                'Forget_password'.tr,
-                style:
-                    TextStyle(color: Theme.of(context).hintColor, fontSize: 20),
+              InkWell(
+                onTap: () {
+                  Page_Navigation().Screen(context, OTP_Screen());
+                },
+                child: Text(
+                  'Forget_password'.tr,
+                  style: TextStyle(
+                      color: Theme.of(context).hintColor, fontSize: 20),
+                ),
               ),
               SizedBox(
                 height: 20,
@@ -112,11 +120,14 @@ class _login_screenState extends State<login_screen> {
                 height: 20,
               ),
               other_loginBtn_Widget(
-                  width: size.width, title: 'Continue_with_google'.tr),
+                  icon: Image.asset('assets/icon/google.png'),
+                  width: size.width,
+                  title: 'Continue_with_google'.tr),
               SizedBox(
                 height: 20,
               ),
               other_loginBtn_Widget(
+                icon: Image.asset('assets/icon/facebook.png'),
                   width: size.width, title: 'Continue_with_facebook'.tr),
               SizedBox(
                 height: 20,
@@ -129,12 +140,17 @@ class _login_screenState extends State<login_screen> {
                     style: TextStyle(
                         color: Theme.of(context).hintColor, fontSize: 20),
                   ),
-                  Text(
-                    'Register'.tr,
-                    style: TextStyle(
-                        color: Theme.of(context).focusColor,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w800),
+                  InkWell(
+                    onTap: () {
+                      Page_Navigation().Screen(context, registeration_screen());
+                    },
+                    child: Text(
+                      'Register'.tr,
+                      style: TextStyle(
+                          color: Theme.of(context).focusColor,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w800),
+                    ),
                   )
                 ],
               )

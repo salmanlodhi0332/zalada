@@ -1,10 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 class AppTheme {
-  
 //   Color? canvasColor,
 //   Color? cardColor,
 //   ColorScheme? colorScheme,
@@ -42,10 +39,12 @@ class AppTheme {
       secondaryHeaderColor: HexColor('#FFFFFF'),//--pure white
       shadowColor: HexColor('#F3F6FB'), //icon color 
       disabledColor: HexColor('#989E9F'), //disable light text color
-      dividerColor: HexColor('#2D3C52'),//icon border color
-      highlightColor: HexColor('#F3F6FB'),//image background color
+      dividerColor: HexColor('#2D3C52'), //icon border color
+      highlightColor: HexColor('#F3F6FB'), //image background color
       hoverColor: HexColor('#2D3C52'), //--botton color
-      focusColor: HexColor('#1B5EC9')
+      focusColor: HexColor('#1B5EC9'),
+      
+      
       
       );
 

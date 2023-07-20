@@ -6,6 +6,8 @@ import 'package:zalada_app/custom/botton_widget.dart';
 
 import '../custom/other_loginbtn_widget.dart';
 import '../custom/textfeild_widget.dart';
+import '../utiles/page_navigation.dart';
+import 'login_screen.dart';
 
 class registeration_screen extends StatefulWidget {
   const registeration_screen({super.key});
@@ -46,6 +48,14 @@ class _registeration_screenState extends State<registeration_screen> {
                 controller: email,
                 hintText: 'email_address'.tr,
                 label: 'email_address'.tr,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              textfeild_widget(
+                controller: email,
+                hintText: 'Phone_number'.tr,
+                label: 'Phone_number'.tr,
               ),
               SizedBox(
                 height: 20,
@@ -128,12 +138,16 @@ class _registeration_screenState extends State<registeration_screen> {
                 height: 20,
               ),
               other_loginBtn_Widget(
-                  width: size.width, title: 'Continue_with_google'.tr),
+                  icon: Image.asset('assets/icon/google.png'),
+                  width: size.width,
+                  title: 'Continue_with_google'.tr),
               SizedBox(
                 height: 20,
               ),
               other_loginBtn_Widget(
-                  width: size.width, title: 'Continue_with_facebook'.tr),
+                  icon: Image.asset('assets/icon/facebook.png'),
+                  width: size.width,
+                  title: 'Continue_with_facebook'.tr),
               SizedBox(
                 height: 20,
               ),
@@ -145,12 +159,17 @@ class _registeration_screenState extends State<registeration_screen> {
                     style: TextStyle(
                         color: Theme.of(context).hintColor, fontSize: 20),
                   ),
-                  Text(
-                    'login'.tr,
-                    style: TextStyle(
-                        color: Theme.of(context).focusColor,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w800),
+                  InkWell(
+                    onTap: () {
+                      Page_Navigation().Screen(context, login_screen());
+                    },
+                    child: Text(
+                      'login'.tr,
+                      style: TextStyle(
+                          color: Theme.of(context).focusColor,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w800),
+                    ),
                   )
                 ],
               ),

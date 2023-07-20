@@ -5,10 +5,11 @@ class other_loginBtn_Widget extends StatelessWidget {
   const other_loginBtn_Widget({
     super.key,
     required this.width,
-    required this.title, this.tap
+    required this.title, this.tap, this.icon
   });
 
   final double width;
+  final Widget? icon;
   final Function()? tap;
   final String title;
 
@@ -23,14 +24,19 @@ class other_loginBtn_Widget extends StatelessWidget {
             border: Border.all(
                   color: Theme.of(context).hintColor.withOpacity(0.1),
                   width: 1.0),
-            borderRadius: BorderRadius.circular(30)),
-        child: Text(
-          title,
-          style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w300,
-              color: Theme.of(context).hintColor),
-        ).py(20).centered(),
+            borderRadius: BorderRadius.circular(40)),
+        child: ListTile
+        (
+          
+          leading: icon,
+          title: Text(
+            title,
+            style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w300,
+                color: Theme.of(context).hintColor),
+          ).py(20).centered(),
+        ),
       ).px(20),
     );
   }

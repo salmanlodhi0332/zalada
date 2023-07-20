@@ -41,7 +41,7 @@ dependencies:
   dio: ^5.3.0
   hexcolor: ^3.0.1
   intl_phone_field: ^3.2.0
-  google_maps_flutter: ^2.3.1
+  # google_maps_flutter: ^2.3.1
 
 dev_dependencies:
   flutter_test:

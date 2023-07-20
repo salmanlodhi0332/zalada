@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:zalada_app/utiles/multi_language.dart';
+import 'package:zalada_app/utiles/themeData.dart';
+import 'package:zalada_app/views/login_screen.dart';
+import 'package:zalada_app/views/registeration_screen.dart';
 import 'package:zalada_app/views/splash_screen.dart';
 
 
@@ -20,7 +24,10 @@ class MyApp extends StatelessWidget {
       builder: (context , child) {return
       GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: splash_screen(),
+      theme: AppTheme.lightTheme,
+      translations: Multi_Language(),
+      locale: Locale('en','US'),
+      home: registeration_screen(),
     );
       });     
   }

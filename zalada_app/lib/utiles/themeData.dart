@@ -39,7 +39,7 @@ class AppTheme {
       cardColor: Color.fromRGBO(255, 255, 255, 1),//card container color
       indicatorColor: Colors.orange,//----selection color
       hintColor: Colors.black,//--text color
-      secondaryHeaderColor: HexColor('#FFFFFF'),//
+      secondaryHeaderColor: HexColor('#FFFFFF'),//--pure white
       shadowColor: HexColor('#F3F6FB'), //icon color 
       disabledColor: HexColor('#989E9F'), //disable light text color
       dividerColor: HexColor('#2D3C52'),//icon border color

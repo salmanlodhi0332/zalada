@@ -30,10 +30,11 @@ class _registeration_screenState extends State<registeration_screen> {
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: size.height / 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+              Wrap(
+                crossAxisAlignment: WrapCrossAlignment.start,
                 children: [
                   Text(
                     'Create_account'.tr,
@@ -118,7 +119,7 @@ class _registeration_screenState extends State<registeration_screen> {
                       color: Theme.of(context).hintColor.withOpacity(0.3),
                       thickness: 1,
                     ),
-                    width: size.width / 4,
+                    width: size.width / 5,
                   ),
                   Text(
                     'or_continue_with'.tr,
@@ -130,7 +131,7 @@ class _registeration_screenState extends State<registeration_screen> {
                       color: Theme.of(context).hintColor.withOpacity(0.3),
                       thickness: 1,
                     ),
-                    width: size.width / 4,
+                    width: size.width / 5,
                   ),
                 ],
               ).px(20),
@@ -138,14 +139,14 @@ class _registeration_screenState extends State<registeration_screen> {
                 height: 20,
               ),
               other_loginBtn_Widget(
-                  icon: Image.asset('assets/icon/google.png'),
+                  icon: Image.asset('assets/icon/google.png',height: 30,width: 30,),
                   width: size.width,
                   title: 'Continue_with_google'.tr),
               SizedBox(
                 height: 20,
               ),
               other_loginBtn_Widget(
-                  icon: Image.asset('assets/icon/facebook.png'),
+                  icon: Image.asset('assets/icon/facebook.png',height: 30,width: 30,),
                   width: size.width,
                   title: 'Continue_with_facebook'.tr),
               SizedBox(

@@ -12,6 +12,7 @@ class Onboard_Two extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -49,7 +50,8 @@ class Onboard_Two extends StatelessWidget {
           ).pOnly(bottom: 10),
           InkWell(
             onTap: () {
-              Page_Navigation().Screen(context, Onboard_Three());
+              Page_Navigation()
+                  .Page_ReplaceNavigation(context, Onboard_Three());
             },
             child: Container(
               child: Image.asset('assets/images/Progress_2.png'),

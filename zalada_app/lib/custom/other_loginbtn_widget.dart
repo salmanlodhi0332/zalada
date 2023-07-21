@@ -18,6 +18,7 @@ class other_loginBtn_Widget extends StatelessWidget {
     return InkWell(
       onTap: tap,
       child: Container(
+        
         width: width,
         decoration: BoxDecoration(
             color: Theme.of(context).cardColor,

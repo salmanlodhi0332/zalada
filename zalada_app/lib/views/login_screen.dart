@@ -6,7 +6,9 @@ import 'package:zalada_app/custom/botton_widget.dart';
 import 'package:zalada_app/views/otp_screen.dart';
 import 'package:zalada_app/views/registeration_screen.dart';
 
+import '../auth/forget_password_bottom.dart';
 import '../custom/other_loginbtn_widget.dart';
+import '../custom/payment_methods/payment_mathods.dart';
 import '../custom/textfeild_widget.dart';
 import '../utiles/page_navigation.dart';
 
@@ -30,10 +32,10 @@ class _login_screenState extends State<login_screen> {
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(height: size.height / 20),
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
                     'login_account'.tr,
@@ -77,7 +79,10 @@ class _login_screenState extends State<login_screen> {
               ),
               InkWell(
                 onTap: () {
-                  Page_Navigation().Screen(context, OTP_Screen());
+                  Get.bottomSheet(
+                    Forget_password_bottom(),
+                    isScrollControlled: true,
+                  );
                 },
                 child: Text(
                   'Forget_password'.tr,
@@ -88,7 +93,16 @@ class _login_screenState extends State<login_screen> {
               SizedBox(
                 height: 20,
               ),
-              Button_Widget(width: size.width, title: 'login'.tr),
+              Button_Widget(
+                width: size.width,
+                title: 'login'.tr,
+                tap: () {
+                  Get.bottomSheet(
+                    payment_methods_bottom(),
+                    isScrollControlled: true,
+                  );
+                },
+              ),
               SizedBox(
                 height: 20,
               ),
@@ -100,7 +114,7 @@ class _login_screenState extends State<login_screen> {
                       color: Theme.of(context).hintColor.withOpacity(0.3),
                       thickness: 1,
                     ),
-                    width: size.width / 4,
+                    width: size.width / 5,
                   ),
                   Text(
                     'or_continue_with'.tr,
@@ -112,7 +126,7 @@ class _login_screenState extends State<login_screen> {
                       color: Theme.of(context).hintColor.withOpacity(0.3),
                       thickness: 1,
                     ),
-                    width: size.width / 4,
+                    width: size.width / 5,
                   ),
                 ],
               ).px(20),
@@ -120,15 +134,16 @@ class _login_screenState extends State<login_screen> {
                 height: 20,
               ),
               other_loginBtn_Widget(
-                  icon: Image.asset('assets/icon/google.png'),
+                  icon: Image.asset('assets/icon/google.png',height: 30,width: 30,),
                   width: size.width,
                   title: 'Continue_with_google'.tr),
               SizedBox(
                 height: 20,
               ),
               other_loginBtn_Widget(
-                icon: Image.asset('assets/icon/facebook.png'),
-                  width: size.width, title: 'Continue_with_facebook'.tr),
+                  icon: Image.asset('assets/icon/facebook.png',height: 30,width: 30,),
+                  width: size.width,
+                  title: 'Continue_with_facebook'.tr),
               SizedBox(
                 height: 20,
               ),

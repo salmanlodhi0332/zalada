@@ -13,6 +13,7 @@ class Onboard_Three extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,

@@ -7,9 +7,11 @@ import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/utiles/getxcontroller.dart';
 
+import '../auth/order_successful_bottom_bar.dart';
 import '../auth/otp_bottom_bar.dart';
 import '../custom/back_button.dart';
 import '../custom/button_widget.dart';
+import '../custom/filter_bar.dart';
 
 class OTP_Screen extends StatefulWidget {
   OTP_Screen({super.key});
@@ -121,7 +123,7 @@ class _OTP_ScreenState extends State<OTP_Screen> {
             title: 'continue'.tr,
             tap: () {
               Get.bottomSheet(
-                OTP_Bottom_Bar(),
+                Order_successful_Bottom_Bar(),
                 isScrollControlled: true,
               );
             },

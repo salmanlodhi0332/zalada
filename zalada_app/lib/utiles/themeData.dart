@@ -37,10 +37,10 @@ class AppTheme {
     hintColor: Colors.black, //--text color
     secondaryHeaderColor: HexColor('#FFFFFF'), //
     shadowColor: HexColor('#F3F6FB'), //icon color
-    disabledColor: HexColor('#989E9F'), //disable light text color
+    disabledColor: HexColor('#989E9F'), //disable light text color 989E9F
     dividerColor: HexColor('#2D3C52'), //icon border color
     highlightColor: HexColor('#F3F6FB'), //image background color
-    hoverColor: HexColor('#2D3C52'), //--botton color
+    hoverColor: HexColor('#2D3C52'), //--botton color 2D3C52
     focusColor: HexColor('#1B5EC9'), //-- this blue color
   );
 

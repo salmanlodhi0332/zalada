@@ -4,6 +4,8 @@ import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/custom/product_card.dart';
 
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:zalada_app/utiles/page_navigation.dart';
+import 'package:zalada_app/views/product_detail.dart';
 import '../custom/hot_deal_productcard.dart';
 
 class Home_Screen extends StatelessWidget {
@@ -163,6 +165,12 @@ class Home_Screen extends StatelessWidget {
                         itemCount: 10,
                         itemBuilder: (BuildContext context, int index) {
                           return Product_Card(
+                            ontap: () {
+                              {
+                                Page_Navigation().Page_ReplaceNavigation(
+                                    context, Product_Detail_Screen());
+                              }
+                            },
                             imageurl: 'assets/images/success.png',
                             product_name: 'Macbook Pro 15" 2019 -Intel corei7',
                             price: '\$1240',

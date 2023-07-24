@@ -60,6 +60,8 @@ class Product_Card extends StatelessWidget {
                     price,
                     textAlign: TextAlign.center,
                     style: TextStyle(
+                      
+                fontFamily: 'plusjakarta',
                         fontSize: 15,
                         color: Theme.of(context).focusColor,
                         fontWeight: FontWeight.w600),
@@ -78,6 +80,8 @@ class Product_Card extends StatelessWidget {
                           child: Text(
                             status,
                             style: TextStyle(
+                              
+                fontFamily: 'plusjakarta',
                                 color: Theme.of(context).secondaryHeaderColor,
                                 fontWeight: FontWeight.w300,
                                 fontSize: 10),

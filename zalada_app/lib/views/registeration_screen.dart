@@ -39,6 +39,8 @@ class _registeration_screenState extends State<registeration_screen> {
                   Text(
                     'Create_account'.tr,
                     style: TextStyle(
+                      
+                fontFamily: 'plusjakarta',
                         color: Theme.of(context).hintColor,
                         fontSize: 50,
                         fontWeight: FontWeight.w500),
@@ -124,6 +126,8 @@ class _registeration_screenState extends State<registeration_screen> {
                   Text(
                     'or_continue_with'.tr,
                     style: TextStyle(
+                      
+                fontFamily: 'plusjakarta',
                         color: Theme.of(context).hintColor, fontSize: 20),
                   ).px(10),
                   SizedBox(
@@ -158,6 +162,8 @@ class _registeration_screenState extends State<registeration_screen> {
                   Text(
                     'If_you_already_have_an_account'.tr,
                     style: TextStyle(
+                      
+                fontFamily: 'plusjakarta',
                         color: Theme.of(context).hintColor, fontSize: 20),
                   ),
                   InkWell(
@@ -167,6 +173,8 @@ class _registeration_screenState extends State<registeration_screen> {
                     child: Text(
                       'login'.tr,
                       style: TextStyle(
+                        
+                fontFamily: 'plusjakarta',
                           color: Theme.of(context).focusColor,
                           fontSize: 20,
                           fontWeight: FontWeight.w800),

@@ -38,6 +38,8 @@ class Hot_deal_Product_Card extends StatelessWidget {
                   'Macbook Pro 15" 2019 -Intel corei7',
                   textAlign: TextAlign.center,
                   style: TextStyle(
+                    
+                fontFamily: 'plusjakarta',
                       fontSize: 15,
                       color: Theme.of(context).hintColor,
                       fontWeight: FontWeight.w600),
@@ -49,6 +51,8 @@ class Hot_deal_Product_Card extends StatelessWidget {
                       TextSpan(
                         text: '\$1240',
                         style: TextStyle(
+                          
+                fontFamily: 'plusjakarta',
                             fontSize: 15,
                             color: Theme.of(context).focusColor,
                             fontWeight: FontWeight.w600),
@@ -56,6 +60,8 @@ class Hot_deal_Product_Card extends StatelessWidget {
                       TextSpan(
                         text: '\$1540',
                         style: TextStyle(
+                          
+                fontFamily: 'plusjakarta',
                             decoration: TextDecoration.lineThrough,
                             fontSize: 12,
                             color: Theme.of(context)

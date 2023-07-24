@@ -53,6 +53,8 @@ class _CD_selected_paymentboxState extends State<CD_selected_paymentbox> {
                 Text(
                   widget.label,
                   style: TextStyle(
+                    
+                fontFamily: 'plusjakarta',
                     color: Theme.of(context).hintColor,
                     fontSize: 20,
                     fontWeight: FontWeight.w800,
@@ -61,6 +63,8 @@ class _CD_selected_paymentboxState extends State<CD_selected_paymentbox> {
                 Text(
                   widget.hintText,
                   style: TextStyle(
+                    
+                fontFamily: 'plusjakarta',
                     color: Theme.of(context).hintColor.withOpacity(0.5),
                     fontSize: 15,
                     fontWeight: FontWeight.w500,

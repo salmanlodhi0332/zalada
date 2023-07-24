@@ -28,12 +28,16 @@ class Notification_Screen extends StatelessWidget {
                   'your_notification'.tr,
                   style: TextStyle(
                       fontSize: 24,
+                      
+                fontFamily: 'plusjakarta',
                       fontWeight: FontWeight.w600,
                       color: Theme.of(context).hintColor),
                 ),
                 Text(
                   'today'.tr,
                   style: TextStyle(
+                    
+                fontFamily: 'plusjakarta',
                       fontWeight: FontWeight.w600,
                       color: Theme.of(context).hintColor),
                 ).py(15),
@@ -53,7 +57,9 @@ class Notification_Screen extends StatelessWidget {
                   ),
                   title: Text(
                     '30% Special Discount!',
-                    style: TextStyle(fontWeight: FontWeight.w700),
+                    style: TextStyle(
+                      
+                fontFamily: 'plusjakarta',fontWeight: FontWeight.w700),
                   ),
                   subtitle: Text('Special promo to all apple device'),
                 ),
@@ -76,7 +82,9 @@ class Notification_Screen extends StatelessWidget {
                   ),
                   title: Text(
                     '30% Special Discount!',
-                    style: TextStyle(fontWeight: FontWeight.w700),
+                    style: TextStyle(
+                      
+                fontFamily: 'plusjakarta',fontWeight: FontWeight.w700),
                   ),
                   subtitle: Text('Special promo to all apple device'),
                 ),
@@ -92,6 +100,8 @@ class Notification_Screen extends StatelessWidget {
                 Text(
                   'yesterday'.tr,
                   style: TextStyle(
+                    
+                fontFamily: 'plusjakarta',
                       fontWeight: FontWeight.w600,
                       color: Theme.of(context).hintColor),
                 ).py(15),
@@ -111,7 +121,9 @@ class Notification_Screen extends StatelessWidget {
                   ),
                   title: Text(
                     '30% Special Discount!',
-                    style: TextStyle(fontWeight: FontWeight.w700),
+                    style: TextStyle(
+                      
+                fontFamily: 'plusjakarta',fontWeight: FontWeight.w700),
                   ),
                   subtitle: Text('Special promo to all apple device'),
                 ),
@@ -134,7 +146,9 @@ class Notification_Screen extends StatelessWidget {
                   ),
                   title: Text(
                     '30% Special Discount!',
-                    style: TextStyle(fontWeight: FontWeight.w700),
+                    style: TextStyle(
+                      
+                fontFamily: 'plusjakarta',fontWeight: FontWeight.w700),
                   ),
                   subtitle: Text('Special promo to all apple device'),
                 ),
@@ -157,7 +171,9 @@ class Notification_Screen extends StatelessWidget {
                   ),
                   title: Text(
                     '30% Special Discount!',
-                    style: TextStyle(fontWeight: FontWeight.w700),
+                    style: TextStyle(
+                      
+                fontFamily: 'plusjakarta',fontWeight: FontWeight.w700),
                   ),
                   subtitle: Text('Special promo to all apple device'),
                 ),

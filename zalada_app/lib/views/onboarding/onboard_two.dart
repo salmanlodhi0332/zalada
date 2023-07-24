@@ -36,6 +36,7 @@ class Onboard_Two extends StatelessWidget {
             'onboard_heading_three'.tr,
             textAlign: TextAlign.center,
             style: TextStyle(
+                fontFamily: 'plusjakarta',
                 fontWeight: FontWeight.bold,
                 color: Theme.of(context).hintColor,
                 fontSize: 25),
@@ -44,6 +45,7 @@ class Onboard_Two extends StatelessWidget {
             'onboard_three_description'.tr,
             textAlign: TextAlign.center,
             style: TextStyle(
+                fontFamily: 'plusjakarta',
                 fontWeight: FontWeight.bold,
                 color: Theme.of(context).disabledColor,
                 fontSize: 15),

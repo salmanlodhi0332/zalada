@@ -40,6 +40,8 @@ class _login_screenState extends State<login_screen> {
                   Text(
                     'login_account'.tr,
                     style: TextStyle(
+                      
+                fontFamily: 'plusjakarta',
                         color: Theme.of(context).hintColor,
                         fontSize: 50,
                         fontWeight: FontWeight.w500),
@@ -87,6 +89,8 @@ class _login_screenState extends State<login_screen> {
                 child: Text(
                   'Forget_password'.tr,
                   style: TextStyle(
+                    
+                fontFamily: 'plusjakarta',
                       color: Theme.of(context).hintColor, fontSize: 20),
                 ),
               ),
@@ -119,6 +123,8 @@ class _login_screenState extends State<login_screen> {
                   Text(
                     'or_continue_with'.tr,
                     style: TextStyle(
+                      
+                fontFamily: 'plusjakarta',
                         color: Theme.of(context).hintColor, fontSize: 20),
                   ).px(10),
                   SizedBox(
@@ -153,6 +159,8 @@ class _login_screenState extends State<login_screen> {
                   Text(
                     'Dont_have_an_account'.tr,
                     style: TextStyle(
+                      
+                fontFamily: 'plusjakarta',
                         color: Theme.of(context).hintColor, fontSize: 20),
                   ),
                   InkWell(
@@ -162,6 +170,8 @@ class _login_screenState extends State<login_screen> {
                     child: Text(
                       'Register'.tr,
                       style: TextStyle(
+                        
+                fontFamily: 'plusjakarta',
                           color: Theme.of(context).focusColor,
                           fontSize: 20,
                           fontWeight: FontWeight.w800),

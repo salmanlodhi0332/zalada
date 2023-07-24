@@ -53,6 +53,8 @@ class SearchScreen extends StatelessWidget {
                         Text(
                           'all'.tr,
                           style: TextStyle(
+                            
+                fontFamily: 'plusjakarta',
                             color: Theme.of(context).cardColor,
                           ),
                         ).px(10)

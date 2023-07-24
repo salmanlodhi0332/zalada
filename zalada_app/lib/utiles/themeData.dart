@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
 //   Color? canvasColor,
@@ -43,6 +44,10 @@ class AppTheme {
     hoverColor: HexColor('#2D3C52'), //--botton color 2D3C52
     focusColor: HexColor('#1B5EC9'), //-- this blue color
   );
+
+  // static TextStyle getgooglefont() {
+  //   return GoogleFonts.plusJakartaSans();
+  // }
 
   // static ThemeData darkTheme = ThemeData(
   //     primaryColor: const Color(0xffadc148),

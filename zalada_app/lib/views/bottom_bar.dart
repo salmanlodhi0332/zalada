@@ -33,10 +33,14 @@ class _Bottom_BarState extends State<Bottom_Bar> {
         selectedItemColor: Theme.of(context).hoverColor,
         unselectedItemColor: Theme.of(context).disabledColor,
         selectedLabelStyle: TextStyle(
+          
+                fontFamily: 'plusjakarta',
             color: Theme.of(context).hoverColor,
             fontWeight: FontWeight.w500,
             fontSize: 12),
         unselectedLabelStyle: TextStyle(
+          
+                fontFamily: 'plusjakarta',
             color: Theme.of(context).disabledColor,
             fontWeight: FontWeight.normal,
             fontSize: 12),

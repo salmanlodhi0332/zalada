@@ -6,7 +6,7 @@ import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:zalada_app/views/profile_screen.dart';
 import 'package:zalada_app/views/wishlist_cart_screen.dart';
 
-import 'brower_screen.dart';
+import 'search_product_screen.dart';
 import 'cart_screen.dart';
 import 'home_screen.dart';
 

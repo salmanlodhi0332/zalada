@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../custom/button_widget.dart';
+import 'botton_widget.dart';
 
 class Filter_Bottom_Bar extends GetView {
   // Rx<RangeValues> values = Rx(RangeValues(10, 2499));
@@ -237,10 +237,11 @@ class Filter_Bottom_Bar extends GetView {
               width: width,
               title: 'apply_filter'.tr,
               tap: () {
-                Get.bottomSheet(
-                  Filter_Bottom_Bar(),
-                  isScrollControlled: true,
-                );
+                // Get.bottomSheet(
+                //   Filter_Bottom_Bar(),
+                //   isScrollControlled: true,
+                // );
+                Get.back();
               },
             ).pOnly(bottom: 30),
           ],

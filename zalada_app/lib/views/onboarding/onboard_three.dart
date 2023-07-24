@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
+import 'package:zalada_app/views/login_screen.dart';
 
 import '../otp_screen.dart';
 
@@ -50,7 +51,7 @@ class Onboard_Three extends StatelessWidget {
           ).pOnly(bottom: 10),
           InkWell(
             onTap: () {
-              Page_Navigation().Page_ReplaceNavigation(context, OTP_Screen());
+              Page_Navigation().Screen(context, login_screen());
             },
             child: Container(
               child: Image.asset('assets/images/Progress_3.png'),

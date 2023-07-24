@@ -3,6 +3,9 @@ import 'package:get/get.dart';
 import 'package:page_transition/page_transition.dart';
 
 class Page_Navigation {
+static Page_Navigation? _instance;
+  static Page_Navigation get getInstance => _instance ??= Page_Navigation();
+
   Page_ReplaceNavigation(BuildContext context, Widget childwidget) {
     return Navigator.push(
       context,

@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../custom/button_widget.dart';
+import '../custom/botton_widget.dart';
+
+
 
 class OTP_Bottom_Bar extends GetView {
   @override

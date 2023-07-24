@@ -10,7 +10,9 @@ import 'package:zalada_app/utiles/getxcontroller.dart';
 import '../auth/order_successful_bottom_bar.dart';
 import '../auth/otp_bottom_bar.dart';
 import '../custom/back_button.dart';
-import '../custom/button_widget.dart';
+import '../custom/botton_widget.dart';
+import '../utiles/page_navigation.dart';
+
 import '../custom/filter_bar.dart';
 
 class OTP_Screen extends StatefulWidget {
@@ -45,19 +47,19 @@ class _OTP_ScreenState extends State<OTP_Screen> {
     return Scaffold(
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        centerTitle: true,
-        title: Text(
-          'otp'.tr,
-          style: TextStyle(color: Theme.of(context).hintColor),
-        ),
-        leading: back_button(
-          ontap: () {
-            Get.back();
-          },
-        ),
-      ),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          centerTitle: true,
+          title: Text(
+            'otp'.tr,
+            style: TextStyle(color: Theme.of(context).hintColor),
+          ),
+          leading: back_button(
+            pic: Icon(Icons.arrow_back),
+            ontap: () {
+              Get.back();
+            },
+          )),
       body: ListView(
         // mainAxisAlignment: MainAxisAlignment.center,
         // crossAxisAlignment: CrossAxisAlignment.center,

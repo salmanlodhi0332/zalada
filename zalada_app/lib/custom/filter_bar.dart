@@ -237,10 +237,11 @@ class Filter_Bottom_Bar extends GetView {
               width: width,
               title: 'apply_filter'.tr,
               tap: () {
-                Get.bottomSheet(
-                  Filter_Bottom_Bar(),
-                  isScrollControlled: true,
-                );
+                // Get.bottomSheet(
+                //   Filter_Bottom_Bar(),
+                //   isScrollControlled: true,
+                // );
+                Get.back();
               },
             ).pOnly(bottom: 30),
           ],

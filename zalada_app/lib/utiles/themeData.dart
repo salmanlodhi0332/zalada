@@ -32,7 +32,8 @@ class AppTheme {
 
   static ThemeData lightTheme = ThemeData(
       
-      scaffoldBackgroundColor: HexColor('#ECECEC'),//---background color
+      scaffoldBackgroundColor: HexColor('#FEFEFE'),//---background color
+      
       cardColor: Color.fromRGBO(255, 255, 255, 1),//card container color
       indicatorColor: Colors.orange,//----selection color
       hintColor: Colors.black,//--text color

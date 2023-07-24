@@ -5,11 +5,12 @@ class Button_Widget extends StatelessWidget {
   const Button_Widget({
     super.key,
     required this.width,
-    required this.title, this.tap
+    required this.title, this.tap, this.icon
   });
 
   final double width;
   final Function()? tap;
+  final Widget? icon;
   final String title;
 
   @override
@@ -17,17 +18,25 @@ class Button_Widget extends StatelessWidget {
     return InkWell(
       onTap: tap,
       child: Container(
+        height: 70,
         width: width,
         decoration: BoxDecoration(
             color: Theme.of(context).hoverColor,
             borderRadius: BorderRadius.circular(30)),
-        child: Text(
-          title,
-          style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w500,
-              color: Theme.of(context).secondaryHeaderColor),
-        ).py(20).centered(),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            icon ??
+            Container(),
+            Text(
+              title,
+              style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Theme.of(context).secondaryHeaderColor),
+            ).py(20).centered(),
+          ],
+        ),
       ).px(20),
     );
   }

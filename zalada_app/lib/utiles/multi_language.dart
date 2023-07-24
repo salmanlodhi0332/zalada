@@ -79,7 +79,7 @@ class Multi_Language extends Translations {
           "Profile": "Profile",
           "search_product": "Search laptop, headset, etc...",
           "home_card_description": "Find best device for your setup!",
-          // "": "",
+          "all": "All",
           // "": "",
           // "": "",
           // "": "",

@@ -7,9 +7,6 @@ import 'package:zalada_app/views/splash_screen.dart';
 import 'package:zalada_app/views/bottom_bar.dart';
 import 'package:zalada_app/views/otp_screen.dart';
 
-
-
-
 void main() {
   runApp(const MyApp());
 }
@@ -30,7 +27,7 @@ class MyApp extends StatelessWidget {
             themeMode: ThemeMode.light,
             theme: AppTheme.lightTheme,
             debugShowCheckedModeBanner: false,
-            home: Bottom_Bar(),
+            home: SafeArea(child: Bottom_Bar()),
           );
         });
   }

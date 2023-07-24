@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class back_button extends StatelessWidget {
   final Function() ontap;
-  const back_button({super.key, required this.ontap});
+  final Widget? pic;
+  const back_button({super.key, required this.ontap, this.pic});
 
   @override
   Widget build(BuildContext context) {
@@ -14,14 +15,12 @@ class back_button extends StatelessWidget {
             shape: BoxShape.circle,
             border: Border.all(
                 color: Theme.of(context).disabledColor.withOpacity(0.3))),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Icon(
-            Icons.arrow_back,
-            size: 18,
-            color: Theme.of(context).hintColor,
-          ),
-        ),
+        child: pic ??
+            Icon(
+              Icons.arrow_back,
+              size: 18,
+              color: Theme.of(context).hintColor,
+            ),
       ),
     );
   }

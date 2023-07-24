@@ -57,6 +57,28 @@ class Multi_Language extends Translations {
           "Add_new_payment_method": "Add new payment method",
           "Credit_or_Debit": "Credit or Debit Card",
           "Payment_description": "Pay with your Visa or Mastercard ",
+          "congratulation": "Congratulations!",
+          "congratulation_bar_description":
+              "Your account is ready to use. You will be redirected to the Homepage in a few seconds.",
+          "filter": "Filter",
+          "reset": "Reset",
+          "apply_filter": "Apply Filter",
+          "price_range": "Price Range",
+          "sort_by": "Sort by",
+          "new_arrived": "New Arrived",
+          "higher_price": "Higher Price",
+          "lower_price": "Lower Price",
+          "discount": "Discount",
+          "order_successfull": "Order Successful!",
+          "view_order": "View Order",
+          "successfull_bar_description": "Your have successfully made order",
+          "Wishlist": "Wishlist",
+          "Brower": "Brower",
+          "Home": "Home",
+          "Cart": "Cart",
+          "Profile": "Profile",
+          "search_product": "Search laptop, headset, etc...",
+          "home_card_description": "Find best device for your setup!",
           // "": "",
           // "": "",
           // "": "",
@@ -107,7 +129,6 @@ class Multi_Language extends Translations {
           // "": "",
           // "": "",
           // "": "",
-      
         }
       };
 }

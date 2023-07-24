@@ -7,12 +7,13 @@ import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/utiles/getxcontroller.dart';
 
+import '../auth/order_successful_bottom_bar.dart';
 import '../auth/otp_bottom_bar.dart';
 import '../custom/back_button.dart';
 import '../custom/botton_widget.dart';
 import '../utiles/page_navigation.dart';
 
-
+import '../custom/filter_bar.dart';
 
 class OTP_Screen extends StatefulWidget {
   OTP_Screen({super.key});
@@ -46,18 +47,18 @@ class _OTP_ScreenState extends State<OTP_Screen> {
     return Scaffold(
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        centerTitle: true,
-        title: Text(
-          'otp'.tr,
-          style: TextStyle(color: Theme.of(context).hintColor),
-        ),
-        leading: back_button(ontap: () {
-          Get.back();
-        },)
-
-      ),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          centerTitle: true,
+          title: Text(
+            'otp'.tr,
+            style: TextStyle(color: Theme.of(context).hintColor),
+          ),
+          leading: back_button(
+            ontap: () {
+              Get.back();
+            },
+          )),
       body: ListView(
         // mainAxisAlignment: MainAxisAlignment.center,
         // crossAxisAlignment: CrossAxisAlignment.center,
@@ -123,7 +124,7 @@ class _OTP_ScreenState extends State<OTP_Screen> {
             title: 'continue'.tr,
             tap: () {
               Get.bottomSheet(
-                OTP_Bottom_Bar(),
+                Order_successful_Bottom_Bar(),
                 isScrollControlled: true,
               );
             },

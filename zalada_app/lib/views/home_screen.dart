@@ -8,6 +8,7 @@ import 'package:zalada_app/utiles/page_navigation.dart';
 import 'package:zalada_app/views/notification_screen.dart';
 import 'package:zalada_app/views/product_detail.dart';
 import '../custom/hot_deal_productcard.dart';
+import '../custom/search_screen_widgets/categories_btn.dart';
 
 class Home_Screen extends StatelessWidget {
   Home_Screen({Key? key}) : super(key: key);
@@ -158,8 +159,70 @@ class Home_Screen extends StatelessWidget {
                       Row(
                         children: [Hot_deal_Product_Card()],
                       ).py(20),
-                      Row(
-                        children: [],
+                      SingleChildScrollView(
+                        physics: BouncingScrollPhysics(),
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            Container(
+                              // width: size.width/6,
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).hintColor,
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              child: Row(
+                                children: [
+                                  CircleAvatar(
+                                    backgroundColor:
+                                        Theme.of(context).cardColor,
+                                    child: Icon(
+                                      Icons.grid_view_rounded,
+                                      color: Theme.of(context).hintColor,
+                                    ),
+                                  ),
+                                  Text(
+                                    'all'.tr,
+                                    style: TextStyle(
+                                      color: Theme.of(context).cardColor,
+                                    ),
+                                  ).px(10)
+                                ],
+                              ).p(5),
+                            ),
+                            categories_btn(
+                              label: 'laptop',
+                              selected: false,
+                              preffixIcon: Icon(
+                                Icons.laptop_windows_outlined,
+                                color: Theme.of(context).hintColor,
+                              ),
+                            ),
+                            categories_btn(
+                              label: 'laptop',
+                              selected: false,
+                              preffixIcon: Icon(
+                                Icons.laptop_windows_outlined,
+                                color: Theme.of(context).hintColor,
+                              ),
+                            ),
+                            categories_btn(
+                              label: 'laptop',
+                              selected: false,
+                              preffixIcon: Icon(
+                                Icons.laptop_windows_outlined,
+                                color: Theme.of(context).hintColor,
+                              ),
+                            ),
+                            categories_btn(
+                              label: 'laptop',
+                              selected: false,
+                              preffixIcon: Icon(
+                                Icons.laptop_windows_outlined,
+                                color: Theme.of(context).hintColor,
+                              ),
+                            )
+                          ],
+                        ).px(20),
                       ).py(20),
                       MasonryGridView.count(
                         primary: false,

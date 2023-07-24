@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/custom/back_button.dart';
 import 'package:readmore/readmore.dart';
-import 'package:zalada_app/custom/button_widget.dart';
+import 'package:zalada_app/custom/botton_widget.dart';
 import 'package:zalada_app/custom/product_card.dart';
 
 class Product_Detail_Screen extends StatelessWidget {
@@ -247,7 +247,7 @@ class Product_Detail_Screen extends StatelessWidget {
                 color: Theme.of(context).hintColor,
               ).p(15),
             ),
-            Button_Widget(width: width / 1.3, title: 'Checkout \$1240').py(11)
+            Button_Widget(width: width / 1.4, title: 'Checkout \$1240').py(11)
           ],
         ),
       ),

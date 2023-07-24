@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class Button_Widget extends StatelessWidget {
-  const Button_Widget({
-    super.key,
-    required this.width,
-    required this.title, this.tap, this.icon
-  });
+  const Button_Widget(
+      {super.key,
+      required this.width,
+      required this.title,
+      this.tap,
+      this.icon});
 
   final double width;
   final Function()? tap;
@@ -26,15 +27,14 @@ class Button_Widget extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            icon ??
-            Container(),
+            icon ?? Container(),
             Text(
               title,
               style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
                   color: Theme.of(context).secondaryHeaderColor),
-            ).py(20).centered(),
+            ).centered(),
           ],
         ),
       ).px(20),

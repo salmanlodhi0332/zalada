@@ -50,7 +50,12 @@ class search_grid extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
           itemCount: 10,
           itemBuilder: (BuildContext context, int index) {
-            return Product_Card();
+            return Product_Card(
+              imageurl: 'assets/images/success.png',
+              product_name: 'Macbook Pro 15" 2019 -Intel corei7',
+              price: '\$1240',
+              status: "NEW ARRIVAL",
+            );
           },
           mainAxisSpacing: 50.0,
           crossAxisSpacing: 15.0,

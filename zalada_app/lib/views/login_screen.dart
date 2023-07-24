@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/custom/botton_widget.dart';
+import 'package:zalada_app/views/bottom_bar.dart';
 import 'package:zalada_app/views/otp_screen.dart';
 import 'package:zalada_app/views/registeration_screen.dart';
 
@@ -97,10 +98,7 @@ class _login_screenState extends State<login_screen> {
                 width: size.width,
                 title: 'login'.tr,
                 tap: () {
-                  Get.bottomSheet(
-                    payment_methods_bottom(),
-                    isScrollControlled: true,
-                  );
+                Page_Navigation.getInstance.Page_ReplaceNavigation(context, Bottom_Bar());
                 },
               ),
               SizedBox(

@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
             themeMode: ThemeMode.light,
             theme: AppTheme.lightTheme,
             debugShowCheckedModeBanner: false,
-            home: SafeArea(child: Bottom_Bar()),
+            home: SafeArea(child: splash_screen()),
           );
         });
   }

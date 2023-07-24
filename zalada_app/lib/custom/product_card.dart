@@ -2,7 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class Product_Card extends StatelessWidget {
-  const Product_Card({super.key});
+  final String imageurl;
+  final String product_name;
+  final String price;
+  final String status;
+  const Product_Card(
+      {super.key,
+      required this.imageurl,
+      required this.product_name,
+      required this.price,
+      required this.status});
 
   @override
   Widget build(BuildContext context) {
@@ -29,13 +38,13 @@ class Product_Card extends StatelessWidget {
                   height: 100,
                   width: 100,
                   child: ClipRRect(
-                    child: Image.asset('assets/images/success.png'),
+                    child: Image.asset(imageurl),
                   ),
                 )),
             Column(
               children: [
                 Text(
-                  'Macbook Pro 15" 2019 -Intel corei7',
+                  product_name,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 15,
@@ -43,7 +52,7 @@ class Product_Card extends StatelessWidget {
                       fontWeight: FontWeight.w600),
                 ).pOnly(bottom: 10),
                 Text(
-                  '\$1240',
+                  price,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 15,
@@ -52,20 +61,23 @@ class Product_Card extends StatelessWidget {
                 )
               ],
             ).pOnly(top: 90),
-            Positioned(
-                bottom: -10,
-                child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                    decoration: BoxDecoration(
-                        color: Theme.of(context).indicatorColor,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Text(
-                      "NEW ARRIVAL",
-                      style: TextStyle(
-                          color: Theme.of(context).secondaryHeaderColor,
-                          fontWeight: FontWeight.w300,
-                          fontSize: 10),
-                    ))),
+            status.isNotEmpty
+                ? Positioned(
+                    bottom: -10,
+                    child: Container(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                        decoration: BoxDecoration(
+                            color: Theme.of(context).indicatorColor,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Text(
+                          status,
+                          style: TextStyle(
+                              color: Theme.of(context).secondaryHeaderColor,
+                              fontWeight: FontWeight.w300,
+                              fontSize: 10),
+                        )))
+                : SizedBox()
           ]),
     );
   }

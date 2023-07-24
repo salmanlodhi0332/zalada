@@ -41,7 +41,7 @@ class _login_screenState extends State<login_screen> {
                     'login_account'.tr,
                     style: TextStyle(
                         color: Theme.of(context).hintColor,
-                        fontSize: 50,
+                        fontSize: 30,
                         fontWeight: FontWeight.w500),
                   ).px(20),
                 ],
@@ -87,7 +87,7 @@ class _login_screenState extends State<login_screen> {
                 child: Text(
                   'Forget_password'.tr,
                   style: TextStyle(
-                      color: Theme.of(context).hintColor, fontSize: 20),
+                      color: Theme.of(context).hintColor, fontSize: 16),
                 ),
               ),
               SizedBox(
@@ -119,7 +119,7 @@ class _login_screenState extends State<login_screen> {
                   Text(
                     'or_continue_with'.tr,
                     style: TextStyle(
-                        color: Theme.of(context).hintColor, fontSize: 20),
+                        color: Theme.of(context).hintColor, fontSize: 16),
                   ).px(10),
                   SizedBox(
                     child: Divider(
@@ -134,14 +134,22 @@ class _login_screenState extends State<login_screen> {
                 height: 20,
               ),
               other_loginBtn_Widget(
-                  icon: Image.asset('assets/icon/google.png',height: 30,width: 30,),
+                  icon: Image.asset(
+                    'assets/icon/google.png',
+                    height: 25,
+                    width: 30,
+                  ),
                   width: size.width,
                   title: 'Continue_with_google'.tr),
               SizedBox(
                 height: 20,
               ),
               other_loginBtn_Widget(
-                  icon: Image.asset('assets/icon/facebook.png',height: 30,width: 30,),
+                  icon: Image.asset(
+                    'assets/icon/facebook.png',
+                    height: 25,
+                    width: 30,
+                  ),
                   width: size.width,
                   title: 'Continue_with_facebook'.tr),
               SizedBox(
@@ -153,7 +161,7 @@ class _login_screenState extends State<login_screen> {
                   Text(
                     'Dont_have_an_account'.tr,
                     style: TextStyle(
-                        color: Theme.of(context).hintColor, fontSize: 20),
+                        color: Theme.of(context).hintColor, fontSize: 16),
                   ),
                   InkWell(
                     onTap: () {
@@ -163,7 +171,7 @@ class _login_screenState extends State<login_screen> {
                       'Register'.tr,
                       style: TextStyle(
                           color: Theme.of(context).focusColor,
-                          fontSize: 20,
+                          fontSize: 16,
                           fontWeight: FontWeight.w800),
                     ),
                   )

@@ -22,6 +22,7 @@ class _registeration_screenState extends State<registeration_screen> {
   final hidepassword = true.obs;
   final email = TextEditingController();
   final password = TextEditingController();
+
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
@@ -40,7 +41,7 @@ class _registeration_screenState extends State<registeration_screen> {
                     'Create_account'.tr,
                     style: TextStyle(
                         color: Theme.of(context).hintColor,
-                        fontSize: 50,
+                        fontSize: 30,
                         fontWeight: FontWeight.w500),
                   ).px(20),
                 ],
@@ -124,7 +125,7 @@ class _registeration_screenState extends State<registeration_screen> {
                   Text(
                     'or_continue_with'.tr,
                     style: TextStyle(
-                        color: Theme.of(context).hintColor, fontSize: 20),
+                        color: Theme.of(context).hintColor, fontSize: 16),
                   ).px(10),
                   SizedBox(
                     child: Divider(
@@ -139,14 +140,22 @@ class _registeration_screenState extends State<registeration_screen> {
                 height: 20,
               ),
               other_loginBtn_Widget(
-                  icon: Image.asset('assets/icon/google.png',height: 30,width: 30,),
+                  icon: Image.asset(
+                    'assets/icon/google.png',
+                    height: 30,
+                    width: 30,
+                  ),
                   width: size.width,
                   title: 'Continue_with_google'.tr),
               SizedBox(
                 height: 20,
               ),
               other_loginBtn_Widget(
-                  icon: Image.asset('assets/icon/facebook.png',height: 30,width: 30,),
+                  icon: Image.asset(
+                    'assets/icon/facebook.png',
+                    height: 30,
+                    width: 30,
+                  ),
                   width: size.width,
                   title: 'Continue_with_facebook'.tr),
               SizedBox(
@@ -158,7 +167,7 @@ class _registeration_screenState extends State<registeration_screen> {
                   Text(
                     'If_you_already_have_an_account'.tr,
                     style: TextStyle(
-                        color: Theme.of(context).hintColor, fontSize: 20),
+                        color: Theme.of(context).hintColor, fontSize: 16),
                   ),
                   InkWell(
                     onTap: () {
@@ -168,7 +177,7 @@ class _registeration_screenState extends State<registeration_screen> {
                       'login'.tr,
                       style: TextStyle(
                           color: Theme.of(context).focusColor,
-                          fontSize: 20,
+                          fontSize: 16,
                           fontWeight: FontWeight.w800),
                     ),
                   )

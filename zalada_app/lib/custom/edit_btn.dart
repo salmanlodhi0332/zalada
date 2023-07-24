@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class back_button extends StatelessWidget {
+class edit_button extends StatelessWidget {
   final Function() ontap;
-  const back_button({super.key, required this.ontap});
+  const edit_button({super.key, required this.ontap});
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +17,12 @@ class back_button extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Icon(
-            Icons.arrow_back,
+            Icons.more_horiz_rounded,
             size: 18,
             color: Theme.of(context).hintColor,
           ),
         ),
+        //  Image.asset("assets/images/dots.jpg")
       ),
     );
   }

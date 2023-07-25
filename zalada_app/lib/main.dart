@@ -3,12 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:zalada_app/utiles/multi_language.dart';
 import 'package:zalada_app/utiles/themeData.dart';
+import 'package:zalada_app/views/address.dart';
+import 'package:zalada_app/views/payment_method.dart';
+import 'package:zalada_app/views/privacy_policy.dart';
+import 'package:zalada_app/views/select_address.dart';
 import 'package:zalada_app/views/splash_screen.dart';
 import 'package:zalada_app/views/bottom_bar.dart';
 import 'package:zalada_app/views/otp_screen.dart';
-
-
-
+import 'package:zalada_app/views/view_profile.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,7 +32,7 @@ class MyApp extends StatelessWidget {
             themeMode: ThemeMode.light,
             theme: AppTheme.lightTheme,
             debugShowCheckedModeBanner: false,
-            home: Bottom_Bar(),
+            home: privacy_policy(),
           );
         });
   }

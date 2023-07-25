@@ -31,6 +31,7 @@ class _login_screenState extends State<login_screen> {
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       body: SafeArea(
         child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           scrollDirection: Axis.vertical,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -178,7 +179,7 @@ class _login_screenState extends State<login_screen> {
                 ],
               )
             ],
-          ),
+          ).py(30),
         ),
       ),
     );

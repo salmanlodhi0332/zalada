@@ -56,12 +56,15 @@ class _search_result_screenState extends State<search_result_screen> {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: Button_Widget(
+          
           title: 'Filter',
           icon: Icon(
             Icons.filter_alt,
             color: Theme.of(context).cardColor,
           ),
-          width: size.width / 3,
+          width: MediaQuery.of(context).orientation == Orientation.portrait
+          ? size.width / 3
+          : size.width /5,
           tap: () {
             Get.bottomSheet(
               Filter_Bottom_Bar(),

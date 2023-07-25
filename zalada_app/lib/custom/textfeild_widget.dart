@@ -37,7 +37,7 @@ class textfeild_widget extends StatelessWidget {
           ],
         ),
         Container(
-          height: size.height / 13,
+          height: MediaQuery.of(context).orientation  == Orientation.portrait ? size.height / 13 : size.height / 7,
           width: size.width,
           decoration: BoxDecoration(
               border: Border.all(

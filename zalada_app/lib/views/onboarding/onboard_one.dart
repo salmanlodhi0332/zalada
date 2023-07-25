@@ -26,43 +26,45 @@ class Onboard_One extends StatelessWidget {
               ))
         ],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            child: Image.asset('assets/images/pick_&_pay.png'),
-          ).pOnly(bottom: 10),
-          Text(
-            'onboard_heading_one'.tr,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              
-                fontFamily: 'plusjakarta',
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).hintColor,
-                fontSize: 25),
-          ).pOnly(bottom: 10),
-          Text(
-            'onboard_one_description'.tr,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              
-                fontFamily: 'plusjakarta',
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).disabledColor,
-                fontSize: 15),
-          ).pOnly(bottom: 10),
-          InkWell(
-              onTap: () {
-                Page_Navigation()
-                    .Page_ReplaceNavigation(context, Onboard_Two());
-              },
-              child: Container(
-                child: Image.asset('assets/images/Progress_1.png'),
-              )),
-        ],
-      ).px(50),
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              child: Image.asset('assets/images/pick_&_pay.png'),
+            ).pOnly(bottom: 10),
+            Text(
+              'onboard_heading_one'.tr,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                
+                  fontFamily: 'plusjakarta',
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).hintColor,
+                  fontSize: 25),
+            ).pOnly(bottom: 10),
+            Text(
+              'onboard_one_description'.tr,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                
+                  fontFamily: 'plusjakarta',
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).disabledColor,
+                  fontSize: 15),
+            ).pOnly(bottom: 10),
+            InkWell(
+                onTap: () {
+                  Page_Navigation()
+                      .Page_ReplaceNavigation(context, Onboard_Two());
+                },
+                child: Container(
+                  child: Image.asset('assets/images/Progress_1.png'),
+                )),
+          ],
+        ).px(50),
+      ),
     );
   }
 }

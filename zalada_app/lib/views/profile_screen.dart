@@ -37,7 +37,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
             ontap: () {},
             pic: SvgPicture.asset(
               "assets/svg/user-edit.svg",
-            ),
+            ).p(10),
           )
         ],
       ),

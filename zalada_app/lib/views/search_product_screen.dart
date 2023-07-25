@@ -8,7 +8,7 @@ import 'package:zalada_app/views/search_result_screen.dart';
 import '../custom/search_bar.dart';
 import '../custom/search_screen_widgets/categories_btn.dart';
 
-class FavoritesScreen extends StatelessWidget {
+class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -18,15 +18,19 @@ class FavoritesScreen extends StatelessWidget {
           physics: BouncingScrollPhysics(),
           scrollDirection: Axis.vertical,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "your_wishlist".tr,
-                style: TextStyle(
-                    fontFamily: 'plusjakarta',
-                    fontSize: 30,
-                    fontWeight: FontWeight.w700),
-              ).py(15).px(25),
+              SizedBox(
+                height: 20,
+              ),
+              search_bar_widget(
+                onTap: () {
+                  Page_Navigation.getInstance
+                      .Page_ReplaceNavigation(context, search_result_screen());
+                },
+              ),
+              SizedBox(
+                height: 20,
+              ),
               SingleChildScrollView(
                 physics: BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
@@ -58,7 +62,7 @@ class FavoritesScreen extends StatelessWidget {
                       ).p(5),
                     ),
                     categories_btn(
-                      label: 'Laptop',
+                      label: 'laptop',
                       selected: false,
                       preffixIcon: Icon(
                         Icons.laptop_windows_outlined,
@@ -66,7 +70,7 @@ class FavoritesScreen extends StatelessWidget {
                       ),
                     ),
                     categories_btn(
-                      label: 'Accessories',
+                      label: 'laptop',
                       selected: false,
                       preffixIcon: Icon(
                         Icons.laptop_windows_outlined,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/custom/botton_widget.dart';
+import 'package:zalada_app/views/bottom_bar.dart';
 import 'package:zalada_app/views/otp_screen.dart';
 import 'package:zalada_app/views/registeration_screen.dart';
 
@@ -40,6 +41,7 @@ class _login_screenState extends State<login_screen> {
                   Text(
                     'login_account'.tr,
                     style: TextStyle(
+                        fontFamily: 'plusjakarta',
                         color: Theme.of(context).hintColor,
                         fontSize: 30,
                         fontWeight: FontWeight.w500),
@@ -87,7 +89,7 @@ class _login_screenState extends State<login_screen> {
                 child: Text(
                   'Forget_password'.tr,
                   style: TextStyle(
-                      color: Theme.of(context).hintColor, fontSize: 16),
+                      color: Theme.of(context).hintColor, fontSize: 20),
                 ),
               ),
               SizedBox(
@@ -97,10 +99,8 @@ class _login_screenState extends State<login_screen> {
                 width: size.width,
                 title: 'login'.tr,
                 tap: () {
-                  Get.bottomSheet(
-                    payment_methods_bottom(),
-                    isScrollControlled: true,
-                  );
+                  Page_Navigation.getInstance
+                      .Page_ReplaceNavigation(context, Bottom_Bar());
                 },
               ),
               SizedBox(
@@ -119,7 +119,7 @@ class _login_screenState extends State<login_screen> {
                   Text(
                     'or_continue_with'.tr,
                     style: TextStyle(
-                        color: Theme.of(context).hintColor, fontSize: 16),
+                        color: Theme.of(context).hintColor, fontSize: 20),
                   ).px(10),
                   SizedBox(
                     child: Divider(
@@ -161,7 +161,7 @@ class _login_screenState extends State<login_screen> {
                   Text(
                     'Dont_have_an_account'.tr,
                     style: TextStyle(
-                        color: Theme.of(context).hintColor, fontSize: 16),
+                        color: Theme.of(context).hintColor, fontSize: 20),
                   ),
                   InkWell(
                     onTap: () {
@@ -170,6 +170,7 @@ class _login_screenState extends State<login_screen> {
                     child: Text(
                       'Register'.tr,
                       style: TextStyle(
+                          fontFamily: 'plusjakarta',
                           color: Theme.of(context).focusColor,
                           fontSize: 16,
                           fontWeight: FontWeight.w800),

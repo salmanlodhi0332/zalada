@@ -27,7 +27,7 @@ class _selected_boxState extends State<selected_box> {
     final size = MediaQuery.of(context).size;
     return AnimatedContainer(
         height: size.height / 12,
-        width: size.width,
+        width: size.width/2,
         decoration: BoxDecoration(
             border: Border.all(
                 color: widget.selected
@@ -53,6 +53,8 @@ class _selected_boxState extends State<selected_box> {
                 Text(
                   widget.label,
                   style: TextStyle(
+                    
+                fontFamily: 'plusjakarta',
                     color: Theme.of(context).hintColor.withOpacity(0.5),
                     fontSize: 15,
                     fontWeight: FontWeight.w500,
@@ -61,6 +63,8 @@ class _selected_boxState extends State<selected_box> {
                 Text(
                   widget.hintText,
                   style: TextStyle(
+                    
+                fontFamily: 'plusjakarta',
                     color: Theme.of(context).hintColor,
                     fontSize: 20,
                     fontWeight: FontWeight.w800,

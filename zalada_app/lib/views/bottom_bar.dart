@@ -6,7 +6,8 @@ import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:zalada_app/views/profile_screen.dart';
 import 'package:zalada_app/views/wishlist_cart_screen.dart';
 
-import 'brower_screen.dart';
+import 'confirm_order.dart';
+import 'search_product_screen.dart';
 import 'cart_screen.dart';
 import 'cart_screen2.dart';
 import 'home_screen.dart';
@@ -34,10 +35,12 @@ class _Bottom_BarState extends State<Bottom_Bar> {
         selectedItemColor: Theme.of(context).hoverColor,
         unselectedItemColor: Theme.of(context).disabledColor,
         selectedLabelStyle: TextStyle(
+            fontFamily: 'plusjakarta',
             color: Theme.of(context).hoverColor,
             fontWeight: FontWeight.w500,
             fontSize: 12),
         unselectedLabelStyle: TextStyle(
+            fontFamily: 'plusjakarta',
             color: Theme.of(context).disabledColor,
             fontWeight: FontWeight.normal,
             fontSize: 12),
@@ -131,7 +134,8 @@ class _Bottom_BarState extends State<Bottom_Bar> {
       case 1:
         return SearchScreen();
       case 2:
-        return FavoritesScreen();
+        //return FavoritesScreen();
+        return ConfirmOrder();
       case 3:
         return CartScreenWithData();
       case 4:

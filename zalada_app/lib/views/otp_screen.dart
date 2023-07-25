@@ -52,9 +52,12 @@ class _OTP_ScreenState extends State<OTP_Screen> {
           centerTitle: true,
           title: Text(
             'otp'.tr,
-            style: TextStyle(color: Theme.of(context).hintColor),
+            style: TextStyle(
+              
+                fontFamily: 'plusjakarta',color: Theme.of(context).hintColor),
           ),
           leading: back_button(
+            pic: Icon(Icons.arrow_back),
             ontap: () {
               Get.back();
             },
@@ -70,6 +73,8 @@ class _OTP_ScreenState extends State<OTP_Screen> {
             'verfication_code'.tr,
             textAlign: TextAlign.center,
             style: TextStyle(
+              
+                fontFamily: 'plusjakarta',
                 fontWeight: FontWeight.bold,
                 color: Theme.of(context).hintColor,
                 fontSize: 24),
@@ -78,6 +83,8 @@ class _OTP_ScreenState extends State<OTP_Screen> {
             TextSpan(
               text: 'otp_description'.tr,
               style: TextStyle(
+                
+                fontFamily: 'plusjakarta',
                   fontWeight: FontWeight.w400,
                   color: Theme.of(context).disabledColor,
                   fontSize: 15),
@@ -85,6 +92,8 @@ class _OTP_ScreenState extends State<OTP_Screen> {
             TextSpan(
               text: '  +62812 788 6XXXX',
               style: TextStyle(
+                
+                fontFamily: 'plusjakarta',
                   color: Theme.of(context).hintColor,
                   fontWeight: FontWeight.w700),
             )
@@ -109,6 +118,8 @@ class _OTP_ScreenState extends State<OTP_Screen> {
                       : Text(
                           'recent_code'.tr,
                           style: TextStyle(
+                            
+                fontFamily: 'plusjakarta',
                               color: Theme.of(context).hintColor, fontSize: 16),
                         ),
                   Text(
@@ -116,6 +127,8 @@ class _OTP_ScreenState extends State<OTP_Screen> {
                           ? ''
                           : controller.countdown.toString() + 's',
                       style: TextStyle(
+                        
+                fontFamily: 'plusjakarta',
                           color: Theme.of(context).hintColor, fontSize: 16)),
                 ],
               )).py(20),
@@ -161,7 +174,10 @@ class _OTP_ScreenState extends State<OTP_Screen> {
             LengthLimitingTextInputFormatter(1),
             FilteringTextInputFormatter.digitsOnly
           ],
-          style: TextStyle(color: Theme.of(context).hintColor),
+          style: TextStyle(
+            
+            
+                fontFamily: 'plusjakarta',color: Theme.of(context).hintColor),
         ),
       ),
     );

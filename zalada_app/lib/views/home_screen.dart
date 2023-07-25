@@ -4,7 +4,11 @@ import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/custom/product_card.dart';
 
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:zalada_app/utiles/page_navigation.dart';
+import 'package:zalada_app/views/notification_screen.dart';
+import 'package:zalada_app/views/product_detail.dart';
 import '../custom/hot_deal_productcard.dart';
+import '../custom/search_screen_widgets/categories_btn.dart';
 
 class Home_Screen extends StatelessWidget {
   Home_Screen({Key? key}) : super(key: key);
@@ -55,14 +59,20 @@ class Home_Screen extends StatelessWidget {
                               .withOpacity(0.3)),
                       child: Image.asset('assets/images/favorite.png'),
                     ),
-                    Container(
-                      margin: EdgeInsets.all(7),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          color: Theme.of(context)
-                              .highlightColor
-                              .withOpacity(0.3)),
-                      child: Image.asset('assets/images/notification.png'),
+                    InkWell(
+                      onTap: () {
+                        Page_Navigation().Page_ReplaceNavigation(
+                            context, Notification_Screen());
+                      },
+                      child: Container(
+                        margin: EdgeInsets.all(7),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: Theme.of(context)
+                                .highlightColor
+                                .withOpacity(0.3)),
+                        child: Image.asset('assets/images/notification.png'),
+                      ),
                     ),
                   ],
                   leading: ClipRRect(
@@ -83,6 +93,8 @@ class Home_Screen extends StatelessWidget {
                         child: Text(
                           'home_card_description'.tr,
                           style: TextStyle(
+                            
+                fontFamily: 'plusjakarta',
                               color: Theme.of(context).scaffoldBackgroundColor,
                               fontSize: 36,
                               fontWeight: FontWeight.bold),
@@ -128,6 +140,8 @@ class Home_Screen extends StatelessWidget {
                               Text(
                                 "search_product".tr,
                                 style: TextStyle(
+                                  
+                fontFamily: 'plusjakarta',
                                     color: Theme.of(context).disabledColor,
                                     fontSize: 14),
                               )
@@ -144,13 +158,79 @@ class Home_Screen extends StatelessWidget {
                       Text(
                         'hot_deal'.tr,
                         style: TextStyle(
+                          
+                fontFamily: 'plusjakarta',
                             fontSize: 18, fontWeight: FontWeight.w700),
                       ).py(15),
                       Row(
                         children: [Hot_deal_Product_Card()],
                       ).py(20),
-                      Row(
-                        children: [],
+                      SingleChildScrollView(
+                        physics: BouncingScrollPhysics(),
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            Container(
+                              // width: size.width/6,
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).hintColor,
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              child: Row(
+                                children: [
+                                  CircleAvatar(
+                                    backgroundColor:
+                                        Theme.of(context).cardColor,
+                                    child: Icon(
+                                      Icons.grid_view_rounded,
+                                      color: Theme.of(context).hintColor,
+                                    ),
+                                  ),
+                                  Text(
+                                    'all'.tr,
+                                    style: TextStyle(
+                                      
+                fontFamily: 'plusjakarta',
+                                      color: Theme.of(context).cardColor,
+                                    ),
+                                  ).px(10)
+                                ],
+                              ).p(5),
+                            ),
+                            categories_btn(
+                              label: 'laptop',
+                              selected: false,
+                              preffixIcon: Icon(
+                                Icons.laptop_windows_outlined,
+                                color: Theme.of(context).hintColor,
+                              ),
+                            ),
+                            categories_btn(
+                              label: 'laptop',
+                              selected: false,
+                              preffixIcon: Icon(
+                                Icons.laptop_windows_outlined,
+                                color: Theme.of(context).hintColor,
+                              ),
+                            ),
+                            categories_btn(
+                              label: 'laptop',
+                              selected: false,
+                              preffixIcon: Icon(
+                                Icons.laptop_windows_outlined,
+                                color: Theme.of(context).hintColor,
+                              ),
+                            ),
+                            categories_btn(
+                              label: 'laptop',
+                              selected: false,
+                              preffixIcon: Icon(
+                                Icons.laptop_windows_outlined,
+                                color: Theme.of(context).hintColor,
+                              ),
+                            )
+                          ],
+                        ).px(20),
                       ).py(20),
                       MasonryGridView.count(
                         primary: false,
@@ -163,6 +243,12 @@ class Home_Screen extends StatelessWidget {
                         itemCount: 10,
                         itemBuilder: (BuildContext context, int index) {
                           return Product_Card(
+                            ontap: () {
+                              {
+                                Page_Navigation().Page_ReplaceNavigation(
+                                    context, Product_Detail_Screen());
+                              }
+                            },
                             imageurl: 'assets/images/success.png',
                             product_name: 'Macbook Pro 15" 2019 -Intel corei7',
                             price: '\$1240',

@@ -40,30 +40,6 @@ class CartScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Wrap(
             children: [
-              // Column(
-              //   children: [
-              //     Text('Macbook Pro 15" 2019 Intel core i7'),
-              //     Column(
-              //       children: [
-              //         Text('\$ 150'),
-              //         Row(
-              //           children: [
-              //             IconButton(
-              //               icon: Icon(Icons.remove),
-              //               onPressed: () {},
-              //             ),
-              //             Text('1'),
-              //             IconButton(
-              //               icon: Icon(Icons.add),
-              //               onPressed: () {},
-              //             ),
-              //           ],
-              //         ),
-              //       ],
-              //     ),
-              //   ],
-              // )
-
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 //  / crossAxisAlignment: CrossAxisAlignment.center,
@@ -99,12 +75,10 @@ class CartScreen extends StatelessWidget {
                   ),
                 ],
               ),
-
               Divider(
                 color: Theme.of(context).disabledColor.withOpacity(0.4),
                 thickness: 4,
               ),
-
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Text(
                   'product_related'.tr,

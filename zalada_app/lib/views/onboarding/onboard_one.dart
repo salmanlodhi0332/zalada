@@ -20,7 +20,9 @@ class Onboard_One extends StatelessWidget {
               onPressed: () {},
               child: Text(
                 'skip'.tr,
-                style: TextStyle(color: Theme.of(context).hintColor),
+                style: TextStyle(
+                  
+                fontFamily: 'plusjakarta',color: Theme.of(context).hintColor),
               ))
         ],
       ),
@@ -35,6 +37,8 @@ class Onboard_One extends StatelessWidget {
             'onboard_heading_one'.tr,
             textAlign: TextAlign.center,
             style: TextStyle(
+              
+                fontFamily: 'plusjakarta',
                 fontWeight: FontWeight.bold,
                 color: Theme.of(context).hintColor,
                 fontSize: 25),
@@ -43,6 +47,8 @@ class Onboard_One extends StatelessWidget {
             'onboard_one_description'.tr,
             textAlign: TextAlign.center,
             style: TextStyle(
+              
+                fontFamily: 'plusjakarta',
                 fontWeight: FontWeight.bold,
                 color: Theme.of(context).disabledColor,
                 fontSize: 15),

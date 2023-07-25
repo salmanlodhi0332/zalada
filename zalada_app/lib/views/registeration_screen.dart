@@ -7,6 +7,7 @@ import 'package:zalada_app/custom/botton_widget.dart';
 import '../custom/other_loginbtn_widget.dart';
 import '../custom/textfeild_widget.dart';
 import '../utiles/page_navigation.dart';
+import 'bottom_bar.dart';
 import 'login_screen.dart';
 
 class registeration_screen extends StatefulWidget {
@@ -40,6 +41,7 @@ class _registeration_screenState extends State<registeration_screen> {
                   Text(
                     'Create_account'.tr,
                     style: TextStyle(
+                        fontFamily: 'plusjakarta',
                         color: Theme.of(context).hintColor,
                         fontSize: 30,
                         fontWeight: FontWeight.w500),
@@ -108,7 +110,14 @@ class _registeration_screenState extends State<registeration_screen> {
               SizedBox(
                 height: 20,
               ),
-              Button_Widget(width: size.width, title: 'Register'.tr),
+              Button_Widget(
+                width: size.width,
+                title: 'Register'.tr,
+                tap: () {
+                  Page_Navigation.getInstance
+                      .Page_ReplaceNavigation(context, Bottom_Bar());
+                },
+              ),
               SizedBox(
                 height: 20,
               ),
@@ -125,7 +134,9 @@ class _registeration_screenState extends State<registeration_screen> {
                   Text(
                     'or_continue_with'.tr,
                     style: TextStyle(
-                        color: Theme.of(context).hintColor, fontSize: 16),
+                        fontFamily: 'plusjakarta',
+                        color: Theme.of(context).hintColor,
+                        fontSize: 20),
                   ).px(10),
                   SizedBox(
                     child: Divider(
@@ -167,7 +178,9 @@ class _registeration_screenState extends State<registeration_screen> {
                   Text(
                     'If_you_already_have_an_account'.tr,
                     style: TextStyle(
-                        color: Theme.of(context).hintColor, fontSize: 16),
+                        fontFamily: 'plusjakarta',
+                        color: Theme.of(context).hintColor,
+                        fontSize: 20),
                   ),
                   InkWell(
                     onTap: () {
@@ -176,6 +189,7 @@ class _registeration_screenState extends State<registeration_screen> {
                     child: Text(
                       'login'.tr,
                       style: TextStyle(
+                          fontFamily: 'plusjakarta',
                           color: Theme.of(context).focusColor,
                           fontSize: 16,
                           fontWeight: FontWeight.w800),

@@ -32,17 +32,22 @@ class AppTheme {
 
   static ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: HexColor('#FEFEFE'), //---background color
+
     cardColor: Color.fromRGBO(255, 255, 255, 1), //card container color
     indicatorColor: Colors.orange, //----selection color
     hintColor: Colors.black, //--text color
-    secondaryHeaderColor: HexColor('#FFFFFF'), //
+    secondaryHeaderColor: HexColor('#FFFFFF'), //--pure white
     shadowColor: HexColor('#F3F6FB'), //icon color
-    disabledColor: HexColor('#989E9F'), //disable light text color 989E9F
+    disabledColor: HexColor('#989E9F'), //disable light text color
     dividerColor: HexColor('#2D3C52'), //icon border color
     highlightColor: HexColor('#F3F6FB'), //image background color
-    hoverColor: HexColor('#2D3C52'), //--botton color 2D3C52
-    focusColor: HexColor('#1B5EC9'), //-- this blue color
+    hoverColor: HexColor('#2D3C52'), //--botton color
+    focusColor: HexColor('#1B5EC9'),
   );
+
+  // static TextStyle getgooglefont() {
+  //   return GoogleFonts.plusJakartaSans();
+  // }
 
   // static ThemeData darkTheme = ThemeData(
   //     primaryColor: const Color(0xffadc148),

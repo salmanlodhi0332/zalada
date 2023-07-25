@@ -52,6 +52,8 @@ class _paymentgetway_selectedState extends State<paymentgetway_selected> {
             Text(
               widget.label,
               style: TextStyle(
+                
+                fontFamily: 'plusjakarta',
                 color: Theme.of(context).hintColor,
                 fontSize: 20,
                 fontWeight: FontWeight.w800,

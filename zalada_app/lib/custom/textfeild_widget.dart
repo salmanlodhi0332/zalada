@@ -29,7 +29,10 @@ class textfeild_widget extends StatelessWidget {
             Text(
               label,
               style:
-                  TextStyle(color: Theme.of(context).hintColor, fontSize: 15),
+                  TextStyle(
+                    
+                fontFamily: 'plusjakarta',
+                    color: Theme.of(context).hintColor, fontSize: 15),
             ).p(10),
           ],
         ),
@@ -48,6 +51,8 @@ class textfeild_widget extends StatelessWidget {
                       suffixIcon: suffixIcon,
                       hintText: hintText,
                       hintStyle: TextStyle(
+                        
+                fontFamily: 'plusjakarta',
                           color: Theme.of(context).hintColor.withOpacity(0.3),
                           fontSize: 20),
                       enabledBorder:

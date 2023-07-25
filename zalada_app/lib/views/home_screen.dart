@@ -93,6 +93,8 @@ class Home_Screen extends StatelessWidget {
                         child: Text(
                           'home_card_description'.tr,
                           style: TextStyle(
+                            
+                fontFamily: 'plusjakarta',
                               color: Theme.of(context).scaffoldBackgroundColor,
                               fontSize: 36,
                               fontWeight: FontWeight.bold),
@@ -138,6 +140,8 @@ class Home_Screen extends StatelessWidget {
                               Text(
                                 "search_product".tr,
                                 style: TextStyle(
+                                  
+                fontFamily: 'plusjakarta',
                                     color: Theme.of(context).disabledColor,
                                     fontSize: 14),
                               )
@@ -154,6 +158,8 @@ class Home_Screen extends StatelessWidget {
                       Text(
                         'hot_deal'.tr,
                         style: TextStyle(
+                          
+                fontFamily: 'plusjakarta',
                             fontSize: 18, fontWeight: FontWeight.w700),
                       ).py(15),
                       Row(
@@ -183,6 +189,8 @@ class Home_Screen extends StatelessWidget {
                                   Text(
                                     'all'.tr,
                                     style: TextStyle(
+                                      
+                fontFamily: 'plusjakarta',
                                       color: Theme.of(context).cardColor,
                                     ),
                                   ).px(10)

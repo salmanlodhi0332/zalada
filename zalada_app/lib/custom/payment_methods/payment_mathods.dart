@@ -60,6 +60,8 @@ class payment_methods_bottom extends GetView {
             Text(
               'Add_new_payment_method'.tr,
               style: TextStyle(
+                
+                fontFamily: 'plusjakarta',
                 color: Theme.of(context).hintColor,
                 fontSize: 30,
                 fontWeight: FontWeight.w500,

@@ -38,6 +38,7 @@ class Product_Detail_Screen extends StatelessWidget {
               'Macbook Pro 15" 2019 -Intel Corei7',
               textAlign: TextAlign.start,
               style: TextStyle(
+                  fontFamily: 'plusjakarta',
                   fontSize: 47,
                   color: Theme.of(context).hintColor,
                   fontWeight: FontWeight.bold),
@@ -92,6 +93,7 @@ class Product_Detail_Screen extends StatelessWidget {
                 'space_grey'.tr,
                 style: TextStyle(
                     fontSize: 14,
+                    fontFamily: 'plusjakarta',
                     fontWeight: FontWeight.w600,
                     color: Theme.of(context).disabledColor),
               ),
@@ -157,7 +159,9 @@ class Product_Detail_Screen extends StatelessWidget {
                 Text(
                   'product_descritpion'.tr,
                   style: const TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.w600),
+                      fontFamily: 'plusjakarta',
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600),
                 ).pOnly(bottom: 10),
                 ReadMoreText(
                   'New variant MacBook Pro 15" 2018 Intel Core i7 gen 11 with Touch Bar ID variant MacBook Pro 15" 2018 Intel Core i7 gen 11 with Touch Bar ID is is various versions have evolved over the years.. '
@@ -168,10 +172,12 @@ class Product_Detail_Screen extends StatelessWidget {
                   trimCollapsedText: 'read_more'.tr,
                   trimExpandedText: 'read_less'.tr,
                   style: TextStyle(
+                      fontFamily: 'plusjakarta',
                       fontSize: 14,
                       fontWeight: FontWeight.normal,
                       color: Theme.of(context).disabledColor),
                   moreStyle: TextStyle(
+                      fontFamily: 'plusjakarta',
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
                       color: Theme.of(context).focusColor),
@@ -185,8 +191,10 @@ class Product_Detail_Screen extends StatelessWidget {
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text(
                 'product_related'.tr,
-                style:
-                    const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                style: const TextStyle(
+                    fontFamily: 'plusjakarta',
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600),
               ).pOnly(bottom: 10),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,

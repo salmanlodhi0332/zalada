@@ -58,6 +58,7 @@ class Forget_password_bottom extends GetView {
             Text(
               'Forget_password_title'.tr,
               style: TextStyle(
+                fontFamily: 'plusjakarta',
                 color: Theme.of(context).hintColor,
                 fontSize: 30,
                 fontWeight: FontWeight.w500,
@@ -68,6 +69,8 @@ class Forget_password_bottom extends GetView {
                 'Forget_password_description'.tr,
                 textAlign: TextAlign.start,
                 style: TextStyle(
+                  
+                fontFamily: 'plusjakarta',
                   fontWeight: FontWeight.w400,
                   color: Theme.of(context).disabledColor,
                   fontSize: 20,

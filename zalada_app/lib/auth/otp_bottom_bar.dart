@@ -58,6 +58,8 @@ class OTP_Bottom_Bar extends GetView {
                 'congratulation'.tr,
                 textAlign: TextAlign.center,
                 style: TextStyle(
+                  
+                fontFamily: 'plusjakarta',
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).hintColor,
                     fontSize: 24),
@@ -67,6 +69,8 @@ class OTP_Bottom_Bar extends GetView {
               'congratulation_bar_description'.tr,
               textAlign: TextAlign.center,
               style: TextStyle(
+                
+                fontFamily: 'plusjakarta',
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).disabledColor,
                   fontSize: 15),

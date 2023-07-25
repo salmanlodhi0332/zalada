@@ -51,15 +51,25 @@ class SearchScreen extends StatelessWidget {
                               color: Theme.of(context).hintColor,
                             ),
                           ),
-                          Text(
-                            'all'.tr,
-                            style: TextStyle(
-                              color: Theme.of(context).cardColor,
-                            ),
-                          ).px(10)
-                        ],
-                      ).p(5),
-                    ),
+                        
+                        Text(
+                          'all'.tr,
+                          style: TextStyle(
+                            
+                fontFamily: 'plusjakarta',
+                            color: Theme.of(context).cardColor,
+                          ),
+                        ).px(10)
+                      ],
+                    ).p(5),
+                  ),
+                  categories_btn(
+                    label: 'laptop',
+                    selected: false,
+                    preffixIcon: Icon(
+                      Icons.laptop_windows_outlined,
+                      color: Theme.of(context).hintColor,
+                    ),),
                     categories_btn(
                       label: 'laptop',
                       selected: false,

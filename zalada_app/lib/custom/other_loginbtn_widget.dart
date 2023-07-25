@@ -33,6 +33,8 @@ class other_loginBtn_Widget extends StatelessWidget {
           title: Text(
             title,
             style: TextStyle(
+              
+                fontFamily: 'plusjakarta',
                 fontSize: 20,
                 fontWeight: FontWeight.w300,
                 color: Theme.of(context).hintColor),

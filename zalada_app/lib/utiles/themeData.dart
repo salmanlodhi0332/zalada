@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
 //   Color? canvasColor,
@@ -48,6 +49,10 @@ class AppTheme {
       
       
       );
+
+  // static TextStyle getgooglefont() {
+  //   return GoogleFonts.plusJakartaSans();
+  // }
 
   // static ThemeData darkTheme = ThemeData(
   //     primaryColor: const Color(0xffadc148),

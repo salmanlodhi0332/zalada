@@ -31,6 +31,8 @@ class Button_Widget extends StatelessWidget {
             Text(
               title,
               style: TextStyle(
+                
+                fontFamily: 'plusjakarta',
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
                   color: Theme.of(context).secondaryHeaderColor),

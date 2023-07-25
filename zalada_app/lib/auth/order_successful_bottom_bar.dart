@@ -58,6 +58,8 @@ class Order_successful_Bottom_Bar extends GetView {
                 'order_successfull'.tr,
                 textAlign: TextAlign.center,
                 style: TextStyle(
+                  
+                fontFamily: 'plusjakarta',
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).hintColor,
                     fontSize: 24),
@@ -69,6 +71,8 @@ class Order_successful_Bottom_Bar extends GetView {
                 'successfull_bar_description'.tr,
                 textAlign: TextAlign.center,
                 style: TextStyle(
+                  
+                fontFamily: 'plusjakarta',
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).disabledColor,
                     fontSize: 15),
@@ -96,6 +100,8 @@ class Order_successful_Bottom_Bar extends GetView {
                 child: Text(
                   'Back to Home',
                   style: TextStyle(
+                    
+                fontFamily: 'plusjakarta',
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                       color: Theme.of(context).hintColor),

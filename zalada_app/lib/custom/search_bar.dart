@@ -46,6 +46,8 @@ class search_bar_widget extends StatelessWidget {
             Text(
               "search_product".tr,
               style: TextStyle(
+                
+                fontFamily: 'plusjakarta',
                   color: Theme.of(context).disabledColor, fontSize: 14),
             )
           ],

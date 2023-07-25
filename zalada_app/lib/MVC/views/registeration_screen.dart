@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/custom/botton_widget.dart';
 
-import '../custom/other_loginbtn_widget.dart';
-import '../custom/textfeild_widget.dart';
-import '../utiles/page_navigation.dart';
+import '../../custom/other_loginbtn_widget.dart';
+import '../../custom/textfeild_widget.dart';
+import '../../utiles/page_navigation.dart';
 import 'bottom_bar.dart';
 import 'login_screen.dart';
 

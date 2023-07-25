@@ -25,70 +25,104 @@ class _selected_boxState extends State<selected_box> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return AnimatedContainer(
-      
-        height: MediaQuery.of(context).orientation == Orientation.portrait? size.height / 10: size.height / 5,
-        width: MediaQuery.of(context).orientation == Orientation.portrait? size.width : size.width,
-        decoration: BoxDecoration(
-            border: Border.all(
-                color: widget.selected
-                    ? Theme.of(context).indicatorColor.withOpacity(0.5)
-                    : Theme.of(context).hintColor.withOpacity(0.5),
-                width: 2.0),
-            borderRadius: BorderRadius.circular(15)),
-        duration: Duration(milliseconds: 200),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              width: MediaQuery.of(context).orientation == Orientation.portrait? size.width /7: size.width/10,
-              decoration: BoxDecoration(
-                  color: Theme.of(context).highlightColor,
-                  borderRadius: BorderRadius.circular(10)),
-              child: widget.preffixIcon,
-            ).pOnly(left: 30, top: 10, bottom: 10),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                FittedBox(
-                  child: Text(
-                    widget.label,
-                    style: TextStyle(
-                      fontFamily: 'plusjakarta',
-                      color: Theme.of(context).hintColor.withOpacity(0.5),
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ).py(5),
+    return Container(
+      decoration: BoxDecoration(
+          border: Border.all(
+              color: widget.selected
+                  ? Theme.of(context).indicatorColor.withOpacity(0.5)
+                  : Theme.of(context).hintColor.withOpacity(0.5),
+              width: 2.0),
+          borderRadius: BorderRadius.circular(20)),
+      child: ListTile(
+        // contentPadding: EdgeInsets.zero,
+        leading: Container(
+          width: 50,
+          decoration: BoxDecoration(
+              color: Theme.of(context).highlightColor,
+              borderRadius: BorderRadius.circular(10)),
+          child: widget.preffixIcon,
+        ),
+        title: Text(
+          widget.label,
+          style: TextStyle(
+            fontFamily: 'plusjakarta',
+            color: Theme.of(context).hintColor.withOpacity(0.5),
+            fontSize: 15,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        subtitle: Text(
+          widget.hintText,
+          style: TextStyle(
+            fontFamily: 'plusjakarta',
+            color: Theme.of(context).hintColor,
+            fontSize: 13,
+            fontWeight: FontWeight.w800,
+          ),
+        ),
+        trailing: widget.selected
+            ? CircleAvatar(
+                radius: 20,
+                backgroundColor: Theme.of(context).indicatorColor,
+                child: Icon(
+                  Icons.check,
+                  color: Colors.white,
                 ),
-                FittedBox(
-                  child: Text(
-                    widget.hintText,
-                    style: TextStyle(
-                      fontFamily: 'plusjakarta',
-                      color: Theme.of(context).hintColor,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w800,
-                    ),
-                  ),
-                ),
-              ],
-            ).px(10),
-            widget.selected
-                ? CircleAvatar(
-                    radius: 20,
-                    backgroundColor: Theme.of(context).indicatorColor,
-                    child: Icon(
-                      Icons.check,
-                      color: Colors.white,
-                    ),
-                  ).p(10)
-                : CircleAvatar(
-                    radius: 20,
-                    backgroundColor: Color.fromARGB(0, 130, 127, 127),
-                  ).p(10)
-          ],
-        ));
+              ).p(10)
+            : CircleAvatar(
+                radius: 20,
+                backgroundColor: Color.fromARGB(0, 130, 127, 127),
+              ).p(10),
+      ),
+    );
+
+    // AnimatedContainer(
+    //     height: size.height / 12,
+    //     // width: size.width / 2,
+    //     decoration: BoxDecoration(
+    //         border: Border.all(
+    //             color: widget.selected
+    //                 ? Theme.of(context).indicatorColor.withOpacity(0.5)
+    //                 : Theme.of(context).hintColor.withOpacity(0.5),
+    //             width: 2.0),
+    //         borderRadius: BorderRadius.circular(15)),
+    //     duration: Duration(milliseconds: 200),
+    //     child: Row(
+    //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    //       children: [
+    //         Container(
+    //           // width: size.width / 7,
+    //           decoration: BoxDecoration(
+    //               color: Theme.of(context).highlightColor,
+    //               borderRadius: BorderRadius.circular(10)),
+    //           child: widget.preffixIcon,
+    //         ).pOnly(left: 30, top: 10, bottom: 10),
+    //         Column(
+    //           mainAxisAlignment: MainAxisAlignment.center,
+    //           crossAxisAlignment: CrossAxisAlignment.start,
+    //           children: [
+    //             Text(
+    //               widget.label,
+    //               style: TextStyle(
+    //                 fontFamily: 'plusjakarta',
+    //                 color: Theme.of(context).hintColor.withOpacity(0.5),
+    //                 fontSize: 15,
+    //                 fontWeight: FontWeight.w500,
+    //               ),
+    //             ).py(5),
+    //             Text(
+    //               widget.hintText,
+    //               style: TextStyle(
+    //                 fontFamily: 'plusjakarta',
+    //                 color: Theme.of(context).hintColor,
+    //                 fontSize: 20,
+    //                 fontWeight: FontWeight.w800,
+    //               ),
+    //             ),
+    //           ],
+    //         ).px(10),
+    //
+    //       ],
+    //     ));
   }
 }

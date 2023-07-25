@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
-import 'package:zalada_app/views/onboarding/onboard_one.dart';
+import 'package:zalada_app/MVC/views/onboarding/onboard_one.dart';
 
 class splash_screen extends StatefulWidget {
   const splash_screen({super.key});

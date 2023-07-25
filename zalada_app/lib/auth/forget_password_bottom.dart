@@ -5,7 +5,7 @@ import 'package:zalada_app/custom/forget_password_widget/selectedbox.dart';
 
 import '../custom/botton_widget.dart';
 import '../utiles/page_navigation.dart';
-import '../views/otp_screen.dart';
+import '../MVC/views/otp_screen.dart';
 import 'otp_bottom_bar.dart';
 
 class Forget_password_bottom extends GetView {

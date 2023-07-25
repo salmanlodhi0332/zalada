@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:zalada_app/utiles/multi_language.dart';
 import 'package:zalada_app/utiles/themeData.dart';
-import 'package:zalada_app/views/bottom_bar.dart';
-import 'package:zalada_app/views/splash_screen.dart';
+import 'package:zalada_app/MVC/views/bottom_bar.dart';
+import 'package:zalada_app/MVC/views/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
             themeMode: ThemeMode.light,
             theme: AppTheme.lightTheme,
             debugShowCheckedModeBanner: false,
-            home: SafeArea(child: splash_screen()),
+            home: splash_screen(),
           );
         });
   }

@@ -6,7 +6,7 @@ import 'package:zalada_app/custom/payment_methods/CD_selected_paymentBox.dart';
 import 'package:zalada_app/custom/payment_methods/paymentgetway_selected.dart';
 
 import '../../utiles/page_navigation.dart';
-import '../../views/otp_screen.dart';
+import '../../MVC/views/otp_screen.dart';
 import '../botton_widget.dart';
 
 class payment_methods_bottom extends GetView {

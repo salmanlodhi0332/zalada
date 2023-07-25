@@ -2,13 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:velocity_x/velocity_x.dart';
-import 'package:zalada_app/utiles/page_navigation.dart';
-import 'package:zalada_app/views/login_screen.dart';
+import 'package:zalada_app/MVC/views/onboarding/onboard_three.dart';
 
-import '../otp_screen.dart';
+import '../../../utiles/page_navigation.dart';
 
-class Onboard_Three extends StatelessWidget {
-  const Onboard_Three({super.key});
+class Onboard_Two extends StatelessWidget {
+  const Onboard_Two({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +21,7 @@ class Onboard_Three extends StatelessWidget {
               onPressed: () {},
               child: Text(
                 'skip'.tr,
-                style: TextStyle(
-                  
-                fontFamily: 'plusjakarta',color: Theme.of(context).hintColor),
+                style: TextStyle(color: Theme.of(context).hintColor),
               ))
         ],
       ),
@@ -34,23 +31,21 @@ class Onboard_Three extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              child: Image.asset('assets/images/secure-paymet.png'),
+              child: Image.asset('assets/images/shopping-basket.png'),
             ).pOnly(bottom: 10),
             Text(
-              'onboard_heading_two'.tr,
+              'onboard_heading_three'.tr,
               textAlign: TextAlign.center,
               style: TextStyle(
-                
                   fontFamily: 'plusjakarta',
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).hintColor,
                   fontSize: 25),
             ).pOnly(bottom: 10),
             Text(
-              'onboard_two_description'.tr,
+              'onboard_three_description'.tr,
               textAlign: TextAlign.center,
               style: TextStyle(
-                
                   fontFamily: 'plusjakarta',
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).disabledColor,
@@ -58,10 +53,11 @@ class Onboard_Three extends StatelessWidget {
             ).pOnly(bottom: 10),
             InkWell(
               onTap: () {
-                Page_Navigation().Screen(context, login_screen());
+                Page_Navigation()
+                    .Page_ReplaceNavigation(context, Onboard_Three());
               },
               child: Container(
-                child: Image.asset('assets/images/Progress_3.png'),
+                child: Image.asset('assets/images/Progress_2.png'),
               ),
             )
           ],

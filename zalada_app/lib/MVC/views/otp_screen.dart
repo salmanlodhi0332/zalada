@@ -7,13 +7,13 @@ import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/utiles/getxcontroller.dart';
 
-import '../auth/order_successful_bottom_bar.dart';
-import '../auth/otp_bottom_bar.dart';
-import '../custom/back_button.dart';
-import '../custom/botton_widget.dart';
-import '../utiles/page_navigation.dart';
+import '../../auth/order_successful_bottom_bar.dart';
+import '../../auth/otp_bottom_bar.dart';
+import '../../custom/back_button.dart';
+import '../../custom/botton_widget.dart';
+import '../../utiles/page_navigation.dart';
 
-import '../custom/filter_bar.dart';
+import '../../custom/filter_bar.dart';
 
 class OTP_Screen extends StatefulWidget {
   OTP_Screen({super.key});

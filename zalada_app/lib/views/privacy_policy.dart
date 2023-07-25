@@ -22,7 +22,9 @@ class _privacy_policyState extends State<privacy_policy> {
           style: TextStyle(color: Theme.of(context).hintColor),
         ),
         leading: back_button(
-          ontap: () {},
+          ontap: () {
+            Get.back();
+          },
         ),
       ),
       backgroundColor: Theme.of(context).secondaryHeaderColor,

@@ -153,7 +153,7 @@ class _Bottom_BarState extends State<Bottom_Bar> {
       case 3:
         return CartScreen();
       case 4:
-        return ProfileScreen();
+        return Profile_Screen();
       default:
         return Home_Screen();
     }

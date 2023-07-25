@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:zalada_app/views/profile_screen.dart';
 import 'package:zalada_app/views/wishlist_cart_screen.dart';
+import 'confirm_order.dart';
 import 'search_product_screen.dart';
 import 'cart_screen.dart';
+import 'cart_screen2.dart';
 import 'home_screen.dart';
 
 class Bottom_Bar extends StatefulWidget {
@@ -147,9 +149,10 @@ class _Bottom_BarState extends State<Bottom_Bar> {
       case 1:
         return SearchScreen();
       case 2:
-        return FavoritesScreen();
+        //return FavoritesScreen();
+        return ConfirmOrder();
       case 3:
-        return CartScreen();
+        return CartScreenWithData();
       case 4:
         return Profile_Screen();
       default:

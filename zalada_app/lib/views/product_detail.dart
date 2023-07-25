@@ -79,7 +79,7 @@ class Product_Detail_Screen extends StatelessWidget {
                   ],
                 ).pOnly(right: 50),
                 Container(
-                  width: width / 1.5,
+                  width: width / 1.7,
                   height: hieght / 2.7,
                   decoration: const BoxDecoration(
                       image: DecorationImage(
@@ -255,7 +255,7 @@ class Product_Detail_Screen extends StatelessWidget {
                 color: Theme.of(context).hintColor,
               ).p(15),
             ),
-            Button_Widget(width: width / 1.4, title: 'Checkout \$1240').py(11)
+            Button_Widget(width: width / 1.5, title: 'Checkout \$1240').py(11)
           ],
         ),
       ),

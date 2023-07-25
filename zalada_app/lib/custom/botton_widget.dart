@@ -19,7 +19,7 @@ class Button_Widget extends StatelessWidget {
     return InkWell(
       onTap: tap,
       child: Container(
-        height: 70,
+        height: 60,
         width: width,
         decoration: BoxDecoration(
             color: Theme.of(context).hoverColor,
@@ -31,8 +31,7 @@ class Button_Widget extends StatelessWidget {
             Text(
               title,
               style: TextStyle(
-                
-                fontFamily: 'plusjakarta',
+                  fontFamily: 'plusjakarta',
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
                   color: Theme.of(context).secondaryHeaderColor),

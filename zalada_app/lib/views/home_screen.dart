@@ -7,6 +7,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
 import 'package:zalada_app/views/notification_screen.dart';
 import 'package:zalada_app/views/product_detail.dart';
+import '../custom/all_custom_btn.dart';
 import '../custom/hot_deal_productcard.dart';
 import '../custom/search_screen_widgets/categories_btn.dart';
 
@@ -33,12 +34,11 @@ class Home_Screen extends StatelessWidget {
               slivers: <Widget>[
                 SliverAppBar(
                   backgroundColor: Colors.transparent,
-                  pinned: false,
                   expandedHeight: 300,
                   elevation: 0,
                   clipBehavior: Clip.none,
                   floating: true,
-                  centerTitle: true,
+                  pinned: false,
                   automaticallyImplyLeading: false,
                   actions: [
                     Container(
@@ -83,23 +83,36 @@ class Home_Screen extends StatelessWidget {
                       collapseMode: CollapseMode.parallax,
                       background: Container(
                         width: double.infinity,
-                        padding: EdgeInsets.only(top: 110, right: 20, left: 20),
+                        padding: EdgeInsets.only(top: 120, right: 20, left: 20),
                         decoration: BoxDecoration(
                             image: DecorationImage(
                                 image: AssetImage(
                                   'assets/images/Bg.png',
                                 ),
-                                fit: BoxFit.fitWidth)),
-                        child: Text(
-                          'home_card_description'.tr,
-                          style: TextStyle(
-                            
-                fontFamily: 'plusjakarta',
-                              color: Theme.of(context).scaffoldBackgroundColor,
-                              fontSize: 36,
-                              fontWeight: FontWeight.bold),
+                                fit: BoxFit.cover)),
+                        child: Stack(
+                          clipBehavior: Clip.none,
+                          children: [
+                            Text(
+                              'home_card_description'.tr,
+                              style: TextStyle(
+                                  fontFamily: 'plusjakarta',
+                                  color:
+                                      Theme.of(context).scaffoldBackgroundColor,
+                                  fontSize: 36,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Positioned(
+                              top: -20,
+                              left: size.width / 1.5,
+                              // bottom: 10,
+                              child: Image.asset(
+                                'assets/images/img.png',
+                              ),
+                            ),
+                          ],
                         ),
-                      )).marginOnly(bottom: 25),
+                      )).marginOnly(bottom: 30),
                   bottom: PreferredSize(
                       preferredSize: Size(size.width, 10),
                       child: InkWell(
@@ -140,8 +153,7 @@ class Home_Screen extends StatelessWidget {
                               Text(
                                 "search_product".tr,
                                 style: TextStyle(
-                                  
-                fontFamily: 'plusjakarta',
+                                    fontFamily: 'plusjakarta',
                                     color: Theme.of(context).disabledColor,
                                     fontSize: 14),
                               )
@@ -158,9 +170,9 @@ class Home_Screen extends StatelessWidget {
                       Text(
                         'hot_deal'.tr,
                         style: TextStyle(
-                          
-                fontFamily: 'plusjakarta',
-                            fontSize: 18, fontWeight: FontWeight.w700),
+                            fontFamily: 'plusjakarta',
+                            fontSize: 18,
+                            fontWeight: FontWeight.w700),
                       ).py(15),
                       Row(
                         children: [Hot_deal_Product_Card()],
@@ -170,39 +182,14 @@ class Home_Screen extends StatelessWidget {
                         scrollDirection: Axis.horizontal,
                         child: Row(
                           children: [
-                            Container(
-                              // width: size.width/6,
-                              decoration: BoxDecoration(
-                                color: Theme.of(context).hintColor,
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                              child: Row(
-                                children: [
-                                  CircleAvatar(
-                                    backgroundColor:
-                                        Theme.of(context).cardColor,
-                                    child: Icon(
-                                      Icons.grid_view_rounded,
-                                      color: Theme.of(context).hintColor,
-                                    ),
-                                  ),
-                                  Text(
-                                    'all'.tr,
-                                    style: TextStyle(
-                                      
-                fontFamily: 'plusjakarta',
-                                      color: Theme.of(context).cardColor,
-                                    ),
-                                  ).px(10)
-                                ],
-                              ).p(5),
-                            ),
+                            all_custom_btn(),
                             categories_btn(
                               label: 'laptop',
                               selected: false,
                               preffixIcon: Icon(
                                 Icons.laptop_windows_outlined,
                                 color: Theme.of(context).hintColor,
+                                size: 15,
                               ),
                             ),
                             categories_btn(
@@ -211,6 +198,7 @@ class Home_Screen extends StatelessWidget {
                               preffixIcon: Icon(
                                 Icons.laptop_windows_outlined,
                                 color: Theme.of(context).hintColor,
+                                size: 15,
                               ),
                             ),
                             categories_btn(
@@ -219,6 +207,7 @@ class Home_Screen extends StatelessWidget {
                               preffixIcon: Icon(
                                 Icons.laptop_windows_outlined,
                                 color: Theme.of(context).hintColor,
+                                size: 15,
                               ),
                             ),
                             categories_btn(
@@ -227,11 +216,21 @@ class Home_Screen extends StatelessWidget {
                               preffixIcon: Icon(
                                 Icons.laptop_windows_outlined,
                                 color: Theme.of(context).hintColor,
+                                size: 15,
                               ),
-                            )
+                            ),
+                            categories_btn(
+                              label: 'laptop',
+                              selected: false,
+                              preffixIcon: Icon(
+                                Icons.laptop_windows_outlined,
+                                color: Theme.of(context).hintColor,
+                                size: 15,
+                              ),
+                            ),
                           ],
-                        ).px(20),
-                      ).py(20),
+                        ),
+                      ).pOnly(bottom: 30),
                       MasonryGridView.count(
                         primary: false,
                         shrinkWrap: true,
@@ -267,3 +266,5 @@ class Home_Screen extends StatelessWidget {
     );
   }
 }
+
+

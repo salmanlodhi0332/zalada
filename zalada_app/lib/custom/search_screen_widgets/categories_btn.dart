@@ -22,30 +22,29 @@ class categories_btn extends StatefulWidget {
 class _categories_btnState extends State<categories_btn> {
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Container(
-      // width: size.width/6,
       decoration: BoxDecoration(
-        color: Theme.of(context).cardColor,
-        borderRadius: BorderRadius.circular(30),
-        border: Border.all(color: Theme.of(context).hintColor.withOpacity(0.2))
-      ),
+          color: Theme.of(context).cardColor,
+          borderRadius: BorderRadius.circular(30),
+          border:
+              Border.all(color: Theme.of(context).hintColor.withOpacity(0.2))),
       child: Row(
         children: [
           CircleAvatar(
-            backgroundColor: Theme.of(context).highlightColor,
-            child: widget.preffixIcon
-          ),
+                  backgroundColor: Theme.of(context).highlightColor,
+                  radius: 15,
+                  child: widget.preffixIcon)
+              .pOnly(right: 3),
           Text(
             widget.label,
             style: TextStyle(
-              
-                fontFamily: 'plusjakarta',
+              fontFamily: 'plusjakarta',
+              fontWeight: FontWeight.w600,
               color: Theme.of(context).hintColor,
             ),
-          ).px(10)
+          )
         ],
-      ).p(5),
+      ).px(5).py(2),
     ).px(5);
   }
 }

@@ -4,9 +4,9 @@ import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/custom/profile_widget/account_section.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
-import 'package:zalada_app/views/privacy_policy.dart';
+import 'package:zalada_app/MVC/views/privacy_policy.dart';
 
-import '../custom/back_button.dart';
+import '../../custom/back_button.dart';
 
 class Profile_Screen extends StatefulWidget {
   const Profile_Screen({super.key});

@@ -5,9 +5,8 @@ import 'package:zalada_app/custom/back_button.dart';
 import 'package:zalada_app/custom/edit_btn.dart';
 import 'package:zalada_app/views/cart_products.dart';
 
-import '../custom/botton_widget.dart';
-import '../custom/product_card.dart';
-import '../utiles/page_navigation.dart';
+import '../../custom/botton_widget.dart';
+import '../../custom/product_card.dart';
 import 'onboarding/onboard_two.dart';
 
 class CartScreenWithData extends StatelessWidget {

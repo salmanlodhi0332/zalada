@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:zalada_app/custom/back_button.dart';
 
-import '../custom/botton_widget.dart';
-import '../custom/select_address_card.dart';
+import '../../custom/botton_widget.dart';
+import '../../custom/select_address_card.dart';
 
 class select_address extends StatefulWidget {
   const select_address({super.key});

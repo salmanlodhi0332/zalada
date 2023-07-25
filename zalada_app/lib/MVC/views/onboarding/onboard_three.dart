@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
-import 'package:zalada_app/views/login_screen.dart';
+import 'package:zalada_app/MVC/views/login_screen.dart';
 
 import '../otp_screen.dart';
 

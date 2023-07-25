@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:zalada_app/custom/botton_widget.dart';
 
-import '../custom/back_button.dart';
-import '../custom/textfeild_widget.dart';
+import '../../custom/back_button.dart';
+import '../../custom/textfeild_widget.dart';
 
 class address extends StatefulWidget {
   const address({super.key});

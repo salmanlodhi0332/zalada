@@ -3,27 +3,28 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/custom/botton_widget.dart';
+import 'package:zalada_app/MVC/views/bottom_bar.dart';
+import 'package:zalada_app/MVC/views/otp_screen.dart';
+import 'package:zalada_app/MVC/views/registeration_screen.dart';
 
-import '../custom/other_loginbtn_widget.dart';
-import '../custom/textfeild_widget.dart';
-import '../utiles/page_navigation.dart';
-import 'bottom_bar.dart';
-import 'login_screen.dart';
+import '../../auth/forget_password_bottom.dart';
+import '../../custom/other_loginbtn_widget.dart';
+import '../../custom/payment_methods/payment_mathods.dart';
+import '../../custom/textfeild_widget.dart';
+import '../../utiles/page_navigation.dart';
 
-class registeration_screen extends StatefulWidget {
-  const registeration_screen({super.key});
+class login_screen extends StatefulWidget {
+  const login_screen({super.key});
 
   @override
-  State<registeration_screen> createState() => _registeration_screenState();
+  State<login_screen> createState() => _login_screenState();
 }
 
-class _registeration_screenState extends State<registeration_screen> {
+class _login_screenState extends State<login_screen> {
   @override
-  final hideConfirmpassword = true.obs;
   final hidepassword = true.obs;
   final email = TextEditingController();
   final password = TextEditingController();
-
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
@@ -33,14 +34,13 @@ class _registeration_screenState extends State<registeration_screen> {
           physics: BouncingScrollPhysics(),
           scrollDirection: Axis.vertical,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(height: size.height / 20),
-              Wrap(
-                crossAxisAlignment: WrapCrossAlignment.start,
+              Row(
                 children: [
                   Text(
-                    'Create_account'.tr,
+                    'login_account'.tr,
                     style: TextStyle(
                         fontFamily: 'plusjakarta',
                         color: Theme.of(context).hintColor,
@@ -53,14 +53,6 @@ class _registeration_screenState extends State<registeration_screen> {
                 controller: email,
                 hintText: 'email_address'.tr,
                 label: 'email_address'.tr,
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              textfeild_widget(
-                controller: email,
-                hintText: 'Phone_number'.tr,
-                label: 'Phone_number'.tr,
               ),
               SizedBox(
                 height: 20,
@@ -88,24 +80,17 @@ class _registeration_screenState extends State<registeration_screen> {
               SizedBox(
                 height: 20,
               ),
-              Obx(
-                () => textfeild_widget(
-                  controller: email,
-                  hintText: 'password'.tr,
-                  label: 'Confirm_password'.tr,
-                  obscureText: hideConfirmpassword.value,
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      hideConfirmpassword.value = !hideConfirmpassword.value;
-                    },
-                    color: Theme.of(context).focusColor,
-                    icon: Icon(
-                      hideConfirmpassword.value
-                          ? Icons.visibility_outlined
-                          : Icons.visibility_off_outlined,
-                      color: Theme.of(context).hintColor,
-                    ),
-                  ),
+              InkWell(
+                onTap: () {
+                  Get.bottomSheet(
+                    Forget_password_bottom(),
+                    isScrollControlled: true,
+                  );
+                },
+                child: Text(
+                  'Forget_password'.tr,
+                  style: TextStyle(
+                      color: Theme.of(context).hintColor, fontSize: 20),
                 ),
               ),
               SizedBox(
@@ -113,7 +98,7 @@ class _registeration_screenState extends State<registeration_screen> {
               ),
               Button_Widget(
                 width: size.width,
-                title: 'Register'.tr,
+                title: 'login'.tr,
                 tap: () {
                   Page_Navigation.getInstance
                       .Page_ReplaceNavigation(context, Bottom_Bar());
@@ -135,9 +120,7 @@ class _registeration_screenState extends State<registeration_screen> {
                   Text(
                     'or_continue_with'.tr,
                     style: TextStyle(
-                        fontFamily: 'plusjakarta',
-                        color: Theme.of(context).hintColor,
-                        fontSize: 20),
+                        color: Theme.of(context).hintColor, fontSize: 20),
                   ).px(10),
                   SizedBox(
                     child: Divider(
@@ -154,7 +137,7 @@ class _registeration_screenState extends State<registeration_screen> {
               other_loginBtn_Widget(
                   icon: Image.asset(
                     'assets/icon/google.png',
-                    height: 30,
+                    height: 25,
                     width: 30,
                   ),
                   width: size.width,
@@ -165,7 +148,7 @@ class _registeration_screenState extends State<registeration_screen> {
               other_loginBtn_Widget(
                   icon: Image.asset(
                     'assets/icon/facebook.png',
-                    height: 30,
+                    height: 25,
                     width: 30,
                   ),
                   width: size.width,
@@ -177,18 +160,16 @@ class _registeration_screenState extends State<registeration_screen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'If_you_already_have_an_account'.tr,
+                    'Dont_have_an_account'.tr,
                     style: TextStyle(
-                        fontFamily: 'plusjakarta',
-                        color: Theme.of(context).hintColor,
-                        fontSize: 20),
+                        color: Theme.of(context).hintColor, fontSize: 20),
                   ),
                   InkWell(
                     onTap: () {
-                      Page_Navigation().Screen(context, login_screen());
+                      Page_Navigation().Screen(context, registeration_screen());
                     },
                     child: Text(
-                      'login'.tr,
+                      'Register'.tr,
                       style: TextStyle(
                           fontFamily: 'plusjakarta',
                           color: Theme.of(context).focusColor,
@@ -197,12 +178,9 @@ class _registeration_screenState extends State<registeration_screen> {
                     ),
                   )
                 ],
-              ),
-              SizedBox(
-                height: 30,
               )
             ],
-          ),
+          ).py(30),
         ),
       ),
     );

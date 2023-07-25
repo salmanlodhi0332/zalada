@@ -21,7 +21,7 @@ class search_bar_textfeild extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Container(
       height: MediaQuery.of(context).orientation == Orientation.portrait
-          ? size.height / 16
+          ? size.height / 18
           : size.height / 7,
       width: MediaQuery.of(context).orientation == Orientation.portrait
           ?size.width / 1.3

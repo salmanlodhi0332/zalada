@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:zalada_app/custom/forget_password_widget/selectedbox.dart';
 
-import '../custom/back_button.dart';
-import '../custom/payment_card.dart';
-import '../custom/payment_methods/paymentgetway_selected.dart';
+import '../../custom/back_button.dart';
+import '../../custom/payment_card.dart';
+import '../../custom/payment_methods/paymentgetway_selected.dart';
 
 class payment_method extends StatefulWidget {
   const payment_method({super.key});

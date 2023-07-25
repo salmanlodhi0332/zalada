@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:velocity_x/velocity_x.dart';
-import 'package:zalada_app/views/onboarding/onboard_three.dart';
+import 'package:zalada_app/MVC/views/onboarding/onboard_three.dart';
 
-import '../../utiles/page_navigation.dart';
+import '../../../utiles/page_navigation.dart';
 
 class Onboard_Two extends StatelessWidget {
   const Onboard_Two({super.key});

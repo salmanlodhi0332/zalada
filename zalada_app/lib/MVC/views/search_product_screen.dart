@@ -3,11 +3,11 @@ import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/custom/search_screen_widgets/search_grid.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
-import 'package:zalada_app/views/search_result_screen.dart';
+import 'package:zalada_app/MVC/views/search_result_screen.dart';
 
-import '../custom/all_custom_btn.dart';
-import '../custom/search_bar.dart';
-import '../custom/search_screen_widgets/categories_btn.dart';
+import '../../custom/all_custom_btn.dart';
+import '../../custom/search_bar.dart';
+import '../../custom/search_screen_widgets/categories_btn.dart';
 
 class SearchScreen extends StatelessWidget {
   @override

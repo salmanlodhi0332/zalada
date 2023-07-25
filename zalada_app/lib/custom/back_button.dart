@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class back_button extends StatelessWidget {
   final Function() ontap;
@@ -10,7 +11,7 @@ class back_button extends StatelessWidget {
     return InkWell(
       onTap: ontap,
       child: Container(
-        margin: const EdgeInsets.all(10),
+        // margin: const EdgeInsets.all(10),
         decoration: BoxDecoration(
             shape: BoxShape.circle,
             border: Border.all(
@@ -20,7 +21,7 @@ class back_button extends StatelessWidget {
               Icons.arrow_back,
               size: 18,
               color: Theme.of(context).hintColor,
-            ),
+            ).p(15),
       ),
     );
   }

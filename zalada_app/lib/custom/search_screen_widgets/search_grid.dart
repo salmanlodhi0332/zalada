@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:zalada_app/custom/product_card.dart';
 
-import 'package:zalada_app/views/product_detail.dart';
+import 'package:zalada_app/MVC/views/product_detail.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 

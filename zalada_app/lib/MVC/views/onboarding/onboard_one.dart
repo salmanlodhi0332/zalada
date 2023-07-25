@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
-import 'package:zalada_app/views/onboarding/onboard_two.dart';
+import 'package:zalada_app/MVC/views/onboarding/onboard_two.dart';
 
 class Onboard_One extends StatelessWidget {
   const Onboard_One({super.key});

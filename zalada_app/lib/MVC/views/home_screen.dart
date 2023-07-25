@@ -5,11 +5,11 @@ import 'package:zalada_app/custom/product_card.dart';
 
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
-import 'package:zalada_app/views/notification_screen.dart';
-import 'package:zalada_app/views/product_detail.dart';
-import '../custom/all_custom_btn.dart';
-import '../custom/hot_deal_productcard.dart';
-import '../custom/search_screen_widgets/categories_btn.dart';
+import 'package:zalada_app/MVC/views/notification_screen.dart';
+import 'package:zalada_app/MVC/views/product_detail.dart';
+import '../../custom/all_custom_btn.dart';
+import '../../custom/hot_deal_productcard.dart';
+import '../../custom/search_screen_widgets/categories_btn.dart';
 
 class Home_Screen extends StatelessWidget {
   Home_Screen({Key? key}) : super(key: key);
@@ -61,7 +61,7 @@ class Home_Screen extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: () {
-                        Page_Navigation().Page_ReplaceNavigation(
+                        Page_Navigation.getInstance.Page_ReplaceNavigation(
                             context, Notification_Screen());
                       },
                       child: Container(
@@ -266,5 +266,3 @@ class Home_Screen extends StatelessWidget {
     );
   }
 }
-
-

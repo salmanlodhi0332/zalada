@@ -149,8 +149,7 @@ class _Bottom_BarState extends State<Bottom_Bar> {
       case 1:
         return SearchScreen();
       case 2:
-        //return FavoritesScreen();
-        return ConfirmOrder();
+        return Wishlist_Screen();
       case 3:
         return CartScreenWithData();
       case 4:

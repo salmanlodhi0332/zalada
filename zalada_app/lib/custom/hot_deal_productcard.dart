@@ -29,7 +29,7 @@ class Hot_deal_Product_Card extends StatelessWidget {
                   height: 100,
                   width: 100,
                   child: ClipRRect(
-                    child: Image.asset('assets/images/success.png'),
+                    child: Image.asset('assets/images/item.png'),
                   ),
                 )),
             Column(

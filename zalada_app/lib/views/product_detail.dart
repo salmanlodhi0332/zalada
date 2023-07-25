@@ -5,6 +5,8 @@ import 'package:zalada_app/custom/back_button.dart';
 import 'package:readmore/readmore.dart';
 import 'package:zalada_app/custom/botton_widget.dart';
 import 'package:zalada_app/custom/product_card.dart';
+import 'package:zalada_app/utiles/page_navigation.dart';
+import 'package:zalada_app/views/confirm_order.dart';
 
 class Product_Detail_Screen extends StatelessWidget {
   @override
@@ -201,25 +203,25 @@ class Product_Detail_Screen extends StatelessWidget {
                 child: Row(
                   children: [
                     const Product_Card(
-                      imageurl: 'assets/images/success.png',
+                      imageurl: 'assets/images/item.png',
                       product_name: 'Macbook Pro 15" 2019 -Intel corei7',
                       price: '\$1240',
                       status: '',
                     ).py(25),
                     const Product_Card(
-                      imageurl: 'assets/images/success.png',
+                      imageurl: 'assets/images/item.png',
                       product_name: 'Macbook Pro 15" 2019 -Intel corei7',
                       price: '\$1240',
                       status: '',
                     ).py(25).px(15),
                     const Product_Card(
-                      imageurl: 'assets/images/success.png',
+                      imageurl: 'assets/images/item.png',
                       product_name: 'Macbook Pro 15" 2019 -Intel corei7',
                       price: '\$1240',
                       status: '',
                     ).py(25),
                     const Product_Card(
-                      imageurl: 'assets/images/success.png',
+                      imageurl: 'assets/images/item.png',
                       product_name: 'Macbook Pro 15" 2019 -Intel corei7',
                       price: '\$1240',
                       status: '',
@@ -255,7 +257,14 @@ class Product_Detail_Screen extends StatelessWidget {
                 color: Theme.of(context).hintColor,
               ).p(15),
             ),
-            Button_Widget(width: width / 1.5, title: 'Checkout \$1240').py(11)
+            Button_Widget(
+                    tap: () {
+                      Page_Navigation.getInstance
+                          .Page_ReplaceNavigation(context, ConfirmOrder());
+                    },
+                    width: width / 1.5,
+                    title: 'Checkout \$1240')
+                .py(11)
           ],
         ),
       ),

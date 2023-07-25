@@ -6,8 +6,6 @@ import 'package:zalada_app/custom/edit_btn.dart';
 
 import '../custom/botton_widget.dart';
 import '../custom/product_card.dart';
-import '../utiles/page_navigation.dart';
-import 'onboarding/onboard_two.dart';
 
 class CartScreen extends StatelessWidget {
   @override
@@ -48,7 +46,7 @@ class CartScreen extends StatelessWidget {
                     height: 50,
                   ),
                   Container(
-                    child: Image.asset('assets/images/cart.png'),
+                    child: Image.asset('assets/images/empty_cart.png'),
                   ).pOnly(bottom: 10),
                   Text(
                     'cart_heading_one'.tr,
@@ -90,25 +88,25 @@ class CartScreen extends StatelessWidget {
                   child: Row(
                     children: [
                       const Product_Card(
-                        imageurl: 'assets/images/success.png',
+                        imageurl: 'assets/images/item.png',
                         product_name: 'Macbook Pro 15" 2019 -Intel corei7',
                         price: '\$1240',
                         status: '',
                       ).py(25),
                       const Product_Card(
-                        imageurl: 'assets/images/success.png',
+                        imageurl: 'assets/images/item.png',
                         product_name: 'Macbook Pro 15" 2019 -Intel corei7',
                         price: '\$1240',
                         status: '',
                       ).py(25).px(15),
                       const Product_Card(
-                        imageurl: 'assets/images/success.png',
+                        imageurl: 'assets/images/item.png',
                         product_name: 'Macbook Pro 15" 2019 -Intel corei7',
                         price: '\$1240',
                         status: '',
                       ).py(25),
                       const Product_Card(
-                        imageurl: 'assets/images/success.png',
+                        imageurl: 'assets/images/item.png',
                         product_name: 'Macbook Pro 15" 2019 -Intel corei7',
                         price: '\$1240',
                         status: '',

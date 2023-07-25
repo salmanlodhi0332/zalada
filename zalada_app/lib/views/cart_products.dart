@@ -26,7 +26,7 @@ class _CartProductsState extends State<CartProducts> {
         ),
         SizedBox(width: 10),
         Image.asset(
-          'assets/images/success.png',
+          'assets/images/item.png',
           width: 130,
           height: 130,
           fit: BoxFit.cover,

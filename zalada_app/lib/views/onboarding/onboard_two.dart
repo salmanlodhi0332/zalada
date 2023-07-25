@@ -50,10 +50,10 @@ class Onboard_Two extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).disabledColor,
                   fontSize: 15),
-            ).pOnly(bottom: 10),
+            ).pOnly(bottom: 60),
             InkWell(
               onTap: () {
-                Page_Navigation()
+                Page_Navigation.getInstance
                     .Page_ReplaceNavigation(context, Onboard_Three());
               },
               child: Container(

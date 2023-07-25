@@ -23,8 +23,8 @@ class Onboard_Three extends StatelessWidget {
               child: Text(
                 'skip'.tr,
                 style: TextStyle(
-                  
-                fontFamily: 'plusjakarta',color: Theme.of(context).hintColor),
+                    fontFamily: 'plusjakarta',
+                    color: Theme.of(context).hintColor),
               ))
         ],
       ),
@@ -40,7 +40,6 @@ class Onboard_Three extends StatelessWidget {
               'onboard_heading_two'.tr,
               textAlign: TextAlign.center,
               style: TextStyle(
-                
                   fontFamily: 'plusjakarta',
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).hintColor,
@@ -50,15 +49,14 @@ class Onboard_Three extends StatelessWidget {
               'onboard_two_description'.tr,
               textAlign: TextAlign.center,
               style: TextStyle(
-                
                   fontFamily: 'plusjakarta',
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).disabledColor,
                   fontSize: 15),
-            ).pOnly(bottom: 10),
+            ).pOnly(bottom: 40),
             InkWell(
               onTap: () {
-                Page_Navigation().Screen(context, login_screen());
+                Page_Navigation.getInstance.Screen(context, login_screen());
               },
               child: Container(
                 child: Image.asset('assets/images/Progress_3.png'),

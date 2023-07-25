@@ -54,7 +54,7 @@ class textfeild_widget extends StatelessWidget {
                         
                 fontFamily: 'plusjakarta',
                           color: Theme.of(context).hintColor.withOpacity(0.3),
-                          fontSize: 20),
+                          fontSize: 15),
                       enabledBorder:
                           OutlineInputBorder(borderSide: BorderSide.none),
                       focusedBorder:

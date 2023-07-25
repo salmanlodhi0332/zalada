@@ -6,19 +6,7 @@ class Multi_Language extends Translations {
         //------------------------en_US
         'en_US': {
           'zalada': 'Zalada',
-          "onboard_heading_one": "Find the item you've been looking for",
-          "onboard_one_description":
-              "Here you'll see rich varieties of goods, carefully classified for seamless browsing experience",
-          "skip": "Skip",
-          "onboard_heading_two": "Get those shopping bags filled",
-          "onboard_two_description":
-              "Add any item you want to your cart or save it on your wishlist, so you don't miss it in your future purchase.",
-          "onboard_heading_three": "Fast & Secure payment",
-          "onboard_three_description":
-              "There are many payment options available to speed up and simplify your payment process.",
-          "verfication_code": "Verification code",
-          "otp_description":
-              "We have sent the code verification to you WhatsApp Number +62812 788 6XXXX",
+          
           "login_account": "Login to your\naccount.",
           "email_address": "Email address",
           "password": "Password",
@@ -59,9 +47,6 @@ class Multi_Language extends Translations {
           "Add_new_payment_method": "Add new payment method",
           "Credit_or_Debit": "Credit or Debit Card",
           "Payment_description": "Pay with your Visa or Mastercard ",
-          "congratulation": "Congratulations!",
-          "congratulation_bar_description":
-              "Your account is ready to use. You will be redirected to the Homepage in a few seconds.",
           "filter": "Filter",
           "reset": "Reset",
           "apply_filter": "Apply Filter",
@@ -93,6 +78,27 @@ class Multi_Language extends Translations {
           "your_notification": "Your Notification",
           "today": "Today",
           "yesterday": "Yesterday",
+          "Select_Address": "Select Address",
+          "Privacy_policy": "Privacy Policy",
+          "Types_of_data_we_collected": "Types of data we collected",
+          " Use_of_your_personal_data": " Use of your personal data",
+          "Disclose_of_Your_Data": "Disclose of Your Data",
+          "Address": "Address",
+          "Address_name": "Addressname",
+          "Address_detail": "Address_detail",
+          "Phone_No": "Phone No",
+          "Privacy_Policy": "Privacy Policy",
+          "Help_Center": "Help Center",
+          "Invite_Friends": "Invite Friends",
+          "Language": "Language",
+          "Logout": "Logout",
+          "Account_Security": "Account Security",
+          "Notifications": "Notifications",
+          "Payment_Method": "Payment Method",
+          "Track_Order": "Track Order",
+          "My_Order": "My Order",
+          "see_all": "see all",
+          "In_delievery": "In delievery",
           // "": "",
           // "": "",
           // "": "",
@@ -142,6 +148,8 @@ class Multi_Language extends Translations {
           // "": "",
           // "": "",
           // "": "",
+
+          // Hammas Ahmed
         }
       };
 }

@@ -35,14 +35,9 @@ class _Profile_ScreenState extends State<Profile_Screen> {
         actions: [
           back_button(
             ontap: () {},
-            pic: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SvgPicture.asset(
-                "assets/svg/user-edit.svg",
-                height: 50,
-                width: 50,
-              ),
-            ),
+            pic: SvgPicture.asset(
+              "assets/svg/user-edit.svg",
+            ).p(10),
           )
         ],
       ),

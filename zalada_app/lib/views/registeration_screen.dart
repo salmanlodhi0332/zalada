@@ -29,6 +29,7 @@ class _registeration_screenState extends State<registeration_screen> {
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       body: SafeArea(
         child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           scrollDirection: Axis.vertical,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

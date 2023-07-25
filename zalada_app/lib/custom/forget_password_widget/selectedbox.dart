@@ -26,8 +26,9 @@ class _selected_boxState extends State<selected_box> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return AnimatedContainer(
-        height: size.height / 12,
-        width: size.width/2,
+      
+        height: MediaQuery.of(context).orientation == Orientation.portrait? size.height / 10: size.height / 5,
+        width: MediaQuery.of(context).orientation == Orientation.portrait? size.width : size.width,
         decoration: BoxDecoration(
             border: Border.all(
                 color: widget.selected
@@ -40,34 +41,36 @@ class _selected_boxState extends State<selected_box> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              width: size.width / 7,
+              width: MediaQuery.of(context).orientation == Orientation.portrait? size.width /7: size.width/10,
               decoration: BoxDecoration(
                   color: Theme.of(context).highlightColor,
                   borderRadius: BorderRadius.circular(10)),
               child: widget.preffixIcon,
-            ).pOnly(left: 30,top: 10,bottom: 10),
+            ).pOnly(left: 30, top: 10, bottom: 10),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  widget.label,
-                  style: TextStyle(
-                    
-                fontFamily: 'plusjakarta',
-                    color: Theme.of(context).hintColor.withOpacity(0.5),
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ).py(5),
-                Text(
-                  widget.hintText,
-                  style: TextStyle(
-                    
-                fontFamily: 'plusjakarta',
-                    color: Theme.of(context).hintColor,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w800,
+                FittedBox(
+                  child: Text(
+                    widget.label,
+                    style: TextStyle(
+                      fontFamily: 'plusjakarta',
+                      color: Theme.of(context).hintColor.withOpacity(0.5),
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ).py(5),
+                ),
+                FittedBox(
+                  child: Text(
+                    widget.hintText,
+                    style: TextStyle(
+                      fontFamily: 'plusjakarta',
+                      color: Theme.of(context).hintColor,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w800,
+                    ),
                   ),
                 ),
               ],

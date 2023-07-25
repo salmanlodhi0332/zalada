@@ -19,7 +19,7 @@ class Button_Widget extends StatelessWidget {
     return InkWell(
       onTap: tap,
       child: Container(
-        height: 70,
+        height: 60,
         width: width,
         decoration: BoxDecoration(
             color: Theme.of(context).hoverColor,

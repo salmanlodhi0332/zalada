@@ -20,10 +20,14 @@ class search_bar_textfeild extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
-      height: size.height / 16,
-      width: size.width/1.3,
+      height: MediaQuery.of(context).orientation == Orientation.portrait
+          ? size.height / 16
+          : size.height / 7,
+      width: MediaQuery.of(context).orientation == Orientation.portrait
+          ?size.width / 1.3
+          : size.width / 1.1,
       decoration: BoxDecoration(
-        color: Theme.of(context).cardColor,
+          color: Theme.of(context).cardColor,
           border: Border.all(
               color: Theme.of(context).hintColor.withOpacity(0.1), width: 1.0),
           borderRadius: BorderRadius.circular(30)),
@@ -35,7 +39,7 @@ class search_bar_textfeild extends StatelessWidget {
                   hintText: hintText,
                   hintStyle: TextStyle(
                       color: Theme.of(context).hintColor.withOpacity(0.3),
-                      fontSize: 20),
+                      fontSize: 15),
                   enabledBorder:
                       OutlineInputBorder(borderSide: BorderSide.none),
                   focusedBorder:

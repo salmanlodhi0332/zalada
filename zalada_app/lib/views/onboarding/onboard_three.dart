@@ -28,43 +28,45 @@ class Onboard_Three extends StatelessWidget {
               ))
         ],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            child: Image.asset('assets/images/secure-paymet.png'),
-          ).pOnly(bottom: 10),
-          Text(
-            'onboard_heading_two'.tr,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              
-                fontFamily: 'plusjakarta',
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).hintColor,
-                fontSize: 25),
-          ).pOnly(bottom: 10),
-          Text(
-            'onboard_two_description'.tr,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              
-                fontFamily: 'plusjakarta',
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).disabledColor,
-                fontSize: 15),
-          ).pOnly(bottom: 10),
-          InkWell(
-            onTap: () {
-              Page_Navigation().Screen(context, login_screen());
-            },
-            child: Container(
-              child: Image.asset('assets/images/Progress_3.png'),
-            ),
-          )
-        ],
-      ).px(50),
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              child: Image.asset('assets/images/secure-paymet.png'),
+            ).pOnly(bottom: 10),
+            Text(
+              'onboard_heading_two'.tr,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                
+                  fontFamily: 'plusjakarta',
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).hintColor,
+                  fontSize: 25),
+            ).pOnly(bottom: 10),
+            Text(
+              'onboard_two_description'.tr,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                
+                  fontFamily: 'plusjakarta',
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).disabledColor,
+                  fontSize: 15),
+            ).pOnly(bottom: 10),
+            InkWell(
+              onTap: () {
+                Page_Navigation().Screen(context, login_screen());
+              },
+              child: Container(
+                child: Image.asset('assets/images/Progress_3.png'),
+              ),
+            )
+          ],
+        ).px(50),
+      ),
     );
   }
 }

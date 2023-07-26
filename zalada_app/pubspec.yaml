@@ -49,6 +49,9 @@ dependencies:
   cached_network_image: ^3.2.3
   google_fonts: ^5.1.0
   readmore: ^2.2.0
+  easy_stepper: ^0.7.3
+  cupertino_stepper: ^0.2.1
+  enhance_stepper: ^0.1.1
   
 
 dev_dependencies:

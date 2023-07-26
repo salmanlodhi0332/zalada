@@ -6,7 +6,9 @@ import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:zalada_app/views/profile_screen.dart';
 import 'package:zalada_app/views/wishlist_cart_screen.dart';
 
+import 'add_payment.dart';
 import 'confirm_order.dart';
+import 'order_tracker.dart';
 import 'search_product_screen.dart';
 import 'cart_screen.dart';
 import 'cart_screen2.dart';
@@ -135,7 +137,7 @@ class _Bottom_BarState extends State<Bottom_Bar> {
         return SearchScreen();
       case 2:
         //return FavoritesScreen();
-        return ConfirmOrder();
+        return OrderTracker();
       case 3:
         return CartScreenWithData();
       case 4:

@@ -24,12 +24,27 @@ class _CartProductsState extends State<CartProducts> {
             });
           },
         ),
-        SizedBox(width: 10),
-        Image.asset(
-          'assets/images/success.png',
-          width: 130,
-          height: 130,
-          fit: BoxFit.cover,
+        SizedBox(width: 0),
+        // Image.asset(
+        //   'assets/images/success.png',
+        //   width: 130,
+        //   height: 130,
+        //   fit: BoxFit.cover,
+        // ),
+
+        Container(
+          decoration: BoxDecoration(
+            color: Theme.of(context).highlightColor,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          width: 120,
+          height: 120,
+          child: Image.asset(
+            'assets/images/success.png',
+            width: 50,
+            height: 50,
+            fit: BoxFit.cover,
+          ),
         ),
         SizedBox(width: 10),
         Expanded(
@@ -50,12 +65,14 @@ class _CartProductsState extends State<CartProducts> {
                       style: TextStyle(
                           fontSize: 15,
                           color: Theme.of(context).hintColor,
-                          fontWeight: FontWeight.w600),
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'plusjakarta'),
                     ),
                     TextSpan(
                       text: '\$1029',
                       style: TextStyle(
                           decoration: TextDecoration.lineThrough,
+                          fontFamily: 'plusjakarta',
                           fontSize: 12,
                           color:
                               Theme.of(context).disabledColor.withOpacity(0.5),

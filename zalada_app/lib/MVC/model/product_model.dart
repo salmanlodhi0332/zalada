@@ -8,7 +8,8 @@ class Product_Model {
   final String price;
   final List images;
   final List colors;
-  final List memory_storage;
+  final List memory;
+  final List storage;
   final int createdBy;
   final DateTime creationdate;
   final DateTime updateddate;
@@ -23,7 +24,8 @@ class Product_Model {
     required this.price,
     required this.images,
     required this.colors,
-    required this.memory_storage,
+    required this.memory,
+    required this.storage,
     required this.createdBy,
     required this.creationdate,
     required this.updateddate,
@@ -39,7 +41,8 @@ class Product_Model {
         'price': price,
         'images': images,
         'colors': colors,
-        'memory_storage': memory_storage,
+        'memory': memory,
+        'storage':storage,
         'createdBy': createdBy,
         'creationdate': creationdate,
         'updateddate': updateddate
@@ -56,9 +59,12 @@ class Product_Model {
         price: json['price'],
         images: json['images'] == null ? [] : json['images'].toList(),
         colors: json['colors'] == null ? [] : json['colors'].toList(),
-        memory_storage: json['memory_storage'] == null
+        memory: json['memory'] == null
             ? []
-            : json['memory_storage'].toList(),
+            : json['memory'].toList(),
+        storage: json['storage']  == null
+            ? []
+            : json['storage'].toList(),   
         updateddate: json['updateddate'],
         creationdate: json['creationdate'],
         createdBy: json['createdBy']);

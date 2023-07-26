@@ -16,7 +16,7 @@ class product_Controller extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // getBookingListData();
+    getAllproducts();
   }
 
   getAllproducts() async {

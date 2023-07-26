@@ -4,11 +4,9 @@ import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/custom/back_button.dart';
 import 'package:zalada_app/custom/edit_btn.dart';
 
-
 import '../../custom/botton_widget.dart';
 import '../../custom/product_card.dart';
 import 'cart_products.dart';
-import 'onboarding/onboard_two.dart';
 
 class CartScreenWithData extends StatelessWidget {
   @override
@@ -85,29 +83,33 @@ class CartScreenWithData extends StatelessWidget {
                   child: Row(
                     children: [
                       const Product_Card(
-                        imageurl: 'assets/images/item.png',
+                        imageurl:
+                            'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
+                        product_name: 'Macbook Pro 15" 2019 -Intel corei7',
+                        price: '\$1240',
+                        status: '',
+                      ).pOnly(bottom: 25, top: 40),
+                      const Product_Card(
+                        imageurl:
+                            'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
+                        product_name: 'Macbook Pro 15" 2019 -Intel corei7',
+                        price: '\$1240',
+                        status: '',
+                      ).px(10),
+                      const Product_Card(
+                        imageurl:
+                            'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
                         product_name: 'Macbook Pro 15" 2019 -Intel corei7',
                         price: '\$1240',
                         status: '',
                       ).py(25),
                       const Product_Card(
-                        imageurl: 'assets/images/item.png',
+                        imageurl:
+                            'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
                         product_name: 'Macbook Pro 15" 2019 -Intel corei7',
                         price: '\$1240',
                         status: '',
-                      ).py(25).px(15),
-                      const Product_Card(
-                        imageurl: 'assets/images/item.png',
-                        product_name: 'Macbook Pro 15" 2019 -Intel corei7',
-                        price: '\$1240',
-                        status: '',
-                      ).py(25),
-                      const Product_Card(
-                        imageurl: 'assets/images/item.png',
-                        product_name: 'Macbook Pro 15" 2019 -Intel corei7',
-                        price: '\$1240',
-                        status: '',
-                      ).py(25).px(15),
+                      ).px(10),
                     ],
                   ),
                 )

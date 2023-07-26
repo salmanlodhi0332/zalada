@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:zalada_app/custom/image_widget.dart';
 
 class Product_Card extends StatelessWidget {
   final String imageurl;
   final String product_name;
   final String price;
   final String status;
-   final Function()? ontap;
+  final Function()? ontap;
   const Product_Card(
       {super.key,
       required this.imageurl,
       required this.product_name,
       required this.price,
       required this.status,
-      this.ontap
-      });
+      this.ontap});
 
   @override
   Widget build(BuildContext context) {
@@ -37,15 +37,7 @@ class Product_Card extends StatelessWidget {
             alignment: AlignmentDirectional.topCenter,
             clipBehavior: Clip.none,
             children: [
-              Positioned(
-                  top: -30,
-                  child: SizedBox(
-                    height: 100,
-                    width: 100,
-                    child: ClipRRect(
-                      child: Image.asset(imageurl),
-                    ),
-                  )),
+              Positioned(top: -30, child: image_widget(imageUrl: imageurl)),
               Column(
                 children: [
                   Text(
@@ -60,8 +52,7 @@ class Product_Card extends StatelessWidget {
                     price,
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      
-                fontFamily: 'plusjakarta',
+                        fontFamily: 'plusjakarta',
                         fontSize: 15,
                         color: Theme.of(context).focusColor,
                         fontWeight: FontWeight.w600),
@@ -80,8 +71,7 @@ class Product_Card extends StatelessWidget {
                           child: Text(
                             status,
                             style: TextStyle(
-                              
-                fontFamily: 'plusjakarta',
+                                fontFamily: 'plusjakarta',
                                 color: Theme.of(context).secondaryHeaderColor,
                                 fontWeight: FontWeight.w300,
                                 fontSize: 10),

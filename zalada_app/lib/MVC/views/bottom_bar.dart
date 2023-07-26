@@ -4,9 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:zalada_app/MVC/views/profile_screen.dart';
 import 'package:zalada_app/MVC/views/wishlist_cart_screen.dart';
+import 'confirm_order.dart';
+import 'profile_screen.dart';
 import 'search_product_screen.dart';
 import 'cart_screen2.dart';
 import 'home_screen.dart';
+import 'wishlist_cart_screen.dart';
 
 class Bottom_Bar extends StatefulWidget {
   @override

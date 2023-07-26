@@ -14,36 +14,40 @@ class search_grid extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
-      child: Container(
-        padding: EdgeInsets.only(bottom: 15),
-        child: MasonryGridView.count(
-          primary: false,
-          shrinkWrap: true,
-          crossAxisCount:
-              MediaQuery.of(context).orientation == Orientation.portrait
-                  ? 2
-                  : 4,
-          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-          itemCount: 10,
-          itemBuilder: (BuildContext context, int index) {
-            return Product_Card(
-              ontap: () {
-                {
-                  Page_Navigation()
-                      .Page_ReplaceNavigation(context, Product_Detail_Screen());
-                }
+      child: Obx(() => controller.Productslist.isNotEmpty
+          ? MasonryGridView.count(
+              primary: false,
+              shrinkWrap: true,
+              crossAxisCount:
+                  MediaQuery.of(context).orientation == Orientation.portrait
+                      ? 2
+                      : 4,
+              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+              itemCount: controller.Productslist.length,
+              itemBuilder: (BuildContext context, int index) {
+                final item = controller.Productslist[index];
+                return Product_Card(
+                  ontap: () {
+                    {
+                      Page_Navigation().Page_ReplaceNavigation(
+                          context,
+                          Product_Detail_Screen(
+                            id: item.id,
+                          ));
+                    }
+                  },
+                  imageurl: item.images[0],
+                  product_name: item.name,
+                  price: '\$' + item.price,
+                  status: "NEW ARRIVAL",
+                );
               },
-              imageurl: 'assets/images/success.png',
-              product_name: 'Macbook Pro 15" 2019 -Intel corei7',
-              price: '\$1240',
-              status: "NEW ARRIVAL",
-            );
-          },
-          mainAxisSpacing: 50.0,
-          crossAxisSpacing: 15.0,
-        ),
-        // ),
-      ),
+              mainAxisSpacing: 50.0,
+              crossAxisSpacing: 15.0,
+            )
+          : Center(
+              child: Text('no Product'),
+            )),
     );
   }
 }

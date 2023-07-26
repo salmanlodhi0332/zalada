@@ -32,7 +32,7 @@ class _paymentgetway_selectedState extends State<paymentgetway_selected> {
                 color: widget.selected
                     ? Theme.of(context).indicatorColor.withOpacity(0.5)
                     : Theme.of(context).hintColor.withOpacity(0.5),
-                width: 2.0),
+                width: 1.0),
             borderRadius: BorderRadius.circular(15)),
         duration: Duration(milliseconds: 200),
         child: Row(

@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/custom/all_custom_btn.dart';
 import 'package:zalada_app/custom/search_screen_widgets/search_grid.dart';
-import '../custom/search_screen_widgets/categories_btn.dart';
+
+import '../../custom/search_screen_widgets/categories_btn.dart';
+
 
 class Wishlist_Screen extends StatelessWidget {
   @override

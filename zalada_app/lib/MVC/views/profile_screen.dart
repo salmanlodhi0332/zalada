@@ -7,6 +7,7 @@ import 'package:zalada_app/utiles/page_navigation.dart';
 import 'package:zalada_app/MVC/views/privacy_policy.dart';
 
 import '../../custom/back_button.dart';
+import '../../custom/language/language_bottom_sheet.dart';
 
 class Profile_Screen extends StatefulWidget {
   const Profile_Screen({super.key});
@@ -289,6 +290,12 @@ class _Profile_ScreenState extends State<Profile_Screen> {
               title: "Language".tr,
               showSwitchbtn: false,
               prefixIcon: Icons.language,
+              ontap: () {
+                 Get.bottomSheet(
+                    language_bottom_sheet(),
+                    isScrollControlled: true,
+                  );
+              },
             ),
             custom_divider(context),
             account_section(

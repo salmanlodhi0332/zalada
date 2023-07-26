@@ -26,7 +26,7 @@ class SearchScreen extends StatelessWidget {
               search_bar_widget(
                 onTap: () {
                   Page_Navigation.getInstance
-                      .Page_ReplaceNavigation(context, search_result_screen());
+                      .Page(context, search_result_screen());
                 },
               ),
               SingleChildScrollView(

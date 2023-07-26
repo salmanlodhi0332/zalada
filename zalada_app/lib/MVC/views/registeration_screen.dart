@@ -115,8 +115,7 @@ class _registeration_screenState extends State<registeration_screen> {
                 width: size.width,
                 title: 'Register'.tr,
                 tap: () {
-                  Page_Navigation.getInstance
-                      .Page_ReplaceNavigation(context, Bottom_Bar());
+                  Page_Navigation.getInstance.Page(context, Bottom_Bar());
                 },
               ),
               SizedBox(

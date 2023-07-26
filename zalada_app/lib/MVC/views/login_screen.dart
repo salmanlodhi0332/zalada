@@ -100,8 +100,7 @@ class _login_screenState extends State<login_screen> {
                 width: size.width,
                 title: 'login'.tr,
                 tap: () {
-                  Page_Navigation.getInstance
-                      .Page_ReplaceNavigation(context, Bottom_Bar());
+                  Page_Navigation.getInstance.Page(context, Bottom_Bar());
                 },
               ),
               SizedBox(

@@ -62,8 +62,8 @@ class Home_Screen extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: () {
-                        Page_Navigation.getInstance.Page_ReplaceNavigation(
-                            context, Notification_Screen());
+                        Page_Navigation.getInstance
+                            .Page(context, Notification_Screen());
                       },
                       child: Container(
                         margin: EdgeInsets.all(7),
@@ -248,7 +248,7 @@ class Home_Screen extends StatelessWidget {
                                 return Product_Card(
                                   ontap: () {
                                     {
-                                      Page_Navigation().Page_ReplaceNavigation(
+                                      Page_Navigation().Page(
                                           context,
                                           Product_Detail_Screen(
                                             id: item.id,

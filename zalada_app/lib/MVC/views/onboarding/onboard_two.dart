@@ -53,8 +53,7 @@ class Onboard_Two extends StatelessWidget {
             ).pOnly(bottom: 60),
             InkWell(
               onTap: () {
-                Page_Navigation.getInstance
-                    .Page_ReplaceNavigation(context, Onboard_Three());
+                Page_Navigation.getInstance.Page(context, Onboard_Three());
               },
               child: Container(
                 child: Image.asset('assets/images/Progress_2.png'),

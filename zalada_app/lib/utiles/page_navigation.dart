@@ -6,7 +6,7 @@ class Page_Navigation {
 static Page_Navigation? _instance;
   static Page_Navigation get getInstance => _instance ??= Page_Navigation();
 
-  Page_ReplaceNavigation(BuildContext context, Widget childwidget) {
+  Page(BuildContext context, Widget childwidget) {
     return Navigator.push(
       context,
       PageTransition(

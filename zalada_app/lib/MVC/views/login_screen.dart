@@ -42,10 +42,9 @@ class _login_screenState extends State<login_screen> {
                   Text(
                     'login_account'.tr,
                     style: TextStyle(
-                      
-                fontFamily: 'plusjakarta',
+                        fontFamily: 'plusjakarta',
                         color: Theme.of(context).hintColor,
-                        fontSize: 50,
+                        fontSize: 30,
                         fontWeight: FontWeight.w500),
                   ).px(20),
                 ],
@@ -91,8 +90,6 @@ class _login_screenState extends State<login_screen> {
                 child: Text(
                   'Forget_password'.tr,
                   style: TextStyle(
-                    
-                fontFamily: 'plusjakarta',
                       color: Theme.of(context).hintColor, fontSize: 20),
                 ),
               ),
@@ -103,7 +100,8 @@ class _login_screenState extends State<login_screen> {
                 width: size.width,
                 title: 'login'.tr,
                 tap: () {
-                Page_Navigation.getInstance.Page_ReplaceNavigation(context, Bottom_Bar());
+                  Page_Navigation.getInstance
+                      .Page_ReplaceNavigation(context, Bottom_Bar());
                 },
               ),
               SizedBox(
@@ -122,8 +120,6 @@ class _login_screenState extends State<login_screen> {
                   Text(
                     'or_continue_with'.tr,
                     style: TextStyle(
-                      
-                fontFamily: 'plusjakarta',
                         color: Theme.of(context).hintColor, fontSize: 20),
                   ).px(10),
                   SizedBox(
@@ -139,14 +135,22 @@ class _login_screenState extends State<login_screen> {
                 height: 20,
               ),
               other_loginBtn_Widget(
-                  icon: Image.asset('assets/icon/google.png',height: 30,width: 30,),
+                  icon: Image.asset(
+                    'assets/icon/google.png',
+                    height: 25,
+                    width: 30,
+                  ),
                   width: size.width,
                   title: 'Continue_with_google'.tr),
               SizedBox(
                 height: 20,
               ),
               other_loginBtn_Widget(
-                  icon: Image.asset('assets/icon/facebook.png',height: 30,width: 30,),
+                  icon: Image.asset(
+                    'assets/icon/facebook.png',
+                    height: 25,
+                    width: 30,
+                  ),
                   width: size.width,
                   title: 'Continue_with_facebook'.tr),
               SizedBox(
@@ -158,8 +162,6 @@ class _login_screenState extends State<login_screen> {
                   Text(
                     'Dont_have_an_account'.tr,
                     style: TextStyle(
-                      
-                fontFamily: 'plusjakarta',
                         color: Theme.of(context).hintColor, fontSize: 20),
                   ),
                   InkWell(
@@ -169,10 +171,9 @@ class _login_screenState extends State<login_screen> {
                     child: Text(
                       'Register'.tr,
                       style: TextStyle(
-                        
-                fontFamily: 'plusjakarta',
+                          fontFamily: 'plusjakarta',
                           color: Theme.of(context).focusColor,
-                          fontSize: 20,
+                          fontSize: 16,
                           fontWeight: FontWeight.w800),
                     ),
                   )

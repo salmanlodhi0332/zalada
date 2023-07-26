@@ -66,6 +66,15 @@ class Multi_Language extends Translations {
           "Profile": "Profile",
           "search_product": "Search laptop, headset, etc...",
           "home_card_description": "Find best device for your setup!",
+
+          //saad
+          "start_Shopping": "Start Shopping",
+          "cart_heading_one": "Your cart is an empty!",
+          "cart_description":
+              "Looks like you haven't added anything to your cart yet",
+          "cart": "Cart",
+          "checkout": "Checkout",
+
           "all": "All",
           "hot_deal": "Hot deals🔥",
           "space_grey": "Space Grey",
@@ -75,6 +84,7 @@ class Multi_Language extends Translations {
           "read_more": "Read More",
           "read_less": "Read Less",
           "product_related": "Product Related",
+
           "your_notification": "Your Notification",
           "today": "Today",
           "yesterday": "Yesterday",
@@ -150,6 +160,24 @@ class Multi_Language extends Translations {
           // "": "",
 
           // Hammas Ahmed
+          "your_wishlist": "Your Wishlist",
+          "order": "Order",
+          "address": "Address",
+          "edit": "Edit",
+          "home": "Home",
+          "item": "Item",
+          "shiping": "Shiping",
+          "payment_summary": "Payment Summary",
+          "price": "Price",
+          "delivery_fee": "Delivery Fee",
+          "total_payment": "Total Payment",
+          "payment_method": "Payment Method",
+          "master_card": "MasterCard",
+          "": "",
+          "": "",
+          "": "",
+          "": "",
+          "": "",
         }
       };
 }

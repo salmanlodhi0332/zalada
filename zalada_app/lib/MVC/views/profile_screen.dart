@@ -29,9 +29,9 @@ class _Profile_ScreenState extends State<Profile_Screen> {
           "Profile".tr,
           style: TextStyle(color: Theme.of(context).hintColor),
         ),
-        leading: back_button(
-          ontap: () {},
-        ),
+        // leading: back_button(
+        //   ontap: () {},
+        // ),
         actions: [
           back_button(
             ontap: () {},

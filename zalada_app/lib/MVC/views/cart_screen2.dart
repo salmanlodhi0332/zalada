@@ -3,11 +3,13 @@ import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/custom/back_button.dart';
 import 'package:zalada_app/custom/edit_btn.dart';
+import 'package:zalada_app/views/cart_products.dart';
 
-import '../custom/botton_widget.dart';
-import '../custom/product_card.dart';
+import '../../custom/botton_widget.dart';
+import '../../custom/product_card.dart';
+import 'onboarding/onboard_two.dart';
 
-class CartScreen extends StatelessWidget {
+class CartScreenWithData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -39,38 +41,32 @@ class CartScreen extends StatelessWidget {
           child: Wrap(
             children: [
               Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                //  / crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    height: 50,
-                  ),
-                  Container(
-                    child: Image.asset('assets/images/empty_cart.png'),
-                  ).pOnly(bottom: 10),
-                  Text(
-                    'cart_heading_one'.tr,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).hintColor,
-                        fontSize: 25),
-                  ).pOnly(bottom: 10),
-                  Text(
-                    'cart_description'.tr,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).disabledColor,
-                        fontSize: 15),
-                  ).pOnly(bottom: 10).px(40),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Button_Widget(width: width, title: 'start_Shopping'.tr),
-                  SizedBox(
-                    height: 30,
-                  ),
+                  CartProducts(),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20, right: 20),
+                child: Divider(
+                  color: Theme.of(context).disabledColor.withOpacity(0.4),
+                  thickness: 1,
+                ),
+              ),
+              Column(
+                children: [
+                  CartProducts(),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20, right: 20),
+                child: Divider(
+                  color: Theme.of(context).disabledColor.withOpacity(0.4),
+                  thickness: 1,
+                ),
+              ),
+              Column(
+                children: [
+                  CartProducts(),
                 ],
               ),
               Divider(
@@ -114,7 +110,8 @@ class CartScreen extends StatelessWidget {
                     ],
                   ),
                 )
-              ]).px(ph).py(10)
+              ]).px(ph).py(10),
+              Button_Widget(width: width, title: 'checkout'.tr),
             ],
           ),
         ),

@@ -32,7 +32,7 @@ class search_grid extends StatelessWidget {
                       .Page_ReplaceNavigation(context, Product_Detail_Screen());
                 }
               },
-              imageurl: 'assets/images/success.png',
+              imageurl: 'assets/images/item.png',
               product_name: 'Macbook Pro 15" 2019 -Intel corei7',
               price: '\$1240',
               status: "NEW ARRIVAL",

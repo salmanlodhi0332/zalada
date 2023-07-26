@@ -21,7 +21,8 @@ class CartScreenWithData extends StatelessWidget {
         elevation: 0,
         title: Text(
           'cart'.tr,
-          style: TextStyle(color: Theme.of(context).hintColor),
+          style: TextStyle(
+              color: Theme.of(context).hintColor, fontFamily: 'plusjakarta'),
         ),
         centerTitle: true,
         leading: back_button(
@@ -76,7 +77,9 @@ class CartScreenWithData extends StatelessWidget {
                 Text(
                   'product_related'.tr,
                   style: const TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.w600),
+                      fontFamily: 'plusjakarta',
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600),
                 ).pOnly(bottom: 10),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,

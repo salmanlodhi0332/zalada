@@ -52,6 +52,11 @@ dependencies:
   
   intl_phone_number_input: ^0.7.3+1
   shared_preferences: ^2.2.0
+  firebase_core: ^2.15.0
+  firebase_messaging: ^14.6.5
+  device_info_plus: ^9.0.2
+  textfield_search: ^0.10.0
+  dropdown_textfield: ^1.0.8
 
 dev_dependencies:
   flutter_test:

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:zalada_app/MVC/controller/product_controller.dart';
 import 'package:zalada_app/custom/product_card.dart';
 
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -13,7 +14,7 @@ import '../../custom/search_screen_widgets/categories_btn.dart';
 
 class Home_Screen extends StatelessWidget {
   Home_Screen({Key? key}) : super(key: key);
-
+  final controller = Get.put(product_Controller());
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -231,32 +232,41 @@ class Home_Screen extends StatelessWidget {
                           ],
                         ),
                       ).pOnly(bottom: 30),
-                      MasonryGridView.count(
-                        primary: false,
-                        shrinkWrap: true,
-                        crossAxisCount: MediaQuery.of(context).orientation ==
-                                Orientation.portrait
-                            ? 2
-                            : 4,
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        itemCount: 10,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Product_Card(
-                            ontap: () {
-                              {
-                                Page_Navigation().Page_ReplaceNavigation(
-                                    context, Product_Detail_Screen());
-                              }
-                            },
-                            imageurl: 'assets/images/item.png',
-                            product_name: 'Macbook Pro 15" 2019 -Intel corei7',
-                            price: '\$1240',
-                            status: "NEW ARRIVAL",
-                          );
-                        },
-                        mainAxisSpacing: 50.0,
-                        crossAxisSpacing: 15.0,
-                      ),
+                      Obx(() => controller.Productslist.isNotEmpty
+                          ? MasonryGridView.count(
+                              primary: false,
+                              shrinkWrap: true,
+                              crossAxisCount:
+                                  MediaQuery.of(context).orientation ==
+                                          Orientation.portrait
+                                      ? 2
+                                      : 4,
+                              padding: EdgeInsets.symmetric(vertical: 10),
+                              itemCount: controller.Productslist.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                final item = controller.Productslist[index];
+                                return Product_Card(
+                                  ontap: () {
+                                    {
+                                      Page_Navigation().Page_ReplaceNavigation(
+                                          context,
+                                          Product_Detail_Screen(
+                                            id: item.id,
+                                          ));
+                                    }
+                                  },
+                                  imageurl: item.images[0],
+                                  product_name: item.name,
+                                  price: '\$' + item.price,
+                                  status: "NEW ARRIVAL",
+                                );
+                              },
+                              mainAxisSpacing: 50.0,
+                              crossAxisSpacing: 15.0,
+                            )
+                          : Center(
+                              child: Text('no Product'),
+                            )),
                     ],
                   ),
                 ))

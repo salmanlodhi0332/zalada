@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:zalada_app/service/fcm_token.dart';
 import 'package:zalada_app/utiles/multi_language.dart';
 import 'package:zalada_app/utiles/themeData.dart';
-import 'package:zalada_app/views/bottom_bar.dart';
-import 'package:zalada_app/views/otp_screen.dart';
-import 'package:zalada_app/views/splash_screen.dart';
 
-void main() {
+import 'MVC/views/splash_screen.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await FirebaseDB.init();
   runApp(const MyApp());
 }
 

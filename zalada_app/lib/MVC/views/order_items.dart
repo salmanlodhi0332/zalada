@@ -18,12 +18,29 @@ class _OrderItemsState extends State<OrderItems> {
       child: Row(
         children: [
           SizedBox(width: 10),
+
+          // Container(
+          //   color: Theme.of(context).cardColor,
+          //   child:
+          //   Image.asset(
+          //     'assets/images/success.png',
+          //     width: 130,
+          //     height: 130,
+          //     fit: BoxFit.cover,
+          //   ),
+          // ),
+
           Container(
-            color: Theme.of(context).cardColor,
+            decoration: BoxDecoration(
+              color: Theme.of(context).highlightColor,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            width: 120,
+            height: 120,
             child: Image.asset(
               'assets/images/success.png',
-              width: 130,
-              height: 130,
+              width: 50,
+              height: 50,
               fit: BoxFit.cover,
             ),
           ),

@@ -29,7 +29,7 @@ class search_grid extends StatelessWidget {
                 return Product_Card(
                   ontap: () {
                     {
-                      Page_Navigation().Page_ReplaceNavigation(
+                      Page_Navigation().Page(
                           context,
                           Product_Detail_Screen(
                             id: item.id,

@@ -5,6 +5,8 @@ import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
 import 'package:zalada_app/MVC/views/onboarding/onboard_two.dart';
 
+import '../login_screen.dart';
+
 class Onboard_One extends StatelessWidget {
   const Onboard_One({super.key});
 
@@ -17,7 +19,10 @@ class Onboard_One extends StatelessWidget {
         elevation: 0,
         actions: [
           TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Page_Navigation.getInstance
+                    .Page_PushAndReplaceNavigation(context, login_screen());
+              },
               child: Text(
                 'skip'.tr,
                 style: TextStyle(
@@ -55,7 +60,7 @@ class Onboard_One extends StatelessWidget {
             InkWell(
                 onTap: () {
                   Page_Navigation.getInstance
-                      .Page_ReplaceNavigation(context, Onboard_Two());
+                      .Page_PushAndReplaceNavigation(context, Onboard_Two());
                 },
                 child: Container(
                   child: Image.asset('assets/images/Progress_1.png'),

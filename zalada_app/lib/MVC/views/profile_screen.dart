@@ -300,8 +300,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
             custom_divider(context),
             account_section(
               ontap: () {
-                Page_Navigation()
-                    .Page_ReplaceNavigation(context, privacy_policy());
+                Page_Navigation().Page(context, privacy_policy());
               },
               backgroundcolor: Theme.of(context).hintColor,
               title: "Privacy_Policy".tr,

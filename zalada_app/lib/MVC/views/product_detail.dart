@@ -587,7 +587,7 @@ class Product_Detail_Screen extends StatelessWidget {
             Button_Widget(
                     tap: () {
                       Page_Navigation.getInstance
-                          .Page_ReplaceNavigation(context, select_address());
+                          .Page(context, select_address());
                       // Page_Navigation.getInstance
                       //     .Page_ReplaceNavigation(context, ConfirmOrder());
                     },

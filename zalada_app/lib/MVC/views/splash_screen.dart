@@ -25,7 +25,7 @@ class _splash_screenState extends State<splash_screen> {
 
   String? token;
   isloggedcheck() async {
-    Page_Navigation().Page_ReplaceNavigation(context, Onboard_One());
+    Page_Navigation().Page_PushAndReplaceNavigation(context, Onboard_One());
   }
 
   @override
@@ -43,8 +43,7 @@ class _splash_screenState extends State<splash_screen> {
             Text(
               'zalada'.tr,
               style: TextStyle(
-                
-                fontFamily: 'plusjakarta',
+                  fontFamily: 'plusjakarta',
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).hintColor,
                   fontSize: 25),

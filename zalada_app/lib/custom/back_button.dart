@@ -4,7 +4,8 @@ import 'package:velocity_x/velocity_x.dart';
 class back_button extends StatelessWidget {
   final Function() ontap;
   final Widget? pic;
-  const back_button({super.key, required this.ontap, this.pic});
+  final Color? iconColor;
+  const back_button({super.key, required this.ontap, this.pic, this.iconColor});
 
   @override
   Widget build(BuildContext context) {

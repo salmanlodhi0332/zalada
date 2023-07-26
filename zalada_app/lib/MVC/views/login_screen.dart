@@ -104,7 +104,7 @@ final loginForm = GlobalKey();
                   title: 'login'.tr,
                   tap: () {
                     Page_Navigation.getInstance
-                        .Page_ReplaceNavigation(context, Bottom_Bar());
+                        .Page_PushAndReplaceNavigation(context, Bottom_Bar());
                   },
                 ),
                 SizedBox(

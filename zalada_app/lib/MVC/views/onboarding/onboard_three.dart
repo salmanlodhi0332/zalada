@@ -56,7 +56,7 @@ class Onboard_Three extends StatelessWidget {
             ).pOnly(bottom: 40),
             InkWell(
               onTap: () {
-                Page_Navigation.getInstance.Screen(context, login_screen());
+                Page_Navigation.getInstance.Page_PushAndReplaceNavigation(context, login_screen());
               },
               child: Container(
                 child: Image.asset('assets/images/Progress_3.png'),

@@ -28,6 +28,7 @@ class Home_Screen extends StatelessWidget {
           color: Theme.of(context).primaryColor,
           onRefresh: () async {},
           child: CustomScrollView(
+            
               physics: const BouncingScrollPhysics(),
               primary: true,
               shrinkWrap: false,

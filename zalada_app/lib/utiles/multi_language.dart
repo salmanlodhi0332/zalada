@@ -6,7 +6,7 @@ class Multi_Language extends Translations {
         //------------------------en_US
         'en_US': {
           'zalada': 'Zalada',
-          
+
           "login_account": "Login to your\naccount.",
           "email_address": "Email address",
           "password": "Password",
@@ -109,6 +109,23 @@ class Multi_Language extends Translations {
           "My_Order": "My Order",
           "see_all": "see all",
           "In_delievery": "In delievery",
+          "Add_new_Payment": "Add new Payment",
+          "Apple_Pay": "Apple Pay",
+          "PayPal": "PayPal",
+          "MasterCard": "MasterCard",
+          "Payment_Method": "Payment Method",
+          "Select_Your_location_from_the_map":
+              "Select Your location from the map",
+          "Move_the_pin_on_the_map_to_find_your_location_and_select_the_delievery_address":
+              "Move the pin on the map to find your location and select the delievery address",
+          "Add_Address": "Add Address",
+          "Gender": "Gender",
+          "Phone_number": "Phone number",
+          "Gender": "Gender",
+          "Edit_Profile": "Edit Profile",
+          "Email_Address": "Email Address",
+          "Date_of_Birth": "Date of Birth",
+
           // "": "",
           // "": "",
           // "": "",

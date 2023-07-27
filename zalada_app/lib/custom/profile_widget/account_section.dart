@@ -2,17 +2,16 @@ import 'package:flutter/material.dart';
 
 class account_section extends StatelessWidget {
   final String title;
-  final IconData prefixIcon;
   final bool showSwitchbtn;
   final Color backgroundcolor;
+  final Widget? svgicon;
   final Function()? ontap;
 
   account_section({
     required this.title,
-    required this.prefixIcon,
     required this.showSwitchbtn,
     required this.backgroundcolor,
-    this.ontap,
+    this.ontap, this.svgicon,
   });
 
   bool _isSwitched = false;
@@ -26,10 +25,9 @@ class account_section extends StatelessWidget {
         child: ListTile(
           leading: CircleAvatar(
               backgroundColor: Theme.of(context).highlightColor,
-              child: Icon(
-                prefixIcon,
-                color: Colors.black,
-              )),
+              child:
+              svgicon
+              ),
           title: Text(
             title,
             style: TextStyle(

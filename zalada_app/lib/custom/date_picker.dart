@@ -2,14 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class textfeild_widget extends StatelessWidget {
+class datepicker_widget extends StatelessWidget {
   final String label;
   final String hintText;
   final TextEditingController controller;
   final FormFieldValidator<String>? validator;
   final Widget? suffixIcon;
   final bool? obscureText;
-  const textfeild_widget(
+  const datepicker_widget(
       {super.key,
       required this.label,
       required this.hintText,
@@ -47,6 +47,14 @@ class textfeild_widget extends StatelessWidget {
               borderRadius: BorderRadius.circular(15)),
           child: TextFormField(
                   validator: validator,
+                  onTap: () async {
+                    DateTime? pickedDate = await showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(1950),
+                        //DateTime.now() - not to allow to choose before today.
+                        lastDate: DateTime(2100));
+                  },
                   obscureText: obscureText ?? false,
                   decoration: InputDecoration(
                       suffixIcon: suffixIcon,

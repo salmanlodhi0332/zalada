@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/custom/back_button.dart';
 
 class privacy_policy extends StatefulWidget {
@@ -25,7 +26,7 @@ class _privacy_policyState extends State<privacy_policy> {
           ontap: () {
             Get.back();
           },
-        ),
+        ).p(10),
       ),
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       body: SafeArea(

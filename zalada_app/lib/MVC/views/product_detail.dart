@@ -6,7 +6,9 @@ import 'package:readmore/readmore.dart';
 import 'package:zalada_app/custom/botton_widget.dart';
 import 'package:zalada_app/custom/product_card.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
-import 'package:zalada_app/views/confirm_order.dart';
+
+import 'confirm_order.dart';
+// import 'package:zalada_app/views/confirm_order.dart';
 
 class Product_Detail_Screen extends StatelessWidget {
   @override

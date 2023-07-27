@@ -21,7 +21,7 @@ class back_button extends StatelessWidget {
               Icons.arrow_back,
               size: 18,
               color: Theme.of(context).hintColor,
-            ).p(15),
+            ).p(8),
       ),
     );
   }

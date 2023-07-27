@@ -3,10 +3,11 @@ import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/custom/back_button.dart';
 import 'package:zalada_app/custom/edit_btn.dart';
-import 'package:zalada_app/views/cart_products.dart';
+// import 'package:zalada_app/views/cart_products.dart';
 
 import '../../custom/botton_widget.dart';
 import '../../custom/product_card.dart';
+import 'cart_products.dart';
 import 'onboarding/onboard_two.dart';
 
 class CartScreenWithData extends StatelessWidget {

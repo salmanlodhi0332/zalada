@@ -9,14 +9,16 @@ class textfeild_widget extends StatelessWidget {
   final FormFieldValidator<String>? validator;
   final Widget? suffixIcon;
   final bool? obscureText;
-  const textfeild_widget(
-      {super.key,
-      required this.label,
-      required this.hintText,
-      required this.controller,
-      this.validator,
-      this.suffixIcon,
-      this.obscureText});
+
+  const textfeild_widget({
+    super.key,
+    required this.label,
+    required this.hintText,
+    required this.controller,
+    this.validator,
+    this.suffixIcon,
+    this.obscureText,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,16 +30,17 @@ class textfeild_widget extends StatelessWidget {
           children: [
             Text(
               label,
-              style:
-                  TextStyle(
-                    
-                fontFamily: 'plusjakarta',
-                    color: Theme.of(context).hintColor, fontSize: 15),
+              style: TextStyle(
+                  fontFamily: 'plusjakarta',
+                  color: Theme.of(context).hintColor,
+                  fontSize: 15),
             ).p(10),
           ],
         ),
         Container(
-          height: MediaQuery.of(context).orientation  == Orientation.portrait ? size.height / 13 : size.height / 7,
+          height: MediaQuery.of(context).orientation == Orientation.portrait
+              ? size.height / 13
+              : size.height / 7,
           width: size.width,
           decoration: BoxDecoration(
               border: Border.all(
@@ -51,8 +54,7 @@ class textfeild_widget extends StatelessWidget {
                       suffixIcon: suffixIcon,
                       hintText: hintText,
                       hintStyle: TextStyle(
-                        
-                fontFamily: 'plusjakarta',
+                          fontFamily: 'plusjakarta',
                           color: Theme.of(context).hintColor.withOpacity(0.3),
                           fontSize: 15),
                       enabledBorder:

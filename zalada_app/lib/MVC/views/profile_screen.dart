@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:zalada_app/MVC/views/edit_profile.dart';
+import 'package:zalada_app/MVC/views/payment_method.dart';
+import 'package:zalada_app/MVC/views/select_address.dart';
 import 'package:zalada_app/custom/profile_widget/account_section.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
@@ -27,14 +30,16 @@ class _Profile_ScreenState extends State<Profile_Screen> {
         centerTitle: true,
         title: Text(
           "Profile".tr,
-          style: TextStyle(color: Theme.of(context).hintColor),
+          style: TextStyle(
+            color: Theme.of(context).hintColor,
+            fontFamily: 'plusjakarta',
+          ),
         ),
-        // leading: back_button(
-        //   ontap: () {},
-        // ),
         actions: [
           back_button(
-            ontap: () {},
+            ontap: () {
+              Get.to(edit_profile());
+            },
             pic: SvgPicture.asset(
               "assets/svg/user-edit.svg",
             ).p(10),
@@ -64,7 +69,11 @@ class _Profile_ScreenState extends State<Profile_Screen> {
             ),
             Text(
               "Bryan Adam",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w400,
+                fontFamily: 'plusjakarta',
+              ),
             ),
             SizedBox(
               height: 15,
@@ -72,6 +81,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
             Text(
               "BryanAdam@hotmail.com",
               style: TextStyle(
+                  fontFamily: 'plusjakarta',
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
                   color: Theme.of(context).hintColor.withOpacity(0.3)),
@@ -96,17 +106,22 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                           child: Text(
                             "My_Order".tr,
                             style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.w400),
+                                fontSize: 18,
+                                fontFamily: 'plusjakarta',
+                                fontWeight: FontWeight.w400),
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(right: 12),
-                          child: Text(
-                            "see_all".tr,
-                            style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.blue),
+                          child: InkWell(
+                            child: Text(
+                              "see_all".tr,
+                              style: TextStyle(
+                                  fontFamily: 'plusjakarta',
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.blue),
+                            ),
                           ),
                         ),
                       ],
@@ -122,6 +137,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                           child: Text(
                             "Order ID 231319",
                             style: TextStyle(
+                                fontFamily: 'plusjakarta',
                                 fontSize: 15,
                                 fontWeight: FontWeight.w400,
                                 color: Theme.of(context).disabledColor),
@@ -138,7 +154,9 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                               child: Text(
                                 "In_delievery".tr,
                                 style: TextStyle(
-                                    fontSize: 10, color: Colors.white),
+                                    fontSize: 10,
+                                    fontFamily: 'plusjakarta',
+                                    color: Colors.white),
                               ),
                             )),
                       ],
@@ -172,7 +190,9 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                         Text(
                           "Ipad pro 2020",
                           style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w400),
+                              fontFamily: 'plusjakarta',
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400),
                         ),
                         SizedBox(width: 10),
                         InkWell(
@@ -181,15 +201,18 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                               height: 30,
                               decoration: BoxDecoration(
                                 color: Theme.of(context)
-                                    .highlightColor
-                                    .withOpacity(0.3),
+                                    .disabledColor
+                                    .withOpacity(0.2),
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               child: Center(
-                                child: Text(
-                                  "Track_Order".tr,
-                                  style: TextStyle(
-                                    fontSize: 10,
+                                child: InkWell(
+                                  child: Text(
+                                    "Track_Order".tr,
+                                    style: TextStyle(
+                                      fontFamily: 'plusjakarta',
+                                      fontSize: 10,
+                                    ),
                                   ),
                                 ),
                               )),
@@ -215,6 +238,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                   Text(
                     "Account Setting",
                     style: TextStyle(
+                        fontFamily: 'plusjakarta',
                         color: Theme.of(context).disabledColor,
                         fontWeight: FontWeight.w500,
                         fontSize: 15),
@@ -225,32 +249,61 @@ class _Profile_ScreenState extends State<Profile_Screen> {
             SizedBox(
               height: 10,
             ),
-            account_section(
-              backgroundcolor: Theme.of(context).hintColor,
-              title: "Address",
-              showSwitchbtn: false,
-              prefixIcon: Icons.pin_drop_outlined,
+            InkWell(
+              onTap: () {
+                Get.to(select_address());
+              },
+              child: account_section(
+                backgroundcolor: Theme.of(context).hintColor,
+                title: "Address",
+                showSwitchbtn: false,
+                svgicon: SvgPicture.asset(
+                  "assets/svg/pin.svg",
+                  height: 17,
+                  width: 17,
+                ),
+              ),
             ),
             custom_divider(context),
-            account_section(
-              backgroundcolor: Theme.of(context).hintColor,
-              title: "Payment_Method".tr,
-              showSwitchbtn: false,
-              prefixIcon: Icons.credit_card,
+            InkWell(
+              onTap: () {
+                Get.to(payment_method());
+              },
+              child: account_section(
+                backgroundcolor: Theme.of(context).hintColor,
+                title: "Payment_Method".tr,
+                showSwitchbtn: false,
+                svgicon: SvgPicture.asset(
+                  "assets/svg/credit.svg",
+                  height: 17,
+                  width: 17,
+                ),
+              ),
             ),
             custom_divider(context),
             account_section(
               backgroundcolor: Theme.of(context).hintColor,
               title: "Notifications".tr,
               showSwitchbtn: true,
-              prefixIcon: Icons.notifications_active_outlined,
+              svgicon: SvgPicture.asset(
+                "assets/svg/noti.svg",
+                height: 17,
+                width: 17,
+              ),
             ),
             custom_divider(context),
-            account_section(
-              backgroundcolor: Theme.of(context).hintColor,
-              title: "Account_Security".tr,
-              showSwitchbtn: false,
-              prefixIcon: Icons.security_rounded,
+            InkWell(
+              onTap: () {},
+              child: account_section(
+                backgroundcolor: Theme.of(context).hintColor,
+                title: "Account_Security".tr,
+                showSwitchbtn: false,
+                svgicon: SvgPicture.asset(
+                  "assets/svg/privacy.svg",
+                  height: 17,
+                  width: 17,
+                ),
+              ),
             ),
             Divider(
               thickness: 3,
@@ -267,6 +320,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                   Text(
                     "General",
                     style: TextStyle(
+                        fontFamily: 'plusjakarta',
                         color: Theme.of(context).disabledColor,
                         fontWeight: FontWeight.w500,
                         fontSize: 15),
@@ -277,45 +331,79 @@ class _Profile_ScreenState extends State<Profile_Screen> {
             SizedBox(
               height: 10,
             ),
-            account_section(
-              backgroundcolor: Theme.of(context).hintColor,
-              title: "Invite_Friends".tr,
-              showSwitchbtn: false,
-              prefixIcon: Icons.group,
+            InkWell(
+              onTap: () {},
+              child: account_section(
+                backgroundcolor: Theme.of(context).hintColor,
+                title: "Invite_Friends".tr,
+                showSwitchbtn: false,
+                svgicon: SvgPicture.asset(
+                  "assets/svg/group.svg",
+                  height: 17,
+                  width: 17,
+                ),
+              ),
             ),
             custom_divider(context),
-            account_section(
-              backgroundcolor: Theme.of(context).hintColor,
-              title: "Language".tr,
-              showSwitchbtn: false,
-              prefixIcon: Icons.language,
+            InkWell(
+              onTap: () {},
+              child: account_section(
+                backgroundcolor: Theme.of(context).hintColor,
+                title: "Language".tr,
+                showSwitchbtn: false,
+                svgicon: SvgPicture.asset(
+                  "assets/svg/language.svg",
+                  height: 17,
+                  width: 17,
+                ),
+              ),
             ),
             custom_divider(context),
-            account_section(
-              ontap: () {
-                Page_Navigation().Page(context, privacy_policy());
+            InkWell(
+              onTap: () {
+                Get.to(privacy_policy());
               },
-              backgroundcolor: Theme.of(context).hintColor,
-              title: "Privacy_Policy".tr,
-              showSwitchbtn: false,
-              prefixIcon: Icons.privacy_tip,
+              child: account_section(
+                backgroundcolor: Theme.of(context).hintColor,
+                title: "Privacy_Policy".tr,
+                showSwitchbtn: false,
+                svgicon: SvgPicture.asset(
+                  "assets/svg/security.svg",
+                  height: 17,
+                  width: 17,
+                ),
+              ),
             ),
             custom_divider(context),
-            account_section(
-              backgroundcolor: Theme.of(context).hintColor,
-              title: "Help_Center".tr,
-              showSwitchbtn: false,
-              prefixIcon: Icons.help,
+            InkWell(
+              onTap: () {},
+              child: account_section(
+                backgroundcolor: Theme.of(context).hintColor,
+                title: "Help_Center".tr,
+                showSwitchbtn: false,
+                svgicon: SvgPicture.asset(
+                  "assets/svg/help.svg",
+                  height: 17,
+                  width: 17,
+                ),
+              ),
             ),
             SizedBox(
               height: 10,
             ),
             custom_divider(context),
-            account_section(
-              backgroundcolor: Colors.red,
-              title: "Logout".tr,
-              showSwitchbtn: false,
-              prefixIcon: Icons.logout,
+            InkWell(
+              onTap: () {},
+              child: account_section(
+                backgroundcolor: Colors.red,
+                title: "Logout".tr,
+                showSwitchbtn: false,
+                svgicon: SvgPicture.asset(
+                  "assets/svg/logout.svg",
+                  height: 17,
+                  width: 17,
+                ),
+              ),
             ),
           ],
         ),

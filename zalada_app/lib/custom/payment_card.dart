@@ -1,89 +1,69 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:velocity_x/velocity_x.dart';
-import 'package:flutter_svg/svg.dart';
 
-class payment_card extends StatefulWidget {
+class payment_card extends StatelessWidget {
   final String label;
+  final Widget? images;
   final String hintText;
   final Widget? preffixIcon;
   final bool selected;
   final Widget? suffixIcon;
   const payment_card({
-    super.key,
+    Key? key,
     required this.label,
     required this.hintText,
     this.preffixIcon,
     this.suffixIcon,
     required this.selected,
-  });
+    this.images,
+  }) : super(key: key);
 
-  @override
-  State<payment_card> createState() => _payment_cardState();
-}
-
-class _payment_cardState extends State<payment_card> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return AnimatedContainer(
-        height: size.height / 10,
-        width: size.width,
+    return Center(
+      child: AnimatedContainer(
+        height: MediaQuery.of(context).orientation == Orientation.portrait
+            ? size.height / 10
+            : size.height / 5,
+        width: size.width * 0.9,
         decoration: BoxDecoration(
-            border: Border.all(
-                color: widget.selected
-                    ? Theme.of(context).indicatorColor.withOpacity(0.5)
-                    : Theme.of(context).hintColor.withOpacity(0.5),
-                width: 1.0),
-            borderRadius: BorderRadius.circular(15)),
+          border: Border.all(
+            color: selected
+                ? Theme.of(context).indicatorColor.withOpacity(0.5)
+                : Theme.of(context).disabledColor.withOpacity(0.3),
+            width: 1.0,
+          ),
+          borderRadius: BorderRadius.circular(15),
+        ),
         duration: Duration(milliseconds: 200),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              width: size.width / 7,
-              decoration: BoxDecoration(
-                  color: Theme.of(context).highlightColor,
-                  borderRadius: BorderRadius.circular(10)),
-              child: widget.preffixIcon,
-            ).pOnly(left: 20, top: 10, bottom: 10),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  widget.label,
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w800,
-                    color: Theme.of(context).hintColor,
-                  ),
-                ).py(5),
-                Text(
-                  widget.hintText,
-                  style: TextStyle(
-                    color: Theme.of(context).hintColor.withOpacity(0.5),
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ],
-            ).px(10),
-            widget.selected
-                ? CircleAvatar(
-                    radius: 20,
-                    backgroundColor: Theme.of(context).indicatorColor,
-                    child: Icon(
-                      Icons.check,
-                      color: Colors.white,
-                    ),
-                  ).p(10)
-                : CircleAvatar(
-                    radius: 20,
-                    backgroundColor: Color.fromARGB(0, 130, 127, 127),
-                  ).p(10),
-          ],
-        ));
+        child: ListTile(
+          leading: CircleAvatar(
+            backgroundColor: Theme.of(context).highlightColor,
+            child: images,
+          ),
+          title: Text(
+            label,
+            style: TextStyle(
+              fontFamily: 'plusjakarta',
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+              color: Theme.of(context).hintColor,
+            ),
+          ),
+          
+          subtitle: Text(
+            hintText,
+            style: TextStyle(
+              fontFamily: 'plusjakarta',
+              color: Theme.of(context).disabledColor.withOpacity(0.4),
+              fontSize: 15,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          trailing: preffixIcon,
+        ),
+      ),
+    );
   }
 }

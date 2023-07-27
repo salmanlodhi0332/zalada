@@ -6,7 +6,7 @@ class Multi_Language extends Translations {
         //------------------------en_US
         'en_US': {
           'zalada': 'Zalada',
-          
+
           "login_account": "Login to your\naccount.",
           "email_address": "Email address",
           "password": "Password",
@@ -71,7 +71,7 @@ class Multi_Language extends Translations {
           "start_Shopping": "Start Shopping",
           "cart_heading_one": "Your cart is an empty!",
           "cart_description":
-              "Looks like you haven't added anything to your cart yet",
+          "Looks like you haven't added anything to your cart yet",
           "cart": "Cart",
           "checkout": "Checkout",
 
@@ -94,8 +94,8 @@ class Multi_Language extends Translations {
           " Use_of_your_personal_data": " Use of your personal data",
           "Disclose_of_Your_Data": "Disclose of Your Data",
           "Address": "Address",
-          "Address_name": "Addressname",
-          "Address_detail": "Address_detail",
+          "Address_name": "Address name",
+          "Address_detail": "Address detail",
           "Phone_No": "Phone No",
           "Privacy_Policy": "Privacy Policy",
           "Help_Center": "Help Center",
@@ -109,6 +109,21 @@ class Multi_Language extends Translations {
           "My_Order": "My Order",
           "see_all": "see all",
           "In_delievery": "In delievery",
+          "Add_new_Payment": "Add New Payment",
+          "Apple_Pay": "Apple Pay",
+          "PayPal": "PayPal",
+          "MasterCard": "MasterCard",
+          "Select_Your_location_from_the_map":
+          "Select Your location from the map",
+          "Move_the_pin_on_the_map_to_find_your_location_and_select_the_delievery_address":
+          "Move the pin on the map to find your location and select the delievery address",
+          "Add_Address": "Add Address",
+          "Gender": "Gender",
+          "Phone_number": "Phone number",
+          "Edit_Profile": "Edit Profile",
+          "Email_Address": "Email Address",
+          "Date_of_Birth": "Date of Birth",
+
           // "": "",
           // "": "",
           // "": "",

@@ -31,3 +31,34 @@ class product_Controller extends GetxController {
     }
   }
 }
+
+class cart_Controller extends GetxController {
+  var _products = {}.obs;
+  void addProduct(Product_Model dummyProducts) {
+    if (_products.containsKey(dummyProducts)) {
+      _products[dummyProducts] += 1;
+    } else {
+      _products[dummyProducts] = 1;
+    }
+
+    Get.snackbar("Product Added", "You have added the product",
+        snackPosition: SnackPosition.TOP, duration: Duration(seconds: 2));
+  }
+
+  void removeProduct(Product_Model dummyProducts) {
+    if (_products.containsKey(dummyProducts) && _products[dummyProducts] == 1) {
+      _products.removeWhere((key, value) => key == dummyProducts);
+    } else {
+      _products[dummyProducts] -= 1;
+    }
+
+    Get.snackbar("Product Removed", "You have removed the product",
+        snackPosition: SnackPosition.TOP, duration: Duration(seconds: 2));
+  }
+
+  void removeCartItem(Product_Model product) {
+    _products.remove(product);
+  }
+
+  get products => _products;
+}

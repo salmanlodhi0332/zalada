@@ -22,7 +22,6 @@ class _VideoItemState extends State<VideoItem> {
     _videoPlayerController = VideoPlayerController.network(widget.videoUrl);
     _chewieController = ChewieController(
       videoPlayerController: _videoPlayerController,
-      showControls: false,
       autoPlay: true,
       aspectRatio: 16 / 9,
       looping: true,

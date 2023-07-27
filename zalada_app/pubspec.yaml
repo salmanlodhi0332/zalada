@@ -52,7 +52,6 @@ dependencies:
   easy_stepper: ^0.7.3
   cupertino_stepper: ^0.2.1
   enhance_stepper: ^0.1.1
-  
   intl_phone_number_input: ^0.7.3+1
   shared_preferences: ^2.2.0
   firebase_core: ^2.15.0

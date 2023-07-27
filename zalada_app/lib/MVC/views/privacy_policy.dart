@@ -20,7 +20,10 @@ class _privacy_policyState extends State<privacy_policy> {
         centerTitle: true,
         title: Text(
           "Privacy Policy".tr,
-          style: TextStyle(color: Theme.of(context).hintColor),
+          style: TextStyle(
+            color: Theme.of(context).hintColor,
+            fontFamily: 'plusjakarta',
+          ),
         ),
         leading: back_button(
           ontap: () {
@@ -29,7 +32,9 @@ class _privacy_policyState extends State<privacy_policy> {
         ).p(10),
       ),
       backgroundColor: Theme.of(context).secondaryHeaderColor,
-      body: SafeArea(
+      body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        scrollDirection: Axis.vertical,
         child: Padding(
           padding: const EdgeInsets.only(top: 10),
           child: Column(
@@ -39,32 +44,56 @@ class _privacy_policyState extends State<privacy_policy> {
                 padding: const EdgeInsets.all(15),
                 child: Text(
                   "1. Types of data we collected".tr,
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: 22,
+                      fontFamily: 'plusjakarta',
+                      fontWeight: FontWeight.bold),
                 ),
               ),
               Padding(
                   padding: const EdgeInsets.all(15),
-                  child: Text("lorem 30 line text here")),
+                  child: Text(
+                    "lorem 30 line text here",
+                    style: TextStyle(
+                      fontFamily: 'plusjakarta',
+                    ),
+                  )),
               Padding(
                 padding: const EdgeInsets.all(15),
                 child: Text(
                   "2. Use of your personal data".tr,
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: 22,
+                      fontFamily: 'plusjakarta',
+                      fontWeight: FontWeight.bold),
                 ),
               ),
               Padding(
                   padding: const EdgeInsets.all(15),
-                  child: Text("lorem 30 line text here")),
+                  child: Text(
+                    "lorem 30 line text here",
+                    style: TextStyle(
+                      fontFamily: 'plusjakarta',
+                    ),
+                  )),
               Padding(
                 padding: const EdgeInsets.all(15),
                 child: Text(
                   "2. Disclose of Your Data".tr,
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: 22,
+                      fontFamily: 'plusjakarta',
+                      fontWeight: FontWeight.bold),
                 ),
               ),
               Padding(
                   padding: const EdgeInsets.all(15),
-                  child: Text("lorem 30 line text here"))
+                  child: Text(
+                    "lorem 30 line text here",
+                    style: TextStyle(
+                      fontFamily: 'plusjakarta',
+                    ),
+                  ))
             ],
           ),
         ),

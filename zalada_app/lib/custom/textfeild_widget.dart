@@ -9,14 +9,16 @@ class textfeild_widget extends StatelessWidget {
   final FormFieldValidator<String>? validator;
   final Widget? suffixIcon;
   final bool? obscureText;
-  const textfeild_widget(
-      {super.key,
-      required this.label,
-      required this.hintText,
-      required this.controller,
-      this.validator,
-      this.suffixIcon,
-      this.obscureText});
+
+  const textfeild_widget({
+    super.key,
+    required this.label,
+    required this.hintText,
+    required this.controller,
+    this.validator,
+    this.suffixIcon,
+    this.obscureText,
+  });
 
   @override
   Widget build(BuildContext context) {

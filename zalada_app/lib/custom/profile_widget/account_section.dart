@@ -11,7 +11,8 @@ class account_section extends StatelessWidget {
     required this.title,
     required this.showSwitchbtn,
     required this.backgroundcolor,
-    this.ontap, this.svgicon,
+    this.ontap,
+    this.svgicon,
   });
 
   bool _isSwitched = false;
@@ -25,12 +26,11 @@ class account_section extends StatelessWidget {
         child: ListTile(
           leading: CircleAvatar(
               backgroundColor: Theme.of(context).highlightColor,
-              child:
-              svgicon
-              ),
+              child: svgicon),
           title: Text(
             title,
             style: TextStyle(
+                fontFamily: 'plusjakarta',
                 fontSize: 18,
                 color: backgroundcolor,
                 // color: Theme.of(context).hintColor,

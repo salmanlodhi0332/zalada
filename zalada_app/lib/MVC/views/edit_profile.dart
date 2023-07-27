@@ -21,6 +21,7 @@ class _edit_profileState extends State<edit_profile> {
   final fullnameController = TextEditingController();
   final dateController = TextEditingController();
   final _phoneController = TextEditingController();
+  String selectedGender = "Male"; // Initial value
 
   @override
   Widget build(BuildContext context) {
@@ -122,8 +123,13 @@ class _edit_profileState extends State<edit_profile> {
               ).px(25).py(10),
               Dropdown_Widget(
                 hint: "Select Gender",
-                value: "Male",
-                onChanged: (newValue) {},
+                value: selectedGender,
+                onChanged: (newValue) {
+                  setState(() {
+                    selectedGender =
+                        newValue ?? ""; // Update the selected value
+                  });
+                },
               ),
               SizedBox(
                 height: 20,

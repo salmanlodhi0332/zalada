@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
             themeMode: ThemeMode.light,
             theme: AppTheme.lightTheme,
             debugShowCheckedModeBanner: false,
-            home: Profile_Screen(),
+            home: splash_screen(),
           );
         });
   }

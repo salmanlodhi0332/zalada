@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 
 class Dropdown_Widget extends StatelessWidget {
-  // final String label;
+  
   final String hint;
-  final String value;
-  // final Function() ontap;
+   String value;
+ 
   final Function(String?) onChanged;
 
-  const Dropdown_Widget({
-    // required this.label,
-    required this.hint,
-    required this.value,
-    required this.onChanged
-    // required this.ontap,
-  });
+   Dropdown_Widget(
+      {
+      // required this.label,
+      required this.hint,
+      required this.value,
+      required this.onChanged
+      // required this.ontap,
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,10 @@ class Dropdown_Widget extends StatelessWidget {
             ),
             hint: Text(hint),
             value: value,
-            onChanged: onChanged,
+            onChanged: (newValue) {
+              // Update the value when an item is selected
+              onChanged(newValue);
+            },
             items: [
               DropdownMenuItem<String>(
                 value: "Male",

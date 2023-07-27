@@ -22,8 +22,12 @@ class Page_Navigation {
   Page_PushAndReplaceNavigation(BuildContext context, Widget childwidget) {
     Navigator.pushAndRemoveUntil(
       context,
-      MaterialPageRoute(
-        builder: (context) => childwidget,
+      PageTransition(
+        type: PageTransitionType.rightToLeft,
+        child: childwidget,
+        isIos: true,
+        duration: Duration(milliseconds: 500),
+        reverseDuration: Duration(milliseconds: 400),
       ),
       (route) => false,
     );

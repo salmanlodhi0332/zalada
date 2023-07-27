@@ -23,19 +23,20 @@ class login_screen extends StatefulWidget {
 class _login_screenState extends State<login_screen> {
   @override
   final hidepassword = true.obs;
-final loginForm = GlobalKey();
+  final _formKey = GlobalKey<FormState>();
   final email = TextEditingController();
   final password = TextEditingController();
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
+      
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       body: SafeArea(
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           scrollDirection: Axis.vertical,
           child: Form(
-            key: loginForm,
+            key: _formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -56,6 +57,8 @@ final loginForm = GlobalKey();
                   controller: email,
                   hintText: 'email_address'.tr,
                   label: 'email_address'.tr,
+                  validator: (input) =>
+                      input!.length == 0 ? "validation_email".tr : null,
                 ),
                 SizedBox(
                   height: 20,
@@ -65,6 +68,8 @@ final loginForm = GlobalKey();
                     controller: email,
                     hintText: 'password'.tr,
                     label: 'password'.tr,
+                     validator: (input) =>
+                      input!.length == 0 ? "validation_password".tr : null,
                     obscureText: hidepassword.value,
                     suffixIcon: IconButton(
                       onPressed: () {
@@ -103,8 +108,14 @@ final loginForm = GlobalKey();
                   width: size.width,
                   title: 'login'.tr,
                   tap: () {
-                    Page_Navigation.getInstance
-                        .Page_PushAndReplaceNavigation(context, Bottom_Bar());
+                    if (_formKey.currentState!.validate()) {
+                      Page_Navigation.getInstance
+                          .Page_PushAndReplaceNavigation(context, Bottom_Bar());
+                    } else {
+                      Get.snackbar('form_validation'.tr, 'please_Fill_the_form'.tr,
+                          backgroundColor: Theme.of(context).cardColor,
+                          colorText: Theme.of(context).hintColor);
+                    }
                   },
                 ),
                 SizedBox(
@@ -169,7 +180,8 @@ final loginForm = GlobalKey();
                     ),
                     InkWell(
                       onTap: () {
-                        Page_Navigation().Screen(context, registeration_screen());
+                        Page_Navigation()
+                            .Screen(context, registeration_screen());
                       },
                       child: Text(
                         'Register'.tr,

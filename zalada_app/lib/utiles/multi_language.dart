@@ -6,7 +6,7 @@ class Multi_Language extends Translations {
         //------------------------en_US
         'en_US': {
           'zalada': 'Zalada',
-          
+
           "login_account": "Login to your\naccount.",
           "email_address": "Email address",
           "password": "Password",
@@ -114,11 +114,13 @@ class Multi_Language extends Translations {
           "English(US)": "English (US)",
           "thailand": "Thailand",
           "chinese": "Chinese",
-          // "": "",
-          // "": "",
-          // "": "",
-          // "": "",
-          // "": "",
+          "validation_email": "enter your email",
+          "validation_Phone":"enter your Phone number",
+          "validation_password": "enter your Password",
+          "validation_password_length": "Password should have atleast 8 digits",
+          "please_Fill_the_form": "please Fill the form",
+          "password_doesn't_match": "password doesn't match",
+          "form_validation": "form validation",
           // "": "",
           // "": "",
           // "": "",

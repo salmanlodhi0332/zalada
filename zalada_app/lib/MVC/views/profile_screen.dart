@@ -291,10 +291,10 @@ class _Profile_ScreenState extends State<Profile_Screen> {
               showSwitchbtn: false,
               prefixIcon: Icons.language,
               ontap: () {
-                 Get.bottomSheet(
-                    language_bottom_sheet(),
-                    isScrollControlled: true,
-                  );
+                Get.bottomSheet(
+                  language_bottom_sheet(),
+                  isScrollControlled: true,
+                );
               },
             ),
             custom_divider(context),

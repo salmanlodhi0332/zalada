@@ -28,16 +28,17 @@ class textfeild_widget extends StatelessWidget {
           children: [
             Text(
               label,
-              style:
-                  TextStyle(
-                    
-                fontFamily: 'plusjakarta',
-                    color: Theme.of(context).hintColor, fontSize: 15),
+              style: TextStyle(
+                  fontFamily: 'plusjakarta',
+                  color: Theme.of(context).hintColor,
+                  fontSize: 15),
             ).p(10),
           ],
         ),
         Container(
-          height: MediaQuery.of(context).orientation  == Orientation.portrait ? size.height / 13 : size.height / 7,
+          height: MediaQuery.of(context).orientation == Orientation.portrait
+              ? size.height / 13
+              : size.height / 7,
           width: size.width,
           decoration: BoxDecoration(
               border: Border.all(
@@ -45,21 +46,19 @@ class textfeild_widget extends StatelessWidget {
                   width: 1.0),
               borderRadius: BorderRadius.circular(15)),
           child: TextFormField(
-                  validator: validator,
-                  obscureText: obscureText ?? false,
-                  decoration: InputDecoration(
-                      suffixIcon: suffixIcon,
-                      hintText: hintText,
-                      hintStyle: TextStyle(
-                        
-                fontFamily: 'plusjakarta',
-                          color: Theme.of(context).hintColor.withOpacity(0.3),
-                          fontSize: 15),
-                      enabledBorder:
-                          OutlineInputBorder(borderSide: BorderSide.none),
-                      focusedBorder:
-                          OutlineInputBorder(borderSide: BorderSide.none)))
-              .px(10),
+              validator: validator,
+              obscureText: obscureText ?? false,
+              decoration: InputDecoration(
+                errorBorder: InputBorder.none,
+                suffixIcon: suffixIcon,
+                hintText: hintText,
+                hintStyle: TextStyle(
+                    fontFamily: 'plusjakarta',
+                    color: Theme.of(context).hintColor.withOpacity(0.3),
+                    fontSize: 15),
+                enabledBorder: InputBorder.none,
+                focusedBorder: InputBorder.none,
+              )).pOnly(top: 20,right: 10,left: 10),
         ),
       ],
     ).px(20);

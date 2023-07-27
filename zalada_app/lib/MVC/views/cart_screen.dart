@@ -23,11 +23,11 @@ class CartScreen extends StatelessWidget {
           style: TextStyle(color: Theme.of(context).hintColor),
         ),
         centerTitle: true,
-        leading: back_button(
-          ontap: () {
-            Get.back();
-          },
-        ),
+        // leading: back_button(
+        //   ontap: () {
+        //     Get.back();
+        //   },
+        // ),
         actions: [
           edit_button(
             ontap: () {},

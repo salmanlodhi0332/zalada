@@ -60,6 +60,8 @@ dependencies:
   device_info_plus: ^9.0.2
   textfield_search: ^0.10.0
   dropdown_textfield: ^1.0.8
+  video_player: ^2.7.0
+  chewie: ^1.7.0
 
 dev_dependencies:
   flutter_test:

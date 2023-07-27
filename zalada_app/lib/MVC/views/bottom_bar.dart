@@ -1,7 +1,10 @@
 import 'dart:ui';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import '../controller/product_controller.dart';
 import 'confirm_order.dart';
 import 'profile_screen.dart';
 import 'search_product_screen.dart';
@@ -141,6 +144,7 @@ class _Bottom_BarState extends State<Bottom_Bar> {
     );
   }
 
+  final cartController = Get.put(cart_Controller());
   Widget _buildPage(int index) {
     // You can return different widgets/screens based on the index
     switch (index) {

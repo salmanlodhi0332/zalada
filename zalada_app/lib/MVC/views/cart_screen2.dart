@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:zalada_app/MVC/controller/product_controller.dart';
 import 'package:zalada_app/custom/back_button.dart';
 import 'package:zalada_app/custom/edit_btn.dart';
 
@@ -9,6 +10,8 @@ import '../../custom/product_card.dart';
 import 'cart_products.dart';
 
 class CartScreenWithData extends StatelessWidget {
+  final cart_Controller controller = Get.find();
+  final cartController = Get.put(cart_Controller());
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -22,7 +25,9 @@ class CartScreenWithData extends StatelessWidget {
         title: Text(
           'cart'.tr,
           style: TextStyle(
-              color: Theme.of(context).hintColor, fontFamily: 'plusjakarta'),
+              color: Theme.of(context).hintColor,
+              fontFamily: 'plusjakarta',
+              fontWeight: FontWeight.w700),
         ),
         centerTitle: true,
         leading: back_button(
@@ -40,34 +45,76 @@ class CartScreenWithData extends StatelessWidget {
         child: SingleChildScrollView(
           child: Wrap(
             children: [
-              Column(
-                children: [
-                  CartProducts(),
-                ],
+              Obx(
+                () => cartController.products.isEmpty
+                    ? Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        //  / crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            height: 50,
+                          ),
+                          Container(
+                            child: Image.asset('assets/images/empty_cart.png'),
+                          ).pOnly(bottom: 10),
+                          Text(
+                            'cart_heading_one'.tr,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Theme.of(context).hintColor,
+                                fontSize: 25),
+                          ).pOnly(bottom: 10),
+                          Text(
+                            'cart_description'.tr,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Theme.of(context).disabledColor,
+                                fontSize: 15),
+                          ).pOnly(bottom: 10).px(40),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Button_Widget(
+                              width: width, title: 'start_Shopping'.tr),
+                          SizedBox(
+                            height: 30,
+                          ),
+                        ],
+                      )
+                    : ListView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: controller.products.length,
+                        itemBuilder: (context, index) {
+                          return Column(
+                            children: [
+                              CartProducts(
+                                controller: controller,
+                                dummyProducts:
+                                    controller.products.keys.toList()[index],
+                                quantity:
+                                    controller.products.values.toList()[index],
+                              ),
+                              if (index < controller.products.length - 1)
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 20, right: 20),
+                                  child: Divider(
+                                    color: Theme.of(context)
+                                        .disabledColor
+                                        .withOpacity(0.4),
+                                    thickness: 1,
+                                  ).py(10),
+                                ),
+                            ],
+                          );
+                        },
+                      ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: Divider(
-                  color: Theme.of(context).disabledColor.withOpacity(0.4),
-                  thickness: 1,
-                ),
-              ),
-              Column(
-                children: [
-                  CartProducts(),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: Divider(
-                  color: Theme.of(context).disabledColor.withOpacity(0.4),
-                  thickness: 1,
-                ),
-              ),
-              Column(
-                children: [
-                  CartProducts(),
-                ],
+              const SizedBox(
+                height: 10,
               ),
               Divider(
                 color: Theme.of(context).disabledColor.withOpacity(0.4),

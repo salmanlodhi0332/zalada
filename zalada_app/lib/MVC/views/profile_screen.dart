@@ -9,6 +9,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
 import 'package:zalada_app/MVC/views/privacy_policy.dart';
 
+import '../../custom/appbar.dart';
 import '../../custom/back_button.dart';
 
 class Profile_Screen extends StatefulWidget {
@@ -24,18 +25,32 @@ class _Profile_ScreenState extends State<Profile_Screen> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        centerTitle: true,
-        title: Text(
-          "Profile".tr,
-          style: TextStyle(
-            color: Theme.of(context).hintColor,
-            fontFamily: 'plusjakarta',
-          ),
-        ),
-        actions: [
+      appBar:
+          // AppBar(
+          //   backgroundColor: Colors.transparent,
+          //   elevation: 0,
+          //   centerTitle: true,
+          //   title: Text(
+          //     "Profile".tr,
+          //     style: TextStyle(
+          //       color: Theme.of(context).hintColor,
+          //       fontFamily: 'plusjakarta',
+          //     ),
+          //   ),
+          //   actions: [
+          //     back_button(
+          //       ontap: () {
+          //         Get.to(edit_profile());
+          //       },
+          //       pic: SvgPicture.asset(
+          //         "assets/svg/user-edit.svg",
+          //       ).p(10),
+          //     )
+          //   ],
+          // ),
+          MyAppBar(
+        title: "Profile".tr,
+        actionButtons: [
           back_button(
             ontap: () {
               Get.to(edit_profile());

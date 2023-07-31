@@ -1,4 +1,3 @@
-
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -157,7 +156,8 @@ class _Bottom_BarState extends State<Bottom_Bar> {
       case 1:
         return Explore_Screen();
       case 2:
-        return Wishlist_Screen();
+        //  return Wishlist_Screen();
+        return ConfirmOrder();
       case 3:
         return CartScreenWithData();
       case 4:

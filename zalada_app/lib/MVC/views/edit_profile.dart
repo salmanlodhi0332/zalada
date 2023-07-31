@@ -4,10 +4,12 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import '../../custom/appbar.dart';
 import '../../custom/back_button.dart';
 import '../../custom/botton_widget.dart';
 import '../../custom/date_picker.dart';
 import '../../custom/dropdown_widget.dart';
+import '../../custom/edit_btn.dart';
 import '../../custom/textfeild_widget.dart';
 
 class edit_profile extends StatefulWidget {
@@ -28,21 +30,29 @@ class _edit_profileState extends State<edit_profile> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          centerTitle: true,
-          title: Text(
-            "Edit_Profile".tr,
-            style: TextStyle(color: Theme.of(context).hintColor),
-          ),
-          leading: back_button(
+        appBar: MyAppBar(
+          title: "Edit_Profile".tr,
+          leadingButton: back_button(
             ontap: () {
               Get.back();
             },
-          ).p(10),
+          ),
         ),
-        backgroundColor: Theme.of(context).secondaryHeaderColor,
+        // appBar: AppBar(
+        //   backgroundColor: Colors.transparent,
+        //   elevation: 0,
+        //   centerTitle: true,
+        //   title: Text(
+        //     "Edit_Profile".tr,
+        //     style: TextStyle(color: Theme.of(context).hintColor),
+        //   ),
+        //   leading: back_button(
+        //     ontap: () {
+        //       Get.back();
+        //     },
+        //   ).p(10),
+        // ),
+        // backgroundColor: Theme.of(context).secondaryHeaderColor,
         body: SingleChildScrollView(
             physics: BouncingScrollPhysics(),
             scrollDirection: Axis.vertical,

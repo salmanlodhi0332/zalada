@@ -5,6 +5,7 @@ import 'package:zalada_app/MVC/controller/product_controller.dart';
 import 'package:zalada_app/custom/back_button.dart';
 import 'package:zalada_app/custom/edit_btn.dart';
 
+import '../../custom/appbar.dart';
 import '../../custom/botton_widget.dart';
 import '../../custom/product_card.dart';
 import 'cart_products.dart';
@@ -19,26 +20,41 @@ class CartScreenWithData extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: Text(
-          'cart'.tr,
-          style: TextStyle(
-              color: Theme.of(context).hintColor,
-              fontFamily: 'plusjakarta',
-              fontWeight: FontWeight.w700),
+      appBar:
+
+          // AppBar(
+          //   backgroundColor: Colors.transparent,
+          //   elevation: 0,
+          //   title: Text(
+          //     'cart'.tr,
+          //     style: TextStyle(
+          //         color: Theme.of(context).hintColor,
+          //         fontFamily: 'plusjakarta',
+          //         fontWeight: FontWeight.w700),
+          //   ),
+          //   centerTitle: true,
+          //   // leading: back_button(
+          //   //   ontap: () {
+          //   //     Get.back();
+          //   //   },
+          //   // ),
+          //   actions: [
+          //     edit_button(
+          //       ontap: () {},
+          //     )
+          //   ],
+          // ),
+          MyAppBar(
+        title: "cart".tr,
+        leadingButton: back_button(
+          ontap: () {
+            Get.back();
+          },
         ),
-        centerTitle: true,
-        // leading: back_button(
-        //   ontap: () {
-        //     Get.back();
-        //   },
-        // ),
-        actions: [
+        actionButtons: [
           edit_button(
             ontap: () {},
-          )
+          ),
         ],
       ),
       body: SafeArea(

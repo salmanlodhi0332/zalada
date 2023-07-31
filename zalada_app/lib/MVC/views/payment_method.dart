@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:zalada_app/custom/custom_appbar.dart';
 import 'package:zalada_app/custom/payment_methods/Add_payment_mathods.dart';
 
 import '../../custom/back_button.dart';
 import '../../custom/botton_widget.dart';
 import '../../custom/payment_card.dart';
+import '../../utiles/page_navigation.dart';
+import 'Address_Screen.dart';
 
 class payment_method extends StatelessWidget {
   payment_method({super.key});
@@ -16,23 +19,17 @@ class payment_method extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+
+    final width = MediaQuery.of(context).size.width;
     return MediaQuery(
       data: MediaQuery.of(context).copyWith(),
       child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          leading: back_button(ontap: () {
+        appBar: Custom_Appbar(
+          title: "Payment_Method".tr,
+          leadingButton: back_button(ontap: () {
             Get.back();
-          }).p(10),
-          title: Text(
-            "Payment_Method".tr,
-            style: TextStyle(
-              color: Theme.of(context).hintColor,
-              fontFamily: 'plusjakarta',
-            ),
-          ),
+          }),
         ),
         backgroundColor: Theme.of(context).secondaryHeaderColor,
         body: SingleChildScrollView(
@@ -95,15 +92,55 @@ class payment_method extends StatelessWidget {
               SizedBox(
                 height: 300,
               ),
+              // Button_Widget(
+              //     ontap: () {
+              //       Get.bottomSheet(
+              //         Add_Payment_Method(),
+              //         isScrollControlled: true,
+              //       );
+              //     },
+              //     width: MediaQuery.of(context).size.width,
+              //     title: "Add_new_Payment".tr)
+            ],
+          ),
+        ),
+        bottomNavigationBar: Container(
+          height: 80,
+          decoration: BoxDecoration(
+              color: Theme.of(context).cardColor,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.white70.withOpacity(0.1),
+                  blurRadius: 10,
+                  offset: const Offset(1.0, 1.0), // soften the shadow
+                  spreadRadius: 0.0, //extend the shadow
+                ),
+              ],
+              border: Border.all(color: Colors.black.withOpacity(0.05)),
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20), topRight: Radius.circular(20))),
+          child: Row(
+            children: [
               Button_Widget(
-                  tap: () {
-                    Get.bottomSheet(
-                      Add_Payment_Method(),
-                      isScrollControlled: true,
-                    );
-                  },
-                  width: MediaQuery.of(context).size.width,
-                  title: "Add_new_Payment".tr)
+                      ontap: () {
+                        Page_Navigation.getInstance
+                            .Page(context, Address_Screen());
+                      },
+                      width: width / 1.5,
+                      title: "continue".tr)
+                  .py(11),
+              back_button(
+                ontap: () {
+                  Get.bottomSheet(
+                    Add_Payment_Method(),
+                    isScrollControlled: true,
+                  );
+                },
+                pic: Icon(
+                  Icons.add,
+                  color: Theme.of(context).hoverColor,
+                ).p(15),
+              ),
             ],
           ),
         ),

@@ -2,17 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/MVC/controller/product_controller.dart';
-import 'package:zalada_app/MVC/model/product_model.dart';
-import 'package:zalada_app/MVC/views/select_address.dart';
+import 'package:zalada_app/MVC/views/Address_Screen.dart';
+import 'package:zalada_app/MVC/views/cart_screen2.dart';
 import 'package:zalada_app/custom/back_button.dart';
 import 'package:readmore/readmore.dart';
 import 'package:zalada_app/custom/botton_widget.dart';
-import 'package:zalada_app/custom/image_widget.dart';
+import 'package:zalada_app/custom/custom_appbar.dart';
 import 'package:zalada_app/custom/product_card.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
-import '../../custom/select_address_card.dart';
-import 'confirm_order.dart';
 
 class Product_Detail_Screen extends StatelessWidget {
   final int id;
@@ -29,13 +27,11 @@ class Product_Detail_Screen extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Theme.of(context).secondaryHeaderColor,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        leading: back_button(ontap: () {
+      appBar: Custom_Appbar(
+        leadingButton: back_button(ontap: () {
           Get.back();
         }),
-        actions: [
+        actionButtons: [
           back_button(
             ontap: () {},
             pic: Image.asset(
@@ -106,68 +102,68 @@ class Product_Detail_Screen extends StatelessWidget {
                         ))
                   ],
                 ).px(ph),
-                Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    'space_grey'.tr,
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontFamily: 'plusjakarta',
-                        fontWeight: FontWeight.w600,
-                        color: Theme.of(context).disabledColor),
-                  ),
-                ).px(ph),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(5.0),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                            color: Theme.of(context).disabledColor, width: 2.0),
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Theme.of(context).disabledColor,
-                            shape: BoxShape.circle),
-                        height: 40,
-                        width: 40,
-                      ),
-                    ).pOnly(right: 10),
-                    Container(
-                      padding: const EdgeInsets.all(5.0),
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        // border: Border.all(
-                        //     color: Theme.of(context).disabledColor, width: 2.0),
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Theme.of(context).hoverColor,
-                            shape: BoxShape.circle),
-                        height: 40,
-                        width: 40,
-                      ),
-                    ).pOnly(right: 10),
-                    Container(
-                      padding: const EdgeInsets.all(5.0),
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        // border: Border.all(
-                        //     color: Theme.of(context).disabledColor, width: 2.0),
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Theme.of(context).focusColor,
-                            shape: BoxShape.circle),
-                        height: 40,
-                        width: 40,
-                      ),
-                    ).pOnly(right: 10),
-                  ],
-                ).px(ph),
+                // Align(
+                //   alignment: Alignment.center,
+                //   child: Text(
+                //     'space_grey'.tr,
+                //     style: TextStyle(
+                //         fontSize: 14,
+                //         fontFamily: 'plusjakarta',
+                //         fontWeight: FontWeight.w600,
+                //         color: Theme.of(context).disabledColor),
+                //   ),
+                // ).px(ph),
+                // Row(
+                //   crossAxisAlignment: CrossAxisAlignment.center,
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   children: [
+                //     Container(
+                //       padding: const EdgeInsets.all(5.0),
+                //       decoration: BoxDecoration(
+                //         shape: BoxShape.circle,
+                //         border: Border.all(
+                //             color: Theme.of(context).disabledColor, width: 2.0),
+                //       ),
+                //       child: Container(
+                //         decoration: BoxDecoration(
+                //             color: Theme.of(context).disabledColor,
+                //             shape: BoxShape.circle),
+                //         height: 40,
+                //         width: 40,
+                //       ),
+                //     ).pOnly(right: 10),
+                //     Container(
+                //       padding: const EdgeInsets.all(5.0),
+                //       decoration: const BoxDecoration(
+                //         shape: BoxShape.circle,
+                //         // border: Border.all(
+                //         //     color: Theme.of(context).disabledColor, width: 2.0),
+                //       ),
+                //       child: Container(
+                //         decoration: BoxDecoration(
+                //             color: Theme.of(context).hoverColor,
+                //             shape: BoxShape.circle),
+                //         height: 40,
+                //         width: 40,
+                //       ),
+                //     ).pOnly(right: 10),
+                //     Container(
+                //       padding: const EdgeInsets.all(5.0),
+                //       decoration: const BoxDecoration(
+                //         shape: BoxShape.circle,
+                //         // border: Border.all(
+                //         //     color: Theme.of(context).disabledColor, width: 2.0),
+                //       ),
+                //       child: Container(
+                //         decoration: BoxDecoration(
+                //             color: Theme.of(context).focusColor,
+                //             shape: BoxShape.circle),
+                //         height: 40,
+                //         width: 40,
+                //       ),
+                //     ).pOnly(right: 10),
+                //   ],
+                // ).px(ph),
                 Text(
                   'Memory',
                   style: TextStyle(
@@ -322,25 +318,19 @@ class Product_Detail_Screen extends StatelessWidget {
         child: Row(
           children: [
             back_button(
-              // ontap: () {
-              //   cartController.addProduct(Product_Model.dummyProducts[id]);
-              // },
               ontap: () {
                 cartController.addProduct(controller.Productslist.firstWhere(
                     (product) => product.id == id));
               },
-
               pic: Image.asset(
                 'assets/images/cart.png',
                 color: Theme.of(context).hintColor,
               ).p(15),
             ),
             Button_Widget(
-                    tap: () {
+                    ontap: () {
                       Page_Navigation.getInstance
-                          .Page(context, select_address());
-                      // Page_Navigation.getInstance
-                      //     .Page_ReplaceNavigation(context, ConfirmOrder());
+                          .Page(context, Address_Screen());
                     },
                     width: width / 1.5,
                     title: 'Checkout')

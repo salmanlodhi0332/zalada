@@ -37,7 +37,7 @@ class search_grid extends StatelessWidget {
                           ));
                     }
                   },
-                  hotdeal: '',
+                  hotdeal: 'false',
                   imageurl: item.images[0],
                   product_name: item.name,
                   price: '\$' + item.price,

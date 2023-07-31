@@ -43,7 +43,7 @@ class Home_Screen extends StatelessWidget {
                   automaticallyImplyLeading: false,
                   actions: [
                     Container(
-                      margin: EdgeInsets.all(7),
+                      margin: const EdgeInsets.all(7),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
                           color: Theme.of(context)
@@ -52,7 +52,7 @@ class Home_Screen extends StatelessWidget {
                       child: Image.asset('assets/images/cart.png'),
                     ),
                     Container(
-                      margin: EdgeInsets.all(7),
+                      margin: const EdgeInsets.all(7),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
                           color: Theme.of(context)
@@ -66,7 +66,7 @@ class Home_Screen extends StatelessWidget {
                             .Page(context, Notification_Screen());
                       },
                       child: Container(
-                        margin: EdgeInsets.all(7),
+                        margin: const EdgeInsets.all(7),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(50),
                             color: Theme.of(context)
@@ -84,8 +84,9 @@ class Home_Screen extends StatelessWidget {
                       collapseMode: CollapseMode.parallax,
                       background: Container(
                         width: double.infinity,
-                        padding: EdgeInsets.only(top: 120, right: 20, left: 20),
-                        decoration: BoxDecoration(
+                        padding: const EdgeInsets.only(
+                            top: 120, right: 20, left: 20),
+                        decoration: const BoxDecoration(
                             image: DecorationImage(
                                 image: AssetImage(
                                   'assets/images/Bg.png',
@@ -121,17 +122,18 @@ class Home_Screen extends StatelessWidget {
                         child: Container(
                           height: 55,
                           width: size.width,
-                          margin: EdgeInsets.only(left: 15, right: 15),
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                          margin: const EdgeInsets.only(left: 15, right: 15),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 6),
                           decoration: BoxDecoration(
                               boxShadow: [
                                 BoxShadow(
-                                  color: Color.fromARGB(237, 101, 101, 101)
-                                      .withOpacity(0.20),
+                                  color:
+                                      const Color.fromARGB(237, 101, 101, 101)
+                                          .withOpacity(0.20),
                                   blurRadius: 6.0, // soften the shadow
                                   spreadRadius: 0.0, //extend the shadow
-                                  offset: Offset(
+                                  offset: const Offset(
                                     1.0, // Move to right 10  horizontally
                                     1.0, // Move to bottom 10 Vertically
                                   ),
@@ -170,27 +172,17 @@ class Home_Screen extends StatelessWidget {
                     children: [
                       Text(
                         'hot_deal'.tr,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontFamily: 'plusjakarta',
                             fontSize: 18,
                             fontWeight: FontWeight.w700),
                       ).py(15),
-                      Row(
+                      const Row(
                         children: [
                           Product_Card(
-                            // ontap: () {
-                            //   {
-                            //     Page_Navigation().Page(
-                            //         context,
-                            //         Product_Detail_Screen(
-                            //           id: item.id,
-                            //         ));
-                            //   }
-                            // },
                             hotdeal: 'true',
                             imageurl:
                                 'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
-
                             product_name: "Sample Product 5",
                             price: '\$' + "502.99",
                             status: "NEW ARRIVAL",
@@ -198,11 +190,11 @@ class Home_Screen extends StatelessWidget {
                         ],
                       ).py(20),
                       SingleChildScrollView(
-                        physics: BouncingScrollPhysics(),
+                        physics: const BouncingScrollPhysics(),
                         scrollDirection: Axis.horizontal,
                         child: Row(
                           children: [
-                            all_custom_btn(),
+                            const all_custom_btn(),
                             categories_btn(
                               label: 'laptop',
                               selected: false,
@@ -260,14 +252,14 @@ class Home_Screen extends StatelessWidget {
                                           Orientation.portrait
                                       ? 2
                                       : 4,
-                              padding: EdgeInsets.symmetric(vertical: 10),
+                              padding: const EdgeInsets.symmetric(vertical: 10),
                               itemCount: controller.Productslist.length,
                               itemBuilder: (BuildContext context, int index) {
                                 final item = controller.Productslist[index];
                                 return Product_Card(
                                   ontap: () {
                                     {
-                                      Page_Navigation().Page(
+                                      Page_Navigation.getInstance.Page(
                                           context,
                                           Product_Detail_Screen(
                                             id: item.id,
@@ -284,7 +276,7 @@ class Home_Screen extends StatelessWidget {
                               mainAxisSpacing: 50.0,
                               crossAxisSpacing: 15.0,
                             )
-                          : Center(
+                          : const Center(
                               child: Text('no Product'),
                             )),
                     ],

@@ -82,7 +82,7 @@ class SearchScreen extends StatelessWidget {
                     ),
                   ],
                 ).px(20),
-              ).py(20),
+              ).pOnly(top: 20),
               search_grid(),
             ],
           ),

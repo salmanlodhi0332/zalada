@@ -1,120 +1,135 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:velocity_x/velocity_x.dart';
-import 'package:zalada_app/MVC/views/address.dart';
-import 'package:zalada_app/custom/back_button.dart';
-import '../../custom/botton_widget.dart';
-import '../../custom/select_address_card.dart';
+import 'package:zalada_app/custom/botton_widget.dart';
+import 'package:zalada_app/custom/custom_appbar.dart';
 
-class select_address extends StatelessWidget {
-  select_address({super.key});
+import '../../custom/back_button.dart';
+import '../../custom/textfeild_widget.dart';
 
-  RxBool select_home = false.obs;
-
-  RxBool select_office = false.obs;
-
-  RxBool select_apartment = false.obs;
+class Select_Address extends StatefulWidget {
+  const Select_Address({super.key});
 
   @override
+  State<Select_Address> createState() => _Select_AddressState();
+}
+
+class _Select_AddressState extends State<Select_Address> {
+  final addressController = TextEditingController();
+  @override
   Widget build(BuildContext context) {
+    final _phoneController = TextEditingController();
+
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        leading: back_button(ontap: () {
-          Get.back();
-        }).p(10),
-        title: Text(
-          "Address".tr,
-          style: TextStyle(
-            color: Theme.of(context).hintColor,
-            fontFamily: 'plusjakarta',
-          ),
+        appBar: Custom_Appbar(
+          title: "Select_Address".tr,
+          leadingButton: back_button(ontap: () {
+            Get.back();
+          }),
+          actionButtons: [
+            back_button(
+                ontap: () {},
+                pic: SvgPicture.asset(
+                  "assets/svg/brower.svg",
+                ).p(10))
+          ],
         ),
-      ),
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
-      body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        scrollDirection: Axis.vertical,
-        child: Padding(
-          padding: const EdgeInsets.all(10),
+        backgroundColor: Theme.of(context).secondaryHeaderColor,
+        body: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          scrollDirection: Axis.vertical,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Center(
+                  child: Container(
+                      height: size.height * 0.5,
+                      width: size.width,
+                      child: Image.asset("assets/images/Map.png"))),
               SizedBox(
-                height: 20,
+                height: 25,
               ),
-              Obx(() => InkWell(
-                    onTap: () {
-                      // Use the observable variables here to trigger updates
-                      select_home.value = !select_home.value;
-                      select_apartment.value = false;
-                      select_office.value = false;
-                    },
-                    child: select_address_card(
-                      hintText: "JI.Pangkui,Ngaglik,Salme",
-                      label: 'Home',
-                      image: Image.asset("assets/images/house.png"),
-                      preffixIcon: Icon(Icons.credit_card),
-                      // Use the observable variables here to determine the selected state
-                      selected: select_home.value,
-                      NumberText: "+3322469178",
-                    ),
-                  )),
+              Padding(
+                padding: const EdgeInsets.only(right: 30),
+                child: Text(
+                  "Select_Your_location_from_the_map".tr,
+                  textAlign: TextAlign.right,
+                  style: TextStyle(
+                      fontFamily: 'plusjakarta',
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                      color: Theme.of(context).hintColor),
+                ),
+              ),
               SizedBox(
-                height: 20,
+                height: 15,
               ),
-              Obx(() => InkWell(
-                    onTap: () {
-                      select_home.value = false;
-                      select_apartment.value = false;
-                      select_office.value = !select_office.value;
-                    },
-                    child: select_address_card(
-                      hintText: "JI.Pangkui,Ngaglik,Salme",
-                      label: 'Office',
-                      NumberText: "+3322469178",
-                      // preffixIcon: Icon(Icons.credit_card),S
-                      // Use the observable variables here to determine the selected state
-                      selected: select_office.value,
-                      image: Image.asset("assets/images/office.png"),
-                    ),
-                  )),
+              Padding(
+                padding: const EdgeInsets.only(left: 30),
+                child: Text(
+                  "Move_the_pin_on_the_map_to_find_your_location_and_select_the_delievery_address"
+                      .tr,
+                  style: TextStyle(
+                    color: Theme.of(context).disabledColor,
+                    fontFamily: 'plusjakarta',
+                  ),
+                ),
+              ),
               SizedBox(
-                height: 20,
+                height: 15,
               ),
-              Obx(() => InkWell(
-                    onTap: () {
-                      select_home.value = false;
-                      select_apartment.value = !select_apartment.value;
-                      select_office.value = false;
-                    },
-                    child: select_address_card(
-                      hintText: "JI.Pangkui,Ngaglik,Salme",
-                      label: 'Apartment',
-                      preffixIcon: Icon(Icons.credit_card),
-                      // Use the observable variables here to determine the selected state
-                      selected: select_apartment.value,
-                      image: Image.asset("assets/images/apartment.png"),
-                      NumberText: "+3322469178",
-                    ),
-                  )),
+              textfeild_widget(
+                label: "Address_name".tr,
+                hintText: "Apartment",
+                controller: addressController,
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              textfeild_widget(
+                label: "Address_detail".tr,
+                hintText: "Street No B-120",
+                controller: addressController,
+                suffixIcon: IconButton(
+                  icon: Icon(Icons.location_on),
+                  onPressed: () {
+                    // Do something when the pin icon is pressed
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: Text(
+                  "Phone_number".tr,
+                  style: TextStyle(
+                      fontFamily: 'plusjakarta',
+                      color: Theme.of(context).hintColor,
+                      fontSize: 15),
+                ),
+              ).px(25).py(10),
+              IntlPhoneField(
+                decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Theme.of(context)
+                                .disabledColor
+                                .withOpacity(0.3)),
+                        borderRadius: BorderRadius.circular(12))),
+                controller: _phoneController,
+              ).px(20),
               SizedBox(
                 height: 30,
               ),
-              Button_Widget(
-                title: "Select_Address".tr,
-                tap: () {
-                  Get.to(address());
-                },
-                width: size.width,
-              ),
+              Button_Widget(width: size.width, title: "Add_Address".tr)
             ],
           ),
-        ),
-      ),
-    );
+        ));
   }
 }

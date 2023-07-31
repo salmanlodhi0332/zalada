@@ -4,7 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../../custom/appbar.dart';
+import '../../custom/custom_appbar.dart';
 import '../../custom/back_button.dart';
 import '../../custom/botton_widget.dart';
 import '../../custom/date_picker.dart';
@@ -30,7 +30,7 @@ class _edit_profileState extends State<edit_profile> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-        appBar: MyAppBar(
+        appBar: Custom_Appbar(
           title: "Edit_Profile".tr,
           leadingButton: back_button(
             ontap: () {

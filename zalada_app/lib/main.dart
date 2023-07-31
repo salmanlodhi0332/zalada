@@ -8,7 +8,7 @@ import 'package:zalada_app/utiles/themeData.dart';
 import 'MVC/views/edit_profile.dart';
 import 'MVC/views/onboarding/onboard_one.dart';
 import 'MVC/views/profile_screen.dart';
-import 'MVC/views/select_address.dart';
+import 'MVC/views/Address_Screen.dart';
 import 'MVC/views/splash_screen.dart';
 
 void main() async {

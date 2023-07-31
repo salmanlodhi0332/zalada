@@ -95,18 +95,31 @@ class Product_Card extends StatelessWidget {
                                   fontWeight: FontWeight.w600),
                             )
                           ])),
-                          SizedBox(
+                          Container(
                             height: 30,
                             width: 30,
-                            child: FloatingActionButton(
-                              onPressed: () {},
-                              child: Icon(
-                                Icons.add,
-                                size: 15,
-                              ),
-                              backgroundColor: Theme.of(context).hoverColor,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Theme.of(context).hoverColor),
+                            child: Icon(
+                              Icons.add,
+                              size: 15,
+                              color: Colors.white,
                             ),
                           )
+                          // SizedBox(
+                          //   height: 30,
+                          //   width: 30,
+                          //   child:
+                          //    FloatingActionButton(
+                          //     onPressed: () {},
+                          //     child: Icon(
+                          //       Icons.add,
+                          //       size: 15,
+                          //     ),
+                          //     backgroundColor: Theme.of(context).hoverColor,
+                          //   ),
+                          // )
                         ],
                       )
               ],

@@ -59,14 +59,12 @@ class Add_Payment_Method extends GetView {
             Text(
               'Add_new_payment_method'.tr,
               style: TextStyle(
-                
                 fontFamily: 'plusjakarta',
                 color: Theme.of(context).hintColor,
                 fontSize: 30,
                 fontWeight: FontWeight.w500,
               ),
             ).py(10),
-            
             Obx(
               () => InkWell(
                 onTap: () {
@@ -89,31 +87,39 @@ class Add_Payment_Method extends GetView {
                   select_card.value = false;
                 },
                 child: paymentgetway_selected(
-                  preffixIcon: Image.asset('assets/icon/facebook.png',height: 30,width: 30,),
+                  preffixIcon: Image.asset(
+                    'assets/icon/facebook.png',
+                    height: 30,
+                    width: 30,
+                  ),
                   label: 'Paypal',
                   selected:
                       select_paypal.value, // Access the bool value using .value
                 ),
               ),
             ).py(10),
-             Obx(
+            Obx(
               () => InkWell(
                 onTap: () {
                   select_applepay.value = !select_applepay.value;
                   select_card.value = false;
                 },
                 child: paymentgetway_selected(
-                  preffixIcon: Image.asset('assets/icon/facebook.png',height: 30,width: 30,),
+                  preffixIcon: Image.asset(
+                    'assets/icon/facebook.png',
+                    height: 30,
+                    width: 30,
+                  ),
                   label: 'Apple Pay',
-                  selected:
-                      select_applepay.value, // Access the bool value using .value
+                  selected: select_applepay
+                      .value, // Access the bool value using .value
                 ),
               ),
             ).py(10),
             Button_Widget(
               width: width,
               title: 'continue'.tr,
-              tap: () {
+              ontap: () {
                 Page_Navigation().Screen(context, OTP_Screen());
               },
             ).pOnly(bottom: 30),

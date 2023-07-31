@@ -3,10 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:zalada_app/MVC/views/bottom_bar.dart';
+import 'package:zalada_app/utiles/page_navigation.dart';
 
 import '../custom/botton_widget.dart';
-
-
 
 class Order_successful_Bottom_Bar extends GetView {
   @override
@@ -58,8 +58,7 @@ class Order_successful_Bottom_Bar extends GetView {
                 'order_successfull'.tr,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  
-                fontFamily: 'plusjakarta',
+                    fontFamily: 'plusjakarta',
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).hintColor,
                     fontSize: 24),
@@ -71,8 +70,7 @@ class Order_successful_Bottom_Bar extends GetView {
                 'successfull_bar_description'.tr,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  
-                fontFamily: 'plusjakarta',
+                    fontFamily: 'plusjakarta',
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).disabledColor,
                     fontSize: 15),
@@ -81,15 +79,14 @@ class Order_successful_Bottom_Bar extends GetView {
             Button_Widget(
               width: width,
               title: 'view_order'.tr,
-              tap: () {
-                Get.bottomSheet(
-                  Order_successful_Bottom_Bar(),
-                  isScrollControlled: true,
-                );
+              ontap: () {
+                // Page_Navigation.getInstance.Page(context,());
               },
             ).py(10),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Page_Navigation.getInstance.Page(context, Bottom_Bar());
+              },
               child: Container(
                 width: width,
                 decoration: BoxDecoration(
@@ -98,10 +95,9 @@ class Order_successful_Bottom_Bar extends GetView {
                             Theme.of(context).disabledColor.withOpacity(0.5)),
                     borderRadius: BorderRadius.circular(30)),
                 child: Text(
-                  'Back to Home',
+                  'back_to_home'.tr,
                   style: TextStyle(
-                    
-                fontFamily: 'plusjakarta',
+                      fontFamily: 'plusjakarta',
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                       color: Theme.of(context).hintColor),

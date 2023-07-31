@@ -6,8 +6,6 @@ import 'package:velocity_x/velocity_x.dart';
 
 import '../custom/botton_widget.dart';
 
-
-
 class OTP_Bottom_Bar extends GetView {
   @override
   Widget build(BuildContext context) {
@@ -58,8 +56,7 @@ class OTP_Bottom_Bar extends GetView {
                 'congratulation'.tr,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  
-                fontFamily: 'plusjakarta',
+                    fontFamily: 'plusjakarta',
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).hintColor,
                     fontSize: 24),
@@ -69,8 +66,7 @@ class OTP_Bottom_Bar extends GetView {
               'congratulation_bar_description'.tr,
               textAlign: TextAlign.center,
               style: TextStyle(
-                
-                fontFamily: 'plusjakarta',
+                  fontFamily: 'plusjakarta',
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).disabledColor,
                   fontSize: 15),
@@ -78,7 +74,7 @@ class OTP_Bottom_Bar extends GetView {
             Button_Widget(
               width: width,
               title: 'continue'.tr,
-              tap: () {
+              ontap: () {
                 Get.bottomSheet(
                   OTP_Bottom_Bar(),
                   isScrollControlled: true,

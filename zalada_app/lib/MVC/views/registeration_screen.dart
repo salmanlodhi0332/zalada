@@ -114,7 +114,7 @@ class _registeration_screenState extends State<registeration_screen> {
               Button_Widget(
                 width: size.width,
                 title: 'Register'.tr,
-                tap: () {
+                ontap: () {
                   Page_Navigation.getInstance.Page(context, Bottom_Bar());
                 },
               ),

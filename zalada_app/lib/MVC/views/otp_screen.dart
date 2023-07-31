@@ -131,7 +131,7 @@ class _OTP_ScreenState extends State<OTP_Screen> {
           Button_Widget(
             width: width,
             title: 'continue'.tr,
-            tap: () {
+            ontap: () {
               Get.bottomSheet(
                 Order_successful_Bottom_Bar(),
                 isScrollControlled: true,

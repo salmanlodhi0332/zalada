@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
-import 'package:zalada_app/custom/appbar.dart';
+import 'package:zalada_app/auth/order_successful_bottom_bar.dart';
+import 'package:zalada_app/custom/custom_appbar.dart';
 import '../../custom/back_button.dart';
 import '../../custom/botton_widget.dart';
 import 'cart_products.dart';
@@ -22,51 +23,13 @@ class _ConfirmOrderState extends State<ConfirmOrder> {
     final width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      appBar:
-          // AppBar(
-          //   backgroundColor: Colors.transparent,
-          //   elevation: 0,
-          //   title: Text(
-          //     'order'.tr,
-          //     style: TextStyle(
-          //         color: Theme.of(context).hintColor,
-          //         fontFamily: 'plusjakarta',
-          //         fontWeight: FontWeight.w700),
-          //   ),
-          //   centerTitle: true,
-          //   leading: back_button(
-          //     ontap: () {
-          //       Get.back();
-          //     },
-          //   ),
-          // ),
-          MyAppBar(
+      appBar: Custom_Appbar(
         title: "Order",
         leadingButton: back_button(
           ontap: () {
             Get.back();
           },
         ),
-        // actionButtons: [
-        //   IconButton(
-        //     icon: Icon(Icons.add),
-        //     onPressed: () {
-        //       // Add your action button logic here
-        //     },
-        //   ),
-        //   IconButton(
-        //     icon: Icon(Icons.search),
-        //     onPressed: () {
-        //       // Add your action button logic here
-        //     },
-        //   ),
-        //   IconButton(
-        //     icon: Icon(Icons.more_vert),
-        //     onPressed: () {
-        //       // Add your action button logic here
-        //     },
-        //   ),
-        // ],
       ),
       body: SingleChildScrollView(
         child: Wrap(
@@ -405,7 +368,15 @@ class _ConfirmOrderState extends State<ConfirmOrder> {
                     ],
                   ),
                 ),
-                Button_Widget(width: width, title: 'Pay \$1248'),
+                Button_Widget(
+                    ontap: () {
+                      Get.bottomSheet(
+                        Order_successful_Bottom_Bar(),
+                        isScrollControlled: true,
+                      );
+                    },
+                    width: width,
+                    title: 'Pay \$1248'),
                 SizedBox(
                   height: 20,
                 )

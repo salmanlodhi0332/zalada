@@ -6,18 +6,18 @@ class Button_Widget extends StatelessWidget {
       {super.key,
       required this.width,
       required this.title,
-      this.tap,
+      this.ontap,
       this.icon});
 
   final double width;
-  final Function()? tap;
+  final Function()? ontap;
   final Widget? icon;
   final String title;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: tap,
+      onTap: ontap,
       child: Container(
         height: 60,
         width: width,

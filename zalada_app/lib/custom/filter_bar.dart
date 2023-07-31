@@ -62,8 +62,7 @@ class Filter_Bottom_Bar extends GetView {
                 Text(
                   'filter'.tr,
                   style: TextStyle(
-                    
-                fontFamily: 'plusjakarta',
+                      fontFamily: 'plusjakarta',
                       color: Theme.of(context).hintColor,
                       fontSize: 18,
                       fontWeight: FontWeight.w600),
@@ -71,8 +70,7 @@ class Filter_Bottom_Bar extends GetView {
                 Text(
                   'reset'.tr,
                   style: TextStyle(
-                    
-                fontFamily: 'plusjakarta',
+                      fontFamily: 'plusjakarta',
                       color: Theme.of(context).focusColor,
                       fontWeight: FontWeight.w600,
                       fontSize: 14),
@@ -117,8 +115,7 @@ class Filter_Bottom_Bar extends GetView {
                   'sort_by'.tr,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    
-                fontFamily: 'plusjakarta',
+                      fontFamily: 'plusjakarta',
                       fontWeight: FontWeight.bold,
                       color: Theme.of(context).hintColor,
                       fontSize: 18),
@@ -145,8 +142,7 @@ class Filter_Bottom_Bar extends GetView {
                               child: Text(
                                 "new_arrived".tr,
                                 style: TextStyle(
-                                  
-                fontFamily: 'plusjakarta',
+                                    fontFamily: 'plusjakarta',
                                     color: selected1.value
                                         ? Theme.of(context).secondaryHeaderColor
                                         : Theme.of(context).hintColor,
@@ -173,8 +169,7 @@ class Filter_Bottom_Bar extends GetView {
                               child: Text(
                                 "higher_price".tr,
                                 style: TextStyle(
-                                  
-                fontFamily: 'plusjakarta',
+                                    fontFamily: 'plusjakarta',
                                     color: selected2.value
                                         ? Theme.of(context).secondaryHeaderColor
                                         : Theme.of(context).hintColor,
@@ -206,8 +201,7 @@ class Filter_Bottom_Bar extends GetView {
                               child: Text(
                                 "lower_price".tr,
                                 style: TextStyle(
-                                  
-                fontFamily: 'plusjakarta',
+                                    fontFamily: 'plusjakarta',
                                     color: selected3.value
                                         ? Theme.of(context).secondaryHeaderColor
                                         : Theme.of(context).hintColor,
@@ -234,8 +228,7 @@ class Filter_Bottom_Bar extends GetView {
                               child: Text(
                                 "discount".tr,
                                 style: TextStyle(
-                                  
-                fontFamily: 'plusjakarta',
+                                    fontFamily: 'plusjakarta',
                                     color: selected4.value
                                         ? Theme.of(context).secondaryHeaderColor
                                         : Theme.of(context).hintColor,
@@ -250,7 +243,7 @@ class Filter_Bottom_Bar extends GetView {
             Button_Widget(
               width: width,
               title: 'apply_filter'.tr,
-              tap: () {
+              ontap: () {
                 // Get.bottomSheet(
                 //   Filter_Bottom_Bar(),
                 //   isScrollControlled: true,

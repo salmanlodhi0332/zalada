@@ -20,11 +20,12 @@ class search_bar_textfeild extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
+      margin: EdgeInsets.only(right: 5),
       height: MediaQuery.of(context).orientation == Orientation.portrait
           ? size.height / 18
           : size.height / 7,
       width: MediaQuery.of(context).orientation == Orientation.portrait
-          ?size.width / 1.3
+          ? size.width / 1.3
           : size.width / 1.1,
       decoration: BoxDecoration(
           color: Theme.of(context).cardColor,

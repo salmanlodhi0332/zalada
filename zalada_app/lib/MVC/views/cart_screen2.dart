@@ -2,15 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/MVC/controller/product_controller.dart';
+import 'package:zalada_app/MVC/views/bottom_bar.dart';
+import 'package:zalada_app/MVC/views/payment_method.dart';
+import 'package:zalada_app/MVC/views/Address_Screen.dart';
 import 'package:zalada_app/custom/back_button.dart';
 import 'package:zalada_app/custom/edit_btn.dart';
+import 'package:zalada_app/utiles/page_navigation.dart';
 
-import '../../custom/appbar.dart';
+import '../../custom/custom_appbar.dart';
 import '../../custom/botton_widget.dart';
 import '../../custom/product_card.dart';
 import 'cart_products.dart';
 
-class CartScreenWithData extends StatelessWidget {
+class Cart_Screen extends StatelessWidget {
   final cart_Controller controller = Get.find();
   final cartController = Get.put(cart_Controller());
   @override
@@ -20,37 +24,13 @@ class CartScreenWithData extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      appBar:
-
-          // AppBar(
-          //   backgroundColor: Colors.transparent,
-          //   elevation: 0,
-          //   title: Text(
-          //     'cart'.tr,
-          //     style: TextStyle(
-          //         color: Theme.of(context).hintColor,
-          //         fontFamily: 'plusjakarta',
-          //         fontWeight: FontWeight.w700),
-          //   ),
-          //   centerTitle: true,
-          //   // leading: back_button(
-          //   //   ontap: () {
-          //   //     Get.back();
-          //   //   },
-          //   // ),
-          //   actions: [
-          //     edit_button(
-          //       ontap: () {},
-          //     )
-          //   ],
-          // ),
-          MyAppBar(
+      appBar: Custom_Appbar(
         title: "cart".tr,
-        leadingButton: back_button(
-          ontap: () {
-            Get.back();
-          },
-        ),
+        // leadingButton: back_button(
+        //   ontap: () {
+        //     Get.back();
+        //   },
+        // ),
         actionButtons: [
           edit_button(
             ontap: () {},
@@ -93,7 +73,12 @@ class CartScreenWithData extends StatelessWidget {
                             height: 20,
                           ),
                           Button_Widget(
-                              width: width, title: 'start_Shopping'.tr),
+                              ontap: () {
+                                Page_Navigation.getInstance
+                                    .Page(context, Bottom_Bar());
+                              },
+                              width: width,
+                              title: 'start_Shopping'.tr),
                           SizedBox(
                             height: 30,
                           ),
@@ -149,7 +134,7 @@ class CartScreenWithData extends StatelessWidget {
                   child: Row(
                     children: [
                       const Product_Card(
-                          hotdeal: '',
+                        hotdeal: 'false',
                         imageurl:
                             'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
                         product_name: 'Macbook Pro 15" 2019 -Intel corei7',
@@ -157,7 +142,7 @@ class CartScreenWithData extends StatelessWidget {
                         status: '',
                       ).pOnly(bottom: 25, top: 40),
                       const Product_Card(
-                         hotdeal: '',
+                        hotdeal: 'false',
                         imageurl:
                             'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
                         product_name: 'Macbook Pro 15" 2019 -Intel corei7',
@@ -165,7 +150,7 @@ class CartScreenWithData extends StatelessWidget {
                         status: '',
                       ).px(10),
                       const Product_Card(
-                         hotdeal: '',
+                        hotdeal: 'false',
                         imageurl:
                             'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
                         product_name: 'Macbook Pro 15" 2019 -Intel corei7',
@@ -173,7 +158,7 @@ class CartScreenWithData extends StatelessWidget {
                         status: '',
                       ).py(25),
                       const Product_Card(
-                         hotdeal: '',
+                        hotdeal: 'false',
                         imageurl:
                             'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
                         product_name: 'Macbook Pro 15" 2019 -Intel corei7',
@@ -184,7 +169,12 @@ class CartScreenWithData extends StatelessWidget {
                   ),
                 )
               ]).px(ph).py(10),
-              Button_Widget(width: width, title: 'checkout'.tr),
+              Button_Widget(
+                  ontap: () {
+                    Page_Navigation.getInstance.Page(context, payment_method());
+                  },
+                  width: width,
+                  title: 'checkout'.tr),
             ],
           ),
         ),

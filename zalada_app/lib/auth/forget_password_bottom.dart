@@ -69,8 +69,7 @@ class Forget_password_bottom extends GetView {
                 'Forget_password_description'.tr,
                 textAlign: TextAlign.start,
                 style: TextStyle(
-                  
-                fontFamily: 'plusjakarta',
+                  fontFamily: 'plusjakarta',
                   fontWeight: FontWeight.w400,
                   color: Theme.of(context).disabledColor,
                   fontSize: 20,
@@ -108,7 +107,7 @@ class Forget_password_bottom extends GetView {
             Button_Widget(
               width: width,
               title: 'continue'.tr,
-              tap: () {
+              ontap: () {
                 Page_Navigation().Screen(context, OTP_Screen());
               },
             ).pOnly(bottom: 30),

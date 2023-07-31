@@ -99,7 +99,7 @@ class _login_screenState extends State<login_screen> {
               Button_Widget(
                 width: size.width,
                 title: 'login'.tr,
-                tap: () {
+                ontap: () {
                   Page_Navigation.getInstance.Page(context, Bottom_Bar());
                 },
               ),

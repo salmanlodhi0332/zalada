@@ -1,20 +1,15 @@
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:zalada_app/MVC/views/search_product_screen.dart';
+import 'package:zalada_app/MVC/views/search_result_screen.dart';
 import '../controller/product_controller.dart';
 import 'Explore_Screeen.dart';
+import 'Live_Stream_Screen.dart';
 import 'profile_screen.dart';
-import 'package:get/get_utils/src/extensions/internacionalization.dart';
-import 'package:zalada_app/MVC/views/profile_screen.dart';
-import 'package:zalada_app/MVC/views/wishlist_cart_screen.dart';
-// import 'package:zalada_app/views/profile_screen.dart';
-// import 'package:zalada_app/views/wishlist_cart_screen.dart';
 import 'confirm_order.dart';
-import 'search_product_screen.dart';
-import 'cart_screen.dart';
 import 'cart_screen2.dart';
 import 'home_screen.dart';
-import 'wishlist_cart_screen.dart';
 
 class Bottom_Bar extends StatefulWidget {
   @override
@@ -68,7 +63,7 @@ class _Bottom_BarState extends State<Bottom_Bar> {
                       color: Theme.of(context).disabledColor,
                     ),
             ),
-            label: 'Home',
+            label: 'home'.tr,
           ),
           BottomNavigationBarItem(
             icon: Padding(
@@ -86,7 +81,7 @@ class _Bottom_BarState extends State<Bottom_Bar> {
                       color: Theme.of(context).disabledColor,
                     ),
             ),
-            label: 'Brower',
+            label: 'explore'.tr,
           ),
           BottomNavigationBarItem(
             icon: Padding(
@@ -104,7 +99,7 @@ class _Bottom_BarState extends State<Bottom_Bar> {
                       color: Theme.of(context).disabledColor,
                     ),
             ),
-            label: 'Wishlist'.tr,
+            label: 'live'.tr,
           ),
           BottomNavigationBarItem(
             icon: Padding(
@@ -122,7 +117,7 @@ class _Bottom_BarState extends State<Bottom_Bar> {
                       color: Theme.of(context).disabledColor,
                     ),
             ),
-            label: 'Cart',
+            label: 'cart'.tr,
           ),
           BottomNavigationBarItem(
             icon: Padding(
@@ -154,12 +149,11 @@ class _Bottom_BarState extends State<Bottom_Bar> {
       case 0:
         return Home_Screen();
       case 1:
-        return Explore_Screen();
+        return SearchScreen();
       case 2:
-        //  return Wishlist_Screen();
-        return ConfirmOrder();
+        return Live_Stream_Screen();
       case 3:
-        return CartScreenWithData();
+        return Cart_Screen();
       case 4:
         return Profile_Screen();
       default:

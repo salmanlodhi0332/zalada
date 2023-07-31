@@ -3,13 +3,15 @@ import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/MVC/views/edit_profile.dart';
 import 'package:zalada_app/MVC/views/payment_method.dart';
-import 'package:zalada_app/MVC/views/select_address.dart';
+import 'package:zalada_app/MVC/views/Address_Screen.dart';
+import 'package:zalada_app/MVC/views/wishlist_cart_screen.dart';
 import 'package:zalada_app/custom/profile_widget/account_section.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:zalada_app/utiles/multi_language.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
 import 'package:zalada_app/MVC/views/privacy_policy.dart';
 
-import '../../custom/appbar.dart';
+import '../../custom/custom_appbar.dart';
 import '../../custom/back_button.dart';
 
 class Profile_Screen extends StatefulWidget {
@@ -25,30 +27,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar:
-          // AppBar(
-          //   backgroundColor: Colors.transparent,
-          //   elevation: 0,
-          //   centerTitle: true,
-          //   title: Text(
-          //     "Profile".tr,
-          //     style: TextStyle(
-          //       color: Theme.of(context).hintColor,
-          //       fontFamily: 'plusjakarta',
-          //     ),
-          //   ),
-          //   actions: [
-          //     back_button(
-          //       ontap: () {
-          //         Get.to(edit_profile());
-          //       },
-          //       pic: SvgPicture.asset(
-          //         "assets/svg/user-edit.svg",
-          //       ).p(10),
-          //     )
-          //   ],
-          // ),
-          MyAppBar(
+      appBar: Custom_Appbar(
         title: "Profile".tr,
         actionButtons: [
           back_button(
@@ -266,7 +245,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
             ),
             InkWell(
               onTap: () {
-                Get.to(select_address());
+                Get.to(Address_Screen());
               },
               child: account_section(
                 backgroundcolor: Theme.of(context).hintColor,
@@ -276,6 +255,23 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                   "assets/svg/pin.svg",
                   height: 17,
                   width: 17,
+                ),
+              ),
+            ),
+            custom_divider(context),
+            InkWell(
+              onTap: () {
+                Page_Navigation.getInstance.Page(context, Wishlist_Screen());
+              },
+              child: account_section(
+                backgroundcolor: Theme.of(context).hintColor,
+                title: "my_wishlist".tr,
+                showSwitchbtn: false,
+                svgicon: SvgPicture.asset(
+                  "assets/svg/wishlist.svg",
+                  height: 20,
+                  width: 20,
+                  color: Theme.of(context).hoverColor,
                 ),
               ),
             ),
@@ -361,7 +357,9 @@ class _Profile_ScreenState extends State<Profile_Screen> {
             ),
             custom_divider(context),
             InkWell(
-              onTap: () {},
+              onTap: () {
+            
+              },
               child: account_section(
                 backgroundcolor: Theme.of(context).hintColor,
                 title: "Language".tr,

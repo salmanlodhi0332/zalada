@@ -1,7 +1,17 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class payment_card extends StatelessWidget {
+  Future<String> _getSavedCardname() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString('Cardname') ?? '';
+  }
+
+  Future<String> _getSavedCardnumber() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString('Cardnumber') ?? '';
+  }
+
   final String label;
   final Widget? images;
   final String hintText;
@@ -51,7 +61,6 @@ class payment_card extends StatelessWidget {
               color: Theme.of(context).hintColor,
             ),
           ),
-          
           subtitle: Text(
             hintText,
             style: TextStyle(

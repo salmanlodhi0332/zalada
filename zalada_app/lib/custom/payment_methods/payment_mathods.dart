@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:zalada_app/MVC/views/add_payment.dart';
 import 'package:zalada_app/custom/forget_password_widget/selectedbox.dart';
 import 'package:zalada_app/custom/payment_methods/CD_selected_paymentBox.dart';
 import 'package:zalada_app/custom/payment_methods/paymentgetway_selected.dart';
@@ -9,7 +10,7 @@ import '../../utiles/page_navigation.dart';
 import '../../MVC/views/otp_screen.dart';
 import '../botton_widget.dart';
 
-class payment_methods_bottom extends GetView {
+class Add_Payment_Method extends GetView {
   // Use RxBool from GetX library
   RxBool select_card = false.obs;
   RxBool select_paypal = false.obs;
@@ -60,22 +61,28 @@ class payment_methods_bottom extends GetView {
             Text(
               'Add_new_payment_method'.tr,
               style: TextStyle(
-                
                 fontFamily: 'plusjakarta',
                 color: Theme.of(context).hintColor,
                 fontSize: 30,
                 fontWeight: FontWeight.w500,
               ),
             ).py(10),
-            
             Obx(
               () => InkWell(
                 onTap: () {
+                  Get.to(AddPayment());
+
                   select_card.value = !select_card.value;
                   select_applepay.value = false;
                   select_paypal.value = false;
                 },
                 child: CD_selected_paymentbox(
+                  preffixIcon: Icon(Icons.credit_card),
+                  // Image.asset(
+                  //   'assets/icon/facebook.png',
+                  //   height: 30,
+                  //   width: 30,
+                  // ),
                   label: 'Credit_or_Debit'.tr,
                   hintText: 'Payment_description'.tr,
                   selected:
@@ -90,24 +97,32 @@ class payment_methods_bottom extends GetView {
                   select_card.value = false;
                 },
                 child: paymentgetway_selected(
-                  preffixIcon: Image.asset('assets/icon/facebook.png',height: 30,width: 30,),
+                  preffixIcon: Image.asset(
+                    'assets/images/paypal.png',
+                    height: 30,
+                    width: 30,
+                  ),
                   label: 'Paypal',
                   selected:
                       select_paypal.value, // Access the bool value using .value
                 ),
               ),
             ).py(10),
-             Obx(
+            Obx(
               () => InkWell(
                 onTap: () {
                   select_applepay.value = !select_applepay.value;
                   select_card.value = false;
                 },
                 child: paymentgetway_selected(
-                  preffixIcon: Image.asset('assets/icon/facebook.png',height: 30,width: 30,),
+                  preffixIcon: Image.asset(
+                    'assets/images/apple.png',
+                    height: 30,
+                    width: 30,
+                  ),
                   label: 'Apple Pay',
-                  selected:
-                      select_applepay.value, // Access the bool value using .value
+                  selected: select_applepay
+                      .value, // Access the bool value using .value
                 ),
               ),
             ).py(10),

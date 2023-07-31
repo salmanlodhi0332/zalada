@@ -123,6 +123,7 @@ class Multi_Language extends Translations {
           "Edit_Profile": "Edit Profile",
           "Email_Address": "Email Address",
           "Date_of_Birth": "Date of Birth",
+          "pay_w"
 
           // "": "",
           // "": "",

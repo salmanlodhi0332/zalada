@@ -12,6 +12,8 @@ class Onboard_Three extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: AppBar(
@@ -53,7 +55,7 @@ class Onboard_Three extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).disabledColor,
                   fontSize: 15),
-            ).pOnly(bottom: 40),
+            ).pOnly(bottom: screenHeight * 0.04),
             InkWell(
               onTap: () {
                 Page_Navigation.getInstance.Screen(context, login_screen());

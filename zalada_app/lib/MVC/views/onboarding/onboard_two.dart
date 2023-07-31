@@ -11,6 +11,8 @@ class Onboard_Two extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: AppBar(
@@ -21,7 +23,10 @@ class Onboard_Two extends StatelessWidget {
               onPressed: () {},
               child: Text(
                 'skip'.tr,
-                style: TextStyle(color: Theme.of(context).hintColor),
+                style: TextStyle(
+                  color: Theme.of(context).hintColor,
+                  fontFamily: 'plusjakarta',
+                ),
               ))
         ],
       ),
@@ -32,7 +37,7 @@ class Onboard_Two extends StatelessWidget {
           children: [
             Container(
               child: Image.asset('assets/images/shopping-basket.png'),
-            ).pOnly(bottom: 10),
+            ).pOnly(bottom: 38.5),
             Text(
               'onboard_heading_three'.tr,
               textAlign: TextAlign.center,
@@ -50,7 +55,7 @@ class Onboard_Two extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).disabledColor,
                   fontSize: 15),
-            ).pOnly(bottom: 60),
+            ).pOnly(bottom: screenHeight * 0.04),
             InkWell(
               onTap: () {
                 Page_Navigation.getInstance.Page(context, Onboard_Three());

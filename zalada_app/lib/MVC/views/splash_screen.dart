@@ -43,7 +43,7 @@ class _splash_screenState extends State<splash_screen> {
             Text(
               'zalada'.tr,
               style: TextStyle(
-                
+
                 fontFamily: 'plusjakarta',
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).hintColor,

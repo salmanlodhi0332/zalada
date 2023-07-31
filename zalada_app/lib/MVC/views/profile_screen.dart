@@ -246,7 +246,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
             ),
             InkWell(
               onTap: () {
-                Get.to(Address_Screen());
+                Page_Navigation.getInstance.Page(context, Address_Screen());
               },
               child: account_section(
                 backgroundcolor: Theme.of(context).hintColor,
@@ -279,7 +279,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
             custom_divider(context),
             InkWell(
               onTap: () {
-                Get.to(payment_method());
+                Page_Navigation.getInstance.Page(context, payment_method());
               },
               child: account_section(
                 backgroundcolor: Theme.of(context).hintColor,
@@ -359,7 +359,10 @@ class _Profile_ScreenState extends State<Profile_Screen> {
             custom_divider(context),
             InkWell(
               onTap: () {
-            
+                Get.bottomSheet(
+                  language_bottom_sheet(),
+                  isScrollControlled: true,
+                );
               },
               child: account_section(
                 backgroundcolor: Theme.of(context).hintColor,
@@ -375,7 +378,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
             custom_divider(context),
             InkWell(
               onTap: () {
-                Get.to(privacy_policy());
+                Page_Navigation.getInstance.Page(context, privacy_policy());
               },
               child: account_section(
                 backgroundcolor: Theme.of(context).hintColor,

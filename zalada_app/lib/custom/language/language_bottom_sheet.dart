@@ -60,8 +60,8 @@ class language_bottom_sheet extends GetView {
               style: TextStyle(
                 fontFamily: 'plusjakarta',
                 color: Theme.of(context).hintColor,
-                fontSize: 30,
-                fontWeight: FontWeight.w500,
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
               ),
             ).py(10),
             Obx(

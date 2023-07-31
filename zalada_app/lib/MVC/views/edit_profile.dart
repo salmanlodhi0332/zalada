@@ -1,16 +1,12 @@
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:velocity_x/velocity_x.dart';
-
 import '../../custom/custom_appbar.dart';
 import '../../custom/back_button.dart';
 import '../../custom/botton_widget.dart';
 import '../../custom/date_picker.dart';
-import '../../custom/dropdown_widget.dart';
-import '../../custom/edit_btn.dart';
 import '../../custom/textfeild_widget.dart';
 
 class edit_profile extends StatefulWidget {
@@ -116,6 +112,12 @@ class _edit_profileState extends State<edit_profile> {
               ).px(25).py(10),
               IntlPhoneField(
                 decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Theme.of(context)
+                                .disabledColor
+                                .withOpacity(0.3)),
+                        borderRadius: BorderRadius.circular(12)),
                     focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                             color: Theme.of(context)

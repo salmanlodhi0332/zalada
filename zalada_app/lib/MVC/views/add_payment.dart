@@ -193,7 +193,7 @@ class _AddPaymentState extends State<AddPayment> {
                           height: 40,
                         ),
                         Button_Widget(
-                            tap: () {
+                            ontap: () {
                               print('object');
                               print(controllername.toString());
                               print(controllernumber.toString());

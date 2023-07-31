@@ -4,6 +4,7 @@ import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/MVC/controller/product_controller.dart';
 import 'package:zalada_app/MVC/views/Address_Screen.dart';
 import 'package:zalada_app/MVC/views/cart_screen2.dart';
+import 'package:zalada_app/MVC/views/wishlist_cart_screen.dart';
 import 'package:zalada_app/custom/back_button.dart';
 import 'package:readmore/readmore.dart';
 import 'package:zalada_app/custom/botton_widget.dart';
@@ -34,7 +35,9 @@ class Product_Detail_Screen extends StatelessWidget {
         }),
         actionButtons: [
           back_button(
-            ontap: () {},
+            ontap: () {
+              Page_Navigation.getInstance.Page(context, Wishlist_Screen());
+            },
             pic: Image.asset(
               'assets/images/favorite.png',
               color: Theme.of(context).hintColor,

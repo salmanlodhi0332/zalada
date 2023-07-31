@@ -31,16 +31,16 @@ class _paymentgetway_selectedState extends State<paymentgetway_selected> {
             border: Border.all(
                 color: widget.selected
                     ? Theme.of(context).indicatorColor.withOpacity(0.5)
-                    : Theme.of(context).hintColor.withOpacity(0.5),
-                width: 1.0),
+                    : Theme.of(context).disabledColor.withOpacity(0.3),
+                width: 2.0),
             borderRadius: BorderRadius.circular(15)),
         duration: Duration(milliseconds: 200),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              
               width: size.width / 7,
+              height: size.height,
               decoration: BoxDecoration(
                   color: Theme.of(context).highlightColor,
                   borderRadius: BorderRadius.circular(10)),
@@ -48,11 +48,10 @@ class _paymentgetway_selectedState extends State<paymentgetway_selected> {
                 padding: const EdgeInsets.all(8.0),
                 child: widget.preffixIcon,
               ),
-            ).pOnly(left: 30, top: 10, bottom: 10),
+            ).pOnly(left: 1, top: 1, bottom: 1),
             Text(
               widget.label,
               style: TextStyle(
-                
                 fontFamily: 'plusjakarta',
                 color: Theme.of(context).hintColor,
                 fontSize: 20,
@@ -61,15 +60,16 @@ class _paymentgetway_selectedState extends State<paymentgetway_selected> {
             ),
             widget.selected
                 ? CircleAvatar(
-                    radius: 20,
+                    radius: 10,
                     backgroundColor: Theme.of(context).indicatorColor,
                     child: Icon(
+                      size: 10,
                       Icons.check,
                       color: Colors.white,
                     ),
                   ).p(10)
                 : CircleAvatar(
-                    radius: 20,
+                    radius: 10,
                     backgroundColor: Color.fromARGB(0, 130, 127, 127),
                   ).p(10)
           ],

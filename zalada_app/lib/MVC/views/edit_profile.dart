@@ -1,3 +1,4 @@
+import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -23,6 +24,8 @@ class _edit_profileState extends State<edit_profile> {
   final fullnameController = TextEditingController();
   final dateController = TextEditingController();
   final _phoneController = TextEditingController();
+
+  final gendercontroller = SingleValueDropDownController();
   String selectedGender = "Male"; // Initial value
 
   @override
@@ -113,6 +116,12 @@ class _edit_profileState extends State<edit_profile> {
               ).px(25).py(10),
               IntlPhoneField(
                 decoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Theme.of(context)
+                                .disabledColor
+                                .withOpacity(0.3)),
+                        borderRadius: BorderRadius.circular(12)),
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                             color: Theme.of(context)
@@ -131,20 +140,42 @@ class _edit_profileState extends State<edit_profile> {
                       fontSize: 15),
                 ),
               ).px(25).py(10),
-              Dropdown_Widget(
-                hint: "Select Gender",
-                value: selectedGender,
-                onChanged: (newValue) {
-                  setState(() {
-                    selectedGender =
-                        newValue ?? ""; // Update the selected value
-                  });
-                },
-              ),
+              DropDownTextField(
+                textFieldDecoration: InputDecoration(
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                        width: 1,
+                        color: Theme.of(context)
+                            .disabledColor
+                            .withOpacity(0.5)), //<-- SEE HERE
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                        width: 1,
+                        color: Theme.of(context)
+                            .disabledColor
+                            .withOpacity(0.3)), //<-- SEE HERE
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  hintText: "select Gender",
+                ),
+                controller: gendercontroller,
+                dropDownList: [
+                  DropDownValueModel(
+                    name: 'Male',
+                    value: "Male ",
+                  ),
+                  DropDownValueModel(
+                    name: 'Female',
+                    value: "Female ",
+                  ),
+                ],
+              ).px(25).py(10),
               SizedBox(
                 height: 20,
               ),
-              Button_Widget(width: size.width, title: "Save Changes")
+              Button_Widget(width: size.width, title: "Save Changes"),
             ])));
   }
 }

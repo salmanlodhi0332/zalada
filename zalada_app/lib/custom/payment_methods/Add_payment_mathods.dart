@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:zalada_app/MVC/views/add_payment.dart';
 import 'package:zalada_app/custom/payment_methods/CD_selected_paymentBox.dart';
 import 'package:zalada_app/custom/payment_methods/paymentgetway_selected.dart';
 
@@ -68,11 +69,19 @@ class Add_Payment_Method extends GetView {
             Obx(
               () => InkWell(
                 onTap: () {
+                  Get.to(AddPayment());
+
                   select_card.value = !select_card.value;
                   select_applepay.value = false;
                   select_paypal.value = false;
                 },
                 child: CD_selected_paymentbox(
+                  preffixIcon: Icon(Icons.credit_card),
+                  // Image.asset(
+                  //   'assets/icon/facebook.png',
+                  //   height: 30,
+                  //   width: 30,
+                  // ),
                   label: 'Credit_or_Debit'.tr,
                   hintText: 'Payment_description'.tr,
                   selected:
@@ -88,7 +97,7 @@ class Add_Payment_Method extends GetView {
                 },
                 child: paymentgetway_selected(
                   preffixIcon: Image.asset(
-                    'assets/icon/facebook.png',
+                    'assets/images/paypal.png',
                     height: 30,
                     width: 30,
                   ),
@@ -106,7 +115,7 @@ class Add_Payment_Method extends GetView {
                 },
                 child: paymentgetway_selected(
                   preffixIcon: Image.asset(
-                    'assets/icon/facebook.png',
+                    'assets/images/apple.png',
                     height: 30,
                     width: 30,
                   ),

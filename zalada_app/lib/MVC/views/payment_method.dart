@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/custom/custom_appbar.dart';
 import 'package:zalada_app/custom/payment_methods/Add_payment_mathods.dart';
@@ -10,11 +11,37 @@ import '../../custom/payment_card.dart';
 import '../../utiles/page_navigation.dart';
 import 'Address_Screen.dart';
 
-class payment_method extends StatelessWidget {
-  payment_method({super.key});
+class payment_method extends StatefulWidget {
+  payment_method({
+    super.key,
+  });
+
+  @override
+  State<payment_method> createState() => _payment_methodState();
+}
+
+class _payment_methodState extends State<payment_method> {
+  String? name;
+  @override
+  void initState() {
+    super.initState();
+    _saveLoginData();
+  }
+
+// final String? name;
+  void _saveLoginData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    print("Data Set  Sharedprefernce 0");
+    name = await prefs.getString('Cardname');
+    await prefs.getString('Cardnumber');
+    print("full name  $name");
+  }
 
   RxBool select_mastercard = false.obs;
+
   RxBool select_paypal = false.obs;
+
   RxBool select_appleplay = false.obs;
 
   @override
@@ -50,7 +77,7 @@ class payment_method extends StatelessWidget {
                         preffixIcon: Icon(Icons.arrow_forward_ios_outlined),
                         label: "MasterCard".tr,
                         selected: select_mastercard.value,
-                        hintText: "****12334266656",
+                        hintText: name ?? "",
                         images: Image.asset("assets/images/mastercard.png"),
                       ),
                     )),
@@ -67,6 +94,7 @@ class payment_method extends StatelessWidget {
                     child: payment_card(
                       preffixIcon: Icon(Icons.arrow_forward_ios_outlined),
                       label: "PayPal".tr,
+                      // label: Cardname,
                       selected: select_paypal.value,
                       hintText: "****12334266656",
                       images: Image.asset("assets/images/paypal.png"),

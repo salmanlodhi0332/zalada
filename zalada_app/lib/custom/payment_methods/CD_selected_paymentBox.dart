@@ -30,7 +30,7 @@ class _CD_selected_paymentboxState extends State<CD_selected_paymentbox> {
             border: Border.all(
                 color: widget.selected
                     ? Theme.of(context).indicatorColor.withOpacity(0.5)
-                    : Theme.of(context).hintColor.withOpacity(0.5),
+                    : Theme.of(context).disabledColor.withOpacity(0.3),
                 width: 2.0),
             borderRadius: BorderRadius.circular(15)),
         duration: Duration(milliseconds: 200),
@@ -39,11 +39,12 @@ class _CD_selected_paymentboxState extends State<CD_selected_paymentbox> {
           children: [
             Container(
               width: size.width / 7,
+              height: size.height,
               decoration: BoxDecoration(
                   color: Theme.of(context).highlightColor,
                   borderRadius: BorderRadius.circular(10)),
               child: widget.preffixIcon,
-            ).pOnly(left: 30, top: 10, bottom: 10),
+            ).pOnly(left: 1, top: 1, bottom: 1),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,8 +52,7 @@ class _CD_selected_paymentboxState extends State<CD_selected_paymentbox> {
                 Text(
                   widget.label,
                   style: TextStyle(
-                    
-                fontFamily: 'plusjakarta',
+                    fontFamily: 'plusjakarta',
                     color: Theme.of(context).hintColor,
                     fontSize: 20,
                     fontWeight: FontWeight.w800,
@@ -61,26 +61,26 @@ class _CD_selected_paymentboxState extends State<CD_selected_paymentbox> {
                 Text(
                   widget.hintText,
                   style: TextStyle(
-                    
-                fontFamily: 'plusjakarta',
+                    fontFamily: 'plusjakarta',
                     color: Theme.of(context).hintColor.withOpacity(0.5),
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w300,
                   ),
                 )
               ],
             ).px(10),
             widget.selected
                 ? CircleAvatar(
-                    radius: 20,
+                    radius: 10,
                     backgroundColor: Theme.of(context).indicatorColor,
                     child: Icon(
+                      size: 10,
                       Icons.check,
                       color: Colors.white,
                     ),
                   ).p(10)
                 : CircleAvatar(
-                    radius: 20,
+                    radius: 10,
                     backgroundColor: Color.fromARGB(0, 130, 127, 127),
                   ).p(10)
           ],

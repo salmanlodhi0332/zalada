@@ -48,6 +48,7 @@ class textfeild_widget extends StatelessWidget {
                   width: 1.0),
               borderRadius: BorderRadius.circular(15)),
           child: TextFormField(
+                  controller: controller,
                   validator: validator,
                   obscureText: obscureText ?? false,
                   decoration: InputDecoration(

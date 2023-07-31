@@ -58,7 +58,7 @@ class Product_Card extends StatelessWidget {
                       color: Theme.of(context).hintColor,
                       fontWeight: FontWeight.w600),
                 ),
-                hotdeal == ''
+                hotdeal == 'false'
                     ? Text(
                         price,
                         textAlign: TextAlign.center,
@@ -111,23 +111,25 @@ class Product_Card extends StatelessWidget {
                       )
               ],
             ),
-            status.isNotEmpty
-                ? Positioned(
-                    bottom: -10,
-                    child: Container(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                        decoration: BoxDecoration(
-                            color: Theme.of(context).indicatorColor,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Text(
-                          status,
-                          style: TextStyle(
-                              fontFamily: 'plusjakarta',
-                              color: Theme.of(context).secondaryHeaderColor,
-                              fontWeight: FontWeight.w300,
-                              fontSize: 10),
-                        )))
+            hotdeal == 'false'
+                ? status.isNotEmpty
+                    ? Positioned(
+                        bottom: -10,
+                        child: Container(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 5, horizontal: 10),
+                            decoration: BoxDecoration(
+                                color: Theme.of(context).indicatorColor,
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Text(
+                              status,
+                              style: TextStyle(
+                                  fontFamily: 'plusjakarta',
+                                  color: Theme.of(context).secondaryHeaderColor,
+                                  fontWeight: FontWeight.w300,
+                                  fontSize: 10),
+                            )))
+                    : SizedBox()
                 : SizedBox()
           ],
         ),

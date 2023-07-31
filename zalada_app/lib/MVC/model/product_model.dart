@@ -6,7 +6,8 @@ class Product_Model {
   final String model;
   final String make;
   final String price;
-  // final String discountprice;
+  final String? discountprice;
+  final String? hotdeal;
   final List images;
   final List colors;
   final List memory;
@@ -17,6 +18,8 @@ class Product_Model {
 
   Product_Model({
     required this.id,
+    this.hotdeal,
+    this.discountprice,
     required this.name,
     required this.description,
     required this.category_id,
@@ -34,6 +37,8 @@ class Product_Model {
 
   Map<String, dynamic> tojson() => {
         'id': id,
+        'hotdeal': hotdeal,
+        'discountprice': discountprice,
         'name': name,
         'description': description,
         'category_id': category_id,
@@ -52,6 +57,9 @@ class Product_Model {
   factory Product_Model.fromjson(Map<String, dynamic> json) {
     return Product_Model(
         id: json['id'],
+        discountprice:
+            json['discountprice'] == null ? json['discountprice'] : '',
+        hotdeal: json['hotdeal'],
         name: json['name'],
         description: json['description'],
         category_id: json['category_id'],

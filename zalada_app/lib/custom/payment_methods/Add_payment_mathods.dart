@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
-import 'package:zalada_app/custom/forget_password_widget/selectedbox.dart';
 import 'package:zalada_app/custom/payment_methods/CD_selected_paymentBox.dart';
 import 'package:zalada_app/custom/payment_methods/paymentgetway_selected.dart';
 
@@ -9,7 +8,7 @@ import '../../utiles/page_navigation.dart';
 import '../../MVC/views/otp_screen.dart';
 import '../botton_widget.dart';
 
-class payment_methods_bottom extends GetView {
+class Add_Payment_Method extends GetView {
   // Use RxBool from GetX library
   RxBool select_card = false.obs;
   RxBool select_paypal = false.obs;

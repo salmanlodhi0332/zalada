@@ -28,7 +28,6 @@ class Home_Screen extends StatelessWidget {
           color: Theme.of(context).primaryColor,
           onRefresh: () async {},
           child: CustomScrollView(
-            
               physics: const BouncingScrollPhysics(),
               primary: true,
               shrinkWrap: false,
@@ -177,7 +176,26 @@ class Home_Screen extends StatelessWidget {
                             fontWeight: FontWeight.w700),
                       ).py(15),
                       Row(
-                        children: [Hot_deal_Product_Card()],
+                        children: [
+                          Product_Card(
+                            // ontap: () {
+                            //   {
+                            //     Page_Navigation().Page(
+                            //         context,
+                            //         Product_Detail_Screen(
+                            //           id: item.id,
+                            //         ));
+                            //   }
+                            // },
+                            hotdeal: 'true',
+                            imageurl:
+                                'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
+
+                            product_name: "Sample Product 5",
+                            price: '\$' + "502.99",
+                            status: "NEW ARRIVAL",
+                          )
+                        ],
                       ).py(20),
                       SingleChildScrollView(
                         physics: BouncingScrollPhysics(),
@@ -256,7 +274,7 @@ class Home_Screen extends StatelessWidget {
                                           ));
                                     }
                                   },
-                                  hotdeal: '',
+                                  hotdeal: 'false',
                                   imageurl: item.images[0],
                                   product_name: item.name,
                                   price: '\$' + item.price,

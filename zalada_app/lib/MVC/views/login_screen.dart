@@ -9,7 +9,7 @@ import 'package:zalada_app/MVC/views/registeration_screen.dart';
 
 import '../../auth/forget_password_bottom.dart';
 import '../../custom/other_loginbtn_widget.dart';
-import '../../custom/payment_methods/payment_mathods.dart';
+import '../../custom/payment_methods/Add_payment_mathods.dart';
 import '../../custom/textfeild_widget.dart';
 import '../../utiles/page_navigation.dart';
 

@@ -10,6 +10,7 @@ import 'package:zalada_app/custom/botton_widget.dart';
 import 'package:zalada_app/custom/custom_appbar.dart';
 import 'package:zalada_app/custom/product_card.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
+import 'confirm_order.dart';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 
 class Product_Detail_Screen extends StatelessWidget {

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:page_transition/page_transition.dart';
 
 class Page_Navigation {
-static Page_Navigation? _instance;
+  static Page_Navigation? _instance;
   static Page_Navigation get getInstance => _instance ??= Page_Navigation();
 
   Page(BuildContext context, Widget childwidget) {
@@ -16,6 +16,20 @@ static Page_Navigation? _instance;
         duration: Duration(milliseconds: 500),
         reverseDuration: Duration(milliseconds: 400),
       ),
+    );
+  }
+
+  Page_PushAndReplaceNavigation(BuildContext context, Widget childwidget) {
+    Navigator.pushAndRemoveUntil(
+      context,
+      PageTransition(
+        type: PageTransitionType.rightToLeft,
+        child: childwidget,
+        isIos: true,
+        duration: Duration(milliseconds: 500),
+        reverseDuration: Duration(milliseconds: 400),
+      ),
+      (route) => false,
     );
   }
 

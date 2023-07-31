@@ -10,7 +10,6 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 class search_grid extends StatelessWidget {
   search_grid({super.key});
   final controller = Get.put(product_Controller());
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(

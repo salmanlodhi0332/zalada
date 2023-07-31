@@ -16,7 +16,19 @@ import '../../utiles/page_navigation.dart';
 import '../../custom/filter_bar.dart';
 
 class OTP_Screen extends StatefulWidget {
-  OTP_Screen({super.key});
+  final String verfiyId;
+  final String name;
+  final String email;
+  final String phone;
+  final String password;
+
+  OTP_Screen(
+      {super.key,
+      required this.verfiyId,
+      required this.name,
+      required this.email,
+      required this.phone,
+      required this.password});
 
   @override
   State<OTP_Screen> createState() => _OTP_ScreenState();
@@ -133,7 +145,7 @@ class _OTP_ScreenState extends State<OTP_Screen> {
             title: 'continue'.tr,
             tap: () {
               Get.bottomSheet(
-                Order_successful_Bottom_Bar(),
+                OTP_Bottom_Bar(),
                 isScrollControlled: true,
               );
             },

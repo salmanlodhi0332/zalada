@@ -5,6 +5,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:http/http.dart' as http;
+import '../firebase_options.dart';
 import '../utiles/shared_preferences.dart';
 
 Future<void> _onBackground_listener(RemoteMessage message) async {}
@@ -13,16 +14,16 @@ class FirebaseDB {
   static Future<FirebaseApp?> init() async {
     try {
       WidgetsFlutterBinding.ensureInitialized();
-      // await Firebase.initializeApp(
-      //   options: DefaultFirebaseOptions.currentPlatform,
-      // ).then((value) => print("FirebaseConnected 🔥✅"));
+      await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
+      ).then((value) => print("FirebaseConnected 🔥✅"));
       // LocalNotificationService.initialize();
       // FirebaseMessaging.onBackgroundMessage(_onBackground_listener);
 
-      // FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      //   print("object Open App");
-      //   print(message.notification?.title);
-      // });
+      FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+        print("object Open App");
+        print(message.notification?.title);
+      });
 
       // FirebaseMessaging.instance.getInitialMessage();
       // FirebaseMessaging.onMessage.listen((event) {

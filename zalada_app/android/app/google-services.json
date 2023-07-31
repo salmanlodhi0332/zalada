@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1039259402863",
+    "project_id": "zalada-192c9",
+    "storage_bucket": "zalada-192c9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1039259402863:android:a2d675fdad6625572e039a",
+        "android_client_info": {
+          "package_name": "com.example.zalada_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1039259402863-gdtr06mrp171fucau5s33s55digjgmfs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4CkK-wq_1xZzw8l2rACleAfEIJstbsMg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1039259402863-gdtr06mrp171fucau5s33s55digjgmfs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -60,14 +60,12 @@ class payment_methods_bottom extends GetView {
             Text(
               'Add_new_payment_method'.tr,
               style: TextStyle(
-                
                 fontFamily: 'plusjakarta',
                 color: Theme.of(context).hintColor,
                 fontSize: 30,
                 fontWeight: FontWeight.w500,
               ),
             ).py(10),
-            
             Obx(
               () => InkWell(
                 onTap: () {
@@ -90,24 +88,32 @@ class payment_methods_bottom extends GetView {
                   select_card.value = false;
                 },
                 child: paymentgetway_selected(
-                  preffixIcon: Image.asset('assets/icon/facebook.png',height: 30,width: 30,),
+                  preffixIcon: Image.asset(
+                    'assets/icon/facebook.png',
+                    height: 30,
+                    width: 30,
+                  ),
                   label: 'Paypal',
                   selected:
                       select_paypal.value, // Access the bool value using .value
                 ),
               ),
             ).py(10),
-             Obx(
+            Obx(
               () => InkWell(
                 onTap: () {
                   select_applepay.value = !select_applepay.value;
                   select_card.value = false;
                 },
                 child: paymentgetway_selected(
-                  preffixIcon: Image.asset('assets/icon/facebook.png',height: 30,width: 30,),
+                  preffixIcon: Image.asset(
+                    'assets/icon/facebook.png',
+                    height: 30,
+                    width: 30,
+                  ),
                   label: 'Apple Pay',
-                  selected:
-                      select_applepay.value, // Access the bool value using .value
+                  selected: select_applepay
+                      .value, // Access the bool value using .value
                 ),
               ),
             ).py(10),
@@ -115,7 +121,7 @@ class payment_methods_bottom extends GetView {
               width: width,
               title: 'continue'.tr,
               tap: () {
-                Page_Navigation().Screen(context, OTP_Screen());
+                //Page_Navigation().Screen(context, OTP_Screen());
               },
             ).pOnly(bottom: 30),
           ],

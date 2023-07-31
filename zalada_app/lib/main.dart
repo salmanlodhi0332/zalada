@@ -13,6 +13,7 @@ import 'MVC/views/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await FirebaseDB.init();
   runApp(const MyApp());
 }

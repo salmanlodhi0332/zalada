@@ -1,12 +1,13 @@
 // ignore_for_file: use_key_in_widget_constructors, must_be_immutable, camel_case_types
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:zalada_app/MVC/views/login_screen.dart';
 
 import '../custom/botton_widget.dart';
-
-
 
 class OTP_Bottom_Bar extends GetView {
   @override
@@ -58,8 +59,7 @@ class OTP_Bottom_Bar extends GetView {
                 'congratulation'.tr,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  
-                fontFamily: 'plusjakarta',
+                    fontFamily: 'plusjakarta',
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).hintColor,
                     fontSize: 24),
@@ -69,8 +69,7 @@ class OTP_Bottom_Bar extends GetView {
               'congratulation_bar_description'.tr,
               textAlign: TextAlign.center,
               style: TextStyle(
-                
-                fontFamily: 'plusjakarta',
+                  fontFamily: 'plusjakarta',
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).disabledColor,
                   fontSize: 15),
@@ -79,10 +78,7 @@ class OTP_Bottom_Bar extends GetView {
               width: width,
               title: 'continue'.tr,
               tap: () {
-                Get.bottomSheet(
-                  OTP_Bottom_Bar(),
-                  isScrollControlled: true,
-                );
+                Get.to(login_screen());
               },
             ).pOnly(bottom: 30),
           ],

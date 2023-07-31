@@ -71,7 +71,7 @@ class Multi_Language extends Translations {
           "start_Shopping": "Start Shopping",
           "cart_heading_one": "Your cart is an empty!",
           "cart_description":
-          "Looks like you haven't added anything to your cart yet",
+              "Looks like you haven't added anything to your cart yet",
           "cart": "Cart",
           "checkout": "Checkout",
 
@@ -114,9 +114,9 @@ class Multi_Language extends Translations {
           "PayPal": "PayPal",
           "MasterCard": "MasterCard",
           "Select_Your_location_from_the_map":
-          "Select Your location from the map",
+              "Select Your location from the map",
           "Move_the_pin_on_the_map_to_find_your_location_and_select_the_delievery_address":
-          "Move the pin on the map to find your location and select the delievery address",
+              "Move the pin on the map to find your location and select the delievery address",
           "Add_Address": "Add Address",
           "Gender": "Gender",
           "Phone_number": "Phone number",
@@ -198,7 +198,7 @@ class Multi_Language extends Translations {
           "receipt_num": "Receipt Number",
           "package_delivery": "Package on delivery",
           "order_status": "Order Status",
-          "": "",
+          "full_name": "Full Name",
           "": "",
           "": "",
           "": "",

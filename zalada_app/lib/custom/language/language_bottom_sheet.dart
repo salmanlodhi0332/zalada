@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
-import 'package:zalada_app/custom/forget_password_widget/selectedbox.dart';
 import 'package:zalada_app/custom/language/select_language.dart';
-import 'package:zalada_app/custom/payment_methods/CD_selected_paymentBox.dart';
-import 'package:zalada_app/custom/payment_methods/paymentgetway_selected.dart';
 
 import '../../utiles/page_navigation.dart';
 import '../../MVC/views/otp_screen.dart';
@@ -142,7 +139,7 @@ class language_bottom_sheet extends GetView {
             Button_Widget(
               width: width,
               title: 'continue'.tr,
-              tap: () {
+              ontap: () {
                 Page_Navigation().Screen(context, OTP_Screen());
               },
             ).pOnly(bottom: 30),

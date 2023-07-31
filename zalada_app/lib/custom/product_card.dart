@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/custom/image_widget.dart';
+import 'package:zalada_app/utiles/themeData.dart';
 
 class Product_Card extends StatelessWidget {
   final String imageurl;
   final String product_name;
   final String price;
   final String status;
+  final String hotdeal;
+  final String? disprice;
   final Function()? ontap;
   const Product_Card(
       {super.key,
+      required this.hotdeal,
+      this.disprice,
       required this.imageurl,
       required this.product_name,
       required this.price,
@@ -18,50 +23,114 @@ class Product_Card extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+
+    final width = MediaQuery.of(context).size.width;
+
     return InkWell(
       onTap: ontap,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        height: 175,
-        width: 175,
-        decoration: BoxDecoration(
-            color: Theme.of(context).cardColor,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                  color: Theme.of(context).disabledColor.withOpacity(0.3),
-                  blurRadius: 10,
-                  offset: Offset(1.0, 1.0))
-            ]),
-        child: Column(
+        padding: EdgeInsets.only(left: 20, right: 20, top: 10),
+        height: height / 4.5,
+        width: width / 2.3,
+        decoration: AppTheme.getBoxDecoration(context),
+        child: Stack(
+          alignment: AlignmentDirectional.bottomCenter,
+          clipBehavior: Clip.none,
           children: [
-            // image_widget(imageUrl: imageurl),
-            Container(
-              child: image_widget(
-                imageUrl: imageurl,
-                height: 100,
-                width: 100,
-              ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                image_widget(
+                  imageUrl: imageurl,
+                  height: height / 10,
+                  width: width / 5,
+                ),
+                Text(
+                  product_name + product_name,
+                  textAlign: TextAlign.center,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                  softWrap: false,
+                  style: TextStyle(
+                      fontFamily: 'plusjakarta',
+                      fontSize: 14,
+                      color: Theme.of(context).hintColor,
+                      fontWeight: FontWeight.w600),
+                ),
+                hotdeal == ''
+                    ? Text(
+                        price,
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                        softWrap: false,
+                        style: TextStyle(
+                            fontFamily: 'plusjakarta',
+                            fontSize: 16,
+                            color: Theme.of(context).focusColor,
+                            fontWeight: FontWeight.bold),
+                      ).pOnly(bottom: 15)
+                    : Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text.rich(TextSpan(children: [
+                            TextSpan(
+                              text: '\$1240',
+                              style: TextStyle(
+                                  fontFamily: 'plusjakarta',
+                                  fontSize: 15,
+                                  color: Theme.of(context).focusColor,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                            TextSpan(
+                              text: '\$1540',
+                              style: TextStyle(
+                                  fontFamily: 'plusjakarta',
+                                  decoration: TextDecoration.lineThrough,
+                                  fontSize: 12,
+                                  color: Theme.of(context)
+                                      .disabledColor
+                                      .withOpacity(0.5),
+                                  fontWeight: FontWeight.w600),
+                            )
+                          ])),
+                          SizedBox(
+                            height: 30,
+                            width: 30,
+                            child: FloatingActionButton(
+                              onPressed: () {},
+                              child: Icon(
+                                Icons.add,
+                                size: 15,
+                              ),
+                              backgroundColor: Theme.of(context).hoverColor,
+                            ),
+                          )
+                        ],
+                      )
+              ],
             ),
-            Text(
-              product_name,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontSize: 15,
-                  color: Theme.of(context).hintColor,
-                  fontWeight: FontWeight.w600),
-            ).pOnly(bottom: 10),
-            Text(
-              price,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontFamily: 'plusjakarta',
-                  fontSize: 15,
-                  color: Theme.of(context).focusColor,
-                  fontWeight: FontWeight.w600),
-            )
+            status.isNotEmpty
+                ? Positioned(
+                    bottom: -10,
+                    child: Container(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                        decoration: BoxDecoration(
+                            color: Theme.of(context).indicatorColor,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Text(
+                          status,
+                          style: TextStyle(
+                              fontFamily: 'plusjakarta',
+                              color: Theme.of(context).secondaryHeaderColor,
+                              fontWeight: FontWeight.w300,
+                              fontSize: 10),
+                        )))
+                : SizedBox()
           ],
-        ).pOnly(top: 90),
+        ),
       ),
     );
   }

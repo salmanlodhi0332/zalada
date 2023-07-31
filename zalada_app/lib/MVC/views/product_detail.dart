@@ -290,6 +290,7 @@ class Product_Detail_Screen extends StatelessWidget {
                                 (p0) => p0.category_id == item.category_id)
                             .map((PR_item) {
                       return Product_Card(
+                        hotdeal: '',
                         imageurl: PR_item.images[0],
                         product_name: PR_item.name,
                         price: '\$' + PR_item.price,

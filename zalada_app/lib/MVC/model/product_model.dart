@@ -6,6 +6,7 @@ class Product_Model {
   final String model;
   final String make;
   final String price;
+  // final String discountprice;
   final List images;
   final List colors;
   final List memory;

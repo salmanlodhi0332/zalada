@@ -64,11 +64,16 @@ class AppTheme {
       borderRadius: const BorderRadius.all(Radius.circular(10)),
       boxShadow: [
         BoxShadow(
-          color: Colors.white70.withOpacity(0.1),
-          blurRadius: 10,
-          offset: const Offset(1.0, 1.0), // soften the shadow
-          spreadRadius: 0.0, //extend the shadow
-        ),
+            color: Theme.of(context).disabledColor.withOpacity(0.3),
+            blurRadius: 10,
+            offset: Offset(1.0, 1.0))
+
+        // BoxShadow(
+        //   color: Colors.white70.withOpacity(0.1),
+        //   blurRadius: 10,
+        //   offset: const Offset(1.0, 1.0), // soften the shadow
+        //   spreadRadius: 0.0, //extend the shadow
+        // ),
       ],
       border: Border.all(color: Colors.black.withOpacity(0.05)),
     );

@@ -133,6 +133,7 @@ class CartScreenWithData extends StatelessWidget {
                   child: Row(
                     children: [
                       const Product_Card(
+                          hotdeal: '',
                         imageurl:
                             'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
                         product_name: 'Macbook Pro 15" 2019 -Intel corei7',
@@ -140,6 +141,7 @@ class CartScreenWithData extends StatelessWidget {
                         status: '',
                       ).pOnly(bottom: 25, top: 40),
                       const Product_Card(
+                         hotdeal: '',
                         imageurl:
                             'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
                         product_name: 'Macbook Pro 15" 2019 -Intel corei7',
@@ -147,6 +149,7 @@ class CartScreenWithData extends StatelessWidget {
                         status: '',
                       ).px(10),
                       const Product_Card(
+                         hotdeal: '',
                         imageurl:
                             'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
                         product_name: 'Macbook Pro 15" 2019 -Intel corei7',
@@ -154,6 +157,7 @@ class CartScreenWithData extends StatelessWidget {
                         status: '',
                       ).py(25),
                       const Product_Card(
+                         hotdeal: '',
                         imageurl:
                             'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
                         product_name: 'Macbook Pro 15" 2019 -Intel corei7',

@@ -20,7 +20,7 @@ class image_widget extends StatelessWidget {
             imageUrl: imageUrl,
             height: height,
             width: width,
-            fit: BoxFit.cover,
+            fit: BoxFit.fill,
             placeholder: (context, url) => Center(
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),

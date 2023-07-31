@@ -22,54 +22,52 @@ class _search_result_screenState extends State<search_result_screen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          scrollDirection: Axis.vertical,
-          child: Column(
-            children: [
-              SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  back_button(
-                    ontap: () {
-                      Get.back();
-                    },
-                  ),
-                  // SizedBox(
-                  //   width: 10,
-                  // ),
-                  search_bar_textfeild(
-                    controller: search,
-                    hintText: 'Search Product..',
-                  )
-                ],
-              ),
-              search_grid()
-            ],
-          ),
+    return Scaffold(
+      body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: [
+            SizedBox(
+              height: 60,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                back_button(
+                  ontap: () {
+                    Get.back();
+                  },
+                ),
+                // SizedBox(
+                //   width: 10,
+                // ),
+                search_bar_textfeild(
+                  controller: search,
+                  hintText: 'Search Product..',
+                )
+              ],
+            ),
+            search_grid()
+          ],
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton: Button_Widget(
-          title: 'Filter',
-          icon: Icon(
-            Icons.filter_alt,
-            color: Theme.of(context).cardColor,
-          ),
-          width: MediaQuery.of(context).orientation == Orientation.portrait
-              ? size.width / 3
-              : size.width / 5,
-          ontap: () {
-            Get.bottomSheet(
-              Filter_Bottom_Bar(),
-              isScrollControlled: true,
-            );
-          },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: Button_Widget(
+        title: 'Filter',
+        icon: Icon(
+          Icons.filter_alt,
+          color: Theme.of(context).cardColor,
         ),
+        width: MediaQuery.of(context).orientation == Orientation.portrait
+            ? size.width / 3
+            : size.width / 5,
+        ontap: () {
+          Get.bottomSheet(
+            Filter_Bottom_Bar(),
+            isScrollControlled: true,
+          );
+        },
       ),
     );
   }

@@ -242,7 +242,7 @@ class Home_Screen extends StatelessWidget {
                             ),
                           ],
                         ),
-                      ).pOnly(bottom: 30),
+                      ).pOnly(bottom: 10),
                       Obx(() => controller.Productslist.isNotEmpty
                           ? MasonryGridView.count(
                               primary: false,

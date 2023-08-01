@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:page_transition/page_transition.dart';
 
 class Page_Navigation {
@@ -8,20 +7,21 @@ class Page_Navigation {
 
   Page(BuildContext context, Widget childwidget) {
     return Navigator.push(
-      context,
-      PageTransition(
-        type: PageTransitionType.rightToLeft,
-        child: childwidget,
-        isIos: true,
-        duration: Duration(milliseconds: 500),
-        reverseDuration: Duration(milliseconds: 400),
-      ),
-    );
+        context, MaterialPageRoute(builder: (context) => childwidget)
+        // PageTransition(
+        //   type: PageTransitionType.rightToLeft,
+        //   child: childwidget,
+        //   isIos: true,
+        //   duration: Duration(milliseconds: 500),
+        //   reverseDuration: Duration(milliseconds: 400),
+        // ),
+        );
   }
 
   Page_PushAndReplaceNavigation(BuildContext context, Widget childwidget) {
     Navigator.pushAndRemoveUntil(
       context,
+      // MaterialPageRoute(builder: (context) => childwidget),
       PageTransition(
         type: PageTransitionType.rightToLeft,
         child: childwidget,

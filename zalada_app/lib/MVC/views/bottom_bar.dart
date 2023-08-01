@@ -8,7 +8,7 @@ import 'Explore_Screeen.dart';
 import 'Live_Stream_Screen.dart';
 import 'profile_screen.dart';
 import 'confirm_order.dart';
-import 'cart_screen2.dart';
+import 'cart_screen.dart';
 import 'home_screen.dart';
 
 class Bottom_Bar extends StatefulWidget {

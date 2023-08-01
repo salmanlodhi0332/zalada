@@ -9,12 +9,34 @@ import 'package:zalada_app/utiles/page_navigation.dart';
 import 'package:zalada_app/MVC/views/notification_screen.dart';
 import 'package:zalada_app/MVC/views/product_detail.dart';
 import '../../custom/all_custom_btn.dart';
+import '../../custom/home_tabs/home_tab1.dart';
+import '../../custom/home_tabs/home_tab2.dart';
+import '../../custom/home_tabs/home_tab3.dart';
 import '../../custom/hot_deal_productcard.dart';
 import '../../custom/search_screen_widgets/categories_btn.dart';
 
-class Home_Screen extends StatelessWidget {
+class Home_Screen extends StatefulWidget {
   Home_Screen({Key? key}) : super(key: key);
+
+  @override
+  State<Home_Screen> createState() => _Home_ScreenState();
+}
+
+class _Home_ScreenState extends State<Home_Screen> {
+  List<String> catename = [
+    'today'.tr,
+    'inprogress'.tr,
+    'completed'.tr,
+  ];
+
+  /// List of body icon
+  List body = [
+    Home_Tab1(),
+    Home_Tab2(),
+    Home_Tab3(),
+  ];
   final controller = Get.put(product_Controller());
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -28,7 +50,7 @@ class Home_Screen extends StatelessWidget {
           color: Theme.of(context).primaryColor,
           onRefresh: () async {},
           child: CustomScrollView(
-              physics: const BouncingScrollPhysics(),
+              // physics: const BouncingScrollPhysics(),
               primary: true,
               shrinkWrap: false,
               clipBehavior: Clip.none,
@@ -180,6 +202,7 @@ class Home_Screen extends StatelessWidget {
                       const Row(
                         children: [
                           Product_Card(
+                            id: 1,
                             hotdeal: 'true',
                             imageurl:
                                 'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
@@ -193,6 +216,7 @@ class Home_Screen extends StatelessWidget {
                         physics: const BouncingScrollPhysics(),
                         scrollDirection: Axis.horizontal,
                         child: Row(
+                          // children: catename.map((e) => categories_btn(label:  , selected: selected)).toList(),
                           children: [
                             const all_custom_btn(),
                             categories_btn(
@@ -257,6 +281,7 @@ class Home_Screen extends StatelessWidget {
                               itemBuilder: (BuildContext context, int index) {
                                 final item = controller.Productslist[index];
                                 return Product_Card(
+                                  id: item.id,
                                   ontap: () {
                                     {
                                       Page_Navigation.getInstance.Page(

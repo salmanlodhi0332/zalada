@@ -27,6 +27,7 @@ class search_grid extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 final item = controller.Productslist[index];
                 return Product_Card(
+                  id: item.id,
                   ontap: () {
                     {
                       Page_Navigation().Page(

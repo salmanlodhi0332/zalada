@@ -140,7 +140,7 @@ class language_bottom_sheet extends GetView {
               width: width,
               title: 'continue'.tr,
               ontap: () {
-                Page_Navigation().Screen(context, OTP_Screen());
+                // Page_Navigation().Screen(context, OTP_Screen());
               },
             ).pOnly(bottom: 30),
           ],

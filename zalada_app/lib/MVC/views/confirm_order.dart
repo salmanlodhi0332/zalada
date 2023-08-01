@@ -2,8 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:zalada_app/MVC/views/Address_Screen.dart';
+import 'package:zalada_app/MVC/views/select_Address.dart';
 import 'package:zalada_app/auth/order_successful_bottom_bar.dart';
 import 'package:zalada_app/custom/custom_appbar.dart';
+import 'package:zalada_app/utiles/page_navigation.dart';
 import '../../custom/back_button.dart';
 import '../../custom/botton_widget.dart';
 import 'cart_products.dart';
@@ -49,12 +52,17 @@ class _ConfirmOrderState extends State<ConfirmOrder> {
                           fontSize: 18,
                           fontWeight: FontWeight.w700),
                     ).px(20),
-                    Text("edit".tr,
-                            style: TextStyle(
-                                color: Theme.of(context).focusColor,
-                                fontFamily: 'plusjakarta',
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600))
+                    TextButton(
+                            onPressed: () {
+                              Page_Navigation.getInstance
+                                  .Page(context, Address_Screen());
+                            },
+                            child: Text("edit".tr,
+                                style: TextStyle(
+                                    color: Theme.of(context).focusColor,
+                                    fontFamily: 'plusjakarta',
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600)))
                         .pOnly(right: 20)
                   ],
                 ),

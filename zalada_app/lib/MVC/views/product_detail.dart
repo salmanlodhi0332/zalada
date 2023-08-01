@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/MVC/controller/product_controller.dart';
 import 'package:zalada_app/MVC/views/Address_Screen.dart';
-import 'package:zalada_app/MVC/views/cart_screen2.dart';
+import 'package:zalada_app/MVC/views/cart_screen.dart';
 import 'package:zalada_app/MVC/views/wishlist_cart_screen.dart';
 import 'package:zalada_app/custom/back_button.dart';
 import 'package:readmore/readmore.dart';
@@ -291,8 +291,9 @@ class Product_Detail_Screen extends StatelessWidget {
                             .map((PR_item) {
                       return Product_Card(
                         hotdeal: '',
+                        id: PR_item.id,
                         imageurl: PR_item.images[0],
-                        product_name: PR_item.name,
+                        product_name: PR_item.name,                                                                                
                         price: '\$' + PR_item.price,
                         status: '',
                       ).py(25).px(5);

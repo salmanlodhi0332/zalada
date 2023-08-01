@@ -5,6 +5,7 @@ import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/utiles/getxcontroller.dart';
 
 import '../../auth/order_successful_bottom_bar.dart';
+import '../../auth/otp_bottom_bar.dart';
 import '../../custom/back_button.dart';
 import '../../custom/botton_widget.dart';
 

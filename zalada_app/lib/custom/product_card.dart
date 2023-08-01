@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/instance_manager.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/custom/image_widget.dart';
 import 'package:zalada_app/utiles/themeData.dart';
 
+import '../MVC/controller/product_controller.dart';
+
 class Product_Card extends StatelessWidget {
+  final int id;
   final String imageurl;
   final String product_name;
   final String price;
@@ -14,6 +18,7 @@ class Product_Card extends StatelessWidget {
   const Product_Card(
       {super.key,
       required this.hotdeal,
+      required this.id,
       this.disprice,
       required this.imageurl,
       required this.product_name,
@@ -23,6 +28,8 @@ class Product_Card extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(product_Controller());
+    final cartController = Get.put(cart_Controller());
     final height = MediaQuery.of(context).size.height;
 
     final width = MediaQuery.of(context).size.width;
@@ -95,16 +102,25 @@ class Product_Card extends StatelessWidget {
                                   fontWeight: FontWeight.w600),
                             )
                           ])),
-                          Container(
-                            height: 30,
-                            width: 30,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Theme.of(context).hoverColor),
-                            child: Icon(
-                              Icons.add,
-                              size: 15,
-                              color: Colors.white,
+                          InkWell(
+                            onTap: () {
+                              if (id != null) {
+                                cartController.addProduct(
+                                    controller.Productslist.firstWhere(
+                                        (product) => product.id == id));
+                              }
+                            },
+                            child: Container(
+                              height: 30,
+                              width: 30,
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Theme.of(context).hoverColor),
+                              child: Icon(
+                                Icons.add,
+                                size: 15,
+                                color: Colors.white,
+                              ),
                             ),
                           )
                           // SizedBox(

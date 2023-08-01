@@ -21,7 +21,10 @@ class Onboard_Three extends StatelessWidget {
         elevation: 0,
         actions: [
           TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Page_Navigation.getInstance
+                    .Page_PushAndReplaceNavigation(context, login_screen());
+              },
               child: Text(
                 'skip'.tr,
                 style: TextStyle(
@@ -58,7 +61,8 @@ class Onboard_Three extends StatelessWidget {
             ).pOnly(bottom: screenHeight * 0.04),
             InkWell(
               onTap: () {
-                Page_Navigation.getInstance.Page_PushAndReplaceNavigation(context, login_screen());
+                Page_Navigation.getInstance
+                    .Page_PushAndReplaceNavigation(context, login_screen());
               },
               child: Container(
                 child: Image.asset('assets/images/Progress_3.png'),

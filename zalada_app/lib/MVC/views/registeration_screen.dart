@@ -9,6 +9,7 @@ import '../../custom/other_loginbtn_widget.dart';
 import '../../custom/textfeild_widget.dart';
 import '../../utiles/page_navigation.dart';
 import '../controller/authentication_controller.dart';
+import '../controller/gmail_signup_controller.dart';
 import 'bottom_bar.dart';
 import 'login_screen.dart';
 
@@ -21,6 +22,9 @@ class registeration_screen extends StatefulWidget {
 
 class _registeration_screenState extends State<registeration_screen> {
   @override
+  // final GmailSignUpController gmailsignUpController =
+  //     Get.put(GmailSignUpController());
+
   AuthenticationController controller = Get.put(AuthenticationController());
   final _formKey = GlobalKey<FormState>();
   final hideConfirmpassword = true.obs;
@@ -192,6 +196,9 @@ class _registeration_screenState extends State<registeration_screen> {
                   height: 20,
                 ),
                 other_loginBtn_Widget(
+                    tap: () {
+                      controller.signUpWithGoogle();
+                    },
                     icon: Image.asset(
                       'assets/icon/google.png',
                       height: 30,

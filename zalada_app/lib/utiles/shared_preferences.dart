@@ -18,20 +18,27 @@ class shared_preferences extends GetxController {
   static RxInt selectedThemeMode = 0.obs;
   static RxInt selectedlanguage = 0.obs;
 
-  insert_userData({token, id, name, email, phone, photo, address}) async {
+  insert_userData({
+    token,
+    id,
+    name,
+    email,
+    phone,
+    image,
+  }) async {
     final SharedPreferences? prefs = await _prefs;
     await prefs?.setString('token', token);
     await prefs?.setString('id', id.toString());
-    await prefs?.setString('fullName', name);
+    await prefs?.setString('name', name);
     await prefs?.setString('email', email);
-    await prefs?.setString('phone', phone);
-    await prefs?.setString('address', address);
-    await prefs?.setString('photo', photo);
+    await prefs?.setString('phone_number', phone);
+    //await prefs?.setString('address', address);
+    await prefs?.setString('image', image);
 
     username.value = name;
     userEmail.value = email;
-    userPhoto.value = photo;
-    useraddress.value = address;
+    userPhoto.value = image;
+    //useraddress.value = address;
     userphone.value = phone;
     userToken.value = token;
     currentUserId.value = id.toString();

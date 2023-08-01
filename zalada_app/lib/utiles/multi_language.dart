@@ -203,7 +203,7 @@ class Multi_Language extends Translations {
           "receipt_num": "Receipt Number",
           "package_delivery": "Package on delivery",
           "order_status": "Order Status",
-          "": "",
+          "full_name": "Full Name",
           "": "",
           "": "",
           "": "",

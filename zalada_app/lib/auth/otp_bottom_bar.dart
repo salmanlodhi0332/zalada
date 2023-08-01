@@ -1,8 +1,11 @@
 // ignore_for_file: use_key_in_widget_constructors, must_be_immutable, camel_case_types
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:zalada_app/MVC/views/login_screen.dart';
 
 import '../custom/botton_widget.dart';
 
@@ -75,10 +78,7 @@ class OTP_Bottom_Bar extends GetView {
               width: width,
               title: 'continue'.tr,
               ontap: () {
-                Get.bottomSheet(
-                  OTP_Bottom_Bar(),
-                  isScrollControlled: true,
-                );
+                Get.to(login_screen());
               },
             ).pOnly(bottom: 30),
           ],

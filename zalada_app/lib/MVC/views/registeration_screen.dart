@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:zalada_app/MVC/views/otp_screen.dart';
 import 'package:zalada_app/custom/botton_widget.dart';
 
 import '../../custom/other_loginbtn_widget.dart';
 import '../../custom/textfeild_widget.dart';
 import '../../utiles/page_navigation.dart';
+import '../controller/authentication_controller.dart';
 import 'bottom_bar.dart';
 import 'login_screen.dart';
 
@@ -20,23 +22,26 @@ class registeration_screen extends StatefulWidget {
 
 class _registeration_screenState extends State<registeration_screen> {
   @override
+  AuthenticationController controller = Get.put(AuthenticationController());
+  final _formKey = GlobalKey<FormState>();
   final hideConfirmpassword = true.obs;
   final hidepassword = true.obs;
+
   final emailController = TextEditingController();
-  final PhoneNumberController = TextEditingController();
+  final nameController = TextEditingController();
   final passwordController = TextEditingController();
-  final Confirm_passwordController = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
+  final phoneController = TextEditingController();
+
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Theme.of(context).secondaryHeaderColor,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          scrollDirection: Axis.vertical,
-          child: Form(
-            key: _formKey,
+      body: Form(
+        key: _formKey,
+        child: SafeArea(
+          child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            scrollDirection: Axis.vertical,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -55,21 +60,25 @@ class _registeration_screenState extends State<registeration_screen> {
                   ],
                 ).py(20),
                 textfeild_widget(
-                  controller: emailController,
-                  hintText: 'email_address'.tr,
-                  label: 'email_address'.tr,
-                  validator: (input) =>
-                      input!.length == 0 ? "validation_email".tr : null,
+                  controller: nameController,
+                  hintText: 'enter_your_name'.tr,
+                  label: 'full_name'.tr,
                 ),
                 SizedBox(
                   height: 20,
                 ),
                 textfeild_widget(
-                  controller: PhoneNumberController,
+                  controller: emailController,
+                  hintText: 'email_address'.tr,
+                  label: 'email_address'.tr,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                textfeild_widget(
+                  controller: phoneController,
                   hintText: 'Phone_number'.tr,
                   label: 'Phone_number'.tr,
-                  validator: (input) =>
-                      input!.length == 0 ? "validation_Phone".tr : null,
                 ),
                 SizedBox(
                   height: 20,
@@ -79,11 +88,6 @@ class _registeration_screenState extends State<registeration_screen> {
                     controller: passwordController,
                     hintText: 'password'.tr,
                     label: 'password'.tr,
-                    validator: (input) => input!.length == 0
-                        ? "validation_password".tr
-                        : input!.length < 8
-                            ? "validation_password_length".tr
-                            : null,
                     obscureText: hidepassword.value,
                     suffixIcon: IconButton(
                       onPressed: () {
@@ -104,15 +108,10 @@ class _registeration_screenState extends State<registeration_screen> {
                 ),
                 Obx(
                   () => textfeild_widget(
-                    controller: Confirm_passwordController,
+                    controller: passwordController,
                     hintText: 'password'.tr,
                     label: 'Confirm_password'.tr,
                     obscureText: hideConfirmpassword.value,
-                    validator: (input) => input!.length == 0
-                        ? "validation_password".tr
-                        : input!.length < 8
-                            ? "validation_password_length".tr
-                            : null,
                     suffixIcon: IconButton(
                       onPressed: () {
                         hideConfirmpassword.value = !hideConfirmpassword.value;
@@ -134,21 +133,29 @@ class _registeration_screenState extends State<registeration_screen> {
                   width: size.width,
                   title: 'Register'.tr,
                   ontap: () {
+                    // Page_Navigation.getInstance.Page(
+                    //     context,
+                    //     OTP_Screen(
+                    //       email: emailController.text,
+                    //       name: nameController.text,
+                    //       password: passwordController.text,
+                    //       phone: phoneController.text,
+                    //       verfiyId: emailController.text,
+                    //     )
+                    //     );
                     if (_formKey.currentState!.validate()) {
-                      if (Confirm_passwordController.value ==
-                          passwordController.value) {
-                        Page_Navigation.getInstance
-                            .Page_PushAndReplaceNavigation(
-                                context, Bottom_Bar());
-                      } else {
-                        Get.snackbar(
-                            'form_validation'.tr, "password_doesn't_match".tr,
-                            backgroundColor: Theme.of(context).cardColor,
-                            colorText: Theme.of(context).hintColor);
-                      }
+                      print("Mobile Number with country code" +
+                          phoneController.text);
+                      controller.mobileotp_Send(
+                        nameController.text,
+                        emailController.text,
+                        passwordController.text,
+                        phoneController.text,
+                      );
+                      // controller.registerwithEmail();
+                      controller.loading.value = !controller.loading.value;
                     } else {
-                      Get.snackbar(
-                          'form_validation'.tr, 'please_Fill_the_form'.tr,
+                      Get.snackbar('form', "please_Fill_the_form",
                           backgroundColor: Theme.of(context).cardColor,
                           colorText: Theme.of(context).hintColor);
                     }

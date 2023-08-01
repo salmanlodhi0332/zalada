@@ -14,6 +14,7 @@ import '../../custom/botton_widget.dart';
 import '../../utiles/page_navigation.dart';
 
 import '../../custom/filter_bar.dart';
+import '../controller/authentication_controller.dart';
 
 class OTP_Screen extends StatefulWidget {
   final String verfiyId;
@@ -43,6 +44,8 @@ class _OTP_ScreenState extends State<OTP_Screen> {
     controller.startTimer();
   }
 
+  AuthenticationController authcontroller = Get.put(AuthenticationController());
+
   TextEditingController controller1 = TextEditingController();
 
   TextEditingController controller2 = TextEditingController();
@@ -50,6 +53,8 @@ class _OTP_ScreenState extends State<OTP_Screen> {
   TextEditingController controller3 = TextEditingController();
 
   TextEditingController controller4 = TextEditingController();
+  TextEditingController controller5 = TextEditingController();
+  TextEditingController controller6 = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +118,9 @@ class _OTP_ScreenState extends State<OTP_Screen> {
                 otp_box(context, controller1),
                 otp_box(context, controller2),
                 otp_box(context, controller3),
-                otp_box(context, controller4)
+                otp_box(context, controller4),
+                otp_box(context, controller5),
+                otp_box(context, controller6)
               ],
             ),
           ),
@@ -144,10 +151,19 @@ class _OTP_ScreenState extends State<OTP_Screen> {
             width: width,
             title: 'continue'.tr,
             tap: () {
-              Get.bottomSheet(
-                OTP_Bottom_Bar(),
-                isScrollControlled: true,
-              );
+              authcontroller.otp_verification(
+                  controller1.text +
+                      controller2.text +
+                      controller3.text +
+                      controller4.text +
+                      controller5.text +
+                      controller6.text,
+                  widget.verfiyId,
+                  widget.name,
+                  widget.email,
+                  widget.phone,
+                  widget.password,
+                  context);
             },
           )
         ],
@@ -165,8 +181,8 @@ class _OTP_ScreenState extends State<OTP_Screen> {
             color: Theme.of(context).disabledColor.withOpacity(0.5),
           ),
           borderRadius: BorderRadius.circular(10)),
-      height: 60,
-      width: 60,
+      height: 30,
+      width: 30,
       child: Center(
         child: TextFormField(
           controller: controller,

@@ -146,11 +146,10 @@ class _registeration_screenState extends State<registeration_screen> {
                       print("Mobile Number with country code" +
                           phoneController.text);
                       controller.mobileotp_Send(
-                        nameController.text,
-                        emailController.text,
-                        passwordController.text,
-                        phoneController.text,
-                      );
+                          nameController.text,
+                          emailController.text,
+                          passwordController.text,
+                          phoneController.text);
                       // controller.registerwithEmail();
                       controller.loading.value = !controller.loading.value;
                     } else {

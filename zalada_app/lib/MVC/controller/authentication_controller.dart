@@ -199,10 +199,10 @@ class AuthenticationController extends GetxController {
 
   //---------------------------VERIFICATION
 
-  Future<void> otp_verification(String verifyId, String name, String email,
-      String phone, String password, BuildContext context) async {
+  Future<void> otp_verification(String verifyotp, String verifyId, String name,
+      String email, String phone, String password, BuildContext context) async {
     final credential = PhoneAuthProvider.credential(
-        verificationId: verifyId, smsCode: verifyotp.value.text);
+        verificationId: verifyId, smsCode: verifyotp);
     try {
       // Loader.poploader();
       await auth.signInWithCredential(credential).then((value) {

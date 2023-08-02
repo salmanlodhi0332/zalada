@@ -8,13 +8,19 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
 import 'package:zalada_app/MVC/views/notification_screen.dart';
 import 'package:zalada_app/MVC/views/product_detail.dart';
+import '../../custom/add_to_cart_button.dart';
 import '../../custom/all_custom_btn.dart';
 import '../../custom/hot_deal_productcard.dart';
 import '../../custom/search_screen_widgets/categories_btn.dart';
+import 'package:badges/badges.dart' as badges;
+
+import 'cart_screen2.dart';
 
 class Home_Screen extends StatelessWidget {
   Home_Screen({Key? key}) : super(key: key);
   final controller = Get.put(product_Controller());
+  final cartController = Get.put(cart_Controller());
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -28,7 +34,6 @@ class Home_Screen extends StatelessWidget {
           color: Theme.of(context).primaryColor,
           onRefresh: () async {},
           child: CustomScrollView(
-            
               physics: const BouncingScrollPhysics(),
               primary: true,
               shrinkWrap: false,
@@ -43,15 +48,50 @@ class Home_Screen extends StatelessWidget {
                   pinned: false,
                   automaticallyImplyLeading: false,
                   actions: [
-                    Container(
-                      margin: EdgeInsets.all(7),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          color: Theme.of(context)
-                              .highlightColor
-                              .withOpacity(0.3)),
-                      child: Image.asset('assets/images/cart.png'),
+// this is that button which i have to work on
+
+                    // Container(
+                    //   margin: EdgeInsets.all(7),
+                    //   decoration: BoxDecoration(
+                    //       borderRadius: BorderRadius.circular(50),
+                    //       color: Theme.of(context)
+                    //           .highlightColor
+                    //           .withOpacity(0.3)),
+                    // ),
+
+                    Obx(
+                      () => badges.Badge(
+                        position: badges.BadgePosition.topEnd(top: 3, end: 10),
+                        showBadge: true,
+                        badgeContent: Text(
+                          cartController.cartproductlist.length.toString(),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'plusjakarta',
+                          ),
+                        ),
+                        ignorePointer: false,
+                        child: Container(
+                          margin: EdgeInsets.all(7),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50),
+                              color: Theme.of(context)
+                                  .highlightColor
+                                  .withOpacity(0.3)),
+                          child: add_to_cart_button(
+                            ontap: () {
+                              Get.to(CartScreenWithData);
+                            },
+                          ),
+                        ),
+                      ),
                     ),
+
+                    // add_to_cart_button(
+                    //   ontap: () {},
+                    // ),
+
+// end of the widget
                     Container(
                       margin: EdgeInsets.all(7),
                       decoration: BoxDecoration(

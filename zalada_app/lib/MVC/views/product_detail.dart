@@ -4,6 +4,7 @@ import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/MVC/controller/product_controller.dart';
 import 'package:zalada_app/MVC/model/product_model.dart';
 import 'package:zalada_app/MVC/views/select_address.dart';
+import 'package:zalada_app/custom/add_to_cart_button.dart';
 import 'package:zalada_app/custom/back_button.dart';
 import 'package:readmore/readmore.dart';
 import 'package:zalada_app/custom/botton_widget.dart';
@@ -13,6 +14,7 @@ import 'package:zalada_app/utiles/page_navigation.dart';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import '../../custom/select_address_card.dart';
 import 'confirm_order.dart';
+import 'package:badges/badges.dart' as badges;
 
 class Product_Detail_Screen extends StatelessWidget {
   final int id;
@@ -321,20 +323,49 @@ class Product_Detail_Screen extends StatelessWidget {
                 topLeft: Radius.circular(20), topRight: Radius.circular(20))),
         child: Row(
           children: [
-            back_button(
-              // ontap: () {
-              //   cartController.addProduct(Product_Model.dummyProducts[id]);
-              // },
-              ontap: () {
-                cartController.addProduct(controller.Productslist.firstWhere(
-                    (product) => product.id == id));
-              },
+            Obx(
+              () => badges.Badge(
+                position: badges.BadgePosition.topEnd(top: 3, end: 10),
+                showBadge: true,
+                badgeContent: Text(
+                  cartController.cartproductlist.length.toString(),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'plusjakarta',
+                  ),
+                ),
+                ignorePointer: false,
+                child:
 
-              pic: Image.asset(
-                'assets/images/cart.png',
-                color: Theme.of(context).hintColor,
-              ).p(15),
+                    //  from here onwords
+                    add_to_cart_button(
+                  ontap: () {
+                    cartController.addProduct(
+                        controller.Productslist.firstWhere(
+                            (product) => product.id == id));
+                  },
+                  pic: Image.asset(
+                    'assets/images/cart.png',
+                    color: Theme.of(context).hintColor,
+                  ).p(15),
+                ),
+//  end the button, new component comes here.
+              ),
             ),
+            // back_button(
+            //   // ontap: () {
+            //   //   cartController.addProduct(Product_Model.dummyProducts[id]);
+            //   // },
+            //   ontap: () {
+            //     cartController.addProduct(controller.Productslist.firstWhere(
+            //         (product) => product.id == id));
+            //   },
+
+            //   pic: Image.asset(
+            //     'assets/images/cart.png',
+            //     color: Theme.of(context).hintColor,
+            //   ).p(15),
+            // ),
             Button_Widget(
                     tap: () {
                       Page_Navigation.getInstance

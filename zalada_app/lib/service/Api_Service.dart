@@ -70,7 +70,7 @@ class ApiService {
           'lat': double.parse(data.latitude),
           'long': double.parse(data.longitude),
           'address_type': data.addressType,
-          'UserId': data.userid
+          'user_id': data.userid
         },
         // options: Options(
         //   headers: {
@@ -82,6 +82,81 @@ class ApiService {
       if (response.statusCode == 201) {
         print("Address are succesfully Created");
         Get.snackbar('Address'.tr, "address_created".tr,
+            colorText: Theme.of(context).hintColor,
+            backgroundColor: Theme.of(context).cardColor);
+        Page_Navigation.getInstance.Page(context, Address_Screen());
+      } else {
+        Get.snackbar('error'.tr, response.data['message'],
+            colorText: Theme.of(context).hintColor,
+            backgroundColor: Theme.of(context).cardColor);
+      }
+    } on DioException catch (e) {
+      Get.back();
+      print("Address  ${e.response?.data['message']}");
+      // Get.snackbar('address_failed'.tr, "${e.response?.data['message']}",
+      //     colorText: Theme.of(context).secondaryHeaderColor,
+      //     backgroundColor: Theme.of(context).cardColor);
+    }
+  }
+
+  Update_Address(Address_Model data, BuildContext context) async {
+    try {
+      Loader.poploader();
+      Response response;
+      response = await dio.patch(
+        '${baseURL}address/${data.id}',
+        data: {
+          'locationName': data.locationname,
+          'address': data.address,
+          'lat': double.parse(data.latitude),
+          'long': double.parse(data.longitude),
+          'address_type': data.addressType,
+          'user_id': data.userid
+        },
+        // options: Options(
+        //   headers: {
+        //     'Authorization': 'Bearer $AuthUserToken',
+        //   },
+        // )
+      );
+      print(response.data);
+      if (response.statusCode == 200) {
+        print("Update are succesfully Created");
+        Get.snackbar('Address'.tr, "address_upated".tr,
+            colorText: Theme.of(context).hintColor,
+            backgroundColor: Theme.of(context).cardColor);
+        Page_Navigation.getInstance.Page(context, Address_Screen());
+      } else {
+        Get.snackbar('error'.tr, response.data['message'],
+            colorText: Theme.of(context).hintColor,
+            backgroundColor: Theme.of(context).cardColor);
+      }
+    } on DioException catch (e) {
+      Get.back();
+      print("Address  ${e.response?.data['message']}");
+      // Get.snackbar('address_failed'.tr, "${e.response?.data['message']}",
+      //     colorText: Theme.of(context).secondaryHeaderColor,
+      //     backgroundColor: Theme.of(context).cardColor);
+    }
+  }
+
+  Delete_Address(int id, BuildContext context) async {
+    try {
+      Loader.poploader();
+      Response response;
+      response = await dio.delete(
+        '${baseURL}address/${id}',
+
+        // options: Options(
+        //   headers: {
+        //     'Authorization': 'Bearer $AuthUserToken',
+        //   },
+        // )
+      );
+      print(response.data);
+      if (response.statusCode == 200) {
+        print("Address  are succesfully Deleted");
+        Get.snackbar('Address'.tr, "address_delete".tr,
             colorText: Theme.of(context).hintColor,
             backgroundColor: Theme.of(context).cardColor);
         Page_Navigation.getInstance.Page(context, Address_Screen());

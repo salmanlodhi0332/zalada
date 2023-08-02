@@ -12,7 +12,9 @@ import '../controller/address_controller.dart';
 import 'confirm_order.dart';
 
 class Address_Screen extends StatefulWidget {
-  Address_Screen({super.key});
+  Address_Screen({
+    super.key,
+  });
 
   @override
   State<Address_Screen> createState() => _Address_ScreenState();
@@ -20,8 +22,12 @@ class Address_Screen extends StatefulWidget {
 
 class _Address_ScreenState extends State<Address_Screen> {
   final controller = Get.put(Address_Controller());
-
   final getcontroller = Get.put(getx_GetController());
+  @override
+  void initState() {
+    super.initState();
+    controller.getAddress();
+  }
 
   int selectedContainerIndex = -1;
 
@@ -33,33 +39,31 @@ class _Address_ScreenState extends State<Address_Screen> {
       appBar: Custom_Appbar(
         title: "Address".tr,
         leadingButton: back_button(ontap: () {
-          Get.back();
+          // Get.back();
         }),
       ),
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       body: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          // physics: BouncingScrollPhysics(),
           scrollDirection: Axis.vertical,
-          child: controller.isLoading.value
+          child: Obx(() => controller.isLoading.value
               ? Column(
                   children: [
                     custom_shimmer(
-                        width: size.width, height: size.height / 3.7),
+                        width: size.width, height: size.height / 8.7),
                     custom_shimmer(
-                        width: size.width, height: size.height / 3.7),
+                        width: size.width, height: size.height / 8.7),
                     custom_shimmer(
-                        width: size.width, height: size.height / 3.7),
-                    custom_shimmer(width: size.width, height: size.height / 3.7)
+                        width: size.width, height: size.height / 8.7),
+                    custom_shimmer(
+                        width: size.width, height: size.height / 8.7),
+                    custom_shimmer(
+                        width: size.width, height: size.height / 8.7),
                   ],
                 )
               : Column(
                   children: controller.AddressList.map((e) {
                     return Container(
-                        // height: MediaQuery.of(context).orientation == Orientation.portrait
-                        //     ? size.height / 5
-                        //     : size.height / 3,
-                        // // height: size.height / 5,
-                        // width: size.width,
                         decoration: BoxDecoration(
                             border: Border.all(
                                 color: selectedContainerIndex == e.id
@@ -88,35 +92,21 @@ class _Address_ScreenState extends State<Address_Screen> {
                             print(getcontroller.selectedaddress.value);
                           },
                           contentPadding: EdgeInsets.all(10),
-                          title: Row(
-                            children: [
-                              Container(
-                                height: size.height / 25,
-                                // width: 30,
-                                width: size.width * 0.1,
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Theme.of(context).highlightColor),
-                                child: Text('a'),
-                              ),
-                              SizedBox(width: 10),
-                              Text(e.locationname,
-                                  style: TextStyle(
-                                    fontFamily: 'plusjakarta',
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.normal,
-                                    color: Theme.of(context).hintColor,
-                                  )),
-                            ],
-                          ),
+                          title: Text(e.locationname,
+                              style: TextStyle(
+                                fontFamily: 'plusjakarta',
+                                fontSize: 15,
+                                fontWeight: FontWeight.normal,
+                                color: Theme.of(context).hintColor,
+                              )),
                           subtitle: Text(e.address,
                               style: TextStyle(
                                 fontFamily: 'plusjakarta',
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
                                 color: Theme.of(context).hintColor,
-                              )).p(10),
-                          trailing: CircleAvatar(
+                              )).py(10),
+                          leading: CircleAvatar(
                             radius: 25,
                             child: IconButton(
                               icon: Icon(
@@ -129,9 +119,34 @@ class _Address_ScreenState extends State<Address_Screen> {
                                 .disabledColor
                                 .withOpacity(0.1),
                           ),
+                          trailing: CircleAvatar(
+                            radius: 25,
+                            child: IconButton(
+                              icon: Icon(
+                                Icons.edit_outlined,
+                                color: Theme.of(context).focusColor,
+                              ),
+                              onPressed: () {
+                                Page_Navigation.getInstance.Page(
+                                    context,
+                                    Select_Address(
+                                      id: e.id,
+                                      userId: e.userid,
+                                      address: e.address,
+                                      latitude: e.latitude,
+                                      longitude: e.longitude,
+                                      address_type: e.addressType,
+                                      locationName: e.locationname,
+                                    ));
+                              },
+                            ),
+                            backgroundColor: Theme.of(context)
+                                .disabledColor
+                                .withOpacity(0.1),
+                          ),
                         )).px(15).py(10);
                   }).toList(),
-                )),
+                ))),
       bottomNavigationBar: Container(
         height: 80,
         decoration: BoxDecoration(

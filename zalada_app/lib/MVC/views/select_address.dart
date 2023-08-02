@@ -15,7 +15,22 @@ import '../../custom/back_button.dart';
 import '../../custom/textfeild_widget.dart';
 
 class Select_Address extends StatefulWidget {
-  const Select_Address({super.key});
+  final int? id;
+  final int? userId;
+  final String? address_type;
+  final String? locationName;
+  final String? latitude;
+  final String? longitude;
+  final String? address;
+  const Select_Address(
+      {super.key,
+      this.id,
+      this.userId,
+      this.address,
+      this.address_type,
+      this.latitude,
+      this.locationName,
+      this.longitude});
 
   @override
   State<Select_Address> createState() => _Select_AddressState();
@@ -35,6 +50,16 @@ class _Select_AddressState extends State<Select_Address> {
   void initState() {
     super.initState();
     _controller = Completer();
+    editAddress();
+  }
+
+  void editAddress() {
+    addressController.text = widget.locationName!;
+    lat = double.parse(widget.latitude!);
+    long = double.parse(widget.longitude!);
+    _address = widget.address!;
+    desiLocation =
+        LatLng(double.parse(widget.latitude!), double.parse(widget.longitude!));
   }
 
   void onMarkerDragEnd(LatLng position) {
@@ -54,11 +79,20 @@ class _Select_AddressState extends State<Select_Address> {
             Get.back();
           }),
           actionButtons: [
-            back_button(
-                ontap: () {},
-                pic: SvgPicture.asset(
-                  "assets/svg/brower.svg",
-                ).p(10))
+            widget.id != null
+                ? back_button(
+                    ontap: () {
+                      ApiService.getInstance
+                          .Delete_Address(widget.id!, context);
+                    },
+                    pic: Center(
+                      child: Icon(
+                        Icons.delete_outline,
+                        color: Colors.red,
+                        size: 20,
+                      ).p(6),
+                    ))
+                : SizedBox()
           ],
         ),
         backgroundColor: Theme.of(context).secondaryHeaderColor,
@@ -89,6 +123,11 @@ class _Select_AddressState extends State<Select_Address> {
                   onCameraIdle: () {
                     print('Camera Idle');
                     getAddressLatLng();
+                    // if (_address == null) {
+                    //   getAddressLatLng();
+                    // } else {
+                    //   print('object Address Error');
+                    // }
                   },
                   onTap: (latlng) {
                     print(latlng);
@@ -141,7 +180,9 @@ class _Select_AddressState extends State<Select_Address> {
 
               textfeild_widget(
                 label: "Address_name".tr,
-                hintText: "Apartment",
+                hintText: widget.locationName!.isNotEmpty
+                    ? widget.locationName!
+                    : "Apartment",
                 controller: addressController,
               ),
               SizedBox(
@@ -209,7 +250,9 @@ class _Select_AddressState extends State<Select_Address> {
                             .withOpacity(0.3)), //<-- SEE HERE
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  hintText: "select_address_type".tr,
+                  hintText: widget.address_type!.isEmpty
+                      ? "select_address_type".tr
+                      : widget.address_type,
                 ),
                 controller: typecontroller,
                 dropDownList: [
@@ -271,16 +314,34 @@ class _Select_AddressState extends State<Select_Address> {
               ),
               Button_Widget(
                   ontap: () {
-                    ApiService.getInstance.Add_Address(
-                        Address_Model(
-                          locationname: addressController.text,
-                          address: _address,
-                          latitude: lat.toString(),
-                          longitude: long.toString(),
-                          addressType: typecontroller.dropDownValue!.name,
-                          userid: 1,
-                        ),
-                        context);
+                    if (widget.id != null) {
+                      ApiService.getInstance.Update_Address(
+                          Address_Model(
+                            id: widget.id,
+                            locationname: addressController.text,
+                            address: _address,
+                            latitude: lat.toString(),
+                            longitude: long.toString(),
+                            addressType: typecontroller.dropDownValue != null &&
+                                    typecontroller
+                                        .dropDownValue!.value.isNotEmpty
+                                ? typecontroller.dropDownValue!.value
+                                : widget.address_type,
+                            userid: widget.userId!,
+                          ),
+                          context);
+                    } else {
+                      ApiService.getInstance.Add_Address(
+                          Address_Model(
+                            locationname: addressController.text,
+                            address: _address,
+                            latitude: lat.toString(),
+                            longitude: long.toString(),
+                            addressType: typecontroller.dropDownValue!.name,
+                            userid: 1,
+                          ),
+                          context);
+                    }
                   },
                   width: size.width,
                   title: "Add_Address".tr)

@@ -41,7 +41,7 @@ class Address_Model {
         address: json['address'],
         latitude: json['lat'].toString(),
         longitude: json['long'].toString(),
-        userid: json['UserId'],
+        userid: json['user_id'],
         creationDate: json['createdAt'],
         updatedDate: json['updatedAt']);
   }

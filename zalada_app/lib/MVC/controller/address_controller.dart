@@ -24,8 +24,9 @@ class Address_Controller extends GetxController {
       AddressList.value = ServerResponse;
     } catch (e) {
       print('getAddress error: $e');
-    } finally {
-      isLoading(false);
     }
+    //  finally {
+    //   isLoading(false);
+    // }
   }
 }

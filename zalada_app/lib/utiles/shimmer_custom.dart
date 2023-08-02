@@ -14,14 +14,14 @@ class custom_shimmer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: Theme.of(context).secondaryHeaderColor.withOpacity(0.1),
-      highlightColor: Theme.of(context).secondaryHeaderColor.withOpacity(0.2),
+      baseColor: Theme.of(context).hintColor.withOpacity(0.1),
+      highlightColor: Theme.of(context).hintColor.withOpacity(0.2),
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 10),
+        margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
         width: width,
         height: height,
         decoration: BoxDecoration(
-            color: Theme.of(context).secondaryHeaderColor.withOpacity(0.5),
+            color: Theme.of(context).hintColor.withOpacity(0.5),
             borderRadius: BorderRadius.circular(10)),
       ),
     );

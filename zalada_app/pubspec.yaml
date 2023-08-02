@@ -68,6 +68,7 @@ dependencies:
   geolocator: ^9.0.2
   geocoding: ^2.1.0
   geocoder2: ^1.4.0
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:

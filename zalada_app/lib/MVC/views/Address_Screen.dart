@@ -5,18 +5,25 @@ import 'package:zalada_app/MVC/views/select_Address.dart';
 import 'package:zalada_app/custom/back_button.dart';
 import 'package:zalada_app/custom/custom_appbar.dart';
 import '../../custom/botton_widget.dart';
-import '../../custom/select_address_card.dart';
+import '../../utiles/getxcontroller.dart';
 import '../../utiles/page_navigation.dart';
+import '../../utiles/shimmer_custom.dart';
+import '../controller/address_controller.dart';
 import 'confirm_order.dart';
 
-class Address_Screen extends StatelessWidget {
+class Address_Screen extends StatefulWidget {
   Address_Screen({super.key});
 
-  RxBool select_home = false.obs;
+  @override
+  State<Address_Screen> createState() => _Address_ScreenState();
+}
 
-  RxBool select_office = false.obs;
+class _Address_ScreenState extends State<Address_Screen> {
+  final controller = Get.put(Address_Controller());
 
-  RxBool select_apartment = false.obs;
+  final getcontroller = Get.put(getx_GetController());
+
+  int selectedContainerIndex = -1;
 
   @override
   Widget build(BuildContext context) {
@@ -31,84 +38,100 @@ class Address_Screen extends StatelessWidget {
       ),
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        scrollDirection: Axis.vertical,
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            children: [
-              SizedBox(
-                height: 20,
-              ),
-              Obx(() => InkWell(
-                    onTap: () {
-                      // Use the observable variables here to trigger updates
-                      select_home.value = !select_home.value;
-                      select_apartment.value = false;
-                      select_office.value = false;
-                    },
-                    child: select_address_card(
-                      hintText: "JI.Pangkui,Ngaglik,Salme",
-                      label: 'Home',
-                      image: Image.asset("assets/images/house.png"),
-                      preffixIcon: Icon(Icons.credit_card),
-                      // Use the observable variables here to determine the selected state
-                      selected: select_home.value,
-                      NumberText: "+3322469178",
-                    ),
-                  )),
-              SizedBox(
-                height: 20,
-              ),
-              Obx(() => InkWell(
-                    onTap: () {
-                      select_home.value = false;
-                      select_apartment.value = false;
-                      select_office.value = !select_office.value;
-                    },
-                    child: select_address_card(
-                      hintText: "JI.Pangkui,Ngaglik,Salme",
-                      label: 'Office',
-                      NumberText: "+3322469178",
-                      // preffixIcon: Icon(Icons.credit_card),S
-                      // Use the observable variables here to determine the selected state
-                      selected: select_office.value,
-                      image: Image.asset("assets/images/office.png"),
-                    ),
-                  )),
-              SizedBox(
-                height: 20,
-              ),
-              Obx(() => InkWell(
-                    onTap: () {
-                      select_home.value = false;
-                      select_apartment.value = !select_apartment.value;
-                      select_office.value = false;
-                    },
-                    child: select_address_card(
-                      hintText: "JI.Pangkui,Ngaglik,Salme",
-                      label: 'Apartment',
-                      preffixIcon: Icon(Icons.credit_card),
-                      // Use the observable variables here to determine the selected state
-                      selected: select_apartment.value,
-                      image: Image.asset("assets/images/apartment.png"),
-                      NumberText: "+3322469178",
-                    ),
-                  )),
-              SizedBox(
-                height: 30,
-              ),
-              // Button_Widget(
-              //   title: "Select_Address".tr,
-              //   ontap: () {
-              //     Get.to(address());
-              //   },
-              //   width: size.width,
-              // ),
-            ],
-          ),
-        ),
-      ),
+          physics: BouncingScrollPhysics(),
+          scrollDirection: Axis.vertical,
+          child: controller.isLoading.value
+              ? Column(
+                  children: [
+                    custom_shimmer(
+                        width: size.width, height: size.height / 3.7),
+                    custom_shimmer(
+                        width: size.width, height: size.height / 3.7),
+                    custom_shimmer(
+                        width: size.width, height: size.height / 3.7),
+                    custom_shimmer(width: size.width, height: size.height / 3.7)
+                  ],
+                )
+              : Column(
+                  children: controller.AddressList.map((e) {
+                    return Container(
+                        // height: MediaQuery.of(context).orientation == Orientation.portrait
+                        //     ? size.height / 5
+                        //     : size.height / 3,
+                        // // height: size.height / 5,
+                        // width: size.width,
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: selectedContainerIndex == e.id
+                                    ? Theme.of(context)
+                                        .indicatorColor
+                                        .withOpacity(0.5)
+                                    : Theme.of(context)
+                                        .disabledColor
+                                        .withOpacity(0.3),
+                                width: 1.0),
+                            borderRadius: BorderRadius.circular(15)),
+                        child: ListTile(
+                          onTap: () {
+                            setState(() {
+                              if (selectedContainerIndex == e.id) {
+                                // getcontroller.selectedaddress.value = e.id!;
+
+                                selectedContainerIndex = -1;
+                                getcontroller.selectedaddress.value = 0;
+                              } else {
+                                selectedContainerIndex = e.id!;
+
+                                getcontroller.selectedaddress.value = e.id!;
+                              }
+                            });
+                            print(getcontroller.selectedaddress.value);
+                          },
+                          contentPadding: EdgeInsets.all(10),
+                          title: Row(
+                            children: [
+                              Container(
+                                height: size.height / 25,
+                                // width: 30,
+                                width: size.width * 0.1,
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Theme.of(context).highlightColor),
+                                child: Text('a'),
+                              ),
+                              SizedBox(width: 10),
+                              Text(e.locationname,
+                                  style: TextStyle(
+                                    fontFamily: 'plusjakarta',
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal,
+                                    color: Theme.of(context).hintColor,
+                                  )),
+                            ],
+                          ),
+                          subtitle: Text(e.address,
+                              style: TextStyle(
+                                fontFamily: 'plusjakarta',
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: Theme.of(context).hintColor,
+                              )).p(10),
+                          trailing: CircleAvatar(
+                            radius: 25,
+                            child: IconButton(
+                              icon: Icon(
+                                Icons.location_on_outlined,
+                                color: Colors.red,
+                              ),
+                              onPressed: () {},
+                            ),
+                            backgroundColor: Theme.of(context)
+                                .disabledColor
+                                .withOpacity(0.1),
+                          ),
+                        )).px(15).py(10);
+                  }).toList(),
+                )),
       bottomNavigationBar: Container(
         height: 80,
         decoration: BoxDecoration(

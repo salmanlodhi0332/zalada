@@ -29,7 +29,7 @@ class OTP_Screen extends StatefulWidget {
 }
 
 class _OTP_ScreenState extends State<OTP_Screen> {
-  final controller = Get.put(Mian_GetController());
+  final controller = Get.put(getx_GetController());
 
   @override
   void initState() {

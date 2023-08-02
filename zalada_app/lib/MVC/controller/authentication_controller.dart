@@ -86,7 +86,7 @@ class AuthenticationController extends GetxController {
               phone: phone,
               token: token,
               address: address);
-          var getxController = Mian_GetController();
+          var getxController = getx_GetController();
           //getxController.GetMessageOfuser();
           //SocketIOClient.getInstance.connectUsertosockit();
           Page_Navigation.getInstance

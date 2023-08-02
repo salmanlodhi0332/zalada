@@ -8,12 +8,14 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
 import 'package:zalada_app/MVC/views/notification_screen.dart';
 import 'package:zalada_app/MVC/views/product_detail.dart';
+import '../../custom/add_to_cart_button.dart';
 import '../../custom/all_custom_btn.dart';
 import '../../custom/home_tabs/home_tab1.dart';
 import '../../custom/home_tabs/home_tab2.dart';
 import '../../custom/home_tabs/home_tab3.dart';
 import '../../custom/hot_deal_productcard.dart';
 import '../../custom/search_screen_widgets/categories_btn.dart';
+import 'package:badges/badges.dart' as badges;
 
 class Home_Screen extends StatefulWidget {
   Home_Screen({Key? key}) : super(key: key);
@@ -36,7 +38,6 @@ class _Home_ScreenState extends State<Home_Screen> {
     Home_Tab3(),
   ];
   final controller = Get.put(product_Controller());
-
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -50,7 +51,7 @@ class _Home_ScreenState extends State<Home_Screen> {
           color: Theme.of(context).primaryColor,
           onRefresh: () async {},
           child: CustomScrollView(
-              // physics: const BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               primary: true,
               shrinkWrap: false,
               clipBehavior: Clip.none,
@@ -65,7 +66,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                   automaticallyImplyLeading: false,
                   actions: [
                     Container(
-                      margin: const EdgeInsets.all(7),
+                      margin: EdgeInsets.all(7),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
                           color: Theme.of(context)
@@ -73,6 +74,12 @@ class _Home_ScreenState extends State<Home_Screen> {
                               .withOpacity(0.3)),
                       child: Image.asset('assets/images/cart.png'),
                     ),
+
+                    // add_to_cart_button(
+                    //   ontap: () {},
+                    // ),
+
+// end of the widget
                     Container(
                       margin: const EdgeInsets.all(7),
                       decoration: BoxDecoration(

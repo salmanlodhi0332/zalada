@@ -126,7 +126,7 @@ class AuthenticationController extends GetxController {
           print('Email or Name is missing. Unable to send data to API.');
         }
 
-        Get.off(Bottom_Bar()); // Replace 'BottomBar()' with your desired screen
+        Get.off(Bottom_Bar());
       } else {
         print('Failed to log in with Apple.');
       }

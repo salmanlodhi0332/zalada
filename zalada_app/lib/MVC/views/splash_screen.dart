@@ -7,6 +7,8 @@ import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
 import 'package:zalada_app/MVC/views/onboarding/onboard_one.dart';
 
+import 'onBoarding_screen.dart';
+
 class splash_screen extends StatefulWidget {
   const splash_screen({super.key});
 
@@ -25,7 +27,7 @@ class _splash_screenState extends State<splash_screen> {
 
   String? token;
   isloggedcheck() async {
-    Page_Navigation().Page(context, Onboard_One());
+    Page_Navigation().Page(context, OnBoardingScreen());
   }
 
   @override

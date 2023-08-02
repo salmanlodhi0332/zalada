@@ -210,13 +210,16 @@ class _registeration_screenState extends State<registeration_screen> {
                   height: 20,
                 ),
                 other_loginBtn_Widget(
+                    // tap: () {
+                    //   controller.signUpWithApple();
+                    // },
                     icon: Image.asset(
-                      'assets/icon/facebook.png',
+                      'assets/icon/apple.png',
                       height: 30,
                       width: 30,
                     ),
                     width: size.width,
-                    title: 'Continue_with_facebook'.tr),
+                    title: 'Continue_with_apple'.tr),
                 SizedBox(
                   height: 20,
                 ),

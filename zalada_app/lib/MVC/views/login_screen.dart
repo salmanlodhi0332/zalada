@@ -163,13 +163,16 @@ class _login_screenState extends State<login_screen> {
                   height: 20,
                 ),
                 other_loginBtn_Widget(
+                    // tap: () {
+                    //   controller.loginWithApple();
+                    // },
                     icon: Image.asset(
-                      'assets/icon/facebook.png',
+                      'assets/icon/apple.png',
                       height: 25,
                       width: 30,
                     ),
                     width: size.width,
-                    title: 'Continue_with_facebook'.tr),
+                    title: 'Continue_with_apple'.tr),
                 SizedBox(
                   height: 20,
                 ),

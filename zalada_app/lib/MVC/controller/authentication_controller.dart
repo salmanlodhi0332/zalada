@@ -8,6 +8,7 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:get/route_manager.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/MVC/controller/product_controller.dart';
 import 'package:zalada_app/MVC/views/bottom_bar.dart';
@@ -37,6 +38,102 @@ class AuthenticationController extends GetxController {
   final GoogleSignIn _googleSignIn = GoogleSignIn();
 
   static String AuthUserToken = shared_preferences.userToken.value;
+
+//----------------------APPLE------------------------------
+
+  Future<void> signUpWithApple() async {
+    try {
+      final AuthorizationCredentialAppleID appleCredential =
+          await SignInWithApple.getAppleIDCredential(
+        scopes: [
+          AppleIDAuthorizationScopes.email,
+          AppleIDAuthorizationScopes.fullName,
+        ],
+      );
+
+      final AuthCredential credential = OAuthProvider("apple.com").credential(
+        idToken: appleCredential.identityToken,
+        accessToken: appleCredential.authorizationCode,
+      );
+
+      final UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+
+      final User? user = userCredential.user;
+
+      if (user != null) {
+        print('User signed in with Apple: ${user.displayName}');
+
+        final String? email = user.email;
+        final String? firstName = appleCredential.givenName;
+        final String? lastName = appleCredential.familyName;
+        final String name = '${firstName ?? ''} ${lastName ?? ''}';
+
+        final String fcmToken = shared_preferences.fcmToken.value;
+        final String deviceId = shared_preferences.DeviceID.value;
+
+        if (email != null && name.isNotEmpty) {
+          await sendDataToApi(email, name, fcmToken, deviceId);
+        } else {
+          print('Email or Name is missing. Unable to send data to API.');
+        }
+
+        Get.off(Bottom_Bar());
+      } else {
+        print('Failed to sign in with Apple.');
+      }
+    } catch (e) {
+      print('Error during Apple sign-in: $e');
+    }
+  }
+
+  //----------------------LOGIN WITH APPLE---------------------------
+  Future<void> loginWithApple() async {
+    try {
+      final AuthorizationCredentialAppleID appleCredential =
+          await SignInWithApple.getAppleIDCredential(
+        scopes: [
+          AppleIDAuthorizationScopes.email,
+          AppleIDAuthorizationScopes.fullName,
+        ],
+      );
+
+      final AuthCredential credential = OAuthProvider("apple.com").credential(
+        idToken: appleCredential.identityToken,
+        accessToken: appleCredential.authorizationCode,
+      );
+
+      final UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+
+      final User? user = userCredential.user;
+
+      if (user != null) {
+        print('User logged in with Apple: ${user.displayName}');
+        print('Email: ${user.email}');
+
+        final String? email = user.email;
+        final String? firstName = appleCredential.givenName;
+        final String? lastName = appleCredential.familyName;
+        final String name = '${firstName ?? ''} ${lastName ?? ''}';
+
+        final String fcmToken = shared_preferences.fcmToken.value;
+        final String deviceId = shared_preferences.DeviceID.value;
+
+        if (email != null && name.isNotEmpty) {
+          await sendDataToApi(email, name, fcmToken, deviceId);
+        } else {
+          print('Email or Name is missing. Unable to send data to API.');
+        }
+
+        Get.off(Bottom_Bar()); // Replace 'BottomBar()' with your desired screen
+      } else {
+        print('Failed to log in with Apple.');
+      }
+    } catch (e) {
+      print('Error during Apple login: $e');
+    }
+  }
 
 //----------------------SIGN UP WITH Google----------------
   Future<void> signUpWithGoogle() async {

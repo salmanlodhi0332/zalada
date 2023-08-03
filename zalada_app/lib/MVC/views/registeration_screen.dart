@@ -33,6 +33,7 @@ class _registeration_screenState extends State<registeration_screen> {
   final emailController = TextEditingController();
   final nameController = TextEditingController();
   final passwordController = TextEditingController();
+  final confirm_passwordController = TextEditingController();
   final phoneController = TextEditingController();
 
   Widget build(BuildContext context) {
@@ -79,6 +80,7 @@ class _registeration_screenState extends State<registeration_screen> {
                   height: 20,
                 ),
                 textfeild_widget(
+                  keyboardtype: TextInputType.phone,
                   controller: phoneController,
                   hintText: 'Phone_number'.tr,
                   label: 'Phone_number'.tr,
@@ -111,7 +113,7 @@ class _registeration_screenState extends State<registeration_screen> {
                 ),
                 Obx(
                   () => textfeild_widget(
-                    controller: passwordController,
+                    controller: confirm_passwordController,
                     hintText: 'password'.tr,
                     label: 'Confirm_password'.tr,
                     obscureText: hideConfirmpassword.value,
@@ -127,6 +129,12 @@ class _registeration_screenState extends State<registeration_screen> {
                         color: Theme.of(context).hintColor,
                       ),
                     ),
+                    validator: (value) {
+                      if (value != passwordController.text) {
+                        return 'passwordnotmatch'.tr;
+                      }
+                      return null; // Return null if the validation is successful
+                    },
                   ),
                 ),
                 SizedBox(

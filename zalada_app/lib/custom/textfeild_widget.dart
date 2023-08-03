@@ -8,6 +8,7 @@ class textfeild_widget extends StatelessWidget {
   final TextEditingController controller;
   final FormFieldValidator<String>? validator;
   final Widget? suffixIcon;
+  final TextInputType? keyboardtype;
   final bool? obscureText;
 
   const textfeild_widget({
@@ -18,6 +19,7 @@ class textfeild_widget extends StatelessWidget {
     this.validator,
     this.suffixIcon,
     this.obscureText,
+    this.keyboardtype,
   });
 
   @override
@@ -50,6 +52,7 @@ class textfeild_widget extends StatelessWidget {
           child: TextFormField(
                   controller: controller,
                   validator: validator,
+                  keyboardType: keyboardtype,
                   obscureText: obscureText ?? false,
                   decoration: InputDecoration(
                       suffixIcon: suffixIcon,

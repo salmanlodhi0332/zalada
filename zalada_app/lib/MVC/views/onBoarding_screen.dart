@@ -24,7 +24,7 @@ class OnBoardingScreen extends StatelessWidget {
             liquidController: obController.controller,
             onPageChangeCallback: obController.onPageChangedCallback,
             slideIconWidget: const Icon(Icons.arrow_back_ios),
-            waveType: WaveType.liquidReveal,
+            waveType: WaveType.circularReveal,
             ignoreUserGestureWhileAnimating: true,
           ),
           // Positioned(
@@ -50,8 +50,8 @@ class OnBoardingScreen extends StatelessWidget {
             right: 20,
             child: TextButton(
               onPressed: () {
-                //Get.to(login_screen());
-                obController.skip();
+                Get.to(login_screen());
+                // obController.skip();
               },
               child: const Text("Skip", style: TextStyle(color: Colors.grey)),
             ),

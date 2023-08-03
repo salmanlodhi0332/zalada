@@ -3,6 +3,7 @@ import 'package:liquid_swipe/PageHelpers/LiquidController.dart';
 import '../../custom/onBoarding_page_widget.dart';
 import '../model/onBoarding_model.dart';
 
+import '../views/login_screen.dart';
 import '../views/onboarding/onBoarding_Strings.dart';
 
 class OnBoardingController extends GetxController {
@@ -12,8 +13,17 @@ class OnBoardingController extends GetxController {
   skip() => controller.jumpToPage(page: 2);
   animateToNextSlide() =>
       controller.animateToPage(page: controller.currentPage + 1);
-  onPageChangedCallback(int activePageIndex) =>
-      currentPage.value = activePageIndex;
+
+  // onPageChangedCallback(int activePageIndex) =>
+  //     currentPage.value = activePageIndex;
+
+  onPageChangedCallback(int activePageIndex) {
+    currentPage.value = activePageIndex;
+
+    if (activePageIndex >= pages.length - 1) {
+      Get.offAll(login_screen());
+    }
+  }
 
   final pages = [
     OnBoardingPageWidget(

@@ -153,7 +153,7 @@ class Multi_Language extends Translations {
           "login_failed": "Login failed",
           "registration_failed": "Registration failed",
           "Continue_with_apple": "Continue with apple",
-          "": "",
+          "passwordnotmatch": "Password do not match",
         }
       };
 }

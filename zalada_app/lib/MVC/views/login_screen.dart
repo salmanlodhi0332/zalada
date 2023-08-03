@@ -67,6 +67,8 @@ class _login_screenState extends State<login_screen> {
                     controller: password,
                     hintText: 'password'.tr,
                     label: 'password'.tr,
+                    validator: (input) =>
+                        input!.length == 0 ? "validation_password".tr : null,
                     obscureText: hidepassword.value,
                     suffixIcon: IconButton(
                       onPressed: () {
@@ -109,7 +111,8 @@ class _login_screenState extends State<login_screen> {
                       controller.loginwithEmail(
                           email.text, password.text, context);
                     } else {
-                      Get.snackbar('form'.tr, 'please_Fill_the_form'.tr,
+                      Get.snackbar(
+                          'form_validation'.tr, 'please_Fill_the_form'.tr,
                           backgroundColor: Theme.of(context).cardColor,
                           colorText: Theme.of(context).hintColor);
                     }

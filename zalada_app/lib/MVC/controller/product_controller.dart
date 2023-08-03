@@ -33,12 +33,12 @@ class product_Controller extends GetxController {
 }
 
 class cart_Controller extends GetxController {
-  var _products = {}.obs;
+  var cartproductlist = {}.obs;
   void addProduct(Product_Model dummyProducts) {
-    if (_products.containsKey(dummyProducts)) {
-      _products[dummyProducts] += 1;
+    if (cartproductlist.containsKey(dummyProducts)) {
+      cartproductlist[dummyProducts] += 1;
     } else {
-      _products[dummyProducts] = 1;
+      cartproductlist[dummyProducts] = 1;
     }
 
     Get.snackbar("Product Added", "You have added the product",
@@ -46,10 +46,11 @@ class cart_Controller extends GetxController {
   }
 
   void removeProduct(Product_Model dummyProducts) {
-    if (_products.containsKey(dummyProducts) && _products[dummyProducts] == 1) {
-      _products.removeWhere((key, value) => key == dummyProducts);
+    if (cartproductlist.containsKey(dummyProducts) &&
+        cartproductlist[dummyProducts] == 1) {
+      cartproductlist.removeWhere((key, value) => key == dummyProducts);
     } else {
-      _products[dummyProducts] -= 1;
+      cartproductlist[dummyProducts] -= 1;
     }
 
     Get.snackbar("Product Removed", "You have removed the product",
@@ -57,8 +58,8 @@ class cart_Controller extends GetxController {
   }
 
   void removeCartItem(Product_Model product) {
-    _products.remove(product);
+    cartproductlist.remove(product);
   }
 
-  get products => _products;
+  get products => cartproductlist;
 }

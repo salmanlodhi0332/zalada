@@ -2,17 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/MVC/controller/product_controller.dart';
-import 'package:zalada_app/MVC/views/Address_Screen.dart';
-import 'package:zalada_app/MVC/views/cart_screen.dart';
+
 import 'package:zalada_app/MVC/views/wishlist_cart_screen.dart';
+
 import 'package:zalada_app/custom/back_button.dart';
 import 'package:readmore/readmore.dart';
-import 'package:zalada_app/custom/botton_widget.dart';
 import 'package:zalada_app/custom/custom_appbar.dart';
 import 'package:zalada_app/custom/product_card.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
+import '../../custom/add_to_cart_button.dart';
+import '../../custom/botton_widget.dart';
+import 'Address_Screen.dart';
 import 'confirm_order.dart';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
+import 'package:badges/badges.dart' as badges;
 
 class Product_Detail_Screen extends StatelessWidget {
   final int id;
@@ -293,7 +296,7 @@ class Product_Detail_Screen extends StatelessWidget {
                         hotdeal: '',
                         id: PR_item.id,
                         imageurl: PR_item.images[0],
-                        product_name: PR_item.name,                                                                                
+                        product_name: PR_item.name,
                         price: '\$' + PR_item.price,
                         status: '',
                       ).py(25).px(5);
@@ -322,16 +325,49 @@ class Product_Detail_Screen extends StatelessWidget {
                 topLeft: Radius.circular(20), topRight: Radius.circular(20))),
         child: Row(
           children: [
-            back_button(
-              ontap: () {
-                cartController.addProduct(controller.Productslist.firstWhere(
-                    (product) => product.id == id));
-              },
-              pic: Image.asset(
-                'assets/images/cart.png',
-                color: Theme.of(context).hintColor,
-              ).p(15),
+            Obx(
+              () => badges.Badge(
+                position: badges.BadgePosition.topEnd(top: 3, end: 10),
+                showBadge: true,
+                badgeContent: Text(
+                  cartController.cartproductlist.length.toString(),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'plusjakarta',
+                  ),
+                ),
+                ignorePointer: false,
+                child:
+
+                    //  from here onwords
+                    add_to_cart_button(
+                  ontap: () {
+                    cartController.addProduct(
+                        controller.Productslist.firstWhere(
+                            (product) => product.id == id));
+                  },
+                  pic: Image.asset(
+                    'assets/images/cart.png',
+                    color: Theme.of(context).hintColor,
+                  ).p(15),
+                ),
+//  end the button, new component comes here.
+              ),
             ),
+            // back_button(
+            //   // ontap: () {
+            //   //   cartController.addProduct(Product_Model.dummyProducts[id]);
+            //   // },
+            //   ontap: () {
+            //     cartController.addProduct(controller.Productslist.firstWhere(
+            //         (product) => product.id == id));
+            //   },
+
+            //   pic: Image.asset(
+            //     'assets/images/cart.png',
+            //     color: Theme.of(context).hintColor,
+            //   ).p(15),
+            // ),
             Button_Widget(
                     ontap: () {
                       Page_Navigation.getInstance

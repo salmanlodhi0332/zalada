@@ -17,6 +17,7 @@ import 'package:zalada_app/utiles/page_navigation.dart';
 
 import '../../utiles/constent.dart';
 import '../../utiles/getxcontroller.dart';
+import '../../utiles/loader.dart';
 import '../../utiles/shared_preferences.dart';
 import '../views/otp_screen.dart';
 
@@ -521,11 +522,7 @@ class AuthenticationController extends GetxController {
   Future<void> updateProfile(String token, int id, String Name, String image,
       BuildContext context) async {
     try {
-      Get.dialog(SpinKitRotatingPlain(
-        color: const Color.fromARGB(255, 9, 201, 12).withOpacity(0.3),
-        size: 50.0,
-        duration: const Duration(seconds: 2),
-      ));
+      Loader.poploader();
       final response;
 
       if (image != "") {
@@ -536,7 +533,7 @@ class AuthenticationController extends GetxController {
           await MultipartFile.fromFile(image),
         ));
         response = await dio.patch(
-          baseURL + 'users/updateUser',
+          baseURL + 'users/',
           data: formData,
           options: Options(
             headers: {

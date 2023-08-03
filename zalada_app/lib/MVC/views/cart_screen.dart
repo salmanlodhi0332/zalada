@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
-import 'package:zalada_app/MVC/controller/product_controller.dart';
 import 'package:zalada_app/MVC/views/bottom_bar.dart';
 import 'package:zalada_app/MVC/views/confirm_order.dart';
-import 'package:zalada_app/MVC/views/payment_method.dart';
-import 'package:zalada_app/MVC/views/Address_Screen.dart';
-import 'package:zalada_app/custom/back_button.dart';
 import 'package:zalada_app/custom/edit_btn.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
 
 import '../../custom/custom_appbar.dart';
 import '../../custom/botton_widget.dart';
 import '../../custom/product_card.dart';
+import '../controller/cart_controller.dart';
 import 'cart_products.dart';
 
 class Cart_Screen extends StatelessWidget {
@@ -99,7 +96,7 @@ class Cart_Screen extends StatelessWidget {
                                 quantity:
                                     controller.products.values.toList()[index],
                               ),
-                              if (index < controller.products.length - 1)
+                              if (index <controller.products.length - 1)
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       left: 20, right: 20),

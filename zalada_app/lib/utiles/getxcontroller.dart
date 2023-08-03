@@ -8,6 +8,7 @@ class getx_GetController extends GetxController {
 
   int get countdown => _countdown.value;
   RxInt selectedaddress = 0.obs;
+  
   // Function to start the countdown
   void startTimer() {
     const oneSec = Duration(seconds: 1);

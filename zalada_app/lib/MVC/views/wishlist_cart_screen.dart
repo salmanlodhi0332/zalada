@@ -23,67 +23,6 @@ class Wishlist_Screen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Text(
-            //   "your_wishlist".tr,
-            //   style: TextStyle(
-            //       fontFamily: 'plusjakarta',
-            //       fontSize: 30,
-            //       fontWeight: FontWeight.w700),
-            // ).py(15).px(25),
-            SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  all_custom_btn(),
-                  categories_btn(
-                    label: 'laptop',
-                    selected: false,
-                    preffixIcon: Icon(
-                      Icons.laptop_windows_outlined,
-                      color: Theme.of(context).hintColor,
-                      size: 15,
-                    ),
-                  ),
-                  categories_btn(
-                    label: 'laptop',
-                    selected: false,
-                    preffixIcon: Icon(
-                      Icons.laptop_windows_outlined,
-                      color: Theme.of(context).hintColor,
-                      size: 15,
-                    ),
-                  ),
-                  categories_btn(
-                    label: 'laptop',
-                    selected: false,
-                    preffixIcon: Icon(
-                      Icons.laptop_windows_outlined,
-                      color: Theme.of(context).hintColor,
-                      size: 15,
-                    ),
-                  ),
-                  categories_btn(
-                    label: 'laptop',
-                    selected: false,
-                    preffixIcon: Icon(
-                      Icons.laptop_windows_outlined,
-                      color: Theme.of(context).hintColor,
-                      size: 15,
-                    ),
-                  ),
-                  categories_btn(
-                    label: 'laptop',
-                    selected: false,
-                    preffixIcon: Icon(
-                      Icons.laptop_windows_outlined,
-                      color: Theme.of(context).hintColor,
-                      size: 15,
-                    ),
-                  ),
-                ],
-              ).px(20),
-            ),
             search_grid(),
           ],
         ),

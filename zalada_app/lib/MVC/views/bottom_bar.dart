@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:zalada_app/MVC/views/search_product_screen.dart';
 import 'package:zalada_app/MVC/views/search_result_screen.dart';
+import '../controller/cart_controller.dart';
 import '../controller/product_controller.dart';
 import 'Explore_Screeen.dart';
 import 'Live_Stream_Screen.dart';

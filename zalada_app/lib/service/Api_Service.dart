@@ -6,6 +6,7 @@ import 'package:zalada_app/MVC/model/Address_model.dart';
 import 'package:zalada_app/MVC/views/Address_Screen.dart';
 import 'package:zalada_app/dummyData/product_dummyData.dart';
 import 'package:zalada_app/utiles/shared_preferences.dart';
+import '../MVC/model/categories_model.dart';
 import '../utiles/constent.dart';
 import '../utiles/loader.dart';
 import '../utiles/page_navigation.dart';
@@ -123,6 +124,42 @@ class ApiService {
         } else if (responseData is Map) {
           List<Address_Model> addressData = (responseData['data'] as List)
               .map((data) => Address_Model.fromJson(data))
+              .toList();
+          return addressData;
+        }
+        return responseData;
+      }
+    } on DioException catch (e) {
+      print(e);
+      // throw Exception('Failed to load posts: $e');
+      return [];
+    }
+  }
+
+  getAllCategories() async {
+    try {
+      Response response;
+      response = await dio.get(
+        '${baseURL}categories/',
+        // options: Options(
+        //   headers: {
+        //     'Authorization': 'Bearer $AuthUserToken',
+        //   },
+        // )
+      );
+
+      print("statusCode => " + response.statusCode.toString());
+      print('get All Categories  API done 👌✅');
+      if (response.statusCode == 200) {
+        final responseData = response.data;
+        if (responseData is List) {
+          List<categories_Model> addressData = (response.data as List)
+              .map((data) => categories_Model.fromjson(data))
+              .toList();
+          return addressData;
+        } else if (responseData is Map) {
+          List<categories_Model> addressData = (responseData['data'] as List)
+              .map((data) => categories_Model.fromjson(data))
               .toList();
           return addressData;
         }

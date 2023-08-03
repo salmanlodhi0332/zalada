@@ -13,6 +13,7 @@ import '../../custom/all_custom_btn.dart';
 import '../../custom/search_screen_widgets/categories_btn.dart';
 import 'package:badges/badges.dart' as badges;
 
+import '../../utiles/getxcontroller.dart';
 import '../controller/home_controller.dart';
 
 class Home_Screen extends StatefulWidget {
@@ -25,8 +26,8 @@ class Home_Screen extends StatefulWidget {
 class _Home_ScreenState extends State<Home_Screen> {
   final Homecontroller = Get.put(home_Controller());
   final controller = Get.put(product_Controller());
+
   RxInt selectedCategories = 0.obs;
-  int selectedContainerIndex = -1;
 
   @override
   Widget build(BuildContext context) {
@@ -189,7 +190,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                           fontFamily: 'plusjakarta',
                           fontSize: 18,
                           fontWeight: FontWeight.w700),
-                    ).py(15),
+                    ).pOnly(top: 10),
                     const Row(
                       children: [
                         Product_Card(
@@ -213,12 +214,59 @@ class _Home_ScreenState extends State<Home_Screen> {
                             const all_custom_btn(),
                             Row(
                               children: Homecontroller.categoriesList
-                                  .map(
-                                    (e) => categories_btn(
-                                        label: e.name,
-                                        preffixIcon: image_widget(
-                                            imageUrl: e.Categoriesimage)),
-                                  )
+                                  .map((e) => Obx(() => InkWell(
+                                            onTap: () {
+                                              selectedCategories.value = e.id;
+                                              print('Category_Id');
+                                              print(selectedCategories.value);
+                                            },
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                  color: Theme.of(context)
+                                                      .cardColor,
+                                                  borderRadius:
+                                                      BorderRadius.circular(30),
+                                                  border: Border.all(
+                                                    color: selectedCategories
+                                                                .value ==
+                                                            e.id
+                                                        ? Theme.of(context)
+                                                            .indicatorColor
+                                                            .withOpacity(0.5)
+                                                        : Theme.of(context)
+                                                            .disabledColor
+                                                            .withOpacity(0.3),
+                                                  )),
+                                              child: Row(
+                                                children: [
+                                                  CircleAvatar(
+                                                          backgroundColor: Theme
+                                                                  .of(context)
+                                                              .highlightColor,
+                                                          radius: 15,
+                                                          child: image_widget(
+                                                              imageUrl: e
+                                                                  .Categoriesimage))
+                                                      .pOnly(right: 3),
+                                                  Text(
+                                                    e.name,
+                                                    style: TextStyle(
+                                                      fontFamily: 'plusjakarta',
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      color: Theme.of(context)
+                                                          .hintColor,
+                                                    ),
+                                                  )
+                                                ],
+                                              ).px(5).py(2),
+                                            ).px(5),
+                                          ))
+                                      //  categories_btn(
+                                      //     label: e.name,
+                                      //     preffixIcon: image_widget(
+                                      //         imageUrl: e.Categoriesimage)),
+                                      )
                                   .toList(),
                             )
                           ],

@@ -3,11 +3,10 @@ import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/MVC/views/bottom_bar.dart';
 import 'package:zalada_app/MVC/views/confirm_order.dart';
-import 'package:zalada_app/custom/edit_btn.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
-
-import '../../custom/custom_appbar.dart';
+import '../../custom/back_button.dart';
 import '../../custom/botton_widget.dart';
+import '../../custom/custom_appbar.dart';
 import '../../custom/product_card.dart';
 import '../controller/cart_controller.dart';
 import 'cart_products.dart';
@@ -30,9 +29,14 @@ class Cart_Screen extends StatelessWidget {
         //   },
         // ),
         actionButtons: [
-          edit_button(
+          back_button(
             ontap: () {},
-          ),
+            icon_widget: Icon(
+              Icons.more_horiz_rounded,
+              size: 15,
+              color: Theme.of(context).hintColor,
+            ).p(8),
+          )
         ],
       ),
       body: SafeArea(
@@ -96,7 +100,7 @@ class Cart_Screen extends StatelessWidget {
                                 quantity:
                                     controller.products.values.toList()[index],
                               ),
-                              if (index <controller.products.length - 1)
+                              if (index < controller.products.length - 1)
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       left: 20, right: 20),
@@ -126,7 +130,7 @@ class Cart_Screen extends StatelessWidget {
                       fontFamily: 'plusjakarta',
                       fontSize: 18,
                       fontWeight: FontWeight.w600),
-                ).pOnly(bottom: 10),
+                ),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
@@ -139,7 +143,7 @@ class Cart_Screen extends StatelessWidget {
                         product_name: 'Macbook Pro 15" 2019 -Intel corei7',
                         price: '\$1240',
                         status: '',
-                      ).pOnly(bottom: 25, top: 40),
+                      ),
                       const Product_Card(
                         id: 1,
                         hotdeal: 'false',
@@ -170,7 +174,7 @@ class Cart_Screen extends StatelessWidget {
                     ],
                   ),
                 )
-              ]).px(ph).py(10),
+              ]).px(ph).py(5),
               Button_Widget(
                   ontap: () {
                     Page_Navigation.getInstance.Page(context, ConfirmOrder());

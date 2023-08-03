@@ -164,7 +164,7 @@ class _payment_methodState extends State<payment_method> {
                     isScrollControlled: true,
                   );
                 },
-                pic: Icon(
+                icon_widget: Icon(
                   Icons.add,
                   color: Theme.of(context).hoverColor,
                 ).p(15),

@@ -4,6 +4,7 @@ import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:get/route_manager.dart';
 import 'package:zalada_app/MVC/model/Address_model.dart';
 import 'package:zalada_app/MVC/views/Address_Screen.dart';
+import 'package:zalada_app/MVC/views/bottom_bar.dart';
 import 'package:zalada_app/dummyData/product_dummyData.dart';
 import 'package:zalada_app/utiles/shared_preferences.dart';
 import '../MVC/model/product_model.dart';
@@ -25,14 +26,12 @@ class ApiService {
   getAllproducts() async {
     try {
       Response response;
-      response = await dio.get(
-        '${baseURL}products',
-        // options: Options(
-        //   headers: {
-        //     'Authorization': 'Bearer $AuthUserToken',
-        //   },
-        // )
-      );
+      response = await dio.get('${baseURL}products',
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $AuthUserToken',
+            },
+          ));
 
       print("statusCode => " + response.statusCode.toString());
       print('getAllproducts API done 👌✅');
@@ -87,7 +86,9 @@ class ApiService {
         Get.snackbar('Address'.tr, "address_created".tr,
             colorText: Theme.of(context).hintColor,
             backgroundColor: Theme.of(context).cardColor);
-        Page_Navigation.getInstance.Page(context, Address_Screen());
+        // Get.back();
+        Page_Navigation.getInstance
+            .Page_pushAndRemoveUntil(context, Bottom_Bar());
       } else {
         Get.snackbar('error'.tr, response.data['message'],
             colorText: Theme.of(context).hintColor,
@@ -96,9 +97,9 @@ class ApiService {
     } on DioException catch (e) {
       Get.back();
       print("Address  ${e.response?.data['message']}");
-      // Get.snackbar('address_failed'.tr, "${e.response?.data['message']}",
-      //     colorText: Theme.of(context).secondaryHeaderColor,
-      //     backgroundColor: Theme.of(context).cardColor);
+      Get.snackbar('address_failed'.tr, "${e.response?.data['message']}",
+          colorText: Theme.of(context).hintColor,
+          backgroundColor: Theme.of(context).cardColor);
     }
   }
 
@@ -128,7 +129,8 @@ class ApiService {
         Get.snackbar('Address'.tr, "address_upated".tr,
             colorText: Theme.of(context).hintColor,
             backgroundColor: Theme.of(context).cardColor);
-        Page_Navigation.getInstance.Page(context, Address_Screen());
+        Page_Navigation.getInstance
+            .Page_pushAndRemoveUntil(context, Bottom_Bar());
       } else {
         Get.snackbar('error'.tr, response.data['message'],
             colorText: Theme.of(context).hintColor,
@@ -137,9 +139,9 @@ class ApiService {
     } on DioException catch (e) {
       Get.back();
       print("Address  ${e.response?.data['message']}");
-      // Get.snackbar('address_failed'.tr, "${e.response?.data['message']}",
-      //     colorText: Theme.of(context).secondaryHeaderColor,
-      //     backgroundColor: Theme.of(context).cardColor);
+      Get.snackbar('address_failed'.tr, "${e.response?.data['message']}",
+          colorText: Theme.of(context).hintColor,
+          backgroundColor: Theme.of(context).cardColor);
     }
   }
 
@@ -162,7 +164,7 @@ class ApiService {
         Get.snackbar('Address'.tr, "address_delete".tr,
             colorText: Theme.of(context).hintColor,
             backgroundColor: Theme.of(context).cardColor);
-        Page_Navigation.getInstance.Page(context, Address_Screen());
+        Page_Navigation.getInstance.Page(context, Bottom_Bar());
       } else {
         Get.snackbar('error'.tr, response.data['message'],
             colorText: Theme.of(context).hintColor,

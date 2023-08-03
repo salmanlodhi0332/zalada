@@ -1,12 +1,15 @@
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:zalada_app/MVC/model/user_model.dart';
 
 class shared_preferences extends GetxController {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   static RxString username = ''.obs;
   static RxString userEmail = ''.obs;
+  static RxString userDOB = ''.obs;
+  static RxString usergender = ''.obs;
   static RxString userPhoto = ''.obs;
   static RxString useraddress = ''.obs;
   static RxString userphone = ''.obs;
@@ -56,20 +59,36 @@ class shared_preferences extends GetxController {
     DeviceID.value = deviceID;
   }
 
-  update_userData({
-    name,
-    photo,
-  }) async {
+  update_userData(UserModel userdata) async {
     final SharedPreferences? prefs = await _prefs;
+    if (userdata.userimage != "") {
+      await prefs?.setString('fullName', userdata.name);
+      await prefs?.setString('photo', userdata.userimage);
 
-    if (photo != "") {
-      await prefs?.setString('fullName', name);
-      await prefs?.setString('photo', photo);
-      username.value = name;
-      userPhoto.value = photo;
+      await prefs?.setString('email', userdata.email);
+      await prefs?.setString('phone_number', userdata.phone_number);
+
+      await prefs?.setString('DOB', userdata.dateofbrith);
+      await prefs?.setString('gender', userdata.gender);
+      userEmail.value = userdata.email;
+      userphone.value = userdata.phone_number;
+      usergender.value = userdata.gender;
+      userDOB.value = userdata.dateofbrith;
+      username.value = userdata.name;
+      userPhoto.value = userdata.userimage;
     } else {
-      await prefs?.setString('fullName', name);
-      username.value = name;
+      await prefs?.setString('fullName', userdata.name);
+
+      await prefs?.setString('email', userdata.email);
+      await prefs?.setString('phone_number', userdata.phone_number);
+
+      await prefs?.setString('DOB', userdata.dateofbrith);
+      await prefs?.setString('gender', userdata.gender);
+      userEmail.value = userdata.email;
+      userphone.value = userdata.phone_number;
+      usergender.value = userdata.gender;
+      userDOB.value = userdata.dateofbrith;
+      username.value = userdata.name;
     }
   }
 

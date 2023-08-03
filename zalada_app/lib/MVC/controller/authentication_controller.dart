@@ -371,7 +371,7 @@ class AuthenticationController extends GetxController {
             token: token,
             // address: address
           );
-          var getxController = getx_GetController();
+          // var getxController = getx_GetController();
           //getxController.GetMessageOfuser();
           //SocketIOClient.getInstance.connectUsertosockit();
           Page_Navigation.getInstance
@@ -391,7 +391,8 @@ class AuthenticationController extends GetxController {
         //     "Unknown Error status Occured");
       }
     } on DioException catch (e) {
-      print("Login Error  ${e.response?.data['message']}");
+      print(e);
+      // print("Login Error  ${e.response?.data['message']}");
       // Get.back();
       Get.snackbar('login_failed'.tr, "${e.response?.data['message']}",
           backgroundColor: Theme.of(context).cardColor,
@@ -562,7 +563,7 @@ class AuthenticationController extends GetxController {
             colorText: Theme.of(context).hintColor);
         print('Print Successfully');
         image = response.data['data']['photo'].toString();
-        _pref.update_userData(name: Name, photo: image);
+        // _pref.update_userData(name: Name, photo: image);
         // Get.back();
         Get.to(Bottom_Bar());
       } else {
@@ -724,5 +725,7 @@ class AuthenticationController extends GetxController {
 
   logout() {
     _pref.logout();
+
+    Get.to(login_screen());
   }
 }

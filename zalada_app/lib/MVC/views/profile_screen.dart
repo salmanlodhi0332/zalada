@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -11,9 +14,11 @@ import 'package:zalada_app/utiles/multi_language.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
 import 'package:zalada_app/MVC/views/privacy_policy.dart';
 
+import '../../custom/botton_widget.dart';
 import '../../custom/custom_appbar.dart';
 import '../../custom/back_button.dart';
 import '../../custom/language/language_bottom_sheet.dart';
+import '../controller/authentication_controller.dart';
 
 class Profile_Screen extends StatefulWidget {
   const Profile_Screen({super.key});
@@ -35,7 +40,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
             ontap: () {
               Get.to(edit_profile());
             },
-            pic: SvgPicture.asset(
+            icon_widget: SvgPicture.asset(
               "assets/svg/user-edit.svg",
             ).p(10),
           )
@@ -410,7 +415,67 @@ class _Profile_ScreenState extends State<Profile_Screen> {
             ),
             custom_divider(context),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                if (Platform.isAndroid) {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      backgroundColor: Theme.of(context).cardColor,
+                      title: Text('want_to_logout'.tr,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Theme.of(context).hintColor)),
+                      actions: [
+                        Button_Widget(
+                          height: 35,
+                          brodercolor: Colors.black,
+                          color: Colors.white,
+                          width: double.infinity,
+                          title: 'cancel'.tr,
+                          ontap: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                        SizedBox(height: 10),
+                        Button_Widget(
+                          height: 40,
+                          width: double.infinity,
+                          title: 'logout'.tr,
+                          ontap: () async {
+                            final auth = Get.put(AuthenticationController());
+                            auth.logout();
+                          },
+                        )
+                      ],
+                    ),
+                  );
+                } else {
+                  showCupertinoDialog(
+                    context: context,
+                    builder: (context) => CupertinoAlertDialog(
+                      title: Text(
+                        'want_to_logout'.tr,
+                        style: TextStyle(color: CupertinoColors.inactiveGray),
+                      ),
+                      actions: [
+                        CupertinoDialogAction(
+                          child: Text('cancel'.tr),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                        CupertinoDialogAction(
+                          child: Text('logout'.tr),
+                          onPressed: () async {
+                            final auth = Get.put(AuthenticationController());
+                            auth.logout();
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ],
+                    ),
+                  );
+                }
+              },
               child: account_section(
                 backgroundcolor: Colors.red,
                 title: "Logout".tr,

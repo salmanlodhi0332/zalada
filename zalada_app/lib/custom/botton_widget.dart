@@ -6,12 +6,18 @@ class Button_Widget extends StatelessWidget {
       {super.key,
       required this.width,
       required this.title,
+      this.color,
+      this.height,
+      this.brodercolor,
       this.ontap,
       this.icon});
 
   final double width;
   final Function()? ontap;
   final Widget? icon;
+  final double? height;
+  final Color? color;
+  final Color? brodercolor;
   final String title;
 
   @override
@@ -19,11 +25,14 @@ class Button_Widget extends StatelessWidget {
     return InkWell(
       onTap: ontap,
       child: Container(
-        height: 60,
+        height: height ?? 60,
         width: width,
         decoration: BoxDecoration(
-            color: Theme.of(context).hoverColor,
-            borderRadius: BorderRadius.circular(30)),
+            color: color ?? Theme.of(context).hoverColor,
+            borderRadius: BorderRadius.circular(30),
+            border: Border.all(
+              color: brodercolor ?? Theme.of(context).hoverColor,
+            )),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -34,7 +43,7 @@ class Button_Widget extends StatelessWidget {
                   fontFamily: 'plusjakarta',
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
-                  color: Theme.of(context).secondaryHeaderColor),
+                  color: brodercolor ?? Theme.of(context).secondaryHeaderColor),
             ).centered(),
           ],
         ),

@@ -85,7 +85,8 @@ class Order_successful_Bottom_Bar extends GetView {
             ).py(10),
             InkWell(
               onTap: () {
-                Page_Navigation.getInstance.Page(context, Bottom_Bar());
+                Page_Navigation.getInstance
+                    .Page_pushAndRemoveUntil(context, Bottom_Bar());
               },
               child: Container(
                 width: width,

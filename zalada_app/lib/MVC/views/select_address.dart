@@ -86,7 +86,7 @@ class _Select_AddressState extends State<Select_Address> {
                   ontap: () {
                     ApiService.getInstance.Delete_Address(widget.id!, context);
                   },
-                  pic: Center(
+                  icon_widget: Center(
                     child: Icon(
                       Icons.delete_outline,
                       color: Colors.red,
@@ -242,20 +242,20 @@ class _Select_AddressState extends State<Select_Address> {
               controller: typecontroller,
               dropDownList: [
                 DropDownValueModel(
-                  name: 'Home',
-                  value: "Home ",
+                  name: 'home',
+                  value: "home ",
                 ),
                 DropDownValueModel(
-                  name: 'Office',
-                  value: "Office ",
+                  name: 'office',
+                  value: "office",
                 ),
                 DropDownValueModel(
-                  name: 'Appartment',
-                  value: "Appartment ",
+                  name: 'apartment',
+                  value: "apartment",
                 ),
                 DropDownValueModel(
-                  name: 'Others',
-                  value: "Others ",
+                  name: 'others',
+                  value: "others",
                 ),
               ],
             ).px(25).py(10),

@@ -64,7 +64,7 @@ class _OTP_ScreenState extends State<OTP_Screen> {
                 fontFamily: 'plusjakarta', color: Theme.of(context).hintColor),
           ),
           leading: back_button(
-            pic: Icon(Icons.arrow_back),
+            icon_widget: Icon(Icons.arrow_back),
             ontap: () {
               Get.back();
             },

@@ -29,7 +29,6 @@ class _login_screenState extends State<login_screen> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       body: SafeArea(
         child: SingleChildScrollView(
@@ -68,8 +67,8 @@ class _login_screenState extends State<login_screen> {
                     controller: email,
                     hintText: 'password'.tr,
                     label: 'password'.tr,
-                     validator: (input) =>
-                      input!.length == 0 ? "validation_password".tr : null,
+                    validator: (input) =>
+                        input!.length == 0 ? "validation_password".tr : null,
                     obscureText: hidepassword.value,
                     suffixIcon: IconButton(
                       onPressed: () {
@@ -112,7 +111,8 @@ class _login_screenState extends State<login_screen> {
                       Page_Navigation.getInstance
                           .Page_PushAndReplaceNavigation(context, Bottom_Bar());
                     } else {
-                      Get.snackbar('form_validation'.tr, 'please_Fill_the_form'.tr,
+                      Get.snackbar(
+                          'form_validation'.tr, 'please_Fill_the_form'.tr,
                           backgroundColor: Theme.of(context).cardColor,
                           colorText: Theme.of(context).hintColor);
                     }

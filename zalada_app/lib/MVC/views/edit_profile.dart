@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:zalada_app/service/Getx_provider.dart';
+
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:velocity_x/velocity_x.dart';
 import '../../custom/custom_appbar.dart';
@@ -20,9 +24,13 @@ class _edit_profileState extends State<edit_profile> {
   final fullnameController = TextEditingController();
   final dateController = TextEditingController();
   final _phoneController = TextEditingController();
+  final emailaddressController = TextEditingController();
 
   final gendercontroller = SingleValueDropDownController();
   String selectedGender = "Male"; // Initial value
+
+  GetxControllerProvider controllersProvider =
+      Get.put(GetxControllerProvider());
 
   @override
   Widget build(BuildContext context) {
@@ -59,16 +67,27 @@ class _edit_profileState extends State<edit_profile> {
               SizedBox(
                 height: 15,
               ),
-              Center(
-                child: CircleAvatar(
-                  radius: 40,
-                  backgroundColor:
-                      Theme.of(context).disabledColor.withOpacity(0.3),
-                  child: Image.asset(
-                    "assets/images/Profile.png",
+              Obx(() => Center(
+                              child: controllersProvider
+                                      .imagePath.value.isNotEmpty
+                                  ? CircleAvatar(
+                                      radius: 40,
+                                      backgroundImage: FileImage(File(
+                                          controllersProvider.imagePath.value)),
+                                    )
+                                  : CircleAvatar(
+                                      radius: 40,
+                                      backgroundImage: AssetImage(
+                                          controllersProvider.defaultImagePath
+                                              .toString()),
+                                    ))
+                          .onTap(() {
+                        controllersProvider.getImage();
+                      })
+// .onTap((){
+//   controllersProvider.getImage();
+// })
                   ),
-                ),
-              ),
               SizedBox(
                 height: 10,
               ),
@@ -95,7 +114,7 @@ class _edit_profileState extends State<edit_profile> {
               textfeild_widget(
                 label: "Email_Address".tr,
                 hintText: "brayn.adam83@gmail.com",
-                controller: fullnameController,
+                controller: emailaddressController,
               ),
               SizedBox(
                 height: 4,
@@ -177,7 +196,14 @@ class _edit_profileState extends State<edit_profile> {
               SizedBox(
                 height: 20,
               ),
-              Button_Widget(width: size.width, title: "Save Changes"),
+              Button_Widget(
+                width: size.width,
+                title: "Save Changes",
+                ontap: () {},
+              ),
+              SizedBox(
+                height: 8,
+              ),
             ])));
   }
 }

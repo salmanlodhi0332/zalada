@@ -123,11 +123,6 @@ class _Select_AddressState extends State<Select_Address> {
                   onCameraIdle: () {
                     print('Camera Idle');
                     getAddressLatLng();
-                    // if (_address == null) {
-                    //   getAddressLatLng();
-                    // } else {
-                    //   print('object Address Error');
-                    // }
                   },
                   onTap: (latlng) {
                     print(latlng);

@@ -44,7 +44,7 @@ class ApiService {
               .toList();
           return Productlist;
         } else if (responseData is Map) {
-          List<Product_Model> Productlist = (responseData['products'] as List)
+          List<Product_Model> Productlist = (responseData['data'] as List)
               .map((data) => Product_Model.fromjson(data))
               .toList();
           return Productlist;

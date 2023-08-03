@@ -7,6 +7,8 @@ import 'package:get/get_rx/get_rx.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:get/route_manager.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/MVC/controller/product_controller.dart';
 import 'package:zalada_app/MVC/views/bottom_bar.dart';
@@ -33,12 +35,293 @@ class AuthenticationController extends GetxController {
   final _pref = shared_preferences();
   final FirebaseAuth auth = FirebaseAuth.instance;
 
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+
   static String AuthUserToken = shared_preferences.userToken.value;
+
+//----------------------APPLE------------------------------
+
+  Future<void> signUpWithApple() async {
+    try {
+      final AuthorizationCredentialAppleID appleCredential =
+          await SignInWithApple.getAppleIDCredential(
+        scopes: [
+          AppleIDAuthorizationScopes.email,
+          AppleIDAuthorizationScopes.fullName,
+        ],
+      );
+
+      final AuthCredential credential = OAuthProvider("apple.com").credential(
+        idToken: appleCredential.identityToken,
+        accessToken: appleCredential.authorizationCode,
+      );
+
+      final UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+
+      final User? user = userCredential.user;
+
+      if (user != null) {
+        print('User signed in with Apple: ${user.displayName}');
+
+        final String? email = user.email;
+        final String? firstName = appleCredential.givenName;
+        final String? lastName = appleCredential.familyName;
+        final String name = '${firstName ?? ''} ${lastName ?? ''}';
+
+        final String fcmToken = shared_preferences.fcmToken.value;
+        final String deviceId = shared_preferences.DeviceID.value;
+
+        if (email != null && name.isNotEmpty) {
+          await sendDataToApi(email, name, fcmToken, deviceId);
+        } else {
+          print('Email or Name is missing. Unable to send data to API.');
+        }
+
+        Get.off(Bottom_Bar());
+      } else {
+        print('Failed to sign in with Apple.');
+      }
+    } catch (e) {
+      print('Error during Apple sign-in: $e');
+    }
+  }
+
+  //----------------------LOGIN WITH APPLE---------------------------
+  Future<void> loginWithApple() async {
+    try {
+      final AuthorizationCredentialAppleID appleCredential =
+          await SignInWithApple.getAppleIDCredential(
+        scopes: [
+          AppleIDAuthorizationScopes.email,
+          AppleIDAuthorizationScopes.fullName,
+        ],
+      );
+
+      final AuthCredential credential = OAuthProvider("apple.com").credential(
+        idToken: appleCredential.identityToken,
+        accessToken: appleCredential.authorizationCode,
+      );
+
+      final UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+
+      final User? user = userCredential.user;
+
+      if (user != null) {
+        print('User logged in with Apple: ${user.displayName}');
+        print('Email: ${user.email}');
+
+        final String? email = user.email;
+        final String? firstName = appleCredential.givenName;
+        final String? lastName = appleCredential.familyName;
+        final String name = '${firstName ?? ''} ${lastName ?? ''}';
+
+        final String fcmToken = shared_preferences.fcmToken.value;
+        final String deviceId = shared_preferences.DeviceID.value;
+
+        if (email != null && name.isNotEmpty) {
+          await sendDataToApi(email, name, fcmToken, deviceId);
+        } else {
+          print('Email or Name is missing. Unable to send data to API.');
+        }
+
+        Get.off(Bottom_Bar());
+      } else {
+        print('Failed to log in with Apple.');
+      }
+    } catch (e) {
+      print('Error during Apple login: $e');
+    }
+  }
+
+//----------------------SIGN UP WITH Google----------------
+  Future<void> signUpWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+
+      if (googleUser == null) {
+        return;
+      }
+
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      final UserCredential userCredential =
+          await auth.signInWithCredential(credential);
+
+      final User? user = userCredential.user;
+
+      if (user != null) {
+        print('User signed in with Google: ${user.displayName}');
+
+        final String? email = googleUser.email;
+        final String? name = googleUser.displayName;
+
+        final String fcmToken = shared_preferences.fcmToken.value;
+        final String deviceId = shared_preferences.DeviceID.value;
+
+        if (email != null && name != null) {
+          await sendDataToApi(email, name, fcmToken, deviceId);
+        } else {
+          print('Email or Name is missing. Unable to send data to API.');
+        }
+
+        Get.off(Bottom_Bar()); // Replace 'BottomBar()' with your desired screen
+      } else {
+        print('Failed to sign in with Google.');
+      }
+    } catch (e) {
+      print('Error during Google sign-in: $e');
+    }
+  }
+
+  Future<void> sendDataToApi(
+    String email,
+    String name,
+    String fcmToken,
+    String deviceId,
+  ) async {
+    try {
+      var dio = Dio();
+      var header = {'Content-Type': 'application/json'};
+      dio.options.headers = header;
+
+      final url = baseURL + "auth/signup";
+      var response = await dio.post(url, data: {
+        'name': name,
+        'email': email,
+        'fcmToken': fcmToken,
+        'deviceID': deviceId,
+      });
+
+      print(response.statusCode);
+      print(response.data.toString());
+
+      if (response.statusCode == 201) {
+        final json = response.data;
+        print(json);
+        if (json['status'] == "success") {
+          var token = json['token'];
+          print(token);
+          _pref.Add_token(token);
+          Get.to(const login_screen());
+        } else {
+          throw jsonDecode(response.data)['message'] ??
+              "Unknown Error Occurred";
+        }
+      } else {
+        throw jsonDecode(response.data)['message'] ??
+            "Unknown Error Status Occurred";
+      }
+    } on DioError catch (e) {
+      if (e.response != null) {
+        print("Error sending data: ${e.response!.data['message']}");
+      } else {
+        print("Error sending data: $e");
+      }
+
+      throw e;
+    }
+  }
+//------------------------Login with google-----------
+
+  Future<void> loginWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+
+      if (googleUser == null) {
+        return;
+      }
+
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      final UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+
+      final User? user = userCredential.user;
+
+      if (user != null) {
+        print('User signed in with Google: ${user.displayName}');
+        print('Email: ${user.email}');
+        print('User ID: ${user.uid}');
+
+        final String? email = googleUser.email;
+        final String? name = googleUser.displayName;
+
+        if (email != null && name != null) {
+          await sendloginDataToApi(
+            email,
+          );
+        } else {
+          print('Email is missing. Unable to send data to API.');
+        }
+
+        // Get.off(Bottom_Bar());
+      } else {
+        print('Failed to sign in with Google.');
+      }
+    } catch (e) {
+      print('Error during Google sign-in: $e');
+    }
+  }
+
+  Future<void> sendloginDataToApi(String email) async {
+    try {
+      String fcmToken = shared_preferences.fcmToken.toString();
+      String deviceId = shared_preferences.DeviceID.toString();
+      print(fcmToken);
+      print(deviceId);
+
+      var header = {'Content-Type': 'application/json'};
+      var dio = Dio(BaseOptions(headers: header));
+
+      final url = baseURL + "auth/login";
+      var response = await dio.post(
+        url,
+        data: {
+          'email': email,
+          'fcmToken': fcmToken,
+          'deviceID': deviceId,
+        },
+      );
+
+      print(response.statusCode);
+      print(response.data.toString());
+
+      if (response.statusCode == 200) {
+        final json = response.data;
+        var token = json['token'];
+        print(token);
+
+        _pref.Add_token(token);
+
+        Get.to(Bottom_Bar());
+      } else {
+        print('Login failed: ${response.data}');
+      }
+    } on DioError catch (e) {
+      print("💥 Error: ${e.response?.data['message']}");
+    } catch (e) {
+      print("💥 Error: $e");
+    }
+  }
 
 //---------------------------LOGIN
 
   Future<void> loginwithEmail(
-      String mobile_number, String password, BuildContext context) async {
+      String email, String? password, BuildContext context) async {
     try {
       // Loader.poploader();
       String fcmToken = shared_preferences.fcmToken.toString();
@@ -47,51 +330,52 @@ class AuthenticationController extends GetxController {
       print(deviceId);
       var header = {'Content-Type': 'application/json'};
       var dio = Dio(BaseOptions(headers: header));
-      final url = baseURL + "users/login";
+      final url = baseURL + "auth/login";
       var response = await dio.post(url, data: {
-        'mobile_number': mobile_number,
-        'password': password,
+        //'mobile_number': mobile_number,
+        'email': email,
+        'password': password!,
         'fcmToken': fcmToken,
-        'deviceId': deviceId
+        'deviceID': deviceId
       });
 
       if (response.statusCode == 200) {
         print(response.data['token'].toString());
         print(response.data['status'].toString());
         final json = response.data;
-        print(
-            "User Name" + response.data['data']['user']['fullName'].toString());
+        print("User Name" + response.data['data']['user']['name'].toString());
         if (json['status'] == "success") {
           var token = json['token'];
           var id = response.data['data']['user']['id'];
           // var name = response.data['data']['user']['fullName'];
-          var name = json['data']['user']['fullName'].toString();
+          var name = json['data']['user']['name'].toString();
           var email = json['data']['user']['email'].toString();
-          var phone = json['data']['user']['mobile_number'].toString();
-          var address = json['data']['user']['address'].toString();
-          var photo = json['data']['user']['photo'].toString();
+          var phone = json['data']['user']['phone_number'].toString();
+          //var address = json['data']['user']['address'].toString();
+          var image = json['data']['user']['image'].toString();
           print(id);
           print(token);
           print(name);
           print(email);
           print(phone);
-          print(address);
-          print(photo);
+          // print(address);
+          print(image);
 
           await _pref.insert_userData(
-              id: id,
-              name: name,
-              email: email,
-              photo: photo,
-              phone: phone,
-              token: token,
-              address: address);
+            id: id,
+            name: name,
+            email: email,
+            image: image,
+            phone: phone,
+            token: token,
+            // address: address
+          );
           var getxController = getx_GetController();
           //getxController.GetMessageOfuser();
           //SocketIOClient.getInstance.connectUsertosockit();
           Page_Navigation.getInstance
               .fromleftPage_PushAndReplaceNavigation(context, Bottom_Bar());
-          Get.snackbar('welcome'.tr, "welcome_to_Beauty_Salons".tr,
+          Get.snackbar('welcome'.tr, "welcome_des".tr,
               backgroundColor: Theme.of(context).cardColor,
               colorText: Theme.of(context).hintColor);
         } else {
@@ -101,12 +385,13 @@ class AuthenticationController extends GetxController {
       } else {
         // throw jsonDecode(response.data)['message'] ??
         //     "Unknown Error status Occured";
-        print(jsonDecode(response.data)['message'] ??
-            "Unknown Error status Occured");
+        // print(jsonDecode(response.data)
+        // ['message'] ??
+        //     "Unknown Error status Occured");
       }
     } on DioException catch (e) {
       print("Login Error  ${e.response?.data['message']}");
-      Get.back();
+      // Get.back();
       Get.snackbar('login_failed'.tr, "${e.response?.data['message']}",
           backgroundColor: Theme.of(context).cardColor,
           colorText: Theme.of(context).hintColor);
@@ -115,8 +400,8 @@ class AuthenticationController extends GetxController {
 
 //---------------------------REGISTERATION
 
-  Future<void> registerwithEmail(String name, String email, String phone,
-      String password, BuildContext context) async {
+  Future<void> registerUser(String name, String email, String? phone,
+      String? password, BuildContext context) async {
     try {
       String fcmToken = shared_preferences.fcmToken.toString();
       String deviceId = shared_preferences.DeviceID.toString();
@@ -129,8 +414,8 @@ class AuthenticationController extends GetxController {
       var response = await dio.post(url, data: {
         'name': name,
         'email': email,
-        'phone_number': phone,
         'password': password,
+        'phone_number': phone,
         'fcmToken': fcmToken,
         'deviceID': deviceId
       });
@@ -199,10 +484,10 @@ class AuthenticationController extends GetxController {
 
   //---------------------------VERIFICATION
 
-  Future<void> otp_verification(String verifyId, String name, String email,
-      String phone, String password, BuildContext context) async {
+  Future<void> otp_verification(String verifyotp, String verifyId, String name,
+      String email, String phone, String password, BuildContext context) async {
     final credential = PhoneAuthProvider.credential(
-        verificationId: verifyId, smsCode: verifyotp.value.text);
+        verificationId: verifyId, smsCode: verifyotp);
     try {
       // Loader.poploader();
       await auth.signInWithCredential(credential).then((value) {
@@ -210,7 +495,7 @@ class AuthenticationController extends GetxController {
         print(email);
         print(phone);
 
-        registerwithEmail(name, email, phone, password, context).then((value) {
+        registerUser(name, email, phone, password, context).then((value) {
           // Get.snackbar()
           print('Data Store Succefully');
         }).onError((error, stackTrace) {

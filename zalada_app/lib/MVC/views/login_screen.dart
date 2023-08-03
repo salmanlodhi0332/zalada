@@ -11,6 +11,7 @@ import '../../auth/forget_password_bottom.dart';
 import '../../custom/other_loginbtn_widget.dart';
 import '../../custom/textfeild_widget.dart';
 import '../../utiles/page_navigation.dart';
+import '../controller/authentication_controller.dart';
 
 class login_screen extends StatefulWidget {
   const login_screen({super.key});
@@ -21,20 +22,22 @@ class login_screen extends StatefulWidget {
 
 class _login_screenState extends State<login_screen> {
   @override
-  final hidepassword = true.obs;
   final _formKey = GlobalKey<FormState>();
+  AuthenticationController controller = Get.put(AuthenticationController());
+
+  final hidepassword = true.obs;
   final email = TextEditingController();
   final password = TextEditingController();
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Theme.of(context).secondaryHeaderColor,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          scrollDirection: Axis.vertical,
-          child: Form(
-            key: _formKey,
+      body: Form(
+        key: _formKey,
+        child: SafeArea(
+          child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            scrollDirection: Axis.vertical,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -55,19 +58,15 @@ class _login_screenState extends State<login_screen> {
                   controller: email,
                   hintText: 'email_address'.tr,
                   label: 'email_address'.tr,
-                  validator: (input) =>
-                      input!.length == 0 ? "validation_email".tr : null,
                 ),
                 SizedBox(
                   height: 20,
                 ),
                 Obx(
                   () => textfeild_widget(
-                    controller: email,
+                    controller: password,
                     hintText: 'password'.tr,
                     label: 'password'.tr,
-                    validator: (input) =>
-                        input!.length == 0 ? "validation_password".tr : null,
                     obscureText: hidepassword.value,
                     suffixIcon: IconButton(
                       onPressed: () {
@@ -107,14 +106,15 @@ class _login_screenState extends State<login_screen> {
                   title: 'login'.tr,
                   ontap: () {
                     if (_formKey.currentState!.validate()) {
-                      Page_Navigation.getInstance
-                          .Page_pushAndRemoveUntil(context, Bottom_Bar());
+                      controller.loginwithEmail(
+                          email.text, password.text, context);
                     } else {
-                      Get.snackbar(
-                          'form_validation'.tr, 'please_Fill_the_form'.tr,
+                      Get.snackbar('form'.tr, 'please_Fill_the_form'.tr,
                           backgroundColor: Theme.of(context).cardColor,
                           colorText: Theme.of(context).hintColor);
                     }
+
+                    // Page_Navigation.getInstance.Page(context, Bottom_Bar());
                   },
                 ),
                 SizedBox(
@@ -148,6 +148,9 @@ class _login_screenState extends State<login_screen> {
                   height: 20,
                 ),
                 other_loginBtn_Widget(
+                    tap: () {
+                      controller.loginWithGoogle();
+                    },
                     icon: Image.asset(
                       'assets/icon/google.png',
                       height: 25,
@@ -159,13 +162,16 @@ class _login_screenState extends State<login_screen> {
                   height: 20,
                 ),
                 other_loginBtn_Widget(
+                    // tap: () {
+                    //   controller.loginWithApple();
+                    // },
                     icon: Image.asset(
-                      'assets/icon/facebook.png',
+                      'assets/icon/apple.png',
                       height: 25,
                       width: 30,
                     ),
                     width: size.width,
-                    title: 'Continue_with_facebook'.tr),
+                    title: 'Continue_with_apple'.tr),
                 SizedBox(
                   height: 20,
                 ),

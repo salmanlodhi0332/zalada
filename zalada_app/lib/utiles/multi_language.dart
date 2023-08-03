@@ -184,6 +184,7 @@ class Multi_Language extends Translations {
           // "": "",
 
           // Hammas Ahmed
+
           "your_wishlist": "Your Wishlist",
           "order": "Order",
           "address": "Address",
@@ -208,12 +209,12 @@ class Multi_Language extends Translations {
           "package_delivery": "Package on delivery",
           "order_status": "Order Status",
           "full_name": "Full Name",
-          "": "",
-          "": "",
-          "": "",
-          "": "",
-          "": "",
-          "": "",
+          "welcome": "Welcome",
+          "welcome_des": "Welcome to Zalada Store",
+          "login_failed": "Login failed",
+          "registration_failed": "Registration failed",
+          "Continue_with_apple": "Continue with apple",
+          "passwordnotmatch": "Password do not match",
         }
       };
 }

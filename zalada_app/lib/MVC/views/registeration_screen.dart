@@ -10,6 +10,7 @@ import '../../custom/other_loginbtn_widget.dart';
 import '../../custom/textfeild_widget.dart';
 import '../../utiles/page_navigation.dart';
 import '../controller/authentication_controller.dart';
+import '../controller/gmail_signup_controller.dart';
 import 'bottom_bar.dart';
 import 'login_screen.dart';
 
@@ -22,6 +23,9 @@ class registeration_screen extends StatefulWidget {
 
 class _registeration_screenState extends State<registeration_screen> {
   @override
+  // final GmailSignUpController gmailsignUpController =
+  //     Get.put(GmailSignUpController());
+
   AuthenticationController controller = Get.put(AuthenticationController());
   final _formKey = GlobalKey<FormState>();
   final hideConfirmpassword = true.obs;
@@ -30,6 +34,7 @@ class _registeration_screenState extends State<registeration_screen> {
   final emailController = TextEditingController();
   final nameController = TextEditingController();
   final passwordController = TextEditingController();
+  final confirm_passwordController = TextEditingController();
   final phoneController = TextEditingController();
 
   Widget build(BuildContext context) {
@@ -76,6 +81,7 @@ class _registeration_screenState extends State<registeration_screen> {
                   height: 20,
                 ),
                 textfeild_widget(
+                  keyboardtype: TextInputType.phone,
                   controller: phoneController,
                   hintText: 'Phone_number'.tr,
                   label: 'Phone_number'.tr,
@@ -108,7 +114,7 @@ class _registeration_screenState extends State<registeration_screen> {
                 ),
                 Obx(
                   () => textfeild_widget(
-                    controller: passwordController,
+                    controller: confirm_passwordController,
                     hintText: 'password'.tr,
                     label: 'Confirm_password'.tr,
                     obscureText: hideConfirmpassword.value,
@@ -124,6 +130,12 @@ class _registeration_screenState extends State<registeration_screen> {
                         color: Theme.of(context).hintColor,
                       ),
                     ),
+                    validator: (value) {
+                      if (value != passwordController.text) {
+                        return 'passwordnotmatch'.tr;
+                      }
+                      return null; // Return null if the validation is successful
+                    },
                   ),
                 ),
                 SizedBox(
@@ -147,11 +159,10 @@ class _registeration_screenState extends State<registeration_screen> {
                       print("Mobile Number with country code" +
                           phoneController.text);
                       controller.mobileotp_Send(
-                        nameController.text,
-                        emailController.text,
-                        passwordController.text,
-                        phoneController.text,
-                      );
+                          nameController.text,
+                          emailController.text,
+                          passwordController.text,
+                          phoneController.text);
                       // controller.registerwithEmail();
                       controller.loading.value = !controller.loading.value;
                     } else {
@@ -194,6 +205,9 @@ class _registeration_screenState extends State<registeration_screen> {
                   height: 20,
                 ),
                 other_loginBtn_Widget(
+                    tap: () {
+                      controller.signUpWithGoogle();
+                    },
                     icon: Image.asset(
                       'assets/icon/google.png',
                       height: 30,
@@ -205,13 +219,16 @@ class _registeration_screenState extends State<registeration_screen> {
                   height: 20,
                 ),
                 other_loginBtn_Widget(
+                    // tap: () {
+                    //   controller.signUpWithApple();
+                    // },
                     icon: Image.asset(
-                      'assets/icon/facebook.png',
+                      'assets/icon/apple.png',
                       height: 30,
                       width: 30,
                     ),
                     width: size.width,
-                    title: 'Continue_with_facebook'.tr),
+                    title: 'Continue_with_apple'.tr),
                 SizedBox(
                   height: 20,
                 ),

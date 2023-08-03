@@ -4,6 +4,7 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:zalada_app/MVC/views/login_screen.dart';
+import 'package:zalada_app/utiles/page_navigation.dart';
 import '../controller/onboarding_Controller.dart';
 
 class OnBoardingScreen extends StatelessWidget {
@@ -50,7 +51,9 @@ class OnBoardingScreen extends StatelessWidget {
             right: 20,
             child: TextButton(
               onPressed: () {
-                Get.to(login_screen());
+                Page_Navigation.getInstance
+                    .Page_pushAndRemoveUntil(context, login_screen());
+
                 // obController.skip();
               },
               child: const Text("Skip", style: TextStyle(color: Colors.grey)),

@@ -27,7 +27,7 @@ class _splash_screenState extends State<splash_screen> {
 
   String? token;
   isloggedcheck() async {
-    Page_Navigation().Page_pushAndRemoveUntil(context, Onboard_One());
+    Page_Navigation().Page_pushAndRemoveUntil(context, OnBoardingScreen());
   }
 
   @override

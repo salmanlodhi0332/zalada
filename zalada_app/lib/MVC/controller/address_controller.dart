@@ -19,14 +19,13 @@ class Address_Controller extends GetxController {
 
   getAddress() async {
     try {
-      isLoading(true);
+      isLoading.value = true;
       var ServerResponse = await ApiService.getInstance.getAddress();
       AddressList.value = ServerResponse;
     } catch (e) {
       print('getAddress error: $e');
+    } finally {
+      isLoading.value = false;
     }
-    //  finally {
-    //   isLoading(false);
-    // }
   }
 }

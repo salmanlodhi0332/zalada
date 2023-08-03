@@ -148,7 +148,7 @@ class Multi_Language extends Translations {
           "location": "Location",
           "address_upated": "Address Updated",
           "address_delete": "Address Delete",
-          // "": "",
+          "Apartment": "Apartment",
           // "": "",
           // "": "",
           // "": "",

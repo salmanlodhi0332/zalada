@@ -22,7 +22,7 @@ class Onboard_One extends StatelessWidget {
           TextButton(
               onPressed: () {
                 Page_Navigation.getInstance
-                    .Page_PushAndReplaceNavigation(context, login_screen());
+                    .Page_pushAndRemoveUntil(context, login_screen());
               },
               child: Text(
                 'skip'.tr,
@@ -61,7 +61,7 @@ class Onboard_One extends StatelessWidget {
             InkWell(
                 onTap: () {
                   Page_Navigation.getInstance
-                      .Page_PushAndReplaceNavigation(context, Onboard_Two());
+                      .Page_pushAndRemoveUntil(context, Onboard_Two());
                 },
                 child: Container(
                   child: Image.asset('assets/images/Progress_1.png'),

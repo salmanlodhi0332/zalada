@@ -15,31 +15,6 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-// @override
-// Widget build(BuildContext context) {
-//   return PlatformApp(
-//     debugShowCheckedModeBanner: false,
-//     material: (_, __)=>,
-//     cupertino: (_, __)=?,
-//     home: Main_Page(),
-
-//   );
-// }}
-// class Main_Page extends StatefulWidget {
-//   const Main_Page({super.key});
-
-//   @override
-//   State<Main_Page> createState() => _Main_PageState();
-// }
-
-// class _Main_PageState extends State<Main_Page> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container();
-//   }
-// }
-
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(

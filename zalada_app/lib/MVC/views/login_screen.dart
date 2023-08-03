@@ -9,7 +9,6 @@ import 'package:zalada_app/MVC/views/registeration_screen.dart';
 
 import '../../auth/forget_password_bottom.dart';
 import '../../custom/other_loginbtn_widget.dart';
-import '../../custom/payment_methods/Add_payment_mathods.dart';
 import '../../custom/textfeild_widget.dart';
 import '../../utiles/page_navigation.dart';
 
@@ -29,7 +28,6 @@ class _login_screenState extends State<login_screen> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       body: SafeArea(
         child: SingleChildScrollView(
@@ -68,8 +66,8 @@ class _login_screenState extends State<login_screen> {
                     controller: email,
                     hintText: 'password'.tr,
                     label: 'password'.tr,
-                     validator: (input) =>
-                      input!.length == 0 ? "validation_password".tr : null,
+                    validator: (input) =>
+                        input!.length == 0 ? "validation_password".tr : null,
                     obscureText: hidepassword.value,
                     suffixIcon: IconButton(
                       onPressed: () {
@@ -110,9 +108,10 @@ class _login_screenState extends State<login_screen> {
                   ontap: () {
                     if (_formKey.currentState!.validate()) {
                       Page_Navigation.getInstance
-                          .Page_PushAndReplaceNavigation(context, Bottom_Bar());
+                          .Page_pushAndRemoveUntil(context, Bottom_Bar());
                     } else {
-                      Get.snackbar('form_validation'.tr, 'please_Fill_the_form'.tr,
+                      Get.snackbar(
+                          'form_validation'.tr, 'please_Fill_the_form'.tr,
                           backgroundColor: Theme.of(context).cardColor,
                           colorText: Theme.of(context).hintColor);
                     }
@@ -180,8 +179,8 @@ class _login_screenState extends State<login_screen> {
                     ),
                     InkWell(
                       onTap: () {
-                        Page_Navigation()
-                            .Screen(context, registeration_screen());
+                        Page_Navigation.getInstance.Page_pushAndRemoveUntil(
+                            context, registeration_screen());
                       },
                       child: Text(
                         'Register'.tr,

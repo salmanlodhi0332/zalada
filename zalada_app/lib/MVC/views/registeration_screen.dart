@@ -227,7 +227,8 @@ class _registeration_screenState extends State<registeration_screen> {
                     ),
                     InkWell(
                       onTap: () {
-                        Page_Navigation().Screen(context, login_screen());
+                        Page_Navigation.getInstance
+                            .Page_pushAndRemoveUntil(context, login_screen());
                       },
                       child: Text(
                         'login'.tr,

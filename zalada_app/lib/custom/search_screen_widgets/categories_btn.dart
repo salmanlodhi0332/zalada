@@ -7,12 +7,12 @@ import 'package:flutter_svg/svg.dart';
 class categories_btn extends StatefulWidget {
   final String label;
   final Widget? preffixIcon;
-  final bool selected;
+  // final bool selected;
   const categories_btn({
     super.key,
     required this.label,
     this.preffixIcon,
-    required this.selected,
+    // required this.selected,
   });
 
   @override

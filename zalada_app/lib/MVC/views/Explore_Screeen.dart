@@ -60,7 +60,6 @@ class _Explore_ScreenState extends State<Explore_Screen> {
                   all_custom_btn(),
                   categories_btn(
                     label: 'laptop',
-                    selected: false,
                     preffixIcon: Icon(
                       Icons.laptop_windows_outlined,
                       color: Theme.of(context).hintColor,
@@ -69,7 +68,6 @@ class _Explore_ScreenState extends State<Explore_Screen> {
                   ),
                   categories_btn(
                     label: 'laptop',
-                    selected: false,
                     preffixIcon: Icon(
                       Icons.laptop_windows_outlined,
                       color: Theme.of(context).hintColor,
@@ -78,7 +76,6 @@ class _Explore_ScreenState extends State<Explore_Screen> {
                   ),
                   categories_btn(
                     label: 'laptop',
-                    selected: false,
                     preffixIcon: Icon(
                       Icons.laptop_windows_outlined,
                       color: Theme.of(context).hintColor,
@@ -87,7 +84,6 @@ class _Explore_ScreenState extends State<Explore_Screen> {
                   ),
                   categories_btn(
                     label: 'laptop',
-                    selected: false,
                     preffixIcon: Icon(
                       Icons.laptop_windows_outlined,
                       color: Theme.of(context).hintColor,
@@ -96,7 +92,6 @@ class _Explore_ScreenState extends State<Explore_Screen> {
                   ),
                   categories_btn(
                     label: 'laptop',
-                    selected: false,
                     preffixIcon: Icon(
                       Icons.laptop_windows_outlined,
                       color: Theme.of(context).hintColor,

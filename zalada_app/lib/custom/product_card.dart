@@ -4,6 +4,7 @@ import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/custom/image_widget.dart';
 import 'package:zalada_app/utiles/themeData.dart';
 
+import '../MVC/controller/cart_controller.dart';
 import '../MVC/controller/product_controller.dart';
 
 class Product_Card extends StatelessWidget {

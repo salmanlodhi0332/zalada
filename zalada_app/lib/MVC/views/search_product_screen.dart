@@ -34,52 +34,52 @@ class SearchScreen extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    all_custom_btn(),
-                    categories_btn(
-                      label: 'laptop',
-                      selected: false,
-                      preffixIcon: Icon(
-                        Icons.laptop_windows_outlined,
-                        color: Theme.of(context).hintColor,
-                        size: 15,
-                      ),
-                    ),
-                    categories_btn(
-                      label: 'laptop',
-                      selected: false,
-                      preffixIcon: Icon(
-                        Icons.laptop_windows_outlined,
-                        color: Theme.of(context).hintColor,
-                        size: 15,
-                      ),
-                    ),
-                    categories_btn(
-                      label: 'laptop',
-                      selected: false,
-                      preffixIcon: Icon(
-                        Icons.laptop_windows_outlined,
-                        color: Theme.of(context).hintColor,
-                        size: 15,
-                      ),
-                    ),
-                    categories_btn(
-                      label: 'laptop',
-                      selected: false,
-                      preffixIcon: Icon(
-                        Icons.laptop_windows_outlined,
-                        color: Theme.of(context).hintColor,
-                        size: 15,
-                      ),
-                    ),
-                    categories_btn(
-                      label: 'laptop',
-                      selected: false,
-                      preffixIcon: Icon(
-                        Icons.laptop_windows_outlined,
-                        color: Theme.of(context).hintColor,
-                        size: 15,
-                      ),
-                    ),
+                    // all_custom_btn(),
+                    // categories_btn(
+                    //   label: 'laptop',
+                    //   selected: false,
+                    //   preffixIcon: Icon(
+                    //     Icons.laptop_windows_outlined,
+                    //     color: Theme.of(context).hintColor,
+                    //     size: 15,
+                    //   ),
+                    // ),
+                    // categories_btn(
+                    //   label: 'laptop',
+                    //   selected: false,
+                    //   preffixIcon: Icon(
+                    //     Icons.laptop_windows_outlined,
+                    //     color: Theme.of(context).hintColor,
+                    //     size: 15,
+                    //   ),
+                    // ),
+                    // categories_btn(
+                    //   label: 'laptop',
+                    //   selected: false,
+                    //   preffixIcon: Icon(
+                    //     Icons.laptop_windows_outlined,
+                    //     color: Theme.of(context).hintColor,
+                    //     size: 15,
+                    //   ),
+                    // ),
+                    // categories_btn(
+                    //   label: 'laptop',
+                    //   selected: false,
+                    //   preffixIcon: Icon(
+                    //     Icons.laptop_windows_outlined,
+                    //     color: Theme.of(context).hintColor,
+                    //     size: 15,
+                    //   ),
+                    // ),
+                    // categories_btn(
+                    //   label: 'laptop',
+                    //   selected: false,
+                    //   preffixIcon: Icon(
+                    //     Icons.laptop_windows_outlined,
+                    //     color: Theme.of(context).hintColor,
+                    //     size: 15,
+                    //   ),
+                    // ),
                   ],
                 ).px(20),
               ).pOnly(top: 20),

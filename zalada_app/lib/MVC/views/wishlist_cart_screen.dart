@@ -26,23 +26,6 @@ class Wishlist_Screen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            search_bar_widget(
-              onTap: () {
-                // Page_Navigation.getInstance
-                //     .Page(context, search_result_screen());
-              },
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            // Text(
-            //   "your_wishlist".tr,
-            //   style: TextStyle(
-            //       fontFamily: 'plusjakarta',
-            //       fontSize: 30,
-            //       fontWeight: FontWeight.w700),
-            // ).py(15).px(25),
-
             search_grid(),
           ],
         ),

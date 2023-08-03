@@ -1,5 +1,5 @@
 class UserModel {
-  final int id;
+  final int? id;
   final String name;
   final String email;
   final String password;
@@ -7,12 +7,12 @@ class UserModel {
   final String phone_number;
   final String gender;
   final String fcm;
-  final DateTime dateofbrith;
-  final DateTime creationdate;
-  final DateTime updateddate;
+  final String dateofbrith;
+  final String? creationdate;
+  final String? updateddate;
 
   UserModel({
-    required this.id,
+    this.id,
     required this.name,
     required this.email,
     required this.password,
@@ -21,8 +21,8 @@ class UserModel {
     required this.fcm,
     required this.gender,
     required this.dateofbrith,
-    required this.creationdate,
-    required this.updateddate,
+     this.creationdate,
+     this.updateddate,
   });
 
   Map<String, dynamic> tojson() => {

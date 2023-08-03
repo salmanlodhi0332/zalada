@@ -206,7 +206,7 @@ class ApiService {
     } on DioException catch (e) {
       print(e);
       // throw Exception('Failed to load posts: $e');
-      return [];
+      // return [];
     }
   }
 }

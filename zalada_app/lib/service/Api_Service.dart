@@ -6,6 +6,7 @@ import 'package:zalada_app/MVC/model/Address_model.dart';
 import 'package:zalada_app/MVC/views/Address_Screen.dart';
 import 'package:zalada_app/dummyData/product_dummyData.dart';
 import 'package:zalada_app/utiles/shared_preferences.dart';
+import '../MVC/model/product_model.dart';
 import '../utiles/constent.dart';
 import '../utiles/loader.dart';
 import '../utiles/page_navigation.dart';
@@ -23,34 +24,35 @@ class ApiService {
   getAllproducts() async {
     try {
       Response response;
-      // response =
-      //     await dio.get('${baseURL}bookings/customer?status=$Status&$pageNo',
-      //         options: Options(
-      //           headers: {
-      //             'Authorization': 'Bearer $AuthUserToken',
-      //           },
-      //         ));
+      response = await dio.get(
+        '${baseURL}products',
+        // options: Options(
+        //   headers: {
+        //     'Authorization': 'Bearer $AuthUserToken',
+        //   },
+        // )
+      );
 
-      // print("statusCode => " + response.statusCode.toString());
-      // print('getAllproducts API done 👌✅');
-      // // if (response.statusCode == 200) {
-      //   final responseData = ;
-      //   if (responseData is List) {
-      //     List<Product_Model> Bookinglist = (response.data as List)
-      //         .map((data) => Product_Model.fromJson(data))
-      //         .toList();
-      //     return Bookinglist;
-      //   } else if (responseData is Map) {
-      //     List<Product_Model> Bookinglist =
-      //         (responseData['bookings'] as List)
-      //             .map((data) => Product_Model.fromJson(data))
-      //             .toList();
-      //     return Bookinglist;
-      //   // } else {
-      //   //   throw Exception('Failed to load posts: ${response.statusCode}');
-      //   // }
-      // }
-      return product_dummyData.dummyProducts;
+      print("statusCode => " + response.statusCode.toString());
+      print('getAllproducts API done 👌✅');
+      if (response.statusCode == 200) {
+        final responseData = response.data;
+        if (responseData is List) {
+          List<Product_Model> Productlist = (response.data as List)
+              .map((data) => Product_Model.fromjson(data))
+              .toList();
+          return Productlist;
+        } else if (responseData is Map) {
+          List<Product_Model> Productlist = (responseData['products'] as List)
+              .map((data) => Product_Model.fromjson(data))
+              .toList();
+          return Productlist;
+          // } else {
+          //   throw Exception('Failed to load posts: ${response.statusCode}');
+          // }
+        }
+      }
+      // return product_dummyData.dummyProducts;
     } on DioException catch (e) {
       print(e);
       // throw Exception('Failed to load posts: $e');

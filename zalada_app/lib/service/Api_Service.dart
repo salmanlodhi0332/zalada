@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:get/route_manager.dart';
 import 'package:zalada_app/MVC/model/Address_model.dart';
+import 'package:zalada_app/MVC/model/wishlist_model.dart';
 import 'package:zalada_app/MVC/views/Address_Screen.dart';
 import 'package:zalada_app/MVC/views/bottom_bar.dart';
 import 'package:zalada_app/dummyData/product_dummyData.dart';
@@ -60,26 +61,95 @@ class ApiService {
     }
   }
 
+  getAllwishlist() async {
+    try {
+      Response response;
+      response = await dio.get('${baseURL}wishlist',
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $AuthUserToken',
+            },
+          ));
+
+      print("statusCode => " + response.statusCode.toString());
+      print('getAllwishlist API done 👌✅');
+      if (response.statusCode == 200) {
+        final responseData = response.data;
+        if (responseData is List) {
+          List<Wishlist_model> Wishlist = (response.data as List)
+              .map((data) => Wishlist_model.fromJson(data))
+              .toList();
+          return Wishlist;
+        } else if (responseData is Map) {
+          List<Wishlist_model> Wishlist = (responseData['data'] as List)
+              .map((data) => Wishlist_model.fromJson(data))
+              .toList();
+          return Wishlist;
+          // } else {
+          //   throw Exception('Failed to load posts: ${response.statusCode}');
+          // }
+        }
+      }
+      // return product_dummyData.dummyProducts;
+    } on DioException catch (e) {
+      print(e);
+      // throw Exception('Failed to load posts: $e');
+      return [];
+    }
+  }
+
+  Add_Wishlist(Wishlist_model data, BuildContext context) async {
+    try {
+      Loader.poploader();
+      Response response;
+      response = await dio.post('${baseURL}wishlist',
+          data: {
+            'product_ids': data.productId,
+          },
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $AuthUserToken',
+            },
+          ));
+      print(response.data);
+      if (response.statusCode == 201) {
+        print("Wishlist are succesfully Added");
+        Get.snackbar('Wishlist', "Added",
+            colorText: Theme.of(context).hintColor,
+            backgroundColor: Theme.of(context).cardColor);
+        Page_Navigation.getInstance.Page(context, Address_Screen());
+      } else {
+        Get.snackbar('error'.tr, response.data['message'],
+            colorText: Theme.of(context).hintColor,
+            backgroundColor: Theme.of(context).cardColor);
+      }
+    } on DioException catch (e) {
+      Get.back();
+      print("Wishlist  ${e.response?.data['message']}");
+      // Get.snackbar('address_failed'.tr, "${e.response?.data['message']}",
+      //     colorText: Theme.of(context).secondaryHeaderColor,
+      //     backgroundColor: Theme.of(context).cardColor);
+    }
+  }
+
   Add_Address(Address_Model data, BuildContext context) async {
     try {
       Loader.poploader();
       Response response;
-      response = await dio.post(
-        '${baseURL}address/',
-        data: {
-          'locationName': data.locationname,
-          'address': data.address,
-          'lat': double.parse(data.latitude),
-          'long': double.parse(data.longitude),
-          'address_type': data.addressType,
-          'user_id': data.userid
-        },
-        // options: Options(
-        //   headers: {
-        //     'Authorization': 'Bearer $AuthUserToken',
-        //   },
-        // )
-      );
+      response = await dio.post('${baseURL}address/',
+          data: {
+            'locationName': data.locationname,
+            'address': data.address,
+            'lat': double.parse(data.latitude),
+            'long': double.parse(data.longitude),
+            'address_type': data.addressType,
+            'user_id': data.userid
+          },
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $AuthUserToken',
+            },
+          ));
       print(response.data);
       if (response.statusCode == 201) {
         print("Address are succesfully Created");
@@ -107,22 +177,20 @@ class ApiService {
     try {
       Loader.poploader();
       Response response;
-      response = await dio.patch(
-        '${baseURL}address/${data.id}',
-        data: {
-          'locationName': data.locationname,
-          'address': data.address,
-          'lat': double.parse(data.latitude),
-          'long': double.parse(data.longitude),
-          'address_type': data.addressType,
-          'user_id': data.userid
-        },
-        // options: Options(
-        //   headers: {
-        //     'Authorization': 'Bearer $AuthUserToken',
-        //   },
-        // )
-      );
+      response = await dio.patch('${baseURL}address/${data.id}',
+          data: {
+            'locationName': data.locationname,
+            'address': data.address,
+            'lat': double.parse(data.latitude),
+            'long': double.parse(data.longitude),
+            'address_type': data.addressType,
+            'user_id': data.userid
+          },
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $AuthUserToken',
+            },
+          ));
       print(response.data);
       if (response.statusCode == 200) {
         print("Update are succesfully Created");
@@ -149,15 +217,12 @@ class ApiService {
     try {
       Loader.poploader();
       Response response;
-      response = await dio.delete(
-        '${baseURL}address/${id}',
-
-        // options: Options(
-        //   headers: {
-        //     'Authorization': 'Bearer $AuthUserToken',
-        //   },
-        // )
-      );
+      response = await dio.delete('${baseURL}address/${id}',
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $AuthUserToken',
+            },
+          ));
       print(response.data);
       if (response.statusCode == 200) {
         print("Address  are succesfully Deleted");
@@ -182,14 +247,12 @@ class ApiService {
   getAddress() async {
     try {
       Response response;
-      response = await dio.get(
-        '${baseURL}address/',
-        // options: Options(
-        //   headers: {
-        //     'Authorization': 'Bearer $AuthUserToken',
-        //   },
-        // )
-      );
+      response = await dio.get('${baseURL}address/',
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $AuthUserToken',
+            },
+          ));
 
       print("statusCode => " + response.statusCode.toString());
       print('get Address  API done 👌✅');
@@ -218,14 +281,12 @@ class ApiService {
   getAllCategories() async {
     try {
       Response response;
-      response = await dio.get(
-        '${baseURL}categories/',
-        // options: Options(
-        //   headers: {
-        //     'Authorization': 'Bearer $AuthUserToken',
-        //   },
-        // )
-      );
+      response = await dio.get('${baseURL}categories/',
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $AuthUserToken',
+            },
+          ));
 
       print("statusCode => " + response.statusCode.toString());
       print('get All Categories  API done 👌✅');

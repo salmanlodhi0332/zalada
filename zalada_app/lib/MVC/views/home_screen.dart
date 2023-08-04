@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/MVC/controller/product_controller.dart';
@@ -6,6 +7,7 @@ import 'package:zalada_app/custom/image_widget.dart';
 import 'package:zalada_app/custom/product_card.dart';
 
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:zalada_app/utiles/loader.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
 import 'package:zalada_app/MVC/views/notification_screen.dart';
 import 'package:zalada_app/MVC/views/product_detail.dart';
@@ -49,7 +51,6 @@ class _Home_ScreenState extends State<Home_Screen> {
   void _scrollListener() {
     if (_scrollController.position.pixels ==
         _scrollController.position.maxScrollExtent) {
-      // Reached the bottom of the list, load more data for pagination
       if (!_isLoadingMore) {
         setState(() {
           _isLoadingMore = true;
@@ -62,6 +63,12 @@ class _Home_ScreenState extends State<Home_Screen> {
         });
       }
     }
+  }
+
+  Widget _buildLoaderWidget() {
+    return Center(
+      child: Loader.poploader(),
+    );
   }
 
   @override
@@ -292,6 +299,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                         : const Center(
                             child: Text('no Product'),
                           )),
+                    _isLoadingMore ? _buildLoaderWidget() : SizedBox.shrink(),
                   ],
                 ),
               ))

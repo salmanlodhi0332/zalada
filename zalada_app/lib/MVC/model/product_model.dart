@@ -50,8 +50,8 @@ class Product_Model {
         'price': price,
         'images': images,
 // 'colors': colors,
-        'memory': memory,
-        'storage': storage,
+        'memory_options': memory,
+        'storage_values': storage,
         'created_by_user_id': createdBy,
         'product_created_at': creationdate,
         //'updateddate': updateddate
@@ -75,8 +75,12 @@ class Product_Model {
               ]
             : json['images'].toList(),
         // colors: json['colors'] == null ? [] : json['colors'].toList(),
-        memory: json['memory'] == null ? [] : json['memory'].toList(),
-        storage: json['storage'] == null ? [] : json['storage'].toList(),
+        memory: json['memory_options'] == null
+            ? []
+            : json['memory_options'].toList(),
+        storage: json['storage_values'] == null
+            ? []
+            : json['storage_values'].toList(),
         //updateddate: json['updatedAt'],
         creationdate: json['product_created_at'],
         createdBy: json['created_by_user_id']);

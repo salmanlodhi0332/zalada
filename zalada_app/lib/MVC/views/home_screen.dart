@@ -9,12 +9,14 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
 import 'package:zalada_app/MVC/views/notification_screen.dart';
 import 'package:zalada_app/MVC/views/product_detail.dart';
+import '../../custom/add_to_cart_button.dart';
 import '../../custom/all_custom_btn.dart';
 import '../../custom/search_screen_widgets/categories_btn.dart';
 import 'package:badges/badges.dart' as badges;
 
-import '../../utiles/getxcontroller.dart';
+import '../controller/cart_controller.dart';
 import '../controller/home_controller.dart';
+import 'cart_screen.dart';
 
 class Home_Screen extends StatefulWidget {
   Home_Screen({Key? key}) : super(key: key);
@@ -26,6 +28,7 @@ class Home_Screen extends StatefulWidget {
 class _Home_ScreenState extends State<Home_Screen> {
   final Homecontroller = Get.put(home_Controller());
   final controller = Get.put(product_Controller());
+  final cartController = Get.put(cart_Controller());
 
   RxInt selectedCategories = 0.obs;
 
@@ -54,13 +57,36 @@ class _Home_ScreenState extends State<Home_Screen> {
                 pinned: false,
                 automaticallyImplyLeading: false,
                 actions: [
-                  Container(
-                    margin: EdgeInsets.all(7),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color:
-                            Theme.of(context).highlightColor.withOpacity(0.3)),
-                    child: Image.asset('assets/images/cart.png'),
+                  Obx(
+                    () => badges.Badge(
+                      position: badges.BadgePosition.topEnd(top: 3, end: 10),
+                      showBadge: true,
+                      badgeContent: Text(
+                        cartController.cartproductlist.length.toString(),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'plusjakarta',
+                        ),
+                      ),
+                      ignorePointer: false,
+                      child: Container(
+                        margin: EdgeInsets.all(7),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: Theme.of(context)
+                                .highlightColor
+                                .withOpacity(0.3)),
+                        child: add_to_cart_button(
+                          ontap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Cart_Screen()),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
                   ),
 
                   // add_to_cart_button(

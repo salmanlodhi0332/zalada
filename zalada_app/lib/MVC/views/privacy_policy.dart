@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/custom/back_button.dart';
 
+import '../controller/privacy_controller.dart';
+
 class privacy_policy extends StatefulWidget {
   const privacy_policy({super.key});
 
@@ -12,7 +14,13 @@ class privacy_policy extends StatefulWidget {
 
 class _privacy_policyState extends State<privacy_policy> {
   @override
+  void initState() {
+    super.initState();
+  }
+
   Widget build(BuildContext context) {
+    final Privacy_Controller controller = Get.put(Privacy_Controller());
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -32,70 +40,26 @@ class _privacy_policyState extends State<privacy_policy> {
         ).p(10),
       ),
       backgroundColor: Theme.of(context).secondaryHeaderColor,
-      body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        scrollDirection: Axis.vertical,
-        child: Padding(
-          padding: const EdgeInsets.only(top: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(15),
-                child: Text(
-                  "1. Types of data we collected".tr,
-                  style: TextStyle(
-                      fontSize: 22,
-                      fontFamily: 'plusjakarta',
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              Padding(
-                  padding: const EdgeInsets.all(15),
-                  child: Text(
-                    "lorem 30 line text here",
-                    style: TextStyle(
-                      fontFamily: 'plusjakarta',
-                    ),
-                  )),
-              Padding(
-                padding: const EdgeInsets.all(15),
-                child: Text(
-                  "2. Use of your personal data".tr,
-                  style: TextStyle(
-                      fontSize: 22,
-                      fontFamily: 'plusjakarta',
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              Padding(
-                  padding: const EdgeInsets.all(15),
-                  child: Text(
-                    "lorem 30 line text here",
-                    style: TextStyle(
-                      fontFamily: 'plusjakarta',
-                    ),
-                  )),
-              Padding(
-                padding: const EdgeInsets.all(15),
-                child: Text(
-                  "2. Disclose of Your Data".tr,
-                  style: TextStyle(
-                      fontSize: 22,
-                      fontFamily: 'plusjakarta',
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              Padding(
-                  padding: const EdgeInsets.all(15),
-                  child: Text(
-                    "lorem 30 line text here",
-                    style: TextStyle(
-                      fontFamily: 'plusjakarta',
-                    ),
-                  ))
-            ],
-          ),
+      body: RefreshIndicator(
+        onRefresh: () async {
+          controller.getAllPrivacy();
+        },
+        child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          scrollDirection: Axis.vertical,
+          child: Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: controller.privacylist
+                    .map((e) => Padding(
+                        padding: const EdgeInsets.all(15),
+                        child: ListTile(
+                          title: Text(e.title),
+                          subtitle: Text(e.content),
+                        )))
+                    .toList(),
+              )),
         ),
       ),
     );

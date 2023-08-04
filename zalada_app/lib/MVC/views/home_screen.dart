@@ -67,7 +67,7 @@ class _Home_ScreenState extends State<Home_Screen> {
 
   Widget _buildLoaderWidget() {
     return Center(
-      child: Loader.poploader(),
+      child: CircularProgressIndicator(),
     );
   }
 
@@ -299,10 +299,18 @@ class _Home_ScreenState extends State<Home_Screen> {
                         : const Center(
                             child: Text('no Product'),
                           )),
-                    _isLoadingMore ? _buildLoaderWidget() : SizedBox.shrink(),
+                    // Align(
+                    //     alignment: Alignment.topCenter,
+                    //     child: _isLoadingMore
+                    //         ? _buildLoaderWidget()
+                    //         : SizedBox.shrink()),
                   ],
                 ),
-              ))
+              )),
+              if (_isLoadingMore)
+                SliverToBoxAdapter(
+                  child: _buildLoaderWidget(),
+                ),
             ]),
       ),
     );

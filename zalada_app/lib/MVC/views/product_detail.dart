@@ -14,7 +14,6 @@ import '../../custom/add_to_cart_button.dart';
 import '../../custom/botton_widget.dart';
 import '../controller/cart_controller.dart';
 import 'Address_Screen.dart';
-import 'confirm_order.dart';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:badges/badges.dart' as badges;
 
@@ -172,74 +171,74 @@ class Product_Detail_Screen extends StatelessWidget {
                 //     ).pOnly(right: 10),
                 //   ],
                 // ).px(ph),
-                // Text(
-                //   'Memory',
-                //   style: TextStyle(
-                //       fontSize: 14,
-                //       fontFamily: 'plusjakarta',
-                //       fontWeight: FontWeight.w600,
-                //       color: Theme.of(context).disabledColor),
-                // ).px(15).pOnly(bottom: 10),
-                // DropDownTextField(
-                //         textFieldDecoration: InputDecoration(
-                //             focusedBorder: OutlineInputBorder(
-                //               borderSide: BorderSide(
-                //                   width: 1,
-                //                   color: Theme.of(context)
-                //                       .disabledColor
-                //                       .withOpacity(0.5)),
-                //               borderRadius: BorderRadius.circular(10.0),
-                //             ),
-                //             enabledBorder: OutlineInputBorder(
-                //               borderSide: BorderSide(
-                //                   width: 1,
-                //                   color: Theme.of(context)
-                //                       .disabledColor
-                //                       .withOpacity(0.5)),
-                //               borderRadius: BorderRadius.circular(10.0),
-                //             ),
-                //             hintText: item.memory[0] == null
-                //                 ? 'Select Stroge'
-                //                 : item.memory[0]),
-                //         controller: groupcontroller,
-                //         dropDownList: item.memory.map((e) {
-                //           return DropDownValueModel(name: e, value: e);
-                //         }).toList())
-                //     .px(15),
-                // Text(
-                //   'Storage',
-                //   style: TextStyle(
-                //       fontSize: 14,
-                //       fontFamily: 'plusjakarta',
-                //       fontWeight: FontWeight.w600,
-                //       color: Theme.of(context).disabledColor),
-                // ).px(15).py(10),
-                // DropDownTextField(
-                //         textFieldDecoration: InputDecoration(
-                //             focusedBorder: OutlineInputBorder(
-                //               borderSide: BorderSide(
-                //                   width: 1,
-                //                   color: Theme.of(context)
-                //                       .disabledColor
-                //                       .withOpacity(0.5)), //<-- SEE HERE
-                //               borderRadius: BorderRadius.circular(10.0),
-                //             ),
-                //             enabledBorder: OutlineInputBorder(
-                //               borderSide: BorderSide(
-                //                   width: 1,
-                //                   color: Theme.of(context)
-                //                       .disabledColor
-                //                       .withOpacity(0.5)), //<-- SEE HERE
-                //               borderRadius: BorderRadius.circular(10.0),
-                //             ),
-                //             hintText: item.storage[0] == null
-                //                 ? 'Select Stroge'
-                //                 : item.storage[0]),
-                //         controller: groupcontroller,
-                //         dropDownList: item.storage.map((e) {
-                //           return DropDownValueModel(name: e, value: e);
-                //         }).toList())
-                //     .px(15),
+                Text(
+                  'Memory',
+                  style: TextStyle(
+                      fontSize: 14,
+                      fontFamily: 'plusjakarta',
+                      fontWeight: FontWeight.w600,
+                      color: Theme.of(context).disabledColor),
+                ).px(15).pOnly(bottom: 10),
+                DropDownTextField(
+                        textFieldDecoration: InputDecoration(
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  width: 1,
+                                  color: Theme.of(context)
+                                      .disabledColor
+                                      .withOpacity(0.5)),
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  width: 1,
+                                  color: Theme.of(context)
+                                      .disabledColor
+                                      .withOpacity(0.5)),
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            hintText: item.memory[0] == null
+                                ? 'Select Stroge'
+                                : item.memory[0]),
+                        controller: groupcontroller,
+                        dropDownList: item.memory.map((e) {
+                          return DropDownValueModel(name: e, value: e);
+                        }).toList())
+                    .px(15),
+                Text(
+                  'Storage',
+                  style: TextStyle(
+                      fontSize: 14,
+                      fontFamily: 'plusjakarta',
+                      fontWeight: FontWeight.w600,
+                      color: Theme.of(context).disabledColor),
+                ).px(15).py(10),
+                DropDownTextField(
+                        textFieldDecoration: InputDecoration(
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  width: 1,
+                                  color: Theme.of(context)
+                                      .disabledColor
+                                      .withOpacity(0.5)), //<-- SEE HERE
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  width: 1,
+                                  color: Theme.of(context)
+                                      .disabledColor
+                                      .withOpacity(0.5)), //<-- SEE HERE
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            hintText: item.storage[0] == null
+                                ? 'Select Stroge'
+                                : item.storage[0]),
+                        controller: groupcontroller,
+                        dropDownList: item.storage.map((e) {
+                          return DropDownValueModel(name: e, value: e);
+                        }).toList())
+                    .px(15),
                 SizedBox(height: 80),
                 Divider(
                   color: Theme.of(context).disabledColor.withOpacity(0.4),

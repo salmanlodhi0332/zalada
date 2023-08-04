@@ -11,8 +11,8 @@ class Product_Model {
   final String? hotdeal;
   final List images;
   // final List colors;
-  final String memory;
-  final String storage;
+  final List memory;
+  final List storage;
   final int createdBy;
   final String creationdate;
   //final String updateddate;
@@ -75,8 +75,12 @@ class Product_Model {
               ]
             : json['images'].toList(),
         // colors: json['colors'] == null ? [] : json['colors'].toList(),
-        memory: json['memory'] == null ? '' : json['memory'].toString(),
-        storage: json['storage'] == null ? '' : json['storage'].toString(),
+        memory: json['memory_options'] == null
+            ? []
+            : json['memory_options'].toList(),
+        storage: json['storage_values'] == null
+            ? []
+            : json['storage_values'].toList(),
         //updateddate: json['updatedAt'],
         creationdate: json['product_created_at'],
         createdBy: json['created_by_user_id']);

@@ -51,7 +51,7 @@ class Product_Detail_Screen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Wrap(
           children:
-              controller.Productslist.where((p0) => p0.id == id).map((item) {
+              controller.productslist.where((p0) => p0.id == id).map((item) {
             displayimages.value = item.images[0];
             return Wrap(
               // alignment: WrapAlignment.center,
@@ -289,8 +289,8 @@ class Product_Detail_Screen extends StatelessWidget {
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
-                        children: controller.Productslist.where(
-                                (p0) => p0.category_id == item.category_id)
+                        children: controller.productslist
+                            .where((p0) => p0.category_id == item.category_id)
                             .map((PR_item) {
                       return Product_Card(
                         hotdeal: '',
@@ -342,9 +342,8 @@ class Product_Detail_Screen extends StatelessWidget {
                     //  from here onwords
                     add_to_cart_button(
                   ontap: () {
-                    cartController.addProduct(
-                        controller.Productslist.firstWhere(
-                            (product) => product.id == id));
+                    cartController.addProduct(controller.productslist
+                        .firstWhere((product) => product.id == id));
                   },
                   pic: Image.asset(
                     'assets/images/cart.png',

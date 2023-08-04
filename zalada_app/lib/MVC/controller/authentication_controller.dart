@@ -36,7 +36,7 @@ class AuthenticationController extends GetxController {
   final confrimpassword = TextEditingController().obs;
   final _pref = shared_preferences();
   final FirebaseAuth auth = FirebaseAuth.instance;
-
+  late BuildContext context;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
 
   static String AuthUserToken = shared_preferences.userToken.value;
@@ -521,8 +521,7 @@ class AuthenticationController extends GetxController {
   }
 
 //------------------------------  UPDATE PROFILE
-  Future<void> updateProfile(UserModel userdata,context)
-       async {
+  Future<void> updateProfile(UserModel userdata, context) async {
     try {
       Loader.poploader();
       final response;
@@ -532,7 +531,7 @@ class AuthenticationController extends GetxController {
         formData.fields.add(MapEntry('name', userdata.name));
         formData.fields.add(MapEntry('email', userdata.email));
         formData.fields.add(MapEntry('DOB', userdata.dateofbrith));
-        formData.fields.add(MapEntry('image', userdata.userimage));//image
+        formData.fields.add(MapEntry('image', userdata.userimage)); //image
         formData.fields.add(MapEntry('phone_number', userdata.phone_number));
         formData.files.add(MapEntry(
           'files',
@@ -552,10 +551,10 @@ class AuthenticationController extends GetxController {
           baseURL + 'users/updateUser',
           data: {
             'name': userdata.name,
-            'email':userdata.email,
+            'email': userdata.email,
             'DOB': userdata.name,
-            'phone_number':userdata.email,
-            'image':userdata.userimage,
+            'phone_number': userdata.email,
+            'image': userdata.userimage,
           },
           options: Options(
             headers: {
@@ -571,16 +570,16 @@ class AuthenticationController extends GetxController {
             backgroundColor: Theme.of(context).cardColor,
             colorText: Theme.of(context).hintColor);
         print('Print Successfully');
-        var userData = UserModel(name: response.data['data']['name'].toString(),
-         email: response.data["data"]["email"].toString(),
-   password:response.data["data"]["password"].toString(),
-           phone_number:response.data["data"]["phone_number"].toString(),
-            userimage: response.data["data"]["image"].toString(),
-           fcm: response.data["data"]["fcm"].toString(),
-              gender: response.data["data"]["gender"].toString(),
-               dateofbrith:  response.data["data"]["DOB"].toString(),
+        var userData = UserModel(
+          name: response.data['data']['name'].toString(),
+          email: response.data["data"]["email"].toString(),
+          password: response.data["data"]["password"].toString(),
+          phone_number: response.data["data"]["phone_number"].toString(),
+          userimage: response.data["data"]["image"].toString(),
+          fcm: response.data["data"]["fcm"].toString(),
+          gender: response.data["data"]["gender"].toString(),
+          dateofbrith: response.data["data"]["DOB"].toString(),
         );
-        
 
         // _pref.update_userData(userData);
         // Get.back();
@@ -744,7 +743,6 @@ class AuthenticationController extends GetxController {
 
   logout() {
     _pref.logout();
-
-    Get.to(login_screen());
+    Page_Navigation.getInstance.Page(context, login_screen());
   }
 }

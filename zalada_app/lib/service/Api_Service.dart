@@ -30,13 +30,13 @@ class ApiService {
   late BuildContext context;
   static String AuthUserToken = shared_preferences.userToken.value;
 
-  getAllproducts(int? Category_Id) async {
+  getAllproducts(int? Category_Id, int page) async {
     try {
       Response response;
 
       if (Category_Id == 0) {
         //====get all product
-        response = await dio.get('${baseURL}products',
+        response = await dio.get('${baseURL}products?page=${page}',
             options: Options(
               headers: {
                 'Authorization': 'Bearer $AuthUserToken',
@@ -46,7 +46,8 @@ class ApiService {
         print('getAllproducts API done 👌✅');
       } else {
         //====get products By CategoryId
-        response = await dio.get('${baseURL}products?categoryId=$Category_Id',
+        response = await dio.get(
+            '${baseURL}products?page=${page}?categoryId=$Category_Id',
             options: Options(
               headers: {
                 'Authorization': 'Bearer $AuthUserToken',

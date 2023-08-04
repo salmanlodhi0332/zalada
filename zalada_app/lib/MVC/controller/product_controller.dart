@@ -10,26 +10,31 @@ final dio = Dio();
 
 class product_Controller extends GetxController {
   static const String baseURL = "${Constants.baseURL}/api/v1/";
-  RxList<Product_Model> Productslist = <Product_Model>[].obs;
+  RxList<Product_Model> productslist = <Product_Model>[].obs;
   RxBool isLoading = false.obs;
 
   @override
   void onInit() {
     super.onInit();
-    getAllproducts(0); //this zero means no category id we are passing
+     //this zero means no category id we are passing
   }
 
-  getAllproducts(int? Category_Id) async {
+  getAllproducts(int? Category_Id, int pageNo) async {
     try {
       isLoading(true);
 
       var ServerResponse =
-          await ApiService.getInstance.getAllproducts(Category_Id);
-      Productslist.value = ServerResponse;
+          await ApiService.getInstance.getAllproducts(Category_Id, pageNo);
+      if (pageNo > 1) {
+        // productslist.addAll(ServerResponse);
+        productslist.value.addAll(ServerResponse);
+      } else {
+        productslist.value = ServerResponse;
+      }
     } catch (e) {
-      print('getAllproducts  error: $e');
+      print('getAllproducts abcdefghjk  error: $e');
     } finally {
-      isLoading(false);
+      // isLoading(false);
     }
   }
 }

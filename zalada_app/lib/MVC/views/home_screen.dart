@@ -27,10 +27,46 @@ class Home_Screen extends StatefulWidget {
 
 class _Home_ScreenState extends State<Home_Screen> {
   final Homecontroller = Get.put(home_Controller());
+
   final controller = Get.put(product_Controller());
   final cartController = Get.put(cart_Controller());
 
   RxInt selectedCategories = 0.obs;
+
+  ScrollController _scrollController = ScrollController();
+
+  bool _isLoadingMore = false;
+  int pageNo = 1;
+  @override
+  void initState() {
+    super.initState();
+    controller.getAllproducts(0, pageNo);
+    _scrollController.addListener(_scrollListener);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(_scrollListener);
+    super.dispose();
+  }
+
+  void _scrollListener() {
+    if (_scrollController.position.pixels ==
+        _scrollController.position.maxScrollExtent) {
+      // Reached the bottom of the list, load more data for pagination
+      if (!_isLoadingMore) {
+        setState(() {
+          _isLoadingMore = true;
+        });
+        pageNo++;
+        controller.getAllproducts(0, pageNo).then((_) {
+          setState(() {
+            _isLoadingMore = false;
+          });
+        });
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,10 +77,10 @@ class _Home_ScreenState extends State<Home_Screen> {
         color: Theme.of(context).primaryColor,
         onRefresh: () async {
           Homecontroller.onInit();
+          // controller.getAllproducts(pageNo);
         },
         child: CustomScrollView(
-            physics: const BouncingScrollPhysics(),
-            primary: true,
+            controller: _scrollController,
             shrinkWrap: false,
             clipBehavior: Clip.none,
             slivers: <Widget>[
@@ -88,12 +124,6 @@ class _Home_ScreenState extends State<Home_Screen> {
                       ),
                     ),
                   ),
-
-                  // add_to_cart_button(
-                  //   ontap: () {},
-                  // ),
-
-// end of the widget
                   Container(
                     margin: const EdgeInsets.all(7),
                     decoration: BoxDecoration(
@@ -245,7 +275,8 @@ class _Home_ScreenState extends State<Home_Screen> {
                                               selectedCategories.value = e.id;
                                               print('Category_Id');
                                               print(selectedCategories.value);
-                                              controller.getAllproducts(e.id);
+                                              controller.getAllproducts(
+                                                  e.id, pageNo);
                                             },
                                             child: Container(
                                               decoration: BoxDecoration(
@@ -300,7 +331,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                         ),
                       ).pOnly(bottom: 10),
                     ),
-                    Obx(() => controller.Productslist.isNotEmpty
+                    Obx(() => controller.productslist.isNotEmpty
                         ? MasonryGridView.count(
                             primary: false,
                             shrinkWrap: true,
@@ -310,9 +341,9 @@ class _Home_ScreenState extends State<Home_Screen> {
                                     ? 2
                                     : 4,
                             padding: const EdgeInsets.symmetric(vertical: 10),
-                            itemCount: controller.Productslist.length,
+                            itemCount: controller.productslist.length,
                             itemBuilder: (BuildContext context, int index) {
-                              final item = controller.Productslist[index];
+                              final item = controller.productslist[index];
                               return Product_Card(
                                 id: item.id,
                                 ontap: () {

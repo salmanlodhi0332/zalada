@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:zalada_app/MVC/controller/help_center_controller.dart';
 import 'package:zalada_app/custom/back_button.dart';
 
 import '../controller/privacy_controller.dart';
 
-class privacy_policy extends StatefulWidget {
-  const privacy_policy({super.key});
+class help_center extends StatefulWidget {
+  const help_center({super.key});
 
   @override
-  State<privacy_policy> createState() => _privacy_policyState();
+  State<help_center> createState() => _help_centerState();
 }
 
-class _privacy_policyState extends State<privacy_policy> {
-  final Privacy_Controller controller = Get.put(Privacy_Controller());
+class _help_centerState extends State<help_center> {
+  final help_center_controller controller = Get.put(help_center_controller());
 
   @override
   void initState() {
     super.initState();
-    controller.getAllPrivacy();
+    controller.getAllhelpcenterdata();
   }
 
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class _privacy_policyState extends State<privacy_policy> {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          "Privacy Policy".tr,
+          "Help_Center".tr,
           style: TextStyle(
             color: Theme.of(context).hintColor,
             fontFamily: 'plusjakarta',
@@ -43,7 +44,7 @@ class _privacy_policyState extends State<privacy_policy> {
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       body: RefreshIndicator(
         onRefresh: () async {
-          controller.getAllPrivacy();
+          controller.getAllhelpcenterdata();
         },
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
@@ -53,7 +54,7 @@ class _privacy_policyState extends State<privacy_policy> {
               child: Obx(
                 () => Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: controller.privacylist
+                  children: controller.helpcenterlist
                       .map((e) => Padding(
                           padding: const EdgeInsets.all(15),
                           child: ListTile(

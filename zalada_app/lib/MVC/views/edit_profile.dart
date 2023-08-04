@@ -3,15 +3,18 @@ import 'dart:io';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:zalada_app/MVC/model/user_model.dart';
 import 'package:zalada_app/service/Getx_provider.dart';
 
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:zalada_app/utiles/loader.dart';
 import '../../custom/custom_appbar.dart';
 import '../../custom/back_button.dart';
 import '../../custom/botton_widget.dart';
 import '../../custom/date_picker.dart';
 import '../../custom/textfeild_widget.dart';
+import '../controller/authentication_controller.dart';
 
 class edit_profile extends StatefulWidget {
   const edit_profile({super.key});
@@ -28,6 +31,9 @@ class _edit_profileState extends State<edit_profile> {
 
   final gendercontroller = SingleValueDropDownController();
   String selectedGender = "Male"; // Initial value
+
+  AuthenticationController controller = Get.put(AuthenticationController());
+  final _formkey = GlobalKey<FormState>();
 
   GetxControllerProvider controllersProvider =
       Get.put(GetxControllerProvider());
@@ -197,10 +203,27 @@ class _edit_profileState extends State<edit_profile> {
                 height: 20,
               ),
               Button_Widget(
-                width: size.width,
-                title: "Save Changes",
-                ontap: () {},
-              ),
+                  width: size.width,
+                  title: "Save Changes",
+                  ontap: () {
+                    if (_formkey.currentState!.validate()) {
+                      var userData = UserModel(
+                          name: fullnameController.text,
+                          email: emailaddressController.text,
+                          password: "",
+                          phone_number: _phoneController.text,
+                          userimage: "",
+                          fcm: "",
+                          gender: gendercontroller.dropDownValue.toString(),
+                          dateofbrith: dateController.text);
+                      controller.updateProfile(userData, context);
+                      controllersProvider.imagePath.value = '';
+                    } else {
+                      Get.snackbar('form'.tr, 'please_Fill_the_form'.tr,
+                          backgroundColor: Theme.of(context).cardColor,
+                          colorText: Theme.of(context).hintColor);
+                    }
+                  }),
               SizedBox(
                 height: 8,
               ),

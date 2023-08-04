@@ -19,6 +19,7 @@ import '../../utiles/constent.dart';
 import '../../utiles/getxcontroller.dart';
 import '../../utiles/loader.dart';
 import '../../utiles/shared_preferences.dart';
+import '../model/user_model.dart';
 import '../views/otp_screen.dart';
 
 class AuthenticationController extends GetxController {
@@ -519,25 +520,29 @@ class AuthenticationController extends GetxController {
   }
 
 //------------------------------  UPDATE PROFILE
-  Future<void> updateProfile(String token, int id, String Name, String image,
-      BuildContext context) async {
+  Future<void> updateProfile(UserModel userdata,context)
+       async {
     try {
       Loader.poploader();
       final response;
 
-      if (image != "") {
+      if (userdata.userimage != "") {
         final formData = FormData();
-        formData.fields.add(MapEntry('fullName', Name));
+        formData.fields.add(MapEntry('name', userdata.name));
+        formData.fields.add(MapEntry('email', userdata.email));
+        formData.fields.add(MapEntry('DOB', userdata.dateofbrith));
+        formData.fields.add(MapEntry('image', userdata.userimage));//image
+        formData.fields.add(MapEntry('phone_number', userdata.phone_number));
         formData.files.add(MapEntry(
           'files',
-          await MultipartFile.fromFile(image),
+          await MultipartFile.fromFile(userdata.userimage),
         ));
         response = await dio.patch(
           baseURL + 'users/',
           data: formData,
           options: Options(
             headers: {
-              'Authorization': 'Bearer $token',
+              'Authorization': 'Bearer $AuthUserToken',
             },
           ),
         );
@@ -545,11 +550,15 @@ class AuthenticationController extends GetxController {
         response = await dio.patch(
           baseURL + 'users/updateUser',
           data: {
-            'fullName': Name,
+            'name': userdata.name,
+            'email':userdata.email,
+            'DOB': userdata.name,
+            'phone_number':userdata.email,
+            'image':userdata.userimage,
           },
           options: Options(
             headers: {
-              'Authorization': 'Bearer $token',
+              'Authorization': 'Bearer $AuthUserToken',
             },
           ),
         );
@@ -561,14 +570,24 @@ class AuthenticationController extends GetxController {
             backgroundColor: Theme.of(context).cardColor,
             colorText: Theme.of(context).hintColor);
         print('Print Successfully');
-        image = response.data['data']['photo'].toString();
-        _pref.update_userData(name: Name, photo: image);
+        var userData = UserModel(name: response.data['data']['name'].toString(),
+         email: response.data["data"]["email"].toString(),
+   password:response.data["data"]["password"].toString(),
+           phone_number:response.data["data"]["phone_number"].toString(),
+            userimage: response.data["data"]["image"].toString(),
+           fcm: response.data["data"]["fcm"].toString(),
+              gender: response.data["data"]["gender"].toString(),
+               dateofbrith:  response.data["data"]["DOB"].toString(),
+        );
+        
+
+        // _pref.update_userData(userData);
         // Get.back();
         Get.to(Bottom_Bar());
       } else {
         print('something wrong......');
       }
-      print('Api Hit  $id');
+      print('Api Hit  ');
 
       // Handle response here (e.g., show success message)
       // You can access response data using response.data

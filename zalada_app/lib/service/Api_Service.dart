@@ -1,11 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:get/route_manager.dart';
 import 'package:zalada_app/MVC/model/Address_model.dart';
 import 'package:zalada_app/MVC/views/Address_Screen.dart';
 import 'package:zalada_app/dummyData/product_dummyData.dart';
 import 'package:zalada_app/utiles/shared_preferences.dart';
+import '../MVC/model/privacy_policy_model.dart';
 import '../MVC/model/product_model.dart';
 import '../MVC/model/categories_model.dart';
 import '../utiles/constent.dart';
@@ -15,6 +17,9 @@ import '../utiles/page_navigation.dart';
 final dio = Dio();
 
 class ApiService {
+  static final Dio dio =
+      Dio(BaseOptions(baseUrl: 'http://localhost:3001/api/v1/'));
+
   static ApiService? _instance;
   static ApiService get getInstance => _instance ??= ApiService();
 
@@ -106,22 +111,20 @@ class ApiService {
     try {
       Loader.poploader();
       Response response;
-      response = await dio.patch(
-        '${baseURL}address/${data.id}',
-        data: {
-          'locationName': data.locationname,
-          'address': data.address,
-          'lat': double.parse(data.latitude),
-          'long': double.parse(data.longitude),
-          'address_type': data.addressType,
-          'user_id': data.userid
-        },
-        // options: Options(
-        //   headers: {
-        //     'Authorization': 'Bearer $AuthUserToken',
-        //   },
-        // )
-      );
+      response = await dio.patch('${baseURL}address/${data.id}',
+          data: {
+            'locationName': data.locationname,
+            'address': data.address,
+            'lat': double.parse(data.latitude),
+            'long': double.parse(data.longitude),
+            'address_type': data.addressType,
+            'user_id': data.userid
+          },
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $AuthUserToken',
+            },
+          ));
       print(response.data);
       if (response.statusCode == 200) {
         print("Update are succesfully Created");
@@ -147,15 +150,12 @@ class ApiService {
     try {
       Loader.poploader();
       Response response;
-      response = await dio.delete(
-        '${baseURL}address/${id}',
-
-        // options: Options(
-        //   headers: {
-        //     'Authorization': 'Bearer $AuthUserToken',
-        //   },
-        // )
-      );
+      response = await dio.delete('${baseURL}address/${id}',
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $AuthUserToken',
+            },
+          ));
       print(response.data);
       if (response.statusCode == 200) {
         print("Address  are succesfully Deleted");
@@ -180,14 +180,12 @@ class ApiService {
   getAddress() async {
     try {
       Response response;
-      response = await dio.get(
-        '${baseURL}address/',
-        // options: Options(
-        //   headers: {
-        //     'Authorization': 'Bearer $AuthUserToken',
-        //   },
-        // )
-      );
+      response = await dio.get('${baseURL}address/',
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $AuthUserToken',
+            },
+          ));
 
       print("statusCode => " + response.statusCode.toString());
       print('get Address  API done 👌✅');
@@ -213,32 +211,66 @@ class ApiService {
     }
   }
 
-  getAllCategories() async {
+  getPrivacy() async {
     try {
       Response response;
       response = await dio.get(
-        '${baseURL}categories/',
+        '${baseURL}privacy-policies/',
         // options: Options(
-        //   headers: {
-        //     'Authorization': 'Bearer $AuthUserToken',
-        //   },
+        //   // headers: {
+        //   //   'Authorization': 'Bearer $AuthUserToken',
+        //   // },
         // )
       );
+
+      print("statusCode => " + response.statusCode.toString());
+      print('getPrivacy  API done 👌✅');
+      if (response.statusCode == 200) {
+        final responseData = response.data;
+        if (responseData is List) {
+          List<Privacy_model> privacyData = (response.data as List)
+              .map((data) => Privacy_model.fromJson(data))
+              .toList();
+          return privacyData;
+        } else if (responseData is Map) {
+          List<Privacy_model> privacyData = (responseData['data'] as List)
+              .map((data) => Privacy_model.fromJson(data))
+              .toList();
+          return privacyData;
+        }
+        return responseData;
+      }
+    } on DioException catch (e) {
+      print(e);
+      // throw Exception('Failed to load posts: $e');
+      // return [];
+    }
+  }
+
+  getAllCategories() async {
+    try {
+      Response response;
+      response = await dio.get('${baseURL}categories/',
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $AuthUserToken',
+            },
+          ));
 
       print("statusCode => " + response.statusCode.toString());
       print('get All Categories  API done 👌✅');
       if (response.statusCode == 200) {
         final responseData = response.data;
         if (responseData is List) {
-          List<categories_Model> addressData = (response.data as List)
+          List<categories_Model> CategoriesData = (response.data as List)
               .map((data) => categories_Model.fromjson(data))
               .toList();
-          return addressData;
+          return CategoriesData;
         } else if (responseData is Map) {
-          List<categories_Model> addressData = (responseData['data'] as List)
+          List<categories_Model> CategoriesData = (responseData['data'] as List)
               .map((data) => categories_Model.fromjson(data))
               .toList();
-          return addressData;
+          return CategoriesData;
         }
         return responseData;
       }

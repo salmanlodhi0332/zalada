@@ -4,6 +4,7 @@ import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:get/route_manager.dart';
 import 'package:zalada_app/MVC/model/Address_model.dart';
+import 'package:zalada_app/MVC/model/help_center_model.dart';
 import 'package:zalada_app/MVC/views/Address_Screen.dart';
 import 'package:zalada_app/dummyData/product_dummyData.dart';
 import 'package:zalada_app/utiles/shared_preferences.dart';
@@ -246,6 +247,47 @@ class ApiService {
       // return [];
     }
   }
+
+
+
+gethelpcenter() async {
+    try {
+      Response response;
+      response = await dio.get(
+        '${baseURL}privacy-policies/',
+        // options: Options(
+        //   // headers: {
+        //   //   'Authorization': 'Bearer $AuthUserToken',
+        //   // },
+        // )
+      );
+
+      print("statusCode => " + response.statusCode.toString());
+      print('getHelpCenter  API done 👌✅');
+      if (response.statusCode == 200) {
+        final responseData = response.data;
+        if (responseData is List) {
+          List<Help_center_model> helpcenterData = (response.data as List)
+              .map((data) => Help_center_model.fromJson(data))
+              .toList();
+          return helpcenterData;
+        } else if (responseData is Map) {
+          List<Help_center_model> helpcenterData = (responseData['data'] as List)
+              .map((data) => Help_center_model.fromJson(data))
+              .toList();
+          return helpcenterData;
+        }
+        return responseData;
+      }
+    } on DioException catch (e) {
+      print(e);
+      // throw Exception('Failed to load posts: $e');
+      // return [];
+    }
+  }
+
+
+
 
   getAllCategories() async {
     try {

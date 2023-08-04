@@ -3,12 +3,14 @@ import 'dart:io';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zalada_app/MVC/model/user_model.dart';
 import 'package:zalada_app/service/Getx_provider.dart';
 
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/utiles/loader.dart';
+import 'package:zalada_app/utiles/shared_preferences.dart';
 import '../../custom/custom_appbar.dart';
 import '../../custom/back_button.dart';
 import '../../custom/botton_widget.dart';
@@ -37,6 +39,19 @@ class _edit_profileState extends State<edit_profile> {
 
   GetxControllerProvider controllersProvider =
       Get.put(GetxControllerProvider());
+  @override
+  void initState() {
+    super.initState();
+    isloggedcheck();
+  }
+
+  String? token;
+  isloggedcheck() async {
+    BuildContext context;
+    SharedPreferences instance = await SharedPreferences.getInstance();
+    token = instance.getString("token");
+    print(token);
+  }
 
   @override
   Widget build(BuildContext context) {

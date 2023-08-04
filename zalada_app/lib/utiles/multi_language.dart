@@ -149,6 +149,7 @@ class Multi_Language extends Translations {
           "address_upated": "Address Updated",
           "address_delete": "Address Delete",
           "Apartment": "Apartment",
+          "Help_Center": "Help Center",
           // "": "",
           // "": "",
           // "": "",

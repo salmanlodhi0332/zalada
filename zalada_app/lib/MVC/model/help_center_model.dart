@@ -1,11 +1,11 @@
-class Privacy_model {
+class Help_center_model {
   final int id;
   final String title;
   final String content;
   final DateTime createdAt;
   final DateTime updatedAt;
 
-  Privacy_model({
+  Help_center_model({
     required this.id,
     required this.title,
     required this.content,
@@ -13,8 +13,8 @@ class Privacy_model {
     required this.updatedAt,
   });
 
-  factory Privacy_model.fromJson(Map<String, dynamic> json) {
-    return Privacy_model(
+  factory Help_center_model.fromJson(Map<String, dynamic> json) {
+    return Help_center_model(
       id: json['id'],
       title: json['title'],
       content: json['content'],

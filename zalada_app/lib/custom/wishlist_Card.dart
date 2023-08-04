@@ -106,9 +106,9 @@ class Wishlist_Card extends StatelessWidget {
                           InkWell(
                             onTap: () {
                               if (id != null) {
-                                cartController.addProduct(
-                                    controller.Productslist.firstWhere(
-                                        (product) => product.id == id));
+                                cartController.addProduct(controller
+                                    .productslist
+                                    .firstWhere((product) => product.id == id));
                               }
                             },
                             child: Container(

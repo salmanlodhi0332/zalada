@@ -23,10 +23,10 @@ class ApiService {
 
   static String AuthUserToken = shared_preferences.userToken.value;
 
-  getAllproducts() async {
+  getAllproducts(int page) async {
     try {
       Response response;
-      response = await dio.get('${baseURL}products',
+      response = await dio.get('${baseURL}products?page=${page}',
           options: Options(
             headers: {
               'Authorization': 'Bearer $AuthUserToken',

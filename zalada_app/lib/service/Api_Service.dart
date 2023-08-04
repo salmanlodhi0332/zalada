@@ -162,8 +162,11 @@ class ApiService {
             colorText: Theme.of(context).hintColor,
             backgroundColor: Theme.of(context).cardColor);
         // Get.back();
-        Page_Navigation.getInstance
-            .Page_pushAndRemoveUntil(context, Bottom_Bar());
+        Page_Navigation.getInstance.Page(
+            context,
+            Bottom_Bar(
+              initialIndex: 4,
+            ));
       } else {
         Get.snackbar('error'.tr, response.data['message'],
             colorText: Theme.of(context).hintColor,
@@ -202,8 +205,11 @@ class ApiService {
         Get.snackbar('Address'.tr, "address_upated".tr,
             colorText: Theme.of(context).hintColor,
             backgroundColor: Theme.of(context).cardColor);
-        Page_Navigation.getInstance
-            .Page_pushAndRemoveUntil(context, Bottom_Bar());
+        Page_Navigation.getInstance.Page(
+            context,
+            Bottom_Bar(
+              initialIndex: 4,
+            ));
       } else {
         Get.snackbar('error'.tr, response.data['message'],
             colorText: Theme.of(context).hintColor,
@@ -234,7 +240,13 @@ class ApiService {
         Get.snackbar('Address'.tr, "address_delete".tr,
             colorText: Theme.of(context).hintColor,
             backgroundColor: Theme.of(context).cardColor);
-        Page_Navigation.getInstance.Page(context, Bottom_Bar());
+        // Get.to(() => Bottom_Bar(), arguments: 4);
+
+        Page_Navigation.getInstance.Page(
+            context,
+            Bottom_Bar(
+              initialIndex: 4,
+            ));
       } else {
         Get.snackbar('error'.tr, response.data['message'],
             colorText: Theme.of(context).hintColor,
@@ -243,9 +255,9 @@ class ApiService {
     } on DioException catch (e) {
       Get.back();
       print("Address  ${e.response?.data['message']}");
-      // Get.snackbar('address_failed'.tr, "${e.response?.data['message']}",
-      //     colorText: Theme.of(context).secondaryHeaderColor,
-      //     backgroundColor: Theme.of(context).cardColor);
+      Get.snackbar('address_failed'.tr, "${e.response?.data['message']}",
+          colorText: Theme.of(context).secondaryHeaderColor,
+          backgroundColor: Theme.of(context).cardColor);
     }
   }
 

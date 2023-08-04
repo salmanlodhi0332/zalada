@@ -13,12 +13,22 @@ import 'cart_screen.dart';
 import 'home_screen.dart';
 
 class Bottom_Bar extends StatefulWidget {
+  final int? initialIndex;
+  Bottom_Bar({this.initialIndex});
   @override
   _Bottom_BarState createState() => _Bottom_BarState();
 }
 
 class _Bottom_BarState extends State<Bottom_Bar> {
   int _currentIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      _currentIndex = widget.initialIndex ?? _currentIndex;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

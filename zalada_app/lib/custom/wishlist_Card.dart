@@ -35,7 +35,7 @@ class Wishlist_Card extends StatelessWidget {
 
     final width = MediaQuery.of(context).size.width;
 
-    return InkWell(
+    return GestureDetector(
       onTap: ontap,
       child: Container(
         padding: EdgeInsets.only(left: 20, right: 20, top: 10),
@@ -103,7 +103,7 @@ class Wishlist_Card extends StatelessWidget {
                                   fontWeight: FontWeight.w600),
                             )
                           ])),
-                          InkWell(
+                          GestureDetector(
                             onTap: () {
                               if (id != null) {
                                 cartController.addProduct(

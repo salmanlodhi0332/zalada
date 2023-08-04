@@ -67,7 +67,7 @@ class Add_Payment_Method extends GetView {
               ),
             ).py(10),
             Obx(
-              () => InkWell(
+              () => GestureDetector(
                 onTap: () {
                   Get.to(AddPayment());
 
@@ -90,7 +90,7 @@ class Add_Payment_Method extends GetView {
               ),
             ).py(10),
             Obx(
-              () => InkWell(
+              () => GestureDetector(
                 onTap: () {
                   select_paypal.value = !select_paypal.value;
                   select_card.value = false;
@@ -108,7 +108,7 @@ class Add_Payment_Method extends GetView {
               ),
             ).py(10),
             Obx(
-              () => InkWell(
+              () => GestureDetector(
                 onTap: () {
                   select_applepay.value = !select_applepay.value;
                   select_card.value = false;

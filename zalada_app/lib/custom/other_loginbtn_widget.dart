@@ -16,7 +16,7 @@ class other_loginBtn_Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: tap,
       child: Container(
         width: width,

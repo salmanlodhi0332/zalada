@@ -6,7 +6,7 @@ class edit_button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: ontap,
       child: Container(
         margin: const EdgeInsets.all(10),

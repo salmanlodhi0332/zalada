@@ -242,7 +242,7 @@ class _registeration_screenState extends State<registeration_screen> {
                           color: Theme.of(context).hintColor,
                           fontSize: 20),
                     ),
-                    InkWell(
+                    GestureDetector(
                       onTap: () {
                         Page_Navigation.getInstance
                             .Page_pushAndRemoveUntil(context, login_screen());

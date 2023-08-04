@@ -58,7 +58,7 @@ class Onboard_One extends StatelessWidget {
                   color: Theme.of(context).disabledColor,
                   fontSize: 15),
             ).pOnly(bottom: screenHeight * 0.04),
-            InkWell(
+            GestureDetector(
                 onTap: () {
                   Page_Navigation.getInstance
                       .Page_pushAndRemoveUntil(context, Onboard_Two());

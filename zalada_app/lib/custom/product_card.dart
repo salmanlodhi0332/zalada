@@ -35,7 +35,7 @@ class Product_Card extends StatelessWidget {
 
     final width = MediaQuery.of(context).size.width;
 
-    return InkWell(
+    return GestureDetector(
       onTap: ontap,
       child: Container(
         padding: EdgeInsets.only(left: 20, right: 20, top: 10),
@@ -49,10 +49,13 @@ class Product_Card extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                image_widget(
-                  imageUrl: imageurl,
-                  height: height / 10,
-                  width: width / 5,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: image_widget(
+                    imageUrl: imageurl,
+                    height: height / 10,
+                    width: width / 5,
+                  ),
                 ),
                 Text(
                   product_name + product_name,
@@ -103,7 +106,7 @@ class Product_Card extends StatelessWidget {
                                   fontWeight: FontWeight.w600),
                             )
                           ])),
-                          InkWell(
+                          GestureDetector(
                             onTap: () {
                               if (id != null) {
                                 cartController.addProduct(
@@ -191,7 +194,7 @@ class Product_Card extends StatelessWidget {
 
 //   @override
 //   Widget build(BuildContext context) {
-//     return InkWell(
+//     return GestureDetector(
 //       onTap: ontap,
 //       child: Container(
 //         padding: EdgeInsets.symmetric(horizontal: 20),

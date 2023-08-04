@@ -22,7 +22,7 @@ class Button_Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: ontap,
       child: Container(
         height: height ?? 60,

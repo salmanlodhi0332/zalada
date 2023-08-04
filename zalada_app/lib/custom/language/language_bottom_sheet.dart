@@ -65,7 +65,7 @@ class language_bottom_sheet extends GetView {
               ),
             ).py(10),
             Obx(
-              () => InkWell(
+              () => GestureDetector(
                 onTap: () {
                   select_paypal.value = !select_paypal.value;
                   select_card.value = false;
@@ -83,7 +83,7 @@ class language_bottom_sheet extends GetView {
               ),
             ).py(10),
             Obx(
-              () => InkWell(
+              () => GestureDetector(
                 onTap: () {
                   select_applepay.value = !select_applepay.value;
                   select_card.value = false;
@@ -101,7 +101,7 @@ class language_bottom_sheet extends GetView {
               ),
             ).py(10),
             Obx(
-              () => InkWell(
+              () => GestureDetector(
                 onTap: () {
                   select_applepay.value = !select_applepay.value;
                   select_card.value = false;
@@ -119,7 +119,7 @@ class language_bottom_sheet extends GetView {
               ),
             ).py(10),
             Obx(
-              () => InkWell(
+              () => GestureDetector(
                 onTap: () {
                   select_applepay.value = !select_applepay.value;
                   select_card.value = false;

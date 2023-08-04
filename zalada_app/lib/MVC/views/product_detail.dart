@@ -74,7 +74,7 @@ class Product_Detail_Screen extends StatelessWidget {
                         child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: item.images.map((img) {
-                                  return InkWell(
+                                  return GestureDetector(
                                     onTap: () {
                                       displayimages.value = img;
                                     },

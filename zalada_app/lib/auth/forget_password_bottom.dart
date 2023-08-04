@@ -77,7 +77,7 @@ class Forget_password_bottom extends GetView {
               ).pOnly(bottom: 10),
             ]),
             Obx(
-              () => InkWell(
+              () => GestureDetector(
                 onTap: () {
                   select_number.value = !select_number.value;
                   select_email.value = false;
@@ -91,7 +91,7 @@ class Forget_password_bottom extends GetView {
               ),
             ).py(10),
             Obx(
-              () => InkWell(
+              () => GestureDetector(
                 onTap: () {
                   select_email.value = !select_email.value;
                   select_number.value = false;

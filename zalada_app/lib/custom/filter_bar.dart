@@ -123,7 +123,7 @@ class Filter_Bottom_Bar extends GetView {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Obx(() => InkWell(
+                    Obx(() => GestureDetector(
                           onTap: () {
                             selected1.value = !selected1.value;
                           },
@@ -150,7 +150,7 @@ class Filter_Bottom_Bar extends GetView {
                                     fontSize: 16),
                               ).centered()),
                         )),
-                    Obx(() => InkWell(
+                    Obx(() => GestureDetector(
                           onTap: () {
                             selected2.value = !selected2.value;
                           },
@@ -182,7 +182,7 @@ class Filter_Bottom_Bar extends GetView {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Obx(() => InkWell(
+                    Obx(() => GestureDetector(
                           onTap: () {
                             selected3.value = !selected3.value;
                           },
@@ -209,7 +209,7 @@ class Filter_Bottom_Bar extends GetView {
                                     fontSize: 16),
                               ).centered()),
                         )),
-                    Obx(() => InkWell(
+                    Obx(() => GestureDetector(
                           onTap: () {
                             selected4.value = !selected4.value;
                           },

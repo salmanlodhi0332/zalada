@@ -102,7 +102,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                             Theme.of(context).highlightColor.withOpacity(0.3)),
                     child: Image.asset('assets/images/favorite.png'),
                   ),
-                  InkWell(
+                  GestureDetector(
                     onTap: () {
                       Page_Navigation.getInstance
                           .Page(context, Notification_Screen());
@@ -159,7 +159,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                     )).marginOnly(bottom: 30),
                 bottom: PreferredSize(
                     preferredSize: Size(size.width, 10),
-                    child: InkWell(
+                    child: GestureDetector(
                       onTap: () {},
                       child: Container(
                         height: 55,
@@ -240,7 +240,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                             const all_custom_btn(),
                             Row(
                               children: Homecontroller.categoriesList
-                                  .map((e) => Obx(() => InkWell(
+                                  .map((e) => Obx(() => GestureDetector(
                                             onTap: () {
                                               selectedCategories.value = e.id;
                                               print('Category_Id');

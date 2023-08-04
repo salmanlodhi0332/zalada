@@ -34,7 +34,7 @@ class StepsContainer extends StatelessWidget {
                 value: (page + 1) / (_list.length + 1)),
           ),
           Center(
-            child: InkWell(
+            child: GestureDetector(
               onTap: () {
                 if (page < _list.length && page != _list.length - 1) {
                   _controller.animateToPage(page + 1,

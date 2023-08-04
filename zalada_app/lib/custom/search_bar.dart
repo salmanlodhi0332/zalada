@@ -11,7 +11,7 @@ class search_bar_widget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return InkWell(
+    return GestureDetector(
       onTap: onTap,
       child: Container(
         height: 55,

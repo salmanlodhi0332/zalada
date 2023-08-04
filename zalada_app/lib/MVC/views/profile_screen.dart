@@ -114,7 +114,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(right: 12),
-                          child: InkWell(
+                          child: GestureDetector(
                             child: Text(
                               "see_all".tr,
                               style: TextStyle(
@@ -196,7 +196,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                               fontWeight: FontWeight.w400),
                         ),
                         SizedBox(width: 10),
-                        InkWell(
+                        GestureDetector(
                           child: Container(
                               width: 70,
                               height: 30,
@@ -207,7 +207,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               child: Center(
-                                child: InkWell(
+                                child: GestureDetector(
                                   child: Text(
                                     "Track_Order".tr,
                                     style: TextStyle(
@@ -250,7 +250,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
             SizedBox(
               height: 10,
             ),
-            InkWell(
+            GestureDetector(
               onTap: () {
                 Page_Navigation.getInstance.Page(context, Address_Screen());
               },
@@ -266,7 +266,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
               ),
             ),
             custom_divider(context),
-            InkWell(
+            GestureDetector(
               onTap: () {
                 Page_Navigation.getInstance.Page(context, Wishlist_Screen());
               },
@@ -283,7 +283,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
               ),
             ),
             custom_divider(context),
-            InkWell(
+            GestureDetector(
               onTap: () {
                 Page_Navigation.getInstance.Page(context, payment_method());
               },
@@ -310,7 +310,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
               ),
             ),
             custom_divider(context),
-            InkWell(
+            GestureDetector(
               onTap: () {},
               child: account_section(
                 backgroundcolor: Theme.of(context).hintColor,
@@ -349,7 +349,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
             SizedBox(
               height: 10,
             ),
-            InkWell(
+            GestureDetector(
               onTap: () {},
               child: account_section(
                 backgroundcolor: Theme.of(context).hintColor,
@@ -363,7 +363,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
               ),
             ),
             custom_divider(context),
-            InkWell(
+            GestureDetector(
               onTap: () {
                 Get.bottomSheet(
                   language_bottom_sheet(),
@@ -382,7 +382,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
               ),
             ),
             custom_divider(context),
-            InkWell(
+            GestureDetector(
               onTap: () {
                 Page_Navigation.getInstance.Page(context, privacy_policy());
               },
@@ -398,7 +398,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
               ),
             ),
             custom_divider(context),
-            InkWell(
+            GestureDetector(
               onTap: () {
                 Page_Navigation.getInstance.Page(context, help_center());
               },
@@ -417,7 +417,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
               height: 10,
             ),
             custom_divider(context),
-            InkWell(
+            GestureDetector(
               onTap: () {
                 if (Platform.isAndroid) {
                   showDialog(

@@ -87,7 +87,7 @@ class _login_screenState extends State<login_screen> {
                 SizedBox(
                   height: 20,
                 ),
-                InkWell(
+                GestureDetector(
                   onTap: () {
                     Get.bottomSheet(
                       Forget_password_bottom(),
@@ -186,7 +186,7 @@ class _login_screenState extends State<login_screen> {
                       style: TextStyle(
                           color: Theme.of(context).hintColor, fontSize: 20),
                     ),
-                    InkWell(
+                    GestureDetector(
                       onTap: () {
                         Page_Navigation.getInstance.Page_pushAndRemoveUntil(
                             context, registeration_screen());

@@ -66,7 +66,7 @@ class _payment_methodState extends State<payment_method> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(top: 50),
-                child: Obx(() => InkWell(
+                child: Obx(() => GestureDetector(
                       onTap: () {
                         // Use the observable variables here to trigger updates
                         select_mastercard.value = !select_mastercard.value;
@@ -85,7 +85,7 @@ class _payment_methodState extends State<payment_method> {
               SizedBox(
                 height: 10,
               ),
-              Obx(() => InkWell(
+              Obx(() => GestureDetector(
                     onTap: () {
                       select_mastercard.value = false;
                       select_paypal.value = !select_paypal.value;
@@ -103,7 +103,7 @@ class _payment_methodState extends State<payment_method> {
               SizedBox(
                 height: 10,
               ),
-              Obx(() => InkWell(
+              Obx(() => GestureDetector(
                     onTap: () {
                       select_mastercard.value = false;
                       select_paypal.value = false;

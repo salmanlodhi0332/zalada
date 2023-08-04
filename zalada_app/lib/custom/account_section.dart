@@ -19,7 +19,7 @@ class account_section extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10),
-      child: InkWell(
+      child: GestureDetector(
         onTap: () {},
         child: ListTile(
           leading: CircleAvatar(

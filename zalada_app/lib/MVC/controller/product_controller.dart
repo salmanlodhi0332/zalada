@@ -16,13 +16,15 @@ class product_Controller extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    getAllproducts();
+    getAllproducts(0); //this zero means no category id we are passing
   }
 
-  getAllproducts() async {
+  getAllproducts(int? Category_Id) async {
     try {
       isLoading(true);
-      var ServerResponse = await ApiService.getInstance.getAllproducts();
+
+      var ServerResponse =
+          await ApiService.getInstance.getAllproducts(Category_Id);
       Productslist.value = ServerResponse;
     } catch (e) {
       print('getAllproducts  error: $e');

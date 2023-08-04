@@ -245,6 +245,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                                               selectedCategories.value = e.id;
                                               print('Category_Id');
                                               print(selectedCategories.value);
+                                              controller.getAllproducts(e.id);
                                             },
                                             child: Container(
                                               decoration: BoxDecoration(

@@ -9,6 +9,7 @@ import 'package:zalada_app/MVC/views/Address_Screen.dart';
 import 'package:zalada_app/MVC/views/bottom_bar.dart';
 import 'package:zalada_app/dummyData/product_dummyData.dart';
 import 'package:zalada_app/utiles/shared_preferences.dart';
+import 'package:zalada_app/utiles/sneakbar.dart';
 import '../MVC/model/privacy_policy_model.dart';
 import '../MVC/model/product_model.dart';
 import '../MVC/model/categories_model.dart';
@@ -26,21 +27,34 @@ class ApiService {
   static ApiService get getInstance => _instance ??= ApiService();
 
   static const String baseURL = "${Constants.baseURL}/api/v1/";
-
+  late BuildContext context;
   static String AuthUserToken = shared_preferences.userToken.value;
 
-  getAllproducts() async {
+  getAllproducts(int? Category_Id) async {
     try {
       Response response;
-      response = await dio.get('${baseURL}products',
-          options: Options(
-            headers: {
-              'Authorization': 'Bearer $AuthUserToken',
-            },
-          ));
 
-      print("statusCode => " + response.statusCode.toString());
-      print('getAllproducts API done 👌✅');
+      if (Category_Id == 0) {
+        //====get all product
+        response = await dio.get('${baseURL}products',
+            options: Options(
+              headers: {
+                'Authorization': 'Bearer $AuthUserToken',
+              },
+            ));
+        print("statusCode => " + response.statusCode.toString());
+        print('getAllproducts API done 👌✅');
+      } else {
+        //====get products By CategoryId
+        response = await dio.get('${baseURL}products?categoryId=$Category_Id',
+            options: Options(
+              headers: {
+                'Authorization': 'Bearer $AuthUserToken',
+              },
+            ));
+        print("statusCode => " + response.statusCode.toString());
+        print('getproductsByCategoryId API done 👌✅');
+      }
       if (response.statusCode == 200) {
         final responseData = response.data;
         if (responseData is List) {
@@ -61,7 +75,8 @@ class ApiService {
       // return product_dummyData.dummyProducts;
     } on DioException catch (e) {
       print(e);
-      // throw Exception('Failed to load posts: $e');
+      customsnackbar(title: 'sxas', message: 'aasd');
+
       return [];
     }
   }
@@ -131,9 +146,9 @@ class ApiService {
     } on DioException catch (e) {
       Get.back();
       print("Wishlist  ${e.response?.data['message']}");
-      // Get.snackbar('address_failed'.tr, "${e.response?.data['message']}",
-      //     colorText: Theme.of(context).secondaryHeaderColor,
-      //     backgroundColor: Theme.of(context).cardColor);
+      Get.snackbar('address_failed'.tr, "${e.response?.data['message']}",
+          colorText: Theme.of(context).secondaryHeaderColor,
+          backgroundColor: Theme.of(context).cardColor);
     }
   }
 

@@ -3,10 +3,13 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
 import 'package:zalada_app/MVC/views/onboarding/onboard_one.dart';
 
+import '../../utiles/shared_preferences.dart';
+import 'bottom_bar.dart';
 import 'onBoarding_screen.dart';
 
 class splash_screen extends StatefulWidget {
@@ -27,7 +30,17 @@ class _splash_screenState extends State<splash_screen> {
 
   String? token;
   isloggedcheck() async {
-    Page_Navigation().Page_pushAndRemoveUntil(context, OnBoardingScreen());
+    SharedPreferences instance = await SharedPreferences.getInstance();
+    token = instance.getString("token");
+    if (token != null) {
+      var _pref = shared_preferences();
+      await _pref.Get_userData();
+      Page_Navigation.getInstance
+          .Page_pushAndRemoveUntil(context, Bottom_Bar());
+    } else {
+      Page_Navigation.getInstance
+          .Page_pushAndRemoveUntil(context, OnBoardingScreen());
+    }
   }
 
   @override

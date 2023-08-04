@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:zalada_app/MVC/controller/payment_controller.dart';
 import 'package:zalada_app/custom/custom_appbar.dart';
 import 'package:zalada_app/custom/payment_methods/Add_payment_mathods.dart';
 
 import '../../custom/back_button.dart';
 import '../../custom/botton_widget.dart';
 import '../../custom/payment_card.dart';
+import '../../utiles/getxcontroller.dart';
 import '../../utiles/page_navigation.dart';
 import 'Address_Screen.dart';
 
@@ -21,6 +23,9 @@ class payment_method extends StatefulWidget {
 }
 
 class _payment_methodState extends State<payment_method> {
+final controller = Get.put(Payment_Controller());
+  final getcontroller = Get.put(getx_GetController());
+
   String? name;
   @override
   void initState() {

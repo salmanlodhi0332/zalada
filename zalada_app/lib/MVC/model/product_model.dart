@@ -50,8 +50,8 @@ class Product_Model {
         'price': price,
         'images': images,
 // 'colors': colors,
-        'memory': memory,
-        'storage': storage,
+        'memory_options': memory,
+        'storage_values': storage,
         'created_by_user_id': createdBy,
         'product_created_at': creationdate,
         //'updateddate': updateddate

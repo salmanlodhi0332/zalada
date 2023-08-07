@@ -199,10 +199,11 @@ class Product_Detail_Screen extends StatelessWidget {
                             ),
                             hintText: item.memory[0] == null
                                 ? 'Select Stroge'
-                                : item.memory[0]),
+                                : item.memory[0].toString()),
                         controller: groupcontroller,
                         dropDownList: item.memory.map((e) {
-                          return DropDownValueModel(name: e, value: e);
+                          return DropDownValueModel(
+                              name: e.toString(), value: e.toString());
                         }).toList())
                     .px(15),
                 Text(
@@ -233,10 +234,11 @@ class Product_Detail_Screen extends StatelessWidget {
                             ),
                             hintText: item.storage[0] == null
                                 ? 'Select Stroge'
-                                : item.storage[0]),
+                                : item.storage[0].toString()),
                         controller: groupcontroller,
                         dropDownList: item.storage.map((e) {
-                          return DropDownValueModel(name: e, value: e);
+                          return DropDownValueModel(
+                              name: e.toString(), value: e.toString());
                         }).toList())
                     .px(15),
                 SizedBox(height: 80),

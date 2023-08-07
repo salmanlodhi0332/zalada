@@ -743,6 +743,9 @@ class AuthenticationController extends GetxController {
 
   logout() {
     _pref.logout();
-    Page_Navigation.getInstance.Page(context, login_screen());
+    Get.to(login_screen());
+
+
+    // Page_Navigation.getInstance.Page(context, login_screen());
   }
 }

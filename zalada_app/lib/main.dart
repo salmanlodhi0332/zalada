@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
             themeMode: ThemeMode.light,
             theme: AppTheme.lightTheme,
             debugShowCheckedModeBanner: false,
-            home: Bottom_Bar(),
+            home: splash_screen(),
           );
         });
   }

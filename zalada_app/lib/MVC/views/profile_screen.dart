@@ -442,7 +442,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                           title: 'logout'.tr,
                           ontap: () async {
                             final auth = Get.put(AuthenticationController());
-                            auth.logout();
+                            auth.logout(context);
                           },
                         )
                       ],
@@ -467,8 +467,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                           child: Text('logout'.tr),
                           onPressed: () async {
                             final auth = Get.put(AuthenticationController());
-                            auth.logout();
-                            Navigator.of(context).pop();
+                            auth.logout(context);
                           },
                         ),
                       ],

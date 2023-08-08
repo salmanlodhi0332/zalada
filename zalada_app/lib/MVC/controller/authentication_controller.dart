@@ -741,9 +741,9 @@ class AuthenticationController extends GetxController {
 //     }
 //   }
 
-  logout() {
+  logout(BuildContext context) {
     _pref.logout();
-    Get.to(login_screen());
+    Page_Navigation.getInstance.Page_pushAndRemoveUntil(context, login_screen());
 
 
     // Page_Navigation.getInstance.Page(context, login_screen());

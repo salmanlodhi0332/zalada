@@ -42,7 +42,7 @@ class _Home_ScreenState extends State<Home_Screen> {
   @override
   void initState() {
     super.initState();
-    controller.getAllproducts(0, pageNo);
+    controller.getAllproducts(0, pageNo, context);
     _scrollController.addListener(_scrollListener);
   }
 
@@ -60,7 +60,7 @@ class _Home_ScreenState extends State<Home_Screen> {
           _isLoadingMore = true;
         });
         pageNo++;
-        controller.getAllproducts(0, pageNo).then((_) {
+        controller.getAllproducts(0, pageNo, context).then((_) {
           setState(() {
             _isLoadingMore = false;
           });
@@ -283,7 +283,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                                               print('Category_Id');
                                               print(selectedCategories.value);
                                               controller.getAllproducts(
-                                                  e.id, pageNo);
+                                                  e.id, pageNo, context);
                                             },
                                             child: Container(
                                               decoration: BoxDecoration(

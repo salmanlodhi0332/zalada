@@ -5,6 +5,7 @@ class Multi_Language extends Translations {
   Map<String, Map<String, String>> get keys => {
         //------------------------en_US
         'en_US': {
+          'product_failed': 'Product Failed',
           'want_to_logout': 'Are you sure you want to logout',
           'logout': 'Logout',
           'cancel': 'Cancel',

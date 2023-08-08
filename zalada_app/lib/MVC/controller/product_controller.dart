@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
@@ -19,12 +20,12 @@ class product_Controller extends GetxController {
      //this zero means no category id we are passing
   }
 
-  getAllproducts(int? Category_Id, int pageNo) async {
+  getAllproducts(int? Category_Id, int pageNo,BuildContext context) async {
     try {
       isLoading(true);
 
       var ServerResponse =
-          await ApiService.getInstance.getAllproducts(Category_Id, pageNo);
+          await ApiService.getInstance.getAllproducts(Category_Id, pageNo,context);
       if (pageNo > 1) {
         // productslist.addAll(ServerResponse);
         productslist.value.addAll(ServerResponse);

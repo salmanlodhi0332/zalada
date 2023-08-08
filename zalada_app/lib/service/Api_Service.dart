@@ -9,7 +9,6 @@ import 'package:zalada_app/MVC/views/Address_Screen.dart';
 import 'package:zalada_app/MVC/views/bottom_bar.dart';
 import 'package:zalada_app/dummyData/product_dummyData.dart';
 import 'package:zalada_app/utiles/shared_preferences.dart';
-import 'package:zalada_app/utiles/sneakbar.dart';
 import '../MVC/model/privacy_policy_model.dart';
 import '../MVC/model/product_model.dart';
 import '../MVC/model/categories_model.dart';
@@ -30,7 +29,7 @@ class ApiService {
   late BuildContext context;
   static String AuthUserToken = shared_preferences.userToken.value;
 
-  getAllproducts(int? Category_Id, int page) async {
+  getAllproducts(int? Category_Id, int page,BuildContext context) async {
     try {
       Response response;
 
@@ -76,7 +75,9 @@ class ApiService {
       // return product_dummyData.dummyProducts;
     } on DioException catch (e) {
       print(e);
-      customsnackbar(title: 'sxas', message: 'aasd');
+ Get.snackbar('product_failed'.tr, "${e.response?.data['message']}",
+          colorText: Theme.of(context).secondaryHeaderColor,
+          backgroundColor: Theme.of(context).cardColor);      
 
       return [];
     }

@@ -597,6 +597,56 @@ class AuthenticationController extends GetxController {
     }
   }
 
+// //------------------------------  UPDATE PASSWORD
+//   Future<void> updatePassword(BuildContext context) async {
+//     try {
+//       if (newpassword.value.text == confrimpassword.value.text) {
+//         final response = await dio.patch(
+//           baseURL + 'users/updatePassword',
+//           data: {
+//             'passwordCurrent': oldpassword.value.text,
+//             'newPassword': newpassword.value.text,
+//           },
+//           options: Options(
+//             headers: {
+//               'Authorization': 'Bearer $AuthUserToken',
+//             },
+//           ),
+//         );
+//         print(response.statusCode);
+//         if (response.statusCode == 200) {
+//           print(response.statusCode);
+//           Get.snackbar('update_Password'.tr, "password_updated_Successfully".tr,
+//               backgroundColor: Theme.of(context).cardColor,
+//               colorText: Theme.of(context).hintColor);
+//           print('Print Successfully');
+//           Get.back();
+//         } else if (response.statusCode == 401) {
+//           print(response.statusCode);
+//           Get.snackbar('wrong_Password'.tr, "incorrect_Password".tr,
+//               backgroundColor: Theme.of(context).cardColor,
+//               colorText: Theme.of(context).hintColor);
+//           print('wrong Password');
+//         } else {
+//           print('something wrong......');
+//           // throw response.data['message'] ?? "Unknown Error Occured";
+//           print(response.data['message'] ?? "Unknown Error Occured");
+//         }
+//         print('Succes =>>');
+//       } else {
+//         Get.snackbar('form'.tr, "Password_doesnt_match".tr,
+//             backgroundColor: Theme.of(context).cardColor,
+//             colorText: Theme.of(context).hintColor);
+//       }
+//     } on DioException catch (e) {
+//       print("💥 Errro :${e.response?.data['message']}");
+
+//       Get.snackbar(
+//           'password_Update_failed'.tr, "${e.response?.data['message']}",
+//           backgroundColor: Theme.of(context).cardColor,
+//           colorText: Theme.of(context).hintColor);
+//     }
+//   }
 //------------------------------  UPDATE PASSWORD
   Future<void> updatePassword(BuildContext context) async {
     try {
@@ -616,9 +666,14 @@ class AuthenticationController extends GetxController {
         print(response.statusCode);
         if (response.statusCode == 200) {
           print(response.statusCode);
+
+          // Navigation.getInstance
+          //     .fromleftPage_PushAndReplaceNavigation(context, HomeScreen());
+
           Get.snackbar('update_Password'.tr, "password_updated_Successfully".tr,
               backgroundColor: Theme.of(context).cardColor,
               colorText: Theme.of(context).hintColor);
+
           print('Print Successfully');
           Get.back();
         } else if (response.statusCode == 401) {

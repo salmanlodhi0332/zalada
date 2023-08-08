@@ -5,8 +5,8 @@ class Multi_Language extends Translations {
   Map<String, Map<String, String>> get keys => {
         //------------------------en_US
         'en_US': {
-          'No_address_available':'No address available.',
-          'No_product_available':'No Product Available',
+          'No_address_available': 'No address available.',
+          'No_product_available': 'No Product Available',
           "select_language": "Select Language",
           'indonesia': 'indonesia',
           'English(US)': 'English(US)',
@@ -156,8 +156,8 @@ class Multi_Language extends Translations {
           "new_password": "New Password",
           "confirm_password": "Confirm Password",
           "change_password": "Change Password",
-          "": "",
-          "": "",
+          "form": "Form",
+          "please_Fill_the_form": "Please fill the form",
           "": "",
           "": "",
           "": "",

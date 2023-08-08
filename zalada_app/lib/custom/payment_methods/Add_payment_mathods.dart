@@ -14,6 +14,7 @@ class Add_Payment_Method extends GetView {
   RxBool select_card = false.obs;
   RxBool select_paypal = false.obs;
   RxBool select_applepay = false.obs;
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -32,7 +33,7 @@ class Add_Payment_Method extends GetView {
         ],
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        padding: EdgeInsets.symmetric(horizontal: 15),
         child: Wrap(
           crossAxisAlignment: WrapCrossAlignment.center,
           children: [
@@ -57,15 +58,18 @@ class Add_Payment_Method extends GetView {
                 ),
               ),
             ),
-            Text(
-              'Add_new_payment_method'.tr,
-              style: TextStyle(
-                fontFamily: 'plusjakarta',
-                color: Theme.of(context).hintColor,
-                fontSize: 30,
-                fontWeight: FontWeight.w500,
-              ),
-            ).py(10),
+            Padding(
+              padding: EdgeInsets.only(left: 5),
+              child: Text(
+                'Add_new_payment_method'.tr,
+                style: TextStyle(
+                  fontFamily: 'plusjakarta',
+                  color: Theme.of(context).hintColor,
+                  fontSize: 25,
+                  fontWeight: FontWeight.w500,
+                ),
+              ).py(10),
+            ),
             Obx(
               () => GestureDetector(
                 onTap: () {

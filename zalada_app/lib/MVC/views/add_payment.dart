@@ -94,186 +94,163 @@ class _AddPaymentState extends State<AddPayment> {
                             topRight: Radius.circular(40))),
                     width: double.infinity,
                     height: 550,
-                    child: Column(
-                      children: [
-                        SizedBox(height: 80),
-                        // Row(
-                        //   children: [Text("Card name")],
-                        // ).px(35),
-                        textfeild_widget(
-                          controller: controllername,
-                          hintText: 'enter_your_name'.tr,
-                          label: 'card_name'.tr,
-                        ).px(10),
-                        textfeild_widget(
-                          controller: controllernumber,
-                          hintText: '2727 8907 1278 3726',
-                          label: 'card_num'.tr,
-                        ).px(10),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          SizedBox(height: 80),
+                          // Row(
+                          //   children: [Text("Card name")],
+                          // ).px(35),
+                          textfeild_widget(
+                            controller: controllername,
+                            hintText: 'enter_your_name'.tr,
+                            label: 'card_name'.tr,
+                          ).px(10),
+                          textfeild_widget(
+                            controller: controllernumber,
+                            hintText: '2727 8907 1278 3726',
+                            label: 'card_num'.tr,
+                          ).px(10),
 
-                        Row(
-                          children: [
-                            Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    // Text(
-                                    //   "Expiry Date",
-                                    //   style: TextStyle(
-                                    //       fontFamily: 'plusjakarta',
-                                    //       color: Theme.of(context).hintColor,
-                                    //       fontSize: 15),
-                                    // ).p(10).pOnly(right: 65),
-                                  ],
-                                ),
-                                Container(
-                                  height: size.height / 7,
-                                  width: size.width / 2.5,
-                                  // decoration: BoxDecoration(
-                                  //     border: Border.all(
-                                  //         color: Theme.of(context)
-                                  //             .hintColor
-                                  //             .withOpacity(0.1),
-                                  //         width: 1.0),
-                                  //     borderRadius: BorderRadius.circular(15)),
-                                  child: datepicker_widget(
-                                    controller: dateController,
-                                    label: "Date_of_Birth".tr,
-                                    hintText: "Date",
-                                    suffixIcon:
-                                        Icon(Icons.calendar_month_outlined),
+                          Row(
+                            children: [
+                              Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        height: size.height / 7,
+                                        width: size.width / 1.9,
+                                        child: datepicker_widget(
+                                          controller: dateController,
+                                          label: "Expiry Date".tr,
+                                          hintText: "Expiry Date",
+                                          suffixIcon: Icon(
+                                              Icons.calendar_month_outlined),
+                                        ).pOnly(top: 7),
+                                      ),
+                                      Column(
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "CVV",
+                                                style: TextStyle(
+                                                    fontFamily: 'plusjakarta',
+                                                    color: Theme.of(context)
+                                                        .hintColor,
+                                                    fontSize: 15),
+                                              ).pOnly(right: 100).p(10),
+                                            ],
+                                          ),
+                                          Container(
+                                            height: size.height / 13,
+                                            width: size.width / 3,
+                                            decoration: BoxDecoration(
+                                                border: Border.all(
+                                                    color: Theme.of(context)
+                                                        .hintColor
+                                                        .withOpacity(0.1),
+                                                    width: 1.0),
+                                                borderRadius:
+                                                    BorderRadius.circular(15)),
+                                            child: TextFormField(
+                                                controller: controllercvv,
+                                                // validator: validator,
+                                                //obscureText: obscureText ?? false,
+                                                decoration: InputDecoration(
+                                                  // suffixIcon: suffixIcon,
+                                                  hintText: "778",
+                                                  hintStyle: TextStyle(
+                                                      fontFamily: 'plusjakarta',
+                                                      color: Theme.of(context)
+                                                          .hintColor
+                                                          .withOpacity(0.3),
+                                                      fontSize: 20),
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide.none),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide.none),
+                                                )).px(10),
+                                          ).pOnly(right: 20),
+                                        ],
+                                      )
+                                    ],
                                   ),
-                                  //TextFormField(
-                                  //     // validator: validator,
-                                  //     //obscureText: obscureText ?? false,
-                                  //     decoration: InputDecoration(
-                                  //   hintText: "12/1026",
-                                  //   hintStyle: TextStyle(
-                                  //       fontFamily: 'plusjakarta',
-                                  //       color: Theme.of(context)
-                                  //           .hintColor
-                                  //           .withOpacity(0.3),
-                                  //       fontSize: 20),
-                                  //   enabledBorder: OutlineInputBorder(
-                                  //       borderSide: BorderSide.none),
-                                  //   focusedBorder: OutlineInputBorder(
-                                  //       borderSide: BorderSide.none),
-                                  //   suffixIcon: IconButton(
-                                  //     onPressed: () {},
-                                  //     icon: Icon(Icons.calendar_today),
-                                  //   ),
-                                  // )).px(10),
-                                ),
-                              ],
-                            ).px(25),
-                            Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "CVV",
-                                      style: TextStyle(
-                                          fontFamily: 'plusjakarta',
-                                          color: Theme.of(context).hintColor,
-                                          fontSize: 15),
-                                    ).p(10).pOnly(right: 100),
-                                  ],
-                                ),
-                                Container(
-                                  height: size.height / 14,
-                                  width: size.width / 3,
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: Theme.of(context)
-                                              .hintColor
-                                              .withOpacity(0.1),
-                                          width: 1.0),
-                                      borderRadius: BorderRadius.circular(15)),
-                                  child: TextFormField(
-                                      controller: controllercvv,
-                                      // validator: validator,
-                                      //obscureText: obscureText ?? false,
-                                      decoration: InputDecoration(
-                                        // suffixIcon: suffixIcon,
-                                        hintText: "778",
-                                        hintStyle: TextStyle(
-                                            fontFamily: 'plusjakarta',
-                                            color: Theme.of(context)
-                                                .hintColor
-                                                .withOpacity(0.3),
-                                            fontSize: 20),
-                                        enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide.none),
-                                        focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide.none),
-                                      )).px(10),
-                                ).pOnly(right: 20),
-                              ],
-                            )
-                          ],
-                        ),
+                                ],
+                              ).px(0),
+                            ],
+                          ),
 
-                        SizedBox(
-                          height: 40,
-                        ),
-                        Button_Widget(
-                            ontap: () {
-                              // print('object');
-                              // print(controllername.toString());
-                              // print(controllernumber.toString());
-                              // print(controllercvv.toString());
+                          SizedBox(
+                            height: 40,
+                          ),
+                          Button_Widget(
+                              ontap: () {
+                                // print('object');
+                                // print(controllername.toString());
+                                // print(controllernumber.toString());
+                                // print(controllercvv.toString());
 
-                              // _saveLoginData();
-                              // Get.to(payment_method());
-                              if (widget.id != null) {
-                                var paymentData = Payment_model(
-                                    id: widget.id,
-                                    CardName: controllername.text,
-                                    CardNumber: controllernumber.text,
-                                    Cvv: controllercvv.text);
+                                // _saveLoginData();
+                                // Get.to(payment_method());
+                                if (widget.id != null) {
+                                  var paymentData = Payment_model(
+                                      //id: widget.id,
+                                      CardName: controllername.text,
+                                      CardNumber: controllernumber.text,
+                                      Expire_date: dateController.text,
+                                      Cvv: controllercvv.text);
 
-                                ApiService.getInstance
-                                    .Update_payment(paymentData, context);
-                              } else {
-                                var paymentData = Payment_model(
-                                    id: widget.id,
-                                    CardName: controllername.text,
-                                    CardNumber: controllernumber.text,
-                                    Cvv: controllercvv.text);
-                                ApiService.getInstance
-                                    .Add_payment(paymentData, context);
-                              }
-                            },
-                            width: width,
-                            title: 'add_payment'.tr),
-                      ],
+                                  // ApiService.getInstance
+                                  //     .Update_payment(paymentData, context);
+                                } else {
+                                  var paymentData = Payment_model(
+                                      //id: widget.id,
+                                      CardName: controllername.text,
+                                      CardNumber: controllernumber.text,
+                                      Expire_date: dateController.text,
+                                      Cvv: controllercvv.text);
+                                  ApiService.getInstance
+                                      .Add_payment(paymentData, context);
+                                }
+                              },
+                              width: width,
+                              title: 'add_payment'.tr),
+                        ],
+                      ),
                     )),
               ),
-              Positioned(
-                top: 20,
-                child: Container(
-                  width: width / 1.2,
-                  height: height / 4,
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.3),
-                        blurRadius: 5,
-                        spreadRadius: 1,
-                        offset: Offset(0, 2),
-                      ),
-                    ],
-                  ),
-                  child: Image.asset(
-                    'assets/images/payment.png',
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
+              // Positioned(
+              //   top: 20,
+              //   child: Container(
+              //     width: width / 1.2,
+              //     height: height / 4,
+              //     decoration: BoxDecoration(
+              //       color: Colors.blue,
+              //       borderRadius: BorderRadius.circular(10),
+              //       boxShadow: [
+              //         BoxShadow(
+              //           color: Colors.black.withOpacity(0.3),
+              //           blurRadius: 5,
+              //           spreadRadius: 1,
+              //           offset: Offset(0, 2),
+              //         ),
+              //       ],
+              //     ),
+              //     child: Image.asset(
+              //       'assets/images/payment.png',
+              //       fit: BoxFit.cover,
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ));

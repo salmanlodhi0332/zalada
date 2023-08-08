@@ -190,10 +190,11 @@ class ApiService {
     try {
       Loader.poploader();
       Response response;
-      response = await dio.post('${baseURL}payment/',
+      response = await dio.post('${baseURL}payment-card',
           data: {
-            'CardName': data.CardName,
-            'CardNumber': data.CardNumber,
+            'cardName': data.CardName,
+            'card_number': data.CardNumber,
+            "expire_date": data.Expire_date,
             'Cvv': data.Cvv,
           },
           options: Options(
@@ -223,48 +224,48 @@ class ApiService {
     }
   }
 
-  Update_payment(Payment_model data, BuildContext context) async {
-    try {
-      Loader.poploader();
-      Response response;
-      response = await dio.patch('${baseURL}payment/${data.id}',
-          data: {
-            'CardName': data.CardName,
-            'CardNumber': data.CardNumber,
-            'Cvv': data.Cvv,
-          },
-          options: Options(
-            headers: {
-              'Authorization': 'Bearer $AuthUserToken',
-            },
-          ));
-      print(response.data);
-      if (response.statusCode == 200) {
-        print("Payments updated");
-        Get.snackbar('payment'.tr, "Payment_updated".tr,
-            colorText: Theme.of(context).hintColor,
-            backgroundColor: Theme.of(context).cardColor);
-        // Page_Navigation.getInstance.Page(
-        //     context,
-        //     Bottom_Bar(
-        //       initialIndex: 4,
-        //     )
-        //     );
+  // Update_payment(Payment_model data, BuildContext context) async {
+  //   try {
+  //     Loader.poploader();
+  //     Response response;
+  //     response = await dio.patch('${baseURL}payment/',
+  //         data: {
+  //           'CardName': data.CardName,
+  //           'CardNumber': data.CardNumber,
+  //           'Cvv': data.Cvv,
+  //         },
+  //         options: Options(
+  //           headers: {
+  //             'Authorization': 'Bearer $AuthUserToken',
+  //           },
+  //         ));
+  //     print(response.data);
+  //     if (response.statusCode == 200) {
+  //       print("Payments updated");
+  //       Get.snackbar('payment'.tr, "Payment_updated".tr,
+  //           colorText: Theme.of(context).hintColor,
+  //           backgroundColor: Theme.of(context).cardColor);
+  //       // Page_Navigation.getInstance.Page(
+  //       //     context,
+  //       //     Bottom_Bar(
+  //       //       initialIndex: 4,
+  //       //     )
+  //       //     );
 
-        Page_Navigation.getInstance.Page(context, payment_method());
-      } else {
-        Get.snackbar('error'.tr, response.data['message'],
-            colorText: Theme.of(context).hintColor,
-            backgroundColor: Theme.of(context).cardColor);
-      }
-    } on DioException catch (e) {
-      Get.back();
-      print("Payment  ${e.response?.data['message']}");
-      Get.snackbar('payment_failed'.tr, "${e.response?.data['message']}",
-          colorText: Theme.of(context).hintColor,
-          backgroundColor: Theme.of(context).cardColor);
-    }
-  }
+  //       Page_Navigation.getInstance.Page(context, payment_method());
+  //     } else {
+  //       Get.snackbar('error'.tr, response.data['message'],
+  //           colorText: Theme.of(context).hintColor,
+  //           backgroundColor: Theme.of(context).cardColor);
+  //     }
+  //   } on DioException catch (e) {
+  //     Get.back();
+  //     print("Payment  ${e.response?.data['message']}");
+  //     Get.snackbar('payment_failed'.tr, "${e.response?.data['message']}",
+  //         colorText: Theme.of(context).hintColor,
+  //         backgroundColor: Theme.of(context).cardColor);
+  //   }
+  // }
 
 // and on work add payment
 

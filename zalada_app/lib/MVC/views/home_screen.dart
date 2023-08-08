@@ -35,7 +35,6 @@ class _Home_ScreenState extends State<Home_Screen> {
   RxInt selectedCategories = 0.obs;
   RxBool showshimmer = true.obs;
 
-
   ScrollController _scrollController = ScrollController();
 
   bool _isLoadingMore = false;
@@ -43,10 +42,11 @@ class _Home_ScreenState extends State<Home_Screen> {
   @override
   void initState() {
     super.initState();
-     Timer(Duration(seconds: 3), () {
+    controller.getHomeData();
+    Timer(Duration(seconds: 3), () {
       showshimmer.value = false;
     });
-    controller.getAllproducts(pageNo);
+    controller.getAllproducts(0, pageNo);
     _scrollController.addListener(_scrollListener);
   }
 
@@ -64,7 +64,7 @@ class _Home_ScreenState extends State<Home_Screen> {
           _isLoadingMore = true;
         });
         pageNo++;
-        controller.getAllproducts(pageNo).then((_) {
+        controller.getAllproducts(0, pageNo).then((_) {
           setState(() {
             _isLoadingMore = false;
           });
@@ -346,7 +346,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                         ),
                       ).pOnly(bottom: 10),
                     ),
-                    Obx(() => controller.Productslist.isNotEmpty
+                    Obx(() => controller.productslist.isNotEmpty
                             ? MasonryGridView.count(
                                 primary: false,
                                 shrinkWrap: true,
@@ -357,9 +357,9 @@ class _Home_ScreenState extends State<Home_Screen> {
                                         : 4,
                                 padding:
                                     const EdgeInsets.symmetric(vertical: 10),
-                                itemCount: controller.Productslist.length,
+                                itemCount: controller.productslist.length,
                                 itemBuilder: (BuildContext context, int index) {
-                                  final item = controller.Productslist[index];
+                                  final item = controller.productslist[index];
                                   return Product_Card(
                                     id: item.id,
                                     ontap: () {

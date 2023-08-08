@@ -113,7 +113,7 @@ class Product_Card extends StatelessWidget {
                             onTap: () {
                               if (id != null) {
                                 cartController.addProduct(controller
-                                    .Productslist
+                                    .productslist
                                     .firstWhere((product) => product.id == id));
                               }
                             },

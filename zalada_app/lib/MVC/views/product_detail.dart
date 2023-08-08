@@ -49,8 +49,8 @@ class Product_Detail_Screen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Wrap(
           children:
-              controller.Productslist.where((p0) => p0.id == id).map((item) {
-            displayimages.value = item.discountedPrice![0];
+              controller.productslist.where((p0) => p0.id == id).map((item) {
+            displayimages.value = item.product_media[0];
             return Wrap(
               // alignment: WrapAlignment.center,
               children: [
@@ -169,51 +169,51 @@ class Product_Detail_Screen extends StatelessWidget {
                 //     ).pOnly(right: 10),
                 //   ],
                 // ).px(ph),
-                Column(
-                  children: item.subsections
-                      .map((e) => Column(
-                            children: [
-                              Text(
-                                e.toString(),
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'plusjakarta',
-                                    fontWeight: FontWeight.w600,
-                                    color: Theme.of(context).disabledColor),
-                              ).px(15).pOnly(bottom: 10),
-                              DropDownTextField(
-                                      textFieldDecoration: InputDecoration(
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                width: 1,
-                                                color: Theme.of(context)
-                                                    .disabledColor
-                                                    .withOpacity(0.5)),
-                                            borderRadius:
-                                                BorderRadius.circular(10.0),
-                                          ),
-                                          enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                width: 1,
-                                                color: Theme.of(context)
-                                                    .disabledColor
-                                                    .withOpacity(0.5)),
-                                            borderRadius:
-                                                BorderRadius.circular(10.0),
-                                          ),
-                                          hintText: e[0] == null
-                                              ? 'Select Stroge'
-                                              : e[0]),
-                                      controller: groupcontroller,
-                                      dropDownList: e.map((p0) {
-                                        return DropDownValueModel(
-                                            name: p0, value: p0);
-                                      }).toList())
-                                  .px(15),
-                            ],
-                          ))
-                      .toList(),
-                ),
+                // Column(
+                //   children: item.subsections
+                //       .map((e) => Column(
+                //             children: [
+                //               Text(
+                //                 e.toString(),
+                //                 style: TextStyle(
+                //                     fontSize: 14,
+                //                     fontFamily: 'plusjakarta',
+                //                     fontWeight: FontWeight.w600,
+                //                     color: Theme.of(context).disabledColor),
+                //               ).px(15).pOnly(bottom: 10),
+                //               DropDownTextField(
+                //                       textFieldDecoration: InputDecoration(
+                //                           focusedBorder: OutlineInputBorder(
+                //                             borderSide: BorderSide(
+                //                                 width: 1,
+                //                                 color: Theme.of(context)
+                //                                     .disabledColor
+                //                                     .withOpacity(0.5)),
+                //                             borderRadius:
+                //                                 BorderRadius.circular(10.0),
+                //                           ),
+                //                           enabledBorder: OutlineInputBorder(
+                //                             borderSide: BorderSide(
+                //                                 width: 1,
+                //                                 color: Theme.of(context)
+                //                                     .disabledColor
+                //                                     .withOpacity(0.5)),
+                //                             borderRadius:
+                //                                 BorderRadius.circular(10.0),
+                //                           ),
+                //                           hintText: e[0] == null
+                //                               ? 'Select Stroge'
+                //                               : e[0]),
+                //                       controller: groupcontroller,
+                //                       dropDownList: e.map((p0) {
+                //                         return DropDownValueModel(
+                //                             name: p0, value: p0);
+                //                       }).toList())
+                //                   .px(15),
+                //             ],
+                //           ))
+                //       .toList(),
+                // ),
 
                 // Text(
                 //   'Storage',
@@ -299,9 +299,10 @@ class Product_Detail_Screen extends StatelessWidget {
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
-                        children: controller.Productslist
+                        children: controller.productslist
                             .where((p0) => p0.category_id == item.category_id)
                             .map((PR_item) {
+                      print(PR_item.category_id);
                       return Product_Card(
                         hotdeal: '',
                         id: PR_item.id,
@@ -351,7 +352,7 @@ class Product_Detail_Screen extends StatelessWidget {
                     //  from here onwords
                     add_to_cart_button(
                   ontap: () {
-                    cartController.addProduct(controller.Productslist
+                    cartController.addProduct(controller.productslist
                         .firstWhere((product) => product.id == id));
                   },
                   pic: Image.asset(

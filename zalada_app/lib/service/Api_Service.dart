@@ -29,51 +29,11 @@ class ApiService {
 
   static String AuthUserToken = shared_preferences.userToken.value;
 
-  getHomeData() async {
+  getAllproducts(int page) async {
     try {
       Loader.poploader();
       Response response;
-      response = await dio.get(
-        '${baseURL}products/homepage',
-        // options: Options(
-        //   headers: {
-        //     'Authorization': 'Bearer $AuthUserToken',
-        //   },
-        // )
-      );
-
-      print("statusCode => " + response.statusCode.toString());
-      print('get All Home Data API done 👌✅');
-      if (response.statusCode == 200) {
-        final responseData = response.data;
-        if (responseData is List) {
-          List<Home_Model> homelist = (response.data as List)
-              .map((data) => Home_Model.fromjson(data))
-              .toList();
-          return homelist;
-        } else if (responseData is Map) {
-          List<Home_Model> homelist = (responseData['data'] as List)
-              .map((data) => Home_Model.fromjson(data))
-              .toList();
-          return homelist;
-          // } else {
-          //   throw Exception('Failed to load posts: ${response.statusCode}');
-          // }
-        }
-      }
-      // return product_dummyData.dummyProducts;
-    } on DioException catch (e) {
-      print(e);
-      // throw Exception('Failed to load posts: $e');
-      return [];
-    }
-  }
-
-  getAllproducts() async {
-    try {
-      Loader.poploader();
-      Response response;
-      response = await dio.get('${baseURL}products',
+      response = await dio.get('${baseURL}products?page=${page}',
           options: Options(
             headers: {
               'Authorization': 'Bearer $AuthUserToken',

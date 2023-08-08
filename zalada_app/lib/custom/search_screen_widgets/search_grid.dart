@@ -14,7 +14,7 @@ class search_grid extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
-      child: Obx(() => controller.Productslist.isNotEmpty
+      child: Obx(() => controller.productslist.isNotEmpty
           ? MasonryGridView.count(
               primary: false,
               shrinkWrap: true,
@@ -23,9 +23,9 @@ class search_grid extends StatelessWidget {
                       ? 2
                       : 4,
               padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-              itemCount: controller.Productslist.length,
+              itemCount: controller.productslist.length,
               itemBuilder: (BuildContext context, int index) {
-                final item = controller.Productslist[index];
+                final item = controller.productslist[index];
                 return Product_Card(
                   id: item.id,
                   ontap: () {

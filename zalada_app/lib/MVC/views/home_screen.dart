@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/MVC/controller/product_controller.dart';
@@ -8,12 +9,12 @@ import 'package:zalada_app/custom/image_widget.dart';
 import 'package:zalada_app/custom/product_card.dart';
 
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:zalada_app/utiles/loader.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
 import 'package:zalada_app/MVC/views/notification_screen.dart';
 import 'package:zalada_app/MVC/views/product_detail.dart';
 import '../../custom/add_to_cart_button.dart';
 import '../../custom/all_custom_btn.dart';
-import '../../custom/search_screen_widgets/categories_btn.dart';
 import 'package:badges/badges.dart' as badges;
 
 import '../../utiles/shimmer_custom.dart';
@@ -34,12 +35,48 @@ class _Home_ScreenState extends State<Home_Screen> {
   RxInt selectedCategories = 0.obs;
   RxBool showshimmer = true.obs;
 
+
+  ScrollController _scrollController = ScrollController();
+
+  bool _isLoadingMore = false;
+  int pageNo = 1;
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3), () {
+     Timer(Duration(seconds: 3), () {
       showshimmer.value = false;
     });
+    controller.getAllproducts(pageNo);
+    _scrollController.addListener(_scrollListener);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(_scrollListener);
+    super.dispose();
+  }
+
+  void _scrollListener() {
+    if (_scrollController.position.pixels ==
+        _scrollController.position.maxScrollExtent) {
+      if (!_isLoadingMore) {
+        setState(() {
+          _isLoadingMore = true;
+        });
+        pageNo++;
+        controller.getAllproducts(pageNo).then((_) {
+          setState(() {
+            _isLoadingMore = false;
+          });
+        });
+      }
+    }
+  }
+
+  Widget _buildLoaderWidget() {
+    return Center(
+      child: CircularProgressIndicator(),
+    );
   }
 
   @override
@@ -51,10 +88,10 @@ class _Home_ScreenState extends State<Home_Screen> {
         color: Theme.of(context).primaryColor,
         onRefresh: () async {
           controller.onInit();
+          // controller.getAllproducts(pageNo);
         },
         child: CustomScrollView(
-            physics: const BouncingScrollPhysics(),
-            primary: true,
+            controller: _scrollController,
             shrinkWrap: false,
             clipBehavior: Clip.none,
             slivers: <Widget>[
@@ -385,7 +422,11 @@ class _Home_ScreenState extends State<Home_Screen> {
                         ),
                   ],
                 ),
-              ))
+              )),
+              if (_isLoadingMore)
+                SliverToBoxAdapter(
+                  child: _buildLoaderWidget(),
+                ),
             ]),
       ),
     );

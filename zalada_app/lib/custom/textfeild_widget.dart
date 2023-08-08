@@ -69,6 +69,6 @@ class textfeild_widget extends StatelessWidget {
               .px(10),
         ),
       ],
-    ).px(20);
+    ).px(5);
   }
 }

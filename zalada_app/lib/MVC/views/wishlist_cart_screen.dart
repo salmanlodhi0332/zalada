@@ -68,7 +68,7 @@ class wishlist_grid extends StatelessWidget {
                     //       ));
                     // }
                   },
-                  hotdeal: 'false',
+                  hotdeal: '',
                   imageurl: item.images[0],
                   product_name: item.productName,
                   price: '\$' + item.productPrice,

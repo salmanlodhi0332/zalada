@@ -169,51 +169,52 @@ class Product_Detail_Screen extends StatelessWidget {
                 //     ).pOnly(right: 10),
                 //   ],
                 // ).px(ph),
-                // Column(
-                //   children: item.subsections
-                //       .map((e) => Column(
-                //             children: [
-                //               Text(
-                //                 e.toString(),
-                //                 style: TextStyle(
-                //                     fontSize: 14,
-                //                     fontFamily: 'plusjakarta',
-                //                     fontWeight: FontWeight.w600,
-                //                     color: Theme.of(context).disabledColor),
-                //               ).px(15).pOnly(bottom: 10),
-                //               DropDownTextField(
-                //                       textFieldDecoration: InputDecoration(
-                //                           focusedBorder: OutlineInputBorder(
-                //                             borderSide: BorderSide(
-                //                                 width: 1,
-                //                                 color: Theme.of(context)
-                //                                     .disabledColor
-                //                                     .withOpacity(0.5)),
-                //                             borderRadius:
-                //                                 BorderRadius.circular(10.0),
-                //                           ),
-                //                           enabledBorder: OutlineInputBorder(
-                //                             borderSide: BorderSide(
-                //                                 width: 1,
-                //                                 color: Theme.of(context)
-                //                                     .disabledColor
-                //                                     .withOpacity(0.5)),
-                //                             borderRadius:
-                //                                 BorderRadius.circular(10.0),
-                //                           ),
-                //                           hintText: e[0] == null
-                //                               ? 'Select Stroge'
-                //                               : e[0]),
-                //                       controller: groupcontroller,
-                //                       dropDownList: e.map((p0) {
-                //                         return DropDownValueModel(
-                //                             name: p0, value: p0);
-                //                       }).toList())
-                //                   .px(15),
-                //             ],
-                //           ))
-                //       .toList(),
-                // ),
+                Column(
+                  children: item.subsections
+                      .map((e) => Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                e.name,
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontFamily: 'plusjakarta',
+                                    fontWeight: FontWeight.w600,
+                                    color: Theme.of(context).disabledColor),
+                              ).px(15).pOnly(bottom: 10),
+                              DropDownTextField(
+                                      textFieldDecoration: InputDecoration(
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                width: 1,
+                                                color: Theme.of(context)
+                                                    .disabledColor
+                                                    .withOpacity(0.5)),
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                width: 1,
+                                                color: Theme.of(context)
+                                                    .disabledColor
+                                                    .withOpacity(0.5)),
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                          hintText: e.value[0] == null
+                                              ? 'Select Stroge'
+                                              : e.value[0]),
+                                      controller: groupcontroller,
+                                      dropDownList: e.value.map((p0) {
+                                        return DropDownValueModel(
+                                            name: p0, value: p0);
+                                      }).toList())
+                                  .px(15),
+                            ],
+                          ))
+                      .toList(),
+                ),
 
                 // Text(
                 //   'Storage',

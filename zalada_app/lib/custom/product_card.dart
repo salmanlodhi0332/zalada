@@ -72,7 +72,7 @@ class Product_Card extends StatelessWidget {
                       color: Theme.of(context).hintColor,
                       fontWeight: FontWeight.w600),
                 ),
-                hotdeal == 'false'
+                hotdeal == ''
                     ? Text(
                         '\$' + price,
                         textAlign: TextAlign.center,

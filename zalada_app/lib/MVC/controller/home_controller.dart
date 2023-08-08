@@ -21,6 +21,7 @@ class home_Controller extends GetxController {
     super.onInit();
     getAllCategories();
     getHomeData();
+    getAllproducts();
   }
 
   getHomeData() async {

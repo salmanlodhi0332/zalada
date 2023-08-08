@@ -31,7 +31,6 @@ class Home_Screen extends StatefulWidget {
 class _Home_ScreenState extends State<Home_Screen> {
   final controller = Get.put(home_Controller());
   final cartController = Get.put(cart_Controller());
-
   RxInt selectedCategories = 0.obs;
   RxBool showshimmer = true.obs;
 
@@ -104,7 +103,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                   //   ontap: () {},
                   // ),
 
-// end of the widget
+                  // end of the widget
                   Container(
                     margin: const EdgeInsets.all(7),
                     decoration: BoxDecoration(

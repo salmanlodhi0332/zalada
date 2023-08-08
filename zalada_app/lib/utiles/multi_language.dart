@@ -8,7 +8,6 @@ class Multi_Language extends Translations {
           'want_to_logout': 'Are you sure you want to logout',
           'logout': 'Logout',
           'cancel': 'Cancel',
-          'Address': 'Address',
           'address_created': 'Address Created Successfully',
           'error': 'Error',
           'address_failed': 'Address Failed',

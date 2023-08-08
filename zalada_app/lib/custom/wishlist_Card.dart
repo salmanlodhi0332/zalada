@@ -107,9 +107,9 @@ class Wishlist_Card extends StatelessWidget {
                           GestureDetector(
                             onTap: () {
                               if (id != null) {
-                                cartController.addProduct(controller
-                                    .productslist
-                                    .firstWhere((product) => product.id == id));
+                                cartController.addProduct(
+                                    controller.Productslist.firstWhere(
+                                        (product) => product.id == id));
                               }
                             },
                             child: Container(

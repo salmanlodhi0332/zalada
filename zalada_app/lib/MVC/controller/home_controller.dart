@@ -20,25 +20,25 @@ class home_Controller extends GetxController {
   void onInit() {
     super.onInit();
     getAllCategories();
-    getHomeData();
-    getAllproducts();
+    // getHomeData();
+    // getAllproducts();
   }
 
-  getHomeData() async {
-    try {
-      var ServerResponse = await ApiService.getInstance.getHomeData();
-      // Productslist.value = ServerResponse;
-      // categoriesList.value = ServerResponse;
-      // hotdeal_list.value = ServerResponse;
-    } catch (e) {
-      print('get Home Data error: $e');
-    }
-  }
+  // getHomeData() async {
+  //   try {
+  //     var ServerResponse = await ApiService.getInstance.getHomeData();
+  //     // Productslist.value = ServerResponse;
+  //     // categoriesList.value = ServerResponse;
+  //     // hotdeal_list.value = ServerResponse;
+  //   } catch (e) {
+  //     print('get Home Data error: $e');
+  //   }
+  // }
 
-  getAllproducts() async {
+  getAllproducts(int page) async {
     try {
       isLoading(true);
-      var ServerResponse = await ApiService.getInstance.getAllproducts();
+      var ServerResponse = await ApiService.getInstance.getAllproducts(page);
       Productslist.value = ServerResponse;
     } catch (e) {
       print('get All products  error: $e');

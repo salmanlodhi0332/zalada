@@ -29,8 +29,6 @@ class CartProducts extends StatelessWidget {
           },
         ),
         SizedBox(width: 0),
-        
-
         Container(
           decoration: BoxDecoration(
             color: Theme.of(context).highlightColor,
@@ -41,7 +39,7 @@ class CartProducts extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: Image.network(
-              dummyProducts.images[0],
+              dummyProducts.product_media[0],
               width: 50,
               height: 50,
               fit: BoxFit.cover,

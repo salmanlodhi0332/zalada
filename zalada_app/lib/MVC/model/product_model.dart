@@ -1,89 +1,93 @@
 class Product_Model {
   final int id;
-  final int media_id;
   final String name;
   final String description;
   final int category_id;
-  final String model;
-  final String make;
   final String price;
-  final String? discountprice;
-  final String? hotdeal;
-  final List images;
-  // final List colors;
-  final List memory;
-  final List storage;
-  final int createdBy;
-  final String creationdate;
-  //final String updateddate;
+  final String? discountedPrice;
+  final List product_media;
+  final List<Subsection> subsections;
+  final String createdAt;
+  final String updatedAt;
+  final String? isNewArrival;
+  final String? outOfStock;
 
   Product_Model({
     required this.id,
-    required this.media_id,
-    this.hotdeal,
-    this.discountprice,
+    this.isNewArrival,
+    this.outOfStock,
+    this.discountedPrice,
     required this.name,
     required this.description,
     required this.category_id,
-    required this.make,
-    required this.model,
     required this.price,
-    required this.images,
-    // required this.colors,
-    required this.memory,
-    required this.storage,
-    required this.createdBy,
-    required this.creationdate,
-    //required this.updateddate,
+    required this.product_media,
+    required this.subsections,
+    required this.createdAt,
+    required this.updatedAt,
   });
 
   Map<String, dynamic> tojson() => {
         'product_id': id,
-        'media_id': media_id,
-        'hot_deal': hotdeal,
-        'discount': discountprice,
+        'isNewArrival': isNewArrival,
+        'outOfStock': outOfStock,
+        'discountedPrice': discountedPrice,
         'product_name': name,
         'product_description': description,
         'category_id': category_id,
-        'make': make,
-        'model': model,
         'price': price,
-        'images': images,
-// 'colors': colors,
-        'memory_options': memory,
-        'storage_values': storage,
-        'created_by_user_id': createdBy,
-        'product_created_at': creationdate,
-        //'updateddate': updateddate
+        'product_media': product_media,
+        'subsections': subsections,
+        'createdAt': createdAt,
+        'updatedAt': updatedAt
       };
 
   factory Product_Model.fromjson(Map<String, dynamic> json) {
+    List<dynamic> subsectionsData = json['subsections'] ?? [];
+
     return Product_Model(
-        id: json['product_id'],
-        media_id: json['media_id'],
-        discountprice: json['discount'] == null ? json['discount'] : '',
-        hotdeal: json['hot_deal'].toString(),
-        name: json['product_name'],
-        description: json['product_description'],
-        category_id: json['category_id'],
-        make: json['make'],
-        model: json['model'],
-        price: json['price'].toString(),
-        images: json['images'] == null
-            ? [
-                // 'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
-              ]
-            : json['images'].toList(),
-        // colors: json['colors'] == null ? [] : json['colors'].toList(),
-        memory: json['memory_options'] == null
-            ? []
-            : json['memory_options'].toList(),
-        storage: json['storage_values'] == null
-            ? []
-            : json['storage_values'].toList(),
-        //updateddate: json['updatedAt'],
-        creationdate: json['product_created_at'],
-        createdBy: json['created_by_user_id']);
+      id: json['id'],
+      discountedPrice:
+          json['discountedPrice'] == null ? '' : json['discountedPrice'],
+      isNewArrival: json['isNewArrival'].toString(),
+      outOfStock: json['outOfStock'].toString(),
+      name: json['name'],
+      description: json['description'],
+      category_id: json['category_id'],
+      price: json['price'].toString(),
+      product_media: json['product_media'] == null
+          ? [
+              'https://www.gme.net.au/app/plugins/wp-media-folder/assets/images/default.png'
+                  'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
+            ]
+          : json['product_media'].toList(),
+      subsections: subsectionsData
+          .map((subsectionJson) => Subsection.fromJson(subsectionJson))
+          .toList(),
+      // json['subsections'] == null ? [] : json['subsections'].toList(),
+      // subsections:
+      //     json['subsections'] == null ? [] : json['subsections'].toList(),
+      updatedAt: json['updatedAt'],
+      createdAt: json['createdAt'],
+    );
+  }
+}
+
+class Subsection {
+  final String name;
+  final List value;
+
+  Subsection({
+    required this.name,
+    required this.value,
+  });
+
+  factory Subsection.fromJson(Map<String, dynamic> json) {
+    return Subsection(
+        name: json['name'] == null ? "" : json['name'],
+        value: List<String>.from(json['value'])
+        // json['value'] == null ? [] : json['value'].toLisT(),
+        );
   }
 }
 

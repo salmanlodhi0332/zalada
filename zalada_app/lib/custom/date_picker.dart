@@ -56,60 +56,68 @@ class datepicker_widget extends StatelessWidget {
             controller: controller,
             validator: validator,
             onTap: () async {
-              Future<void> selectDate(BuildContext context) async {
-                DateTime? pickedDate;
+              DateTime? pickedDate = await showDatePicker(
+                context: context,
+                initialDate: DateTime.now(),
+                firstDate: DateTime(1950),
+                lastDate: DateTime(2100),
+              );
 
-                if (Platform.isAndroid) {
-                  pickedDate = await showDatePicker(
-                    context: context,
-                    initialDate: DateTime.now(),
-                    firstDate: DateTime(1950),
-                    lastDate: DateTime(2100),
-                  );
-                } else {
-                  pickedDate = await showModalBottomSheet<DateTime>(
-                    context: context,
-                    builder: (BuildContext builder) {
-                      return Container(
-                        height: 250.0,
-                        child: CupertinoDatePicker(
-                          initialDateTime: DateTime.now(),
-                          minimumYear: 1950,
-                          maximumYear: 2100,
-                          mode: CupertinoDatePickerMode.date,
-                          onDateTimeChanged: (DateTime newDate) {
-                            // Handle the selected date for CupertinoDatePicker
-                            // You can call your onDateTimeChanged method here or do whatever you need.
-                            // Example: onDateTimeChanged(newDate);
-                          },
-                        ),
-                      );
-                    },
-                  );
-                }
-
-                if (pickedDate != null && pickedDate != DateTime.now()) {
-                  // Do something with the picked date.
-                  // Example: setState(() { selectedDate = pickedDate; });
-                }
+              if (Platform.isAndroid) {
+                // ignore: use_build_context_synchronously
+                pickedDate = await showDatePicker(
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(1950),
+                  lastDate: DateTime(2100),
+                );
+              } else {
+                pickedDate = await showModalBottomSheet<DateTime>(
+                  context: context,
+                  builder: (BuildContext builder) {
+                    return Container(
+                      height: 250.0,
+                      child: CupertinoDatePicker(
+                        initialDateTime: DateTime.now(),
+                        minimumYear: 1950,
+                        maximumYear: 2100,
+                        mode: CupertinoDatePickerMode.date,
+                        onDateTimeChanged: (DateTime newDate) {
+                          // Handle the selected date for CupertinoDatePicker
+                          // You can call your onDateTimeChanged method here or do whatever you need.
+                          // Example: onDateTimeChanged(newDate);
+                        },
+                      ),
+                    );
+                  },
+                );
               }
 
-              // if (Platform.isAndroid) {
-              //     DateTime? pickedDate = await showDatePicker(
-              //   context: context,
-              //   initialDate: DateTime.now(),
-              //   firstDate: DateTime(1950),
-              //   lastDate: DateTime(2100),
-              // );
-              // }else{
-              //    DateTime? pickedDate = CupertinoDatePicker(onDateTimeChanged: onDateTimeChanged)
+              // if (pickedDate != null && pickedDate != DateTime.now()) {
+              //   // Do something with the picked date.
+              //   // Example: setState(() { selectedDate = pickedDate; });
               // }
-
-              // // Update the text field with the selected date
-              // if (pickedDate != null && pickedDate != controller.text) {
-              //   controller.text = pickedDate.toString();
-              // }
+              if (pickedDate != null && pickedDate != controller.text) {
+                controller.text = pickedDate.toString();
+              }
             },
+
+            // if (Platform.isAndroid) {
+            //     DateTime? pickedDate = await showDatePicker(
+            //   context: context,
+            //   initialDate: DateTime.now(),
+            //   firstDate: DateTime(1950),
+            //   lastDate: DateTime(2100),
+            // );
+            // }else{
+            //    DateTime? pickedDate = CupertinoDatePicker(onDateTimeChanged: onDateTimeChanged)
+            // }
+
+            // // Update the text field with the selected date
+            // if (pickedDate != null && pickedDate != controller.text) {
+            //   controller.text = pickedDate.toString();
+            // }
+
             obscureText: obscureText ?? false,
             decoration: InputDecoration(
               suffixIcon: suffixIcon,

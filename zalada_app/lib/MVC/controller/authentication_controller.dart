@@ -2,25 +2,22 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:get/route_manager.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
-import 'package:velocity_x/velocity_x.dart';
-import 'package:zalada_app/MVC/controller/product_controller.dart';
 import 'package:zalada_app/MVC/views/bottom_bar.dart';
 import 'package:zalada_app/MVC/views/login_screen.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
-
 import '../../utiles/constent.dart';
-import '../../utiles/getxcontroller.dart';
 import '../../utiles/loader.dart';
 import '../../utiles/shared_preferences.dart';
 import '../model/user_model.dart';
 import '../views/otp_screen.dart';
+
+final dio = Dio();
 
 class AuthenticationController extends GetxController {
   static const String baseURL = "${Constants.baseURL}/api/v1/";

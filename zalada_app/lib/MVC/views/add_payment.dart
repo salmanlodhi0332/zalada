@@ -2,15 +2,30 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:zalada_app/MVC/model/payment_model.dart';
 import 'package:zalada_app/MVC/views/payment_method.dart';
 
 import '../../custom/back_button.dart';
 import '../../custom/botton_widget.dart';
+import '../../custom/date_picker.dart';
 import '../../custom/textfeild_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../service/Api_Service.dart';
+
 class AddPayment extends StatefulWidget {
-  const AddPayment({super.key});
+  final int? id;
+  final String? CardName;
+  final String? CardNumber;
+  final String? Cvv;
+
+  const AddPayment({
+    super.key,
+    this.id,
+    this.CardName,
+    this.CardNumber,
+    this.Cvv,
+  });
 
   @override
   State<AddPayment> createState() => _AddPaymentState();
@@ -18,7 +33,10 @@ class AddPayment extends StatefulWidget {
 
 class _AddPaymentState extends State<AddPayment> {
   TextEditingController controllername = TextEditingController();
+
   TextEditingController controllernumber = TextEditingController();
+  TextEditingController dateController = TextEditingController();
+
   TextEditingController controllercvv = TextEditingController();
 
   void _saveLoginData() async {
@@ -78,7 +96,7 @@ class _AddPaymentState extends State<AddPayment> {
                     height: 550,
                     child: Column(
                       children: [
-                        SizedBox(height: 130),
+                        SizedBox(height: 80),
                         // Row(
                         //   children: [Text("Card name")],
                         // ).px(35),
@@ -100,48 +118,55 @@ class _AddPaymentState extends State<AddPayment> {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      "Expiry Date",
-                                      style: TextStyle(
-                                          fontFamily: 'plusjakarta',
-                                          color: Theme.of(context).hintColor,
-                                          fontSize: 15),
-                                    ).p(10).pOnly(right: 65),
+                                    // Text(
+                                    //   "Expiry Date",
+                                    //   style: TextStyle(
+                                    //       fontFamily: 'plusjakarta',
+                                    //       color: Theme.of(context).hintColor,
+                                    //       fontSize: 15),
+                                    // ).p(10).pOnly(right: 65),
                                   ],
                                 ),
                                 Container(
-                                  height: size.height / 13,
-                                  width: size.width / 2.3,
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: Theme.of(context)
-                                              .hintColor
-                                              .withOpacity(0.1),
-                                          width: 1.0),
-                                      borderRadius: BorderRadius.circular(15)),
-                                  child: TextFormField(
-                                      // validator: validator,
-                                      //obscureText: obscureText ?? false,
-                                      decoration: InputDecoration(
-                                    hintText: "12/1026",
-                                    hintStyle: TextStyle(
-                                        fontFamily: 'plusjakarta',
-                                        color: Theme.of(context)
-                                            .hintColor
-                                            .withOpacity(0.3),
-                                        fontSize: 20),
-                                    enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide.none),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide.none),
-                                    suffixIcon: IconButton(
-                                      onPressed: () {},
-                                      icon: Icon(Icons.calendar_today),
-                                    ),
-                                  )).px(10),
+                                  height: size.height / 7,
+                                  width: size.width / 2.5,
+                                  // decoration: BoxDecoration(
+                                  //     border: Border.all(
+                                  //         color: Theme.of(context)
+                                  //             .hintColor
+                                  //             .withOpacity(0.1),
+                                  //         width: 1.0),
+                                  //     borderRadius: BorderRadius.circular(15)),
+                                  child: datepicker_widget(
+                                    controller: dateController,
+                                    label: "Date_of_Birth".tr,
+                                    hintText: "Date",
+                                    suffixIcon:
+                                        Icon(Icons.calendar_month_outlined),
+                                  ),
+                                  //TextFormField(
+                                  //     // validator: validator,
+                                  //     //obscureText: obscureText ?? false,
+                                  //     decoration: InputDecoration(
+                                  //   hintText: "12/1026",
+                                  //   hintStyle: TextStyle(
+                                  //       fontFamily: 'plusjakarta',
+                                  //       color: Theme.of(context)
+                                  //           .hintColor
+                                  //           .withOpacity(0.3),
+                                  //       fontSize: 20),
+                                  //   enabledBorder: OutlineInputBorder(
+                                  //       borderSide: BorderSide.none),
+                                  //   focusedBorder: OutlineInputBorder(
+                                  //       borderSide: BorderSide.none),
+                                  //   suffixIcon: IconButton(
+                                  //     onPressed: () {},
+                                  //     icon: Icon(Icons.calendar_today),
+                                  //   ),
+                                  // )).px(10),
                                 ),
                               ],
-                            ).px(30),
+                            ).px(25),
                             Column(
                               children: [
                                 Row(
@@ -157,7 +182,7 @@ class _AddPaymentState extends State<AddPayment> {
                                   ],
                                 ),
                                 Container(
-                                  height: size.height / 13,
+                                  height: size.height / 14,
                                   width: size.width / 3,
                                   decoration: BoxDecoration(
                                       border: Border.all(
@@ -189,18 +214,37 @@ class _AddPaymentState extends State<AddPayment> {
                             )
                           ],
                         ),
+
                         SizedBox(
                           height: 40,
                         ),
                         Button_Widget(
                             ontap: () {
-                              print('object');
-                              print(controllername.toString());
-                              print(controllernumber.toString());
-                              print(controllercvv.toString());
+                              // print('object');
+                              // print(controllername.toString());
+                              // print(controllernumber.toString());
+                              // print(controllercvv.toString());
 
-                              _saveLoginData();
-                              Get.to(payment_method());
+                              // _saveLoginData();
+                              // Get.to(payment_method());
+                              if (widget.id != null) {
+                                var paymentData = Payment_model(
+                                    id: widget.id,
+                                    CardName: controllername.text,
+                                    CardNumber: controllernumber.text,
+                                    Cvv: controllercvv.text);
+
+                                ApiService.getInstance
+                                    .Update_payment(paymentData, context);
+                              } else {
+                                var paymentData = Payment_model(
+                                    id: widget.id,
+                                    CardName: controllername.text,
+                                    CardNumber: controllernumber.text,
+                                    Cvv: controllercvv.text);
+                                ApiService.getInstance
+                                    .Add_payment(paymentData, context);
+                              }
                             },
                             width: width,
                             title: 'add_payment'.tr),

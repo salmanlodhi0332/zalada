@@ -9,9 +9,13 @@ import 'package:zalada_app/MVC/views/Address_Screen.dart';
 import 'package:zalada_app/MVC/views/bottom_bar.dart';
 import 'package:zalada_app/dummyData/product_dummyData.dart';
 import 'package:zalada_app/utiles/shared_preferences.dart';
+import '../MVC/model/help_center_model.dart';
+import '../MVC/model/home_model.dart';
+import '../MVC/model/payment_model.dart';
 import '../MVC/model/privacy_policy_model.dart';
 import '../MVC/model/product_model.dart';
 import '../MVC/model/categories_model.dart';
+import '../MVC/views/payment_method.dart';
 import '../utiles/constent.dart';
 import '../utiles/loader.dart';
 import '../utiles/page_navigation.dart';
@@ -29,7 +33,50 @@ class ApiService {
   late BuildContext context;
   static String AuthUserToken = shared_preferences.userToken.value;
 
-  getAllproducts(int? Category_Id, int page,BuildContext context) async {
+  getHomeData() async {
+    try {
+      Response response;
+      response = await dio.get(
+        '${baseURL}products/homepage',
+        // options: Options(
+        //   headers: {
+        //     'Authorization': 'Bearer $AuthUserToken',
+        //   },
+        // )
+      );
+
+      print("statusCode => " + response.statusCode.toString());
+      print('get All Home Data API done 👌✅');
+
+      if (response.statusCode == 200) {
+        final responseData = response.data;
+        print(responseData['data']);
+
+        if (responseData is List) {
+          List<Home_Model> homelist = (response.data as List)
+              .map((data) => Home_Model.fromjson(data))
+              .toList();
+          return homelist;
+          // }
+          //  else if (responseData is Map) {
+          //   List<Home_Model> homelist = (responseData['data'] as List)
+          //       .map((data) => Home_Model.fromjson(data))
+          //       .toList();
+          //   return homelist;
+          // } else {
+          //   throw Exception('Failed to load posts: ${response.statusCode}');
+          // }
+        } else {
+          return responseData['data'];
+        }
+      }
+    } on DioException catch (e) {
+      print(e);
+      // throw Exception('Failed to load posts: $e');
+    }
+  }
+
+  getAllproducts(int? Category_Id, int page, BuildContext context) async {
     try {
       Response response;
 
@@ -75,9 +122,9 @@ class ApiService {
       // return product_dummyData.dummyProducts;
     } on DioException catch (e) {
       print(e);
- Get.snackbar('product_failed'.tr, "${e.response?.data['message']}",
+      Get.snackbar('product_failed'.tr, "${e.response?.data['message']}",
           colorText: Theme.of(context).secondaryHeaderColor,
-          backgroundColor: Theme.of(context).cardColor);      
+          backgroundColor: Theme.of(context).cardColor);
 
       return [];
     }
@@ -367,6 +414,124 @@ class ApiService {
       print(e);
       // throw Exception('Failed to load posts: $e');
       return [];
+    }
+  }
+
+  gethelpcenter() async {
+    try {
+      Response response;
+      response = await dio.get(
+        '${baseURL}privacy-policies/',
+        // options: Options(
+        //   // headers: {
+        //   //   'Authorization': 'Bearer $AuthUserToken',
+        //   // },
+        // )
+      );
+
+      print("statusCode => " + response.statusCode.toString());
+      print('getHelpCenter  API done 👌✅');
+      if (response.statusCode == 200) {
+        final responseData = response.data;
+        if (responseData is List) {
+          List<Help_center_model> helpcenterData = (response.data as List)
+              .map((data) => Help_center_model.fromJson(data))
+              .toList();
+          return helpcenterData;
+        } else if (responseData is Map) {
+          List<Help_center_model> helpcenterData =
+              (responseData['data'] as List)
+                  .map((data) => Help_center_model.fromJson(data))
+                  .toList();
+          return helpcenterData;
+        }
+        return responseData;
+      }
+    } on DioException catch (e) {
+      print(e);
+      // throw Exception('Failed to load posts: $e');
+      // return [];
+    }
+  }
+
+// Add Payment Work starts from here,
+  Add_payment(Payment_model data, BuildContext context) async {
+    try {
+      Loader.poploader();
+      Response response;
+      response = await dio.post('${baseURL}payment/',
+          data: {
+            'CardName': data.CardName,
+            'CardNumber': data.CardNumber,
+            'Cvv': data.Cvv,
+          },
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $AuthUserToken',
+            },
+          ));
+      print(response.data);
+      if (response.statusCode == 201) {
+        print("payment are succesfully added");
+        Get.snackbar('Payment'.tr, "Payment_added".tr,
+            colorText: Theme.of(context).hintColor,
+            backgroundColor: Theme.of(context).cardColor);
+
+        Page_Navigation.getInstance.Page(context, payment_method());
+      } else {
+        Get.snackbar('error'.tr, response.data['message'],
+            colorText: Theme.of(context).hintColor,
+            backgroundColor: Theme.of(context).cardColor);
+      }
+    } on DioException catch (e) {
+      Get.back();
+      print("Payment  ${e.response?.data['message']}");
+      Get.snackbar('Payment_field'.tr, "${e.response?.data['message']}",
+          colorText: Theme.of(context).hintColor,
+          backgroundColor: Theme.of(context).cardColor);
+    }
+  }
+
+  Update_payment(Payment_model data, BuildContext context) async {
+    try {
+      Loader.poploader();
+      Response response;
+      response = await dio.patch('${baseURL}payment/${data.id}',
+          data: {
+            'CardName': data.CardName,
+            'CardNumber': data.CardNumber,
+            'Cvv': data.Cvv,
+          },
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $AuthUserToken',
+            },
+          ));
+      print(response.data);
+      if (response.statusCode == 200) {
+        print("Payments updated");
+        Get.snackbar('payment'.tr, "Payment_updated".tr,
+            colorText: Theme.of(context).hintColor,
+            backgroundColor: Theme.of(context).cardColor);
+        // Page_Navigation.getInstance.Page(
+        //     context,
+        //     Bottom_Bar(
+        //       initialIndex: 4,
+        //     )
+        //     );
+
+        Page_Navigation.getInstance.Page(context, payment_method());
+      } else {
+        Get.snackbar('error'.tr, response.data['message'],
+            colorText: Theme.of(context).hintColor,
+            backgroundColor: Theme.of(context).cardColor);
+      }
+    } on DioException catch (e) {
+      Get.back();
+      print("Payment  ${e.response?.data['message']}");
+      Get.snackbar('payment_failed'.tr, "${e.response?.data['message']}",
+          colorText: Theme.of(context).hintColor,
+          backgroundColor: Theme.of(context).cardColor);
     }
   }
 }

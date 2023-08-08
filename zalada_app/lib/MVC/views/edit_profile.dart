@@ -3,12 +3,14 @@ import 'dart:io';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zalada_app/MVC/model/user_model.dart';
 import 'package:zalada_app/service/Getx_provider.dart';
 
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/utiles/loader.dart';
+import 'package:zalada_app/utiles/shared_preferences.dart';
 import '../../custom/custom_appbar.dart';
 import '../../custom/back_button.dart';
 import '../../custom/botton_widget.dart';
@@ -37,6 +39,36 @@ class _edit_profileState extends State<edit_profile> {
 
   GetxControllerProvider controllersProvider =
       Get.put(GetxControllerProvider());
+  @override
+  void initState() {
+    super.initState();
+    isloggedcheck();
+  }
+
+  String? token;
+  String? fullName;
+  String? email;
+  String? phone_number;
+
+  isloggedcheck() async {
+    BuildContext context;
+    SharedPreferences instance = await SharedPreferences.getInstance();
+    token = instance.getString("token");
+    fullName = instance.getString("name");
+    email = instance.getString("email");
+    phone_number = instance.getString("phone_number");
+
+    print(
+      "token $token ",
+    );
+    print("fullName $fullName ");
+    print("Email  $email ");
+    print("phone_number  $phone_number ");
+    fullnameController.text = fullName.toString();
+    emailaddressController.text = email.toString();
+
+    _phoneController.text = phone_number.toString();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,21 +83,6 @@ class _edit_profileState extends State<edit_profile> {
             },
           ),
         ),
-        // appBar: AppBar(
-        //   backgroundColor: Colors.transparent,
-        //   elevation: 0,
-        //   centerTitle: true,
-        //   title: Text(
-        //     "Edit_Profile".tr,
-        //     style: TextStyle(color: Theme.of(context).hintColor),
-        //   ),
-        //   leading: back_button(
-        //     ontap: () {
-        //       Get.back();
-        //     },
-        //   ).p(10),
-        // ),
-        // backgroundColor: Theme.of(context).secondaryHeaderColor,
         body: SingleChildScrollView(
             physics: BouncingScrollPhysics(),
             scrollDirection: Axis.vertical,
@@ -74,26 +91,21 @@ class _edit_profileState extends State<edit_profile> {
                 height: 15,
               ),
               Obx(() => Center(
-                              child: controllersProvider
-                                      .imagePath.value.isNotEmpty
-                                  ? CircleAvatar(
-                                      radius: 40,
-                                      backgroundImage: FileImage(File(
-                                          controllersProvider.imagePath.value)),
-                                    )
-                                  : CircleAvatar(
-                                      radius: 40,
-                                      backgroundImage: AssetImage(
-                                          controllersProvider.defaultImagePath
-                                              .toString()),
-                                    ))
-                          .onTap(() {
-                        controllersProvider.getImage();
-                      })
-// .onTap((){
-//   controllersProvider.getImage();
-// })
-                  ),
+                          child: controllersProvider.imagePath.value.isNotEmpty
+                              ? CircleAvatar(
+                                  radius: 40,
+                                  backgroundImage: FileImage(File(
+                                      controllersProvider.imagePath.value)),
+                                )
+                              : CircleAvatar(
+                                  radius: 40,
+                                  backgroundImage: AssetImage(
+                                      controllersProvider.defaultImagePath
+                                          .toString()),
+                                ))
+                      .onTap(() {
+                    controllersProvider.getImage();
+                  })),
               SizedBox(
                 height: 10,
               ),
@@ -102,7 +114,7 @@ class _edit_profileState extends State<edit_profile> {
               ),
               textfeild_widget(
                 label: "Fullname".tr,
-                hintText: "Brayn Adma",
+                hintText: "fullName",
                 controller: fullnameController,
               ),
               SizedBox(
@@ -119,44 +131,17 @@ class _edit_profileState extends State<edit_profile> {
               ),
               textfeild_widget(
                 label: "Email_Address".tr,
-                hintText: "brayn.adam83@gmail.com",
+                hintText: "Email",
                 controller: emailaddressController,
               ),
               SizedBox(
                 height: 4,
               ),
-              Align(
-                alignment: Alignment.bottomLeft,
-                child: Text(
-                  "Phone_number".tr,
-                  style: TextStyle(
-                      fontFamily: 'plusjakarta',
-                      color: Theme.of(context).hintColor,
-                      fontSize: 15),
-                ),
-              ).px(25).py(10),
-              IntlPhoneField(
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Theme.of(context)
-                                .disabledColor
-                                .withOpacity(0.3)),
-                        borderRadius: BorderRadius.circular(12)),
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Theme.of(context)
-                                .disabledColor
-                                .withOpacity(0.3)),
-                        borderRadius: BorderRadius.circular(12)),
-                    enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Theme.of(context)
-                                .disabledColor
-                                .withOpacity(0.3)),
-                        borderRadius: BorderRadius.circular(12))),
+              textfeild_widget(
+                label: "Phone_NO".tr,
+                hintText: "Phone no",
                 controller: _phoneController,
-              ).px(20),
+              ),
               Align(
                 alignment: Alignment.bottomLeft,
                 child: Text(

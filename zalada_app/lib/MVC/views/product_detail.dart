@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
-import 'package:zalada_app/MVC/controller/product_controller.dart';
-
+import 'package:zalada_app/MVC/controller/home_controller.dart';
 import 'package:zalada_app/MVC/views/wishlist_cart_screen.dart';
-
 import 'package:zalada_app/custom/back_button.dart';
 import 'package:readmore/readmore.dart';
 import 'package:zalada_app/custom/custom_appbar.dart';
@@ -21,7 +19,7 @@ class Product_Detail_Screen extends StatelessWidget {
   final int id;
 
   Product_Detail_Screen({required this.id});
-  final controller = Get.put(product_Controller());
+  final controller = Get.put(home_Controller());
   final cartController = Get.put(cart_Controller());
   final groupcontroller = SingleValueDropDownController();
   @override
@@ -52,7 +50,7 @@ class Product_Detail_Screen extends StatelessWidget {
         child: Wrap(
           children:
               controller.productslist.where((p0) => p0.id == id).map((item) {
-            displayimages.value = item.images[0];
+            displayimages.value = item.product_media[0];
             return Wrap(
               // alignment: WrapAlignment.center,
               children: [
@@ -73,7 +71,7 @@ class Product_Detail_Screen extends StatelessWidget {
                       child: SingleChildScrollView(
                         child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: item.images.map((img) {
+                                children: item.product_media.map((img) {
                                   return GestureDetector(
                                     onTap: () {
                                       displayimages.value = img;
@@ -109,138 +107,76 @@ class Product_Detail_Screen extends StatelessWidget {
                         ))
                   ],
                 ).px(ph),
-                // Align(
-                //   alignment: Alignment.center,
-                //   child: Text(
-                //     'space_grey'.tr,
-                //     style: TextStyle(
-                //         fontSize: 14,
-                //         fontFamily: 'plusjakarta',
-                //         fontWeight: FontWeight.w600,
-                //         color: Theme.of(context).disabledColor),
-                //   ),
-                // ).px(ph),
-                // Row(
-                //   crossAxisAlignment: CrossAxisAlignment.center,
-                //   mainAxisAlignment: MainAxisAlignment.center,
-                //   children: [
-                //     Container(
-                //       padding: const EdgeInsets.all(5.0),
-                //       decoration: BoxDecoration(
-                //         shape: BoxShape.circle,
-                //         border: Border.all(
-                //             color: Theme.of(context).disabledColor, width: 2.0),
-                //       ),
-                //       child: Container(
-                //         decoration: BoxDecoration(
-                //             color: Theme.of(context).disabledColor,
-                //             shape: BoxShape.circle),
-                //         height: 40,
-                //         width: 40,
-                //       ),
-                //     ).pOnly(right: 10),
-                //     Container(
-                //       padding: const EdgeInsets.all(5.0),
-                //       decoration: const BoxDecoration(
-                //         shape: BoxShape.circle,
-                //         // border: Border.all(
-                //         //     color: Theme.of(context).disabledColor, width: 2.0),
-                //       ),
-                //       child: Container(
-                //         decoration: BoxDecoration(
-                //             color: Theme.of(context).hoverColor,
-                //             shape: BoxShape.circle),
-                //         height: 40,
-                //         width: 40,
-                //       ),
-                //     ).pOnly(right: 10),
-                //     Container(
-                //       padding: const EdgeInsets.all(5.0),
-                //       decoration: const BoxDecoration(
-                //         shape: BoxShape.circle,
-                //         // border: Border.all(
-                //         //     color: Theme.of(context).disabledColor, width: 2.0),
-                //       ),
-                //       child: Container(
-                //         decoration: BoxDecoration(
-                //             color: Theme.of(context).focusColor,
-                //             shape: BoxShape.circle),
-                //         height: 40,
-                //         width: 40,
-                //       ),
-                //     ).pOnly(right: 10),
-                //   ],
-                // ).px(ph),
-                Text(
-                  'Memory',
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontFamily: 'plusjakarta',
-                      fontWeight: FontWeight.w600,
-                      color: Theme.of(context).disabledColor),
-                ).px(15).pOnly(bottom: 10),
-                DropDownTextField(
-                        textFieldDecoration: InputDecoration(
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 1,
-                                  color: Theme.of(context)
-                                      .disabledColor
-                                      .withOpacity(0.5)),
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 1,
-                                  color: Theme.of(context)
-                                      .disabledColor
-                                      .withOpacity(0.5)),
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                            hintText: item.memory[0] == null
-                                ? 'Select Stroge'
-                                : item.memory[0].toString()),
-                        controller: groupcontroller,
-                        dropDownList: item.memory.map((e) {
-                          return DropDownValueModel(
-                              name: e.toString(), value: e.toString());
-                        }).toList())
-                    .px(15),
-                Text(
-                  'Storage',
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontFamily: 'plusjakarta',
-                      fontWeight: FontWeight.w600,
-                      color: Theme.of(context).disabledColor),
-                ).px(15).py(10),
-                DropDownTextField(
-                        textFieldDecoration: InputDecoration(
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 1,
-                                  color: Theme.of(context)
-                                      .disabledColor
-                                      .withOpacity(0.5)), //<-- SEE HERE
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 1,
-                                  color: Theme.of(context)
-                                      .disabledColor
-                                      .withOpacity(0.5)), //<-- SEE HERE
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                            hintText: item.storage[0] == null
-                                ? 'Select Stroge'
-                                : item.storage[0].toString()),
-                        controller: groupcontroller,
-                        dropDownList: item.storage.map((e) {
-                          return DropDownValueModel(
-                              name: e.toString(), value: e.toString());
-                        }).toList())
-                    .px(15),
+                // Text(
+                //   'Memory',
+                //   style: TextStyle(
+                //       fontSize: 14,
+                //       fontFamily: 'plusjakarta',
+                //       fontWeight: FontWeight.w600,
+                //       color: Theme.of(context).disabledColor),
+                // ).px(15).pOnly(bottom: 10),
+                // DropDownTextField(
+                //         textFieldDecoration: InputDecoration(
+                //             focusedBorder: OutlineInputBorder(
+                //               borderSide: BorderSide(
+                //                   width: 1,
+                //                   color: Theme.of(context)
+                //                       .disabledColor
+                //                       .withOpacity(0.5)),
+                //               borderRadius: BorderRadius.circular(10.0),
+                //             ),
+                //             enabledBorder: OutlineInputBorder(
+                //               borderSide: BorderSide(
+                //                   width: 1,
+                //                   color: Theme.of(context)
+                //                       .disabledColor
+                //                       .withOpacity(0.5)),
+                //               borderRadius: BorderRadius.circular(10.0),
+                //             ),
+                //             hintText: item.memory[0] == null
+                //                 ? 'Select Stroge'
+                //                 : item.memory[0].toString()),
+                //         controller: groupcontroller,
+                //         dropDownList: item.memory.map((e) {
+                //           return DropDownValueModel(
+                //               name: e.toString(), value: e.toString());
+                //         }).toList())
+                //     .px(15),
+                // Text(
+                //   'Storage',
+                //   style: TextStyle(
+                //       fontSize: 14,
+                //       fontFamily: 'plusjakarta',
+                //       fontWeight: FontWeight.w600,
+                //       color: Theme.of(context).disabledColor),
+                // ).px(15).py(10),
+                // DropDownTextField(
+                //         textFieldDecoration: InputDecoration(
+                //             focusedBorder: OutlineInputBorder(
+                //               borderSide: BorderSide(
+                //                   width: 1,
+                //                   color: Theme.of(context)
+                //                       .disabledColor
+                //                       .withOpacity(0.5)), //<-- SEE HERE
+                //               borderRadius: BorderRadius.circular(10.0),
+                //             ),
+                //             enabledBorder: OutlineInputBorder(
+                //               borderSide: BorderSide(
+                //                   width: 1,
+                //                   color: Theme.of(context)
+                //                       .disabledColor
+                //                       .withOpacity(0.5)), //<-- SEE HERE
+                //               borderRadius: BorderRadius.circular(10.0),
+                //             ),
+                //             hintText: item.storage[0] == null
+                //                 ? 'Select Stroge'
+                //                 : item.storage[0].toString()),
+                //         controller: groupcontroller,
+                //         dropDownList: item.storage.map((e) {
+                //           return DropDownValueModel(
+                //               name: e.toString(), value: e.toString());
+                //         }).toList())
+                //     .px(15),
                 SizedBox(height: 80),
                 Divider(
                   color: Theme.of(context).disabledColor.withOpacity(0.4),
@@ -294,13 +230,13 @@ class Product_Detail_Screen extends StatelessWidget {
                         children: controller.productslist
                             .where((p0) => p0.category_id == item.category_id)
                             .map((PR_item) {
+                      print(PR_item.category_id);
                       return Product_Card(
                         hotdeal: '',
                         id: PR_item.id,
-                        imageurl: PR_item.images[0],
+                        imageurl: PR_item.product_media[0],
                         product_name: PR_item.name,
                         price: '\$' + PR_item.price,
-                        status: '',
                       ).py(25).px(5);
                     }).toList()),
                   )

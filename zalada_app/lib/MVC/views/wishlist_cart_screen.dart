@@ -72,7 +72,6 @@ class wishlist_grid extends StatelessWidget {
                   imageurl: item.images[0],
                   product_name: item.productName,
                   price: '\$' + item.productPrice,
-                  status: "NEW ARRIVAL",
                 );
               },
               mainAxisSpacing: 50.0,

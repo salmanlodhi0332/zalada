@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/MVC/views/edit_profile.dart';
+import 'package:zalada_app/MVC/views/help_center.dart';
 import 'package:zalada_app/MVC/views/payment_method.dart';
 import 'package:zalada_app/MVC/views/Address_Screen.dart';
 import 'package:zalada_app/MVC/views/wishlist_cart_screen.dart';
@@ -398,7 +399,9 @@ class _Profile_ScreenState extends State<Profile_Screen> {
             ),
             custom_divider(context),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Page_Navigation.getInstance.Page(context, help_center());
+              },
               child: account_section(
                 backgroundcolor: Theme.of(context).hintColor,
                 title: "Help_Center".tr,

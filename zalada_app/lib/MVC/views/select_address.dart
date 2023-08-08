@@ -336,31 +336,30 @@ class _Select_AddressState extends State<Select_Address> {
       bottomNavigationBar: Button_Widget(
           ontap: () {
             if (widget.id != null) {
-              ApiService.getInstance.Update_Address(
-                  Address_Model(
-                    id: widget.id,
-                    locationname: addressController.text,
-                    address: _address,
-                    latitude: lat.toString(),
-                    longitude: long.toString(),
-                    addressType: typecontroller.dropDownValue != null &&
-                            typecontroller.dropDownValue!.value.isNotEmpty
-                        ? typecontroller.dropDownValue!.value
-                        : widget.address_type,
-                    userid: widget.userId!,
-                  ),
-                  context);
+              var addressData = Address_Model(
+                id: widget.id,
+                locationname: addressController.text,
+                address: _address,
+                latitude: lat.toString(),
+                longitude: long.toString(),
+                addressType: typecontroller.dropDownValue != null &&
+                        typecontroller.dropDownValue!.value.isNotEmpty
+                    ? typecontroller.dropDownValue!.value
+                    : widget.address_type,
+                userid: widget.userId!,
+              );
+
+              ApiService.getInstance.Update_Address(addressData, context);
             } else {
-              ApiService.getInstance.Add_Address(
-                  Address_Model(
-                    locationname: addressController.text,
-                    address: _address,
-                    latitude: lat.toString(),
-                    longitude: long.toString(),
-                    addressType: typecontroller.dropDownValue!.name,
-                    userid: 1,
-                  ),
-                  context);
+              var addressData = Address_Model(
+                locationname: addressController.text,
+                address: _address,
+                latitude: lat.toString(),
+                longitude: long.toString(),
+                addressType: typecontroller.dropDownValue!.name,
+                userid: 1,
+              );
+              ApiService.getInstance.Add_Address(addressData, context);
             }
           },
           width: size.width,

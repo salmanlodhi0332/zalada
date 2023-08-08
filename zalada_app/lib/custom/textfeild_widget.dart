@@ -10,7 +10,7 @@ class textfeild_widget extends StatelessWidget {
   final Widget? suffixIcon;
   final TextInputType? keyboardtype;
   final bool? obscureText;
-
+  final bool? readonly;
   const textfeild_widget({
     super.key,
     required this.label,
@@ -20,6 +20,7 @@ class textfeild_widget extends StatelessWidget {
     this.suffixIcon,
     this.obscureText,
     this.keyboardtype,
+    this.readonly,
   });
 
   @override

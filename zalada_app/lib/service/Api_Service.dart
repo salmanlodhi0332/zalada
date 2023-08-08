@@ -6,7 +6,11 @@ import 'package:zalada_app/MVC/model/Address_model.dart';
 import 'package:zalada_app/MVC/model/help_center_model.dart';
 import 'package:zalada_app/MVC/model/home_model.dart';
 import 'package:zalada_app/MVC/views/Address_Screen.dart';
+import 'package:zalada_app/MVC/views/bottom_bar.dart';
+import 'package:zalada_app/MVC/views/payment_method.dart';
+import 'package:zalada_app/dummyData/product_dummyData.dart';
 import 'package:zalada_app/utiles/shared_preferences.dart';
+import '../MVC/model/payment_model.dart';
 import '../MVC/model/privacy_policy_model.dart';
 import '../MVC/model/product_model.dart';
 import '../MVC/model/categories_model.dart';
@@ -220,6 +224,89 @@ class ApiService {
           backgroundColor: Theme.of(context).cardColor);
     }
   }
+
+// Add Payment Work starts from here,
+  Add_payment(Payment_model data, BuildContext context) async {
+    try {
+      Loader.poploader();
+      Response response;
+      response = await dio.post('${baseURL}payment/',
+          data: {
+            'CardName': data.CardName,
+            'CardNumber': data.CardNumber,
+            'Cvv': data.Cvv,
+          },
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $AuthUserToken',
+            },
+          ));
+      print(response.data);
+      if (response.statusCode == 201) {
+        print("payment are succesfully added");
+        Get.snackbar('Payment'.tr, "Payment_added".tr,
+            colorText: Theme.of(context).hintColor,
+            backgroundColor: Theme.of(context).cardColor);
+
+        Page_Navigation.getInstance.Page(context, payment_method());
+      } else {
+        Get.snackbar('error'.tr, response.data['message'],
+            colorText: Theme.of(context).hintColor,
+            backgroundColor: Theme.of(context).cardColor);
+      }
+    } on DioException catch (e) {
+      Get.back();
+      print("Payment  ${e.response?.data['message']}");
+      Get.snackbar('Payment_field'.tr, "${e.response?.data['message']}",
+          colorText: Theme.of(context).hintColor,
+          backgroundColor: Theme.of(context).cardColor);
+    }
+  }
+
+  Update_payment(Payment_model data, BuildContext context) async {
+    try {
+      Loader.poploader();
+      Response response;
+      response = await dio.patch('${baseURL}payment/${data.id}',
+          data: {
+            'CardName': data.CardName,
+            'CardNumber': data.CardNumber,
+            'Cvv': data.Cvv,
+          },
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $AuthUserToken',
+            },
+          ));
+      print(response.data);
+      if (response.statusCode == 200) {
+        print("Payments updated");
+        Get.snackbar('payment'.tr, "Payment_updated".tr,
+            colorText: Theme.of(context).hintColor,
+            backgroundColor: Theme.of(context).cardColor);
+        // Page_Navigation.getInstance.Page(
+        //     context,
+        //     Bottom_Bar(
+        //       initialIndex: 4,
+        //     )
+        //     );
+
+        Page_Navigation.getInstance.Page(context, payment_method());
+      } else {
+        Get.snackbar('error'.tr, response.data['message'],
+            colorText: Theme.of(context).hintColor,
+            backgroundColor: Theme.of(context).cardColor);
+      }
+    } on DioException catch (e) {
+      Get.back();
+      print("Payment  ${e.response?.data['message']}");
+      Get.snackbar('payment_failed'.tr, "${e.response?.data['message']}",
+          colorText: Theme.of(context).hintColor,
+          backgroundColor: Theme.of(context).cardColor);
+    }
+  }
+
+// and on work add payment
 
   Update_Address(Address_Model data, BuildContext context) async {
     try {

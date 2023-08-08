@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:zalada_app/MVC/controller/product_controller.dart';
+import 'package:zalada_app/MVC/controller/home_controller.dart';
 import 'package:zalada_app/custom/product_card.dart';
 
 import 'package:zalada_app/MVC/views/product_detail.dart';
@@ -9,7 +9,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class search_grid extends StatelessWidget {
   search_grid({super.key});
-  final controller = Get.put(product_Controller());
+  final controller = Get.put(home_Controller());
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -38,10 +38,11 @@ class search_grid extends StatelessWidget {
                     }
                   },
                   hotdeal: 'false',
-                  imageurl: item.images[0],
+                  imageurl: item.product_media[0],
                   product_name: item.name,
-                  price: '\$' + item.price,
-                  status: "NEW ARRIVAL",
+                  price: item.price,
+                  isNewArrival: item.isNewArrival,
+                  outOfStock: item.outOfStock,
                 );
               },
               mainAxisSpacing: 50.0,

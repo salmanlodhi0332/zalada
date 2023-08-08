@@ -5,6 +5,13 @@ class Multi_Language extends Translations {
   Map<String, Map<String, String>> get keys => {
         //------------------------en_US
         'en_US': {
+          'No_address_available':'No address available.',
+          'No_product_available':'No Product Available',
+          "select_language": "Select Language",
+          'indonesia': 'indonesia',
+          'English(US)': 'English(US)',
+          'thailand': 'thailand',
+          'chinese': 'chinese',
           'want_to_logout': 'Are you sure you want to logout',
           'logout': 'Logout',
           'cancel': 'Cancel',
@@ -132,12 +139,6 @@ class Multi_Language extends Translations {
           "Edit_Profile": "Edit Profile",
           "Email_Address": "Email Address",
           "Date_of_Birth": "Date of Birth",
-          // "": "",
-          "select_language": "Select Language",
-          "indonesia": "Indonesia",
-          "English(US)": "English (US)",
-          "thailand": "Thailand",
-          "chinese": "Chinese",
           "validation_email": "enter your email",
           "validation_Phone": "enter your Phone number",
           "validation_password": "enter your Password",
@@ -151,7 +152,6 @@ class Multi_Language extends Translations {
           "address_upated": "Address Updated",
           "address_delete": "Address Delete",
           "Apartment": "Apartment",
-          "Help_Center": "Help Center",
           // "": "",
           // "": "",
           // "": "",
@@ -218,6 +218,27 @@ class Multi_Language extends Translations {
           "registration_failed": "Registration failed",
           "Continue_with_apple": "Continue with apple",
           "passwordnotmatch": "Password do not match",
+        },
+        'id_ID': {
+          "select_language": "Pilih Bahasa",
+          'indonesia': 'indonesia',
+          'English(US)': 'Inggris (AS)',
+          'thailand': 'thailand',
+          'chinese': 'cina',
+        },
+        'th_TH': {
+          "select_language": "เลือกภาษา",
+          'indonesia': 'อินโดนีเซีย',
+          'English(US)': 'อังกฤษ (สหรัฐ)',
+          'thailand': 'ประเทศไทย',
+          'chinese': 'จีน',
+        },
+        'zh_CN': {
+          "select_language": "选择语言",
+          'indonesia': '印度尼西亚',
+          'English(US)': '美式英语',
+          'thailand': '泰国',
+          'chinese': '中文',
         }
       };
 }

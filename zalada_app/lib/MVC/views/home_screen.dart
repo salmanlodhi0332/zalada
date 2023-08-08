@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -14,6 +16,7 @@ import '../../custom/all_custom_btn.dart';
 import '../../custom/search_screen_widgets/categories_btn.dart';
 import 'package:badges/badges.dart' as badges;
 
+import '../../utiles/shimmer_custom.dart';
 import '../controller/cart_controller.dart';
 import '../controller/home_controller.dart';
 import 'cart_screen.dart';
@@ -26,11 +29,19 @@ class Home_Screen extends StatefulWidget {
 }
 
 class _Home_ScreenState extends State<Home_Screen> {
-  final Homecontroller = Get.put(home_Controller());
-  final controller = Get.put(product_Controller());
+  final controller = Get.put(home_Controller());
   final cartController = Get.put(cart_Controller());
 
   RxInt selectedCategories = 0.obs;
+  RxBool showshimmer = true.obs;
+
+  @override
+  void initState() {
+    super.initState();
+    Timer(Duration(seconds: 3), () {
+      showshimmer.value = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +51,7 @@ class _Home_ScreenState extends State<Home_Screen> {
       body: RefreshIndicator(
         color: Theme.of(context).primaryColor,
         onRefresh: () async {
-          Homecontroller.onInit();
+          controller.onInit();
         },
         child: CustomScrollView(
             physics: const BouncingScrollPhysics(),
@@ -217,19 +228,19 @@ class _Home_ScreenState extends State<Home_Screen> {
                           fontSize: 18,
                           fontWeight: FontWeight.w700),
                     ).pOnly(top: 10),
-                    const Row(
-                      children: [
-                        Product_Card(
-                          id: 1,
-                          hotdeal: 'true',
-                          imageurl:
-                              'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
-                          product_name: "Sample Product 5",
-                          price: '\$' + "502.99",
-                          status: "NEW ARRIVAL",
-                        )
-                      ],
-                    ).py(20),
+                    Obx(() => Row(
+                          children: controller.hotdeal_list
+                              .map((e) => Product_Card(
+                                    id: e.id,
+                                    hotdeal: 'true',
+                                    imageurl:
+                                        'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
+                                    product_name: e.name,
+                                    price: e.price,
+                                    disprice: e.discountedPrice,
+                                  ))
+                              .toList(),
+                        )).py(20),
                     Obx(
                       () => SingleChildScrollView(
                         physics: const BouncingScrollPhysics(),
@@ -239,7 +250,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                           children: [
                             const all_custom_btn(),
                             Row(
-                              children: Homecontroller.categoriesList
+                              children: controller.categoriesList
                                   .map((e) => Obx(() => GestureDetector(
                                             onTap: () {
                                               selectedCategories.value = e.id;
@@ -300,42 +311,79 @@ class _Home_ScreenState extends State<Home_Screen> {
                       ).pOnly(bottom: 10),
                     ),
                     Obx(() => controller.Productslist.isNotEmpty
-                        ? MasonryGridView.count(
-                            primary: false,
-                            shrinkWrap: true,
-                            crossAxisCount:
-                                MediaQuery.of(context).orientation ==
-                                        Orientation.portrait
-                                    ? 2
-                                    : 4,
-                            padding: const EdgeInsets.symmetric(vertical: 10),
-                            itemCount: controller.Productslist.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              final item = controller.Productslist[index];
-                              return Product_Card(
-                                id: item.id,
-                                ontap: () {
-                                  {
-                                    Page_Navigation.getInstance.Page(
-                                        context,
-                                        Product_Detail_Screen(
-                                          id: item.id,
-                                        ));
-                                  }
+                            ? MasonryGridView.count(
+                                primary: false,
+                                shrinkWrap: true,
+                                crossAxisCount:
+                                    MediaQuery.of(context).orientation ==
+                                            Orientation.portrait
+                                        ? 2
+                                        : 4,
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 10),
+                                itemCount: controller.Productslist.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  final item = controller.Productslist[index];
+                                  return Product_Card(
+                                    id: item.id,
+                                    ontap: () {
+                                      {
+                                        Page_Navigation.getInstance.Page(
+                                            context,
+                                            Product_Detail_Screen(
+                                              id: item.id,
+                                            ));
+                                      }
+                                    },
+                                    hotdeal: 'false',
+                                    imageurl: item.product_media[0],
+                                    product_name: item.name,
+                                    price: '\$' + item.price,
+                                    outOfStock: item.outOfStock,
+                                    isNewArrival: item.isNewArrival,
+                                  );
                                 },
-                                hotdeal: 'false',
-                                imageurl: item.images[0],
-                                product_name: item.name,
-                                price: '\$' + item.price,
-                                status: "NEW ARRIVAL",
-                              );
-                            },
-                            mainAxisSpacing: 50.0,
-                            crossAxisSpacing: 15.0,
-                          )
-                        : const Center(
-                            child: Text('no Product'),
-                          )),
+                                mainAxisSpacing: 50.0,
+                                crossAxisSpacing: 15.0,
+                              )
+                            : showshimmer.value
+                                ? MasonryGridView.count(
+                                    primary: false,
+                                    shrinkWrap: true,
+                                    crossAxisCount:
+                                        MediaQuery.of(context).orientation ==
+                                                Orientation.portrait
+                                            ? 2
+                                            : 4,
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 10),
+                                    itemCount: 6,
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      return custom_shimmer(
+                                          width: size.width / 2.3,
+                                          height: size.height / 5.5);
+                                    })
+                                : Center(
+                                    child: Text(
+                                      "No_product_available".tr,
+                                      style: TextStyle(
+                                        fontFamily: 'plusjakarta',
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.normal,
+                                        color: Theme.of(context).hintColor,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  )
+                        //                          [
+                        // //                           height / 4.5,
+                        // // width: width / 2.3,
+                        //                             custom_shimmer(
+                        //                                 width: size.width,
+                        //                                 height: size.height / 8.7),
+
+                        ),
                   ],
                 ),
               ))

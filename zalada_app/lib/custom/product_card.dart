@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:zalada_app/MVC/controller/home_controller.dart';
 import 'package:zalada_app/custom/image_widget.dart';
 import 'package:zalada_app/utiles/themeData.dart';
 
@@ -12,8 +13,9 @@ class Product_Card extends StatelessWidget {
   final String imageurl;
   final String product_name;
   final String price;
-  final String status;
   final String hotdeal;
+  final String? isNewArrival;
+  final String? outOfStock;
   final String? disprice;
   final Function()? ontap;
   const Product_Card(
@@ -24,12 +26,13 @@ class Product_Card extends StatelessWidget {
       required this.imageurl,
       required this.product_name,
       required this.price,
-      required this.status,
+      this.isNewArrival,
+      this.outOfStock,
       this.ontap});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(product_Controller());
+    final controller = Get.put(home_Controller());
     final cartController = Get.put(cart_Controller());
     final height = MediaQuery.of(context).size.height;
 
@@ -71,7 +74,7 @@ class Product_Card extends StatelessWidget {
                 ),
                 hotdeal == 'false'
                     ? Text(
-                        price,
+                        '\$' + price,
                         textAlign: TextAlign.center,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
@@ -87,7 +90,7 @@ class Product_Card extends StatelessWidget {
                         children: [
                           Text.rich(TextSpan(children: [
                             TextSpan(
-                              text: '\$1240',
+                              text: '\$' + price,
                               style: TextStyle(
                                   fontFamily: 'plusjakarta',
                                   fontSize: 15,
@@ -95,7 +98,7 @@ class Product_Card extends StatelessWidget {
                                   fontWeight: FontWeight.w600),
                             ),
                             TextSpan(
-                              text: '\$1540',
+                              text: '\$' + disprice!,
                               style: TextStyle(
                                   fontFamily: 'plusjakarta',
                                   decoration: TextDecoration.lineThrough,
@@ -145,7 +148,7 @@ class Product_Card extends StatelessWidget {
               ],
             ),
             hotdeal == 'false'
-                ? status.isNotEmpty
+                ? outOfStock!.isNotEmpty
                     ? Positioned(
                         bottom: -10,
                         child: Container(
@@ -155,7 +158,7 @@ class Product_Card extends StatelessWidget {
                                 color: Theme.of(context).indicatorColor,
                                 borderRadius: BorderRadius.circular(10)),
                             child: Text(
-                              status,
+                              'status outOfStock',
                               style: TextStyle(
                                   fontFamily: 'plusjakarta',
                                   color: Theme.of(context).secondaryHeaderColor,

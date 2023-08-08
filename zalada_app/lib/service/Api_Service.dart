@@ -1,13 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:get/route_manager.dart';
 import 'package:zalada_app/MVC/model/Address_model.dart';
 import 'package:zalada_app/MVC/model/help_center_model.dart';
+import 'package:zalada_app/MVC/model/home_model.dart';
 import 'package:zalada_app/MVC/views/Address_Screen.dart';
-import 'package:zalada_app/MVC/views/bottom_bar.dart';
-import 'package:zalada_app/dummyData/product_dummyData.dart';
 import 'package:zalada_app/utiles/shared_preferences.dart';
 import '../MVC/model/privacy_policy_model.dart';
 import '../MVC/model/product_model.dart';
@@ -20,9 +18,6 @@ import '../utiles/page_navigation.dart';
 final dio = Dio();
 
 class ApiService {
-  static final Dio dio =
-      Dio(BaseOptions(baseUrl: 'http://localhost:3001/api/v1/'));
-
   static ApiService? _instance;
   static ApiService get getInstance => _instance ??= ApiService();
 
@@ -30,8 +25,49 @@ class ApiService {
 
   static String AuthUserToken = shared_preferences.userToken.value;
 
+  getHomeData() async {
+    try {
+      Loader.poploader();
+      Response response;
+      response = await dio.get(
+        '${baseURL}products/homepage',
+        // options: Options(
+        //   headers: {
+        //     'Authorization': 'Bearer $AuthUserToken',
+        //   },
+        // )
+      );
+
+      print("statusCode => " + response.statusCode.toString());
+      print('get All Home Data API done 👌✅');
+      if (response.statusCode == 200) {
+        final responseData = response.data;
+        if (responseData is List) {
+          List<Home_Model> homelist = (response.data as List)
+              .map((data) => Home_Model.fromjson(data))
+              .toList();
+          return homelist;
+        } else if (responseData is Map) {
+          List<Home_Model> homelist = (responseData['data'] as List)
+              .map((data) => Home_Model.fromjson(data))
+              .toList();
+          return homelist;
+          // } else {
+          //   throw Exception('Failed to load posts: ${response.statusCode}');
+          // }
+        }
+      }
+      // return product_dummyData.dummyProducts;
+    } on DioException catch (e) {
+      print(e);
+      // throw Exception('Failed to load posts: $e');
+      return [];
+    }
+  }
+
   getAllproducts() async {
     try {
+      Loader.poploader();
       Response response;
       response = await dio.get('${baseURL}products',
           options: Options(
@@ -69,6 +105,7 @@ class ApiService {
 
   getAllwishlist() async {
     try {
+      Loader.poploader();
       Response response;
       response = await dio.get('${baseURL}wishlist',
           options: Options(
@@ -123,7 +160,7 @@ class ApiService {
         Get.snackbar('Wishlist', "Added",
             colorText: Theme.of(context).hintColor,
             backgroundColor: Theme.of(context).cardColor);
-        Page_Navigation.getInstance.Page(context, Address_Screen());
+        // Page_Navigation.getInstance.Page(context, Address_Screen());
       } else {
         Get.snackbar('error'.tr, response.data['message'],
             colorText: Theme.of(context).hintColor,
@@ -163,11 +200,13 @@ class ApiService {
             colorText: Theme.of(context).hintColor,
             backgroundColor: Theme.of(context).cardColor);
         // Get.back();
-        Page_Navigation.getInstance.Page(
-            context,
-            Bottom_Bar(
-              initialIndex: 4,
-            ));
+
+        Page_Navigation.getInstance.Page(context, Address_Screen());
+        // Page_Navigation.getInstance.Page(
+        //     context,
+        //     Bottom_Bar(
+        //       initialIndex: 4,
+        //     ));
       } else {
         Get.snackbar('error'.tr, response.data['message'],
             colorText: Theme.of(context).hintColor,
@@ -206,11 +245,13 @@ class ApiService {
         Get.snackbar('Address'.tr, "address_upated".tr,
             colorText: Theme.of(context).hintColor,
             backgroundColor: Theme.of(context).cardColor);
-        Page_Navigation.getInstance.Page(
-            context,
-            Bottom_Bar(
-              initialIndex: 4,
-            ));
+
+        Page_Navigation.getInstance.Page(context, Address_Screen());
+        // Page_Navigation.getInstance.Page(
+        //     context,
+        //     Bottom_Bar(
+        //       initialIndex: 4,
+        //     ));
       } else {
         Get.snackbar('error'.tr, response.data['message'],
             colorText: Theme.of(context).hintColor,
@@ -242,12 +283,9 @@ class ApiService {
             colorText: Theme.of(context).hintColor,
             backgroundColor: Theme.of(context).cardColor);
         // Get.to(() => Bottom_Bar(), arguments: 4);
-
-        Page_Navigation.getInstance.Page(
-            context,
-            Bottom_Bar(
-              initialIndex: 4,
-            ));
+        // Page_Navigation.getInstance
+        // .Page_pushAndRemoveUntil(context, Address_Screen());
+        Page_Navigation.getInstance.Page(context, Address_Screen());
       } else {
         Get.snackbar('error'.tr, response.data['message'],
             colorText: Theme.of(context).hintColor,
@@ -264,6 +302,7 @@ class ApiService {
 
   getAddress() async {
     try {
+      Loader.poploader();
       Response response;
       response = await dio.get('${baseURL}address/',
           options: Options(
@@ -298,6 +337,7 @@ class ApiService {
 
   getPrivacy() async {
     try {
+      Loader.poploader();
       Response response;
       response = await dio.get(
         '${baseURL}privacy-policies/',
@@ -332,10 +372,9 @@ class ApiService {
     }
   }
 
-
-
-gethelpcenter() async {
+  gethelpcenter() async {
     try {
+      Loader.poploader();
       Response response;
       response = await dio.get(
         '${baseURL}privacy-policies/',
@@ -356,9 +395,10 @@ gethelpcenter() async {
               .toList();
           return helpcenterData;
         } else if (responseData is Map) {
-          List<Help_center_model> helpcenterData = (responseData['data'] as List)
-              .map((data) => Help_center_model.fromJson(data))
-              .toList();
+          List<Help_center_model> helpcenterData =
+              (responseData['data'] as List)
+                  .map((data) => Help_center_model.fromJson(data))
+                  .toList();
           return helpcenterData;
         }
         return responseData;
@@ -370,11 +410,9 @@ gethelpcenter() async {
     }
   }
 
-
-
-
   getAllCategories() async {
     try {
+      Loader.poploader();
       Response response;
       response = await dio.get('${baseURL}categories/',
           options: Options(

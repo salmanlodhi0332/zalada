@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:zalada_app/MVC/controller/home_controller.dart';
 import 'package:zalada_app/custom/image_widget.dart';
 import 'package:zalada_app/utiles/themeData.dart';
 
@@ -29,7 +30,7 @@ class Wishlist_Card extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(product_Controller());
+    final controller = Get.put(home_Controller());
     final cartController = Get.put(cart_Controller());
     final height = MediaQuery.of(context).size.height;
 

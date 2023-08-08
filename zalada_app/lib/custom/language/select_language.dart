@@ -1,14 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
-import 'package:flutter_svg/svg.dart';
 
 class select_language extends StatefulWidget {
   final String label;
 
   final Widget? preffixIcon;
-  final bool selected;
+  final int selected;
   const select_language({
     super.key,
     required this.label,
@@ -27,7 +24,7 @@ class _select_languageState extends State<select_language> {
     return Container(
       decoration: BoxDecoration(
           border: Border.all(
-              color: widget.selected
+              color: widget.selected != 0
                   ? Theme.of(context).indicatorColor.withOpacity(0.5)
                   : Theme.of(context).hintColor.withOpacity(0.5),
               width: 1.0),
@@ -47,7 +44,7 @@ class _select_languageState extends State<select_language> {
             fontWeight: FontWeight.w700,
           ),
         ),
-        trailing: widget.selected
+        trailing: widget.selected != 0
             ? CircleAvatar(
                 radius: 20,
                 backgroundColor: Theme.of(context).indicatorColor,

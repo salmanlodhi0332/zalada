@@ -454,14 +454,49 @@ class ApiService {
     }
   }
 
+  getuserCart() async {
+    try {
+      Response response;
+      response = await dio.get(
+        '${baseURL}carts/',
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer $AuthUserToken',
+          },
+        )
+      );
+
+      print("statusCode => " + response.statusCode.toString());
+      print('getuserCart  API done 👌✅');
+      if (response.statusCode == 200) {
+        final responseData = response.data;
+        if (responseData is List) {
+          List<Help_center_model> helpcenterData = (response.data as List)
+              .map((data) => Help_center_model.fromJson(data))
+              .toList();
+          return helpcenterData;
+        } else if (responseData is Map) {
+          List<Help_center_model> helpcenterData =
+              (responseData['data'] as List)
+                  .map((data) => Help_center_model.fromJson(data))
+                  .toList();
+          return helpcenterData;
+        }
+        return responseData;
+      }
+    } on DioException catch (e) {
+      print(e);
+      // throw Exception('Failed to load posts: $e');
+      // return [];
+    }
+  }
+
   AddtoCart(int productId, BuildContext context) async {
     try {
       Loader.poploader(context);
       Response response;
-      response = await dio.post('${baseURL}carts/',
+      response = await dio.post('${baseURL}carts/$productId',
           data: {
-            'user_id': productId,
-            'product_id': currentUserId,
             'quantity': 1,
           },
           options: Options(
@@ -471,11 +506,10 @@ class ApiService {
           ));
       if (response.statusCode == 201) {
         print("Add to cart succesfully ");
+        Get.back();
         Get.snackbar('Add_to_cart'.tr, "Add_to_cart_succesfully".tr,
             colorText: Theme.of(context).hintColor,
             backgroundColor: Theme.of(context).cardColor);
-
-        Page_Navigation.getInstance.Page(context, payment_method());
       } else {
         Get.snackbar('error'.tr, response.data['message'],
             colorText: Theme.of(context).hintColor,
@@ -483,12 +517,14 @@ class ApiService {
       }
     } on DioException catch (e) {
       Get.back();
-      print("Payment  ${e.response?.data['message']}");
       Get.snackbar('Payment_field'.tr, "${e.response?.data['message']}",
           colorText: Theme.of(context).hintColor,
           backgroundColor: Theme.of(context).cardColor);
+      print("c  ${e.response?.data['message']}");
     }
   }
+
+  
 
 // Add Payment Work starts from here,
   Add_payment(Payment_model data, BuildContext context) async {

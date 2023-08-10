@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:get/instance_manager.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/MVC/controller/home_controller.dart';
@@ -61,7 +62,7 @@ class Product_Card extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  product_name + product_name,
+                  product_name,
                   textAlign: TextAlign.center,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
@@ -102,7 +103,7 @@ class Product_Card extends StatelessWidget {
                               style: TextStyle(
                                   fontFamily: 'plusjakarta',
                                   decoration: TextDecoration.lineThrough,
-                                  fontSize: 12,
+                                  fontSize: 10,
                                   color: Theme.of(context)
                                       .disabledColor
                                       .withOpacity(0.5),
@@ -147,8 +148,24 @@ class Product_Card extends StatelessWidget {
                       )
               ],
             ),
-            hotdeal == 'false'
-                ? outOfStock!.isNotEmpty
+            isNewArrival == 'true'
+                ? Positioned(
+                    bottom: -12,
+                    child: Container(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                        decoration: BoxDecoration(
+                            color: Theme.of(context).indicatorColor,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Text(
+                          'new_arrival'.tr,
+                          style: TextStyle(
+                              fontFamily: 'plusjakarta',
+                              color: Theme.of(context).secondaryHeaderColor,
+                              fontWeight: FontWeight.w300,
+                              fontSize: 10),
+                        )))
+                : outOfStock == 'true'
                     ? Positioned(
                         bottom: -10,
                         child: Container(
@@ -158,7 +175,7 @@ class Product_Card extends StatelessWidget {
                                 color: Theme.of(context).indicatorColor,
                                 borderRadius: BorderRadius.circular(10)),
                             child: Text(
-                              'status outOfStock',
+                              'out_stuck'.tr,
                               style: TextStyle(
                                   fontFamily: 'plusjakarta',
                                   color: Theme.of(context).secondaryHeaderColor,
@@ -166,16 +183,12 @@ class Product_Card extends StatelessWidget {
                                   fontSize: 10),
                             )))
                     : SizedBox()
-                : SizedBox()
           ],
         ),
       ),
     );
   }
 }
-
-
-
 
 // import 'package:flutter/material.dart';
 // import 'package:velocity_x/velocity_x.dart';

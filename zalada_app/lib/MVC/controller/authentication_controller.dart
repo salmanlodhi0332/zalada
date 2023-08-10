@@ -520,7 +520,7 @@ class AuthenticationController extends GetxController {
 //------------------------------  UPDATE PROFILE
   Future<void> updateProfile(UserModel userdata, context) async {
     try {
-      Loader.poploader();
+      Loader.poploader(context);
       final response;
 
       if (userdata.userimage != "") {
@@ -740,8 +740,8 @@ class AuthenticationController extends GetxController {
 
   logout(BuildContext context) {
     _pref.logout();
-    Page_Navigation.getInstance.Page_pushAndRemoveUntil(context, login_screen());
-
+    Page_Navigation.getInstance
+        .Page_pushAndRemoveUntil(context, login_screen());
 
     // Page_Navigation.getInstance.Page(context, login_screen());
   }

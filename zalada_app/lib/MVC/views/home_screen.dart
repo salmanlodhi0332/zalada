@@ -264,19 +264,26 @@ class _Home_ScreenState extends State<Home_Screen> {
                           fontSize: 18,
                           fontWeight: FontWeight.w700),
                     ).pOnly(top: 10),
-                    Obx(() => Row(
-                          children: controller.hotdeal_list
-                              .map((e) => Product_Card(
-                                    id: e.id,
-                                    hotdeal: 'true',
-                                    imageurl:
-                                        'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
-                                    product_name: e.name,
-                                    price: e.price,
-                                    disprice: e.discountedPrice,
-                                  ))
-                              .toList(),
-                        )).py(20),
+                    Obx(() => SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: controller.hotdeal_list.map((e) {
+                              var discountprice =
+                                  e.discountedPrice!.toStringAsFixed(2);
+                              print(discountprice);
+                              return Product_Card(
+                                id: e.id,
+                                hotdeal: 'true',
+                                imageurl: e.product_media[0],
+                                product_name: e.name,
+                                price: discountprice,
+                                disprice: e.price,
+                                outOfStock: e.outOfStock,
+                                isNewArrival: e.isNewArrival,
+                              ).pOnly(right: 15).py(15);
+                            }).toList(),
+                          ),
+                        )).pOnly(bottom: 10),
                     Obx(
                       () => SingleChildScrollView(
                         physics: const BouncingScrollPhysics(),

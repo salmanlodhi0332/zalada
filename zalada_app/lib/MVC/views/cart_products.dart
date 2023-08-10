@@ -62,7 +62,7 @@ class CartProducts extends StatelessWidget {
                 children: [
                   Text.rich(TextSpan(children: [
                     TextSpan(
-                      text: '\$910 ',
+                      text: '\$' + dummyProducts.discountedPrice.toString(),
                       style: TextStyle(
                           fontSize: 15,
                           color: Theme.of(context).hintColor,
@@ -70,7 +70,7 @@ class CartProducts extends StatelessWidget {
                           fontFamily: 'plusjakarta'),
                     ),
                     TextSpan(
-                      text: '\$1029',
+                      text: '\$' + dummyProducts.price,
                       style: TextStyle(
                           decoration: TextDecoration.lineThrough,
                           fontFamily: 'plusjakarta',

@@ -91,6 +91,7 @@ class Cart_Screen extends StatelessWidget {
                         physics: NeverScrollableScrollPhysics(),
                         itemCount: controller.products.length,
                         itemBuilder: (context, index) {
+                          print('');
                           return Column(
                             children: [
                               CartProducts(

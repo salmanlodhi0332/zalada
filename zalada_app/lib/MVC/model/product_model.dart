@@ -4,7 +4,7 @@ class Product_Model {
   final String description;
   final int category_id;
   final String price;
-  final String? discountedPrice;
+  final double? discountedPrice;
   final List product_media;
   final List<Subsection> subsections;
   final String createdAt;
@@ -47,8 +47,9 @@ class Product_Model {
 
     return Product_Model(
       id: json['id'],
-      discountedPrice:
-          json['discountedPrice'] == null ? '' : json['discountedPrice'],
+      discountedPrice: json['discountedPrice'] == null
+          ? 0.0
+          : json['discountedPrice'].toDouble(),
       isNewArrival: json['isNewArrival'].toString(),
       outOfStock: json['outOfStock'].toString(),
       name: json['name'],

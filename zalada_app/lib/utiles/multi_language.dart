@@ -6,6 +6,8 @@ class Multi_Language extends Translations {
         //------------------------en_US
         'en_US': {
           'product_failed': 'Product Failed',
+          'new_arrival':"New  Arrival",
+          'out_stuck':"Out Of Stuck",
           'No_address_available':'No address available.',
           'No_product_available':'No Product Available',
           "select_language": "Select Language",

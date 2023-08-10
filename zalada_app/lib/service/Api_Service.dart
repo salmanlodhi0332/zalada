@@ -38,14 +38,12 @@ class ApiService {
   getHomeData() async {
     try {
       Response response;
-      response = await dio.get(
-        '${baseURL}products/homepage',
-        // options: Options(
-        //   headers: {
-        //     'Authorization': 'Bearer $AuthUserToken',
-        //   },
-        // )
-      );
+      response = await dio.get('${baseURL}products/homepage',
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $AuthUserToken',
+            },
+          ));
 
       print("statusCode => " + response.statusCode.toString());
       print('get All Home Data API done 👌✅');
@@ -171,7 +169,7 @@ class ApiService {
 
   Add_Wishlist(Wishlist_model data, BuildContext context) async {
     try {
-      Loader.poploader();
+      Loader.poploader(context);
       Response response;
       response = await dio.post('${baseURL}wishlist',
           data: {
@@ -205,7 +203,7 @@ class ApiService {
 
   Add_Address(Address_Model data, BuildContext context) async {
     try {
-      Loader.poploader();
+      Loader.poploader(context);
       Response response;
       response = await dio.post('${baseURL}address/',
           data: {
@@ -246,7 +244,7 @@ class ApiService {
 
   Update_Address(Address_Model data, BuildContext context) async {
     try {
-      Loader.poploader();
+      Loader.poploader(context);
       Response response;
       response = await dio.patch('${baseURL}address/${data.id}',
           data: {
@@ -286,7 +284,7 @@ class ApiService {
 
   Delete_Address(int id, BuildContext context) async {
     try {
-      Loader.poploader();
+      Loader.poploader(context);
       Response response;
       response = await dio.delete('${baseURL}address/${id}',
           options: Options(
@@ -458,21 +456,19 @@ class ApiService {
 
   AddtoCart(int productId, BuildContext context) async {
     try {
-      Loader.poploader();
+      Loader.poploader(context);
       Response response;
-      response = await dio.post(
-        '${baseURL}carts/',
-        data: {
-          'user_id': productId,
-          'product_id': currentUserId,
-          'quantity': 1,
-        },
-        // options: Options(
-        //   headers: {
-        //     'Authorization': 'Bearer $AuthUserToken',
-        //   },
-        // )
-      );
+      response = await dio.post('${baseURL}carts/',
+          data: {
+            'user_id': productId,
+            'product_id': currentUserId,
+            'quantity': 1,
+          },
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $AuthUserToken',
+            },
+          ));
       if (response.statusCode == 201) {
         print("Add to cart succesfully ");
         Get.snackbar('Add_to_cart'.tr, "Add_to_cart_succesfully".tr,
@@ -497,7 +493,7 @@ class ApiService {
 // Add Payment Work starts from here,
   Add_payment(Payment_model data, BuildContext context) async {
     try {
-      Loader.poploader();
+      Loader.poploader(context);
       Response response;
       response = await dio.post('${baseURL}payment/',
           data: {
@@ -534,7 +530,7 @@ class ApiService {
 
   Update_payment(Payment_model data, BuildContext context) async {
     try {
-      Loader.poploader();
+      Loader.poploader(context);
       Response response;
       response = await dio.patch('${baseURL}payment/${data.id}',
           data: {

@@ -72,7 +72,7 @@ class Product_Card extends StatelessWidget {
                       color: Theme.of(context).hintColor,
                       fontWeight: FontWeight.w600),
                 ),
-                hotdeal == 'false'
+                hotdeal == ''
                     ? Text(
                         '\$' + price,
                         textAlign: TextAlign.center,
@@ -112,9 +112,9 @@ class Product_Card extends StatelessWidget {
                           GestureDetector(
                             onTap: () {
                               if (id != null) {
-                                cartController.addProduct(controller
-                                    .productslist
-                                    .firstWhere((product) => product.id == id));
+                                var productData = controller.productslist
+                                    .firstWhere((product) => product.id == id);
+                                cartController.addtoCart(productData, context);
                               }
                             },
                             child: Container(

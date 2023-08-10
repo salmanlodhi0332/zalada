@@ -373,10 +373,10 @@ class _Home_ScreenState extends State<Home_Screen> {
                                             ));
                                       }
                                     },
-                                    hotdeal: 'false',
+                                    hotdeal: '',
                                     imageurl: item.product_media[0],
                                     product_name: item.name,
-                                    price: '\$' + item.price,
+                                    price: item.price,
                                     outOfStock: item.outOfStock,
                                     isNewArrival: item.isNewArrival,
                                   );

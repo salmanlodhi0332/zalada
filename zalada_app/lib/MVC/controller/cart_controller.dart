@@ -1,18 +1,22 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import '../../service/Api_Service.dart';
 import '../model/product_model.dart';
 
 class cart_Controller extends GetxController {
   var cartproductlist = {}.obs;
-  void addProduct(Product_Model dummyProducts) {
-    if (cartproductlist.containsKey(dummyProducts)) {
-      cartproductlist[dummyProducts] += 1;
-    } else {
-      cartproductlist[dummyProducts] = 1;
-    }
+  Future<void> addtoCart(Product_Model ProductsData,BuildContext context) async {
+     try {
+      var ServerResponse = await ApiService.getInstance.AddtoCart(ProductsData.id,context);
 
-    Get.snackbar("Product Added", "You have added the product",
-        snackPosition: SnackPosition.TOP, duration: Duration(seconds: 2));
+    } catch (e) {
+      print('getAddress error: $e');
+    } 
   }
+
+
+
+  
 
   void removeProduct(Product_Model dummyProducts) {
     if (cartproductlist.containsKey(dummyProducts) &&

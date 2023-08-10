@@ -32,6 +32,8 @@ class ApiService {
   static const String baseURL = "${Constants.baseURL}/api/v1/";
   late BuildContext context;
   static String AuthUserToken = shared_preferences.userToken.value;
+  static int currentUserId =
+      int.parse(shared_preferences.currentUserId.value.toString());
 
   getHomeData() async {
     try {
@@ -451,6 +453,44 @@ class ApiService {
       print(e);
       // throw Exception('Failed to load posts: $e');
       // return [];
+    }
+  }
+
+  AddtoCart(int productId, BuildContext context) async {
+    try {
+      Loader.poploader();
+      Response response;
+      response = await dio.post(
+        '${baseURL}carts/',
+        data: {
+          'user_id': productId,
+          'product_id': currentUserId,
+          'quantity': 1,
+        },
+        // options: Options(
+        //   headers: {
+        //     'Authorization': 'Bearer $AuthUserToken',
+        //   },
+        // )
+      );
+      if (response.statusCode == 201) {
+        print("Add to cart succesfully ");
+        Get.snackbar('Add_to_cart'.tr, "Add_to_cart_succesfully".tr,
+            colorText: Theme.of(context).hintColor,
+            backgroundColor: Theme.of(context).cardColor);
+
+        Page_Navigation.getInstance.Page(context, payment_method());
+      } else {
+        Get.snackbar('error'.tr, response.data['message'],
+            colorText: Theme.of(context).hintColor,
+            backgroundColor: Theme.of(context).cardColor);
+      }
+    } on DioException catch (e) {
+      Get.back();
+      print("Payment  ${e.response?.data['message']}");
+      Get.snackbar('Payment_field'.tr, "${e.response?.data['message']}",
+          colorText: Theme.of(context).hintColor,
+          backgroundColor: Theme.of(context).cardColor);
     }
   }
 

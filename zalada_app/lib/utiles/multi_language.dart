@@ -157,7 +157,7 @@ class Multi_Language extends Translations {
           "new_password": "New Password",
           "confirm_password": "Confirm Password",
           "change_password": "Change Password",
-          "": "",
+          "Add_to_cart": "Add to cart",
           "": "",
           "": "",
           "": "",

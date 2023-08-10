@@ -28,9 +28,9 @@ class categories_Model {
 
   factory categories_Model.fromjson(Map<String, dynamic> json) {
     return categories_Model(
-      id: json['id'],
+      id: json['category_id'],
       name: json['name'],
-      Categoriesimage: json['image'],
+      Categoriesimage: json['category_image'],
       products: json['products'] == null ? [] : json['products'].toList(),
       updateddate: json['createdAt'],
       creationdate: json['updatedAt'],

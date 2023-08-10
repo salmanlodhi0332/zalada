@@ -11,6 +11,7 @@ import 'package:zalada_app/dummyData/product_dummyData.dart';
 import 'package:zalada_app/utiles/shared_preferences.dart';
 import '../MVC/model/help_center_model.dart';
 import '../MVC/model/home_model.dart';
+import '../MVC/model/notification_model.dart';
 import '../MVC/model/payment_model.dart';
 import '../MVC/model/privacy_policy_model.dart';
 import '../MVC/model/product_model.dart';
@@ -33,17 +34,91 @@ class ApiService {
   late BuildContext context;
   static String AuthUserToken = shared_preferences.userToken.value;
 
+  getnotificatonData() async {
+    try {
+      Response response;
+      response = await dio.get('${baseURL}notifications',
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $AuthUserToken',
+            },
+          ));
+
+      print("statusCode => " + response.statusCode.toString());
+      print('get notifications API done 👌✅');
+      if (response.statusCode == 200) {
+        final responseData = response.data;
+        if (responseData is List) {
+          List<Notification_Model> notificationlist = (response.data as List)
+              .map((data) => Notification_Model.fromJson(data))
+              .toList();
+          return notificationlist;
+        } else if (responseData is Map) {
+          List<Notification_Model> notificationlist =
+              (responseData['data'] as List)
+                  .map((data) => Notification_Model.fromJson(data))
+                  .toList();
+          return notificationlist;
+          // } else {
+          //   throw Exception('Failed to load posts: ${response.statusCode}');
+          // }
+        }
+      }
+      // return product_dummyData.dummyProducts;
+    } on DioException catch (e) {
+      print(e);
+      // throw Exception('Failed to load posts: $e');
+      return [];
+    }
+  }
+
+  getproductLike() async {
+    try {
+      Response response;
+      response = await dio.get('${baseURL}products/youmaylike',
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $AuthUserToken',
+            },
+          ));
+
+      print("statusCode => " + response.statusCode.toString());
+      print('get products you may like API done 👌✅');
+      if (response.statusCode == 200) {
+        final responseData = response.data;
+        if (responseData is List) {
+          List<Product_Model> youlikelist = (response.data as List)
+              .map((data) => Product_Model.fromjson(data))
+              .toList();
+          return youlikelist;
+        } else if (responseData is Map) {
+          List<Product_Model> youlikelist =
+              (responseData['recommendedProducts'] as List)
+                  .map((data) => Product_Model.fromjson(data))
+                  .toList();
+          return youlikelist;
+          // } else {
+          //   throw Exception('Failed to load posts: ${response.statusCode}');
+          // }
+        }
+      }
+      // return product_dummyData.dummyProducts;
+    } on DioException catch (e) {
+      print(e);
+      // throw Exception('Failed to load posts: $e');
+      return [];
+    }
+  }
+
   getHomeData() async {
     try {
       Response response;
-      response = await dio.get(
-        '${baseURL}products/homepage',
-        // options: Options(
-        //   headers: {
-        //     'Authorization': 'Bearer $AuthUserToken',
-        //   },
-        // )
-      );
+      response = await dio.get('${baseURL}products/homepage',
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $AuthUserToken',
+            },
+          ));
 
       print("statusCode => " + response.statusCode.toString());
       print('get All Home Data API done 👌✅');

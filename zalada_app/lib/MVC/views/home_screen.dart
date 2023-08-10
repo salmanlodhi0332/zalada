@@ -284,6 +284,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                             }).toList(),
                           ),
                         )).pOnly(bottom: 10),
+                        
                     Obx(
                       () => SingleChildScrollView(
                         physics: const BouncingScrollPhysics(),

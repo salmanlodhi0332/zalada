@@ -1,8 +1,30 @@
 import 'package:get/get.dart';
+import '../../service/Api_Service.dart';
 import '../model/product_model.dart';
 
 class cart_Controller extends GetxController {
   var cartproductlist = {}.obs;
+  final product_youlike_list = [].obs;
+  final islikeLoading = false.obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    getproductLike();
+  }
+
+  getproductLike() async {
+    try {
+      islikeLoading(true);
+      var ServerResponse = await ApiService.getInstance.getproductLike();
+      product_youlike_list.value = ServerResponse;
+    } catch (e) {
+      print('getAllCategories  error: $e');
+    } finally {
+      islikeLoading(false);
+    }
+  }
+
   void addProduct(Product_Model dummyProducts) {
     if (cartproductlist.containsKey(dummyProducts)) {
       cartproductlist[dummyProducts] += 1;

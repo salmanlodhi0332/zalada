@@ -8,6 +8,7 @@ import '../../utiles/constent.dart';
 import '../model/categories_model.dart';
 import '../model/home_model.dart';
 import '../model/product_model.dart';
+import 'cart_controller.dart';
 
 final dio = Dio();
 
@@ -17,13 +18,13 @@ class home_Controller extends GetxController {
   RxList<Product_Model> hotdeal_list = <Product_Model>[].obs;
   RxList<categories_Model> categoriesList = <categories_Model>[].obs;
   RxBool isLoading = false.obs;
-
+  final cartController = Get.put(cart_Controller());
   @override
   void onInit() {
     super.onInit();
     getAllCategories();
     getHomeData();
-    // getAllproducts();
+    cartController.getuserCart();
   }
 
   getHomeData() async {
@@ -57,12 +58,12 @@ class home_Controller extends GetxController {
     }
   }
 
-  getAllproducts(int? Category_Id, int pageNo,BuildContext context) async {
+  getAllproducts(int? Category_Id, int pageNo, BuildContext context) async {
     try {
       isLoading(true);
 
-      var ServerResponse =
-          await ApiService.getInstance.getAllproducts(Category_Id, pageNo,context);
+      var ServerResponse = await ApiService.getInstance
+          .getAllproducts(Category_Id, pageNo, context);
       if (pageNo > 1) {
         // productslist.addAll(ServerResponse);
         productslist.value.addAll(ServerResponse);

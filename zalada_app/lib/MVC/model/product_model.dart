@@ -7,6 +7,7 @@ class Product_Model {
   final double? discountedPrice;
   final List product_media;
   final List<Subsection> subsections;
+  final int? quantity;
   final String createdAt;
   final String updatedAt;
   final String? isNewArrival;
@@ -21,6 +22,7 @@ class Product_Model {
     required this.description,
     required this.category_id,
     required this.price,
+    this.quantity,
     required this.product_media,
     required this.subsections,
     required this.createdAt,
@@ -47,15 +49,17 @@ class Product_Model {
 
     return Product_Model(
       id: json['id'],
-      discountedPrice: json['discountedPrice'] == null
+      discountedPrice: json['discount'] == null
           ? 0.0
-          : json['discountedPrice'].toDouble(),
+          : json['discount'].toDouble(),
       isNewArrival: json['isNewArrival'].toString(),
       outOfStock: json['outOfStock'].toString(),
       name: json['name'],
+      quantity: json['quantity'] ?? 0,
       description: json['description'],
       category_id: json['category_id'],
       price: json['price'].toString(),
+
       product_media: json['product_media'] == null
           ? [
               'https://www.gme.net.au/app/plugins/wp-media-folder/assets/images/default.png'

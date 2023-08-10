@@ -477,18 +477,16 @@ class ApiService {
       if (response.statusCode == 200) {
         final responseData = response.data;
         if (responseData is List) {
-          List<Help_center_model> helpcenterData = (response.data as List)
-              .map((data) => Help_center_model.fromJson(data))
+          List<Product_Model> Productlist = (response.data as List)
+              .map((data) => Product_Model.fromjson(data))
               .toList();
-          return helpcenterData;
+          return Productlist;
         } else if (responseData is Map) {
-          List<Help_center_model> helpcenterData =
-              (responseData['data'] as List)
-                  .map((data) => Help_center_model.fromJson(data))
-                  .toList();
-          return helpcenterData;
+          List<Product_Model> Productlist = (responseData['data'] as List)
+              .map((data) => Product_Model.fromjson(data))
+              .toList();
+          return Productlist;
         }
-        return responseData;
       }
     } on DioException catch (e) {
       print(e);
@@ -510,6 +508,42 @@ class ApiService {
               'Authorization': 'Bearer $AuthUserToken',
             },
           ));
+      print("statusCode => " + response.statusCode.toString());
+      print('AddtoCart  API done 👌✅');
+      if (response.statusCode == 201) {
+        print("Add to cart succesfully ");
+        Get.back();
+        Get.snackbar('Add_to_cart'.tr, "Add_to_cart_succesfully".tr,
+            colorText: Theme.of(context).hintColor,
+            backgroundColor: Theme.of(context).cardColor);
+      } else {
+        Get.snackbar('error'.tr, response.data['message'],
+            colorText: Theme.of(context).hintColor,
+            backgroundColor: Theme.of(context).cardColor);
+      }
+    } on DioException catch (e) {
+      Get.back();
+      Get.snackbar('Payment_field'.tr, "${e.response?.data['message']}",
+          colorText: Theme.of(context).hintColor,
+          backgroundColor: Theme.of(context).cardColor);
+      print("c  ${e.response?.data['message']}");
+    }
+  }
+  addorRemoveCart(int productId, BuildContext context) async {
+    try {
+      Loader.poploader(context);
+      Response response;
+      response = await dio.post('${baseURL}carts/$productId',
+          data: {
+            'quantity': 1,
+          },
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $AuthUserToken',
+            },
+          ));
+      print("statusCode => " + response.statusCode.toString());
+      print('AddtoCart  API done 👌✅');
       if (response.statusCode == 201) {
         print("Add to cart succesfully ");
         Get.back();

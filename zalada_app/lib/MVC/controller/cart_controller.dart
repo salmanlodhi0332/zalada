@@ -4,35 +4,38 @@ import '../../service/Api_Service.dart';
 import '../model/product_model.dart';
 
 class cart_Controller extends GetxController {
-  var cartproductlist = {}.obs;
-  Future<void> addtoCart(Product_Model ProductsData,BuildContext context) async {
-     try {
-      var ServerResponse = await ApiService.getInstance.AddtoCart(ProductsData.id,context);
-
+  RxList cartproductlist = [].obs;
+  Future<void> addtoCart(
+      Product_Model ProductsData, BuildContext context) async {
+    try {
+      var ServerResponse =
+          await ApiService.getInstance.AddtoCart(ProductsData.id, context);
+      getuserCart();
     } catch (e) {
       print('getAddress error: $e');
-    } 
-  }
-
-
-
-  
-
-  void removeProduct(Product_Model dummyProducts) {
-    if (cartproductlist.containsKey(dummyProducts) &&
-        cartproductlist[dummyProducts] == 1) {
-      cartproductlist.removeWhere((key, value) => key == dummyProducts);
-    } else {
-      cartproductlist[dummyProducts] -= 1;
     }
-
-    Get.snackbar("Product Removed", "You have removed the product",
-        snackPosition: SnackPosition.TOP, duration: Duration(seconds: 2));
   }
 
-  void removeCartItem(Product_Model product) {
-    cartproductlist.remove(product);
+  getuserCart() async {
+    try {
+      // isLoading.value = true;
+      var ServerResponse = await ApiService.getInstance.getuserCart();
+      cartproductlist.clear();
+      cartproductlist.value = ServerResponse;
+    } catch (e) {
+      print('getAddress error: $e');
+    } finally {
+      // isLoading.value = false;
+    }
   }
 
-  get products => cartproductlist;
+  Future<void> addorRemoveCart(
+      Product_Model ProductsData, BuildContext context) async {
+    try {
+      var ServerResponse =
+          await ApiService.getInstance.AddtoCart(ProductsData.id, context);
+    } catch (e) {
+      print('getAddress error: $e');
+    }
+  }
 }

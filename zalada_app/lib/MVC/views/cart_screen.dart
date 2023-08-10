@@ -43,80 +43,90 @@ class Cart_Screen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Wrap(
             children: [
-              Obx(
-                () => cartController.products.isEmpty
-                    ? Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        //  / crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            height: 50,
-                          ),
-                          Container(
-                            child: Image.asset('assets/images/empty_cart.png'),
-                          ).pOnly(bottom: 10),
-                          Text(
-                            'cart_heading_one'.tr,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Theme.of(context).hintColor,
-                                fontSize: 25),
-                          ).pOnly(bottom: 10),
-                          Text(
-                            'cart_description'.tr,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Theme.of(context).disabledColor,
-                                fontSize: 15),
-                          ).pOnly(bottom: 10).px(40),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Button_Widget(
-                              ontap: () {
-                                Page_Navigation.getInstance
-                                    .Page(context, Bottom_Bar());
-                              },
-                              width: width,
-                              title: 'start_Shopping'.tr),
-                          SizedBox(
-                            height: 30,
-                          ),
-                        ],
-                      )
-                    : ListView.builder(
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: controller.products.length,
-                        itemBuilder: (context, index) {
-                          print('');
-                          return Column(
-                            children: [
-                              CartProducts(
-                                controller: controller,
-                                dummyProducts:
-                                    controller.products.keys.toList()[index],
-                                quantity:
-                                    controller.products.values.toList()[index],
-                              ),
-                              if (index < controller.products.length - 1)
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 20, right: 20),
-                                  child: Divider(
-                                    color: Theme.of(context)
-                                        .disabledColor
-                                        .withOpacity(0.4),
-                                    thickness: 1,
-                                  ).py(10),
+              Obx(() => cartController.cartproductlist.isEmpty
+                      ? Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          //  / crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              height: 50,
+                            ),
+                            Container(
+                              child:
+                                  Image.asset('assets/images/empty_cart.png'),
+                            ).pOnly(bottom: 10),
+                            Text(
+                              'cart_heading_one'.tr,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).hintColor,
+                                  fontSize: 25),
+                            ).pOnly(bottom: 10),
+                            Text(
+                              'cart_description'.tr,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).disabledColor,
+                                  fontSize: 15),
+                            ).pOnly(bottom: 10).px(40),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Button_Widget(
+                                ontap: () {
+                                  Page_Navigation.getInstance
+                                      .Page(context, Bottom_Bar());
+                                },
+                                width: width,
+                                title: 'start_Shopping'.tr),
+                            SizedBox(
+                              height: 30,
+                            ),
+                          ],
+                        )
+                      : Column(
+                          children: controller.cartproductlist
+                              .map(
+                                (e) => CartProducts(
+                                  controller: controller,
+                                  Products: e,
                                 ),
-                            ],
-                          );
-                        },
-                      ),
-              ),
+                              )
+                              .toList(),
+                        )
+                  // : ListView.builder(
+                  //     shrinkWrap: true,
+                  //     physics: NeverScrollableScrollPhysics(),
+                  //     itemCount: controller.products.length,
+                  //     itemBuilder: (context, index) {
+                  //       print('');
+                  //       return Column(
+                  //         children: [
+                  //           CartProducts(
+                  //             controller: controller,
+                  //             dummyProducts:
+                  //                 controller.products.keys.toList()[index],
+                  //             quantity:
+                  //                 controller.products.values.toList()[index],
+                  //           ),
+                  //           if (index < controller.products.length - 1)
+                  //             Padding(
+                  //               padding: const EdgeInsets.only(
+                  //                   left: 20, right: 20),
+                  //               child: Divider(
+                  //                 color: Theme.of(context)
+                  //                     .disabledColor
+                  //                     .withOpacity(0.4),
+                  //                 thickness: 1,
+                  //               ).py(10),
+                  //             ),
+                  //         ],
+                  //       );
+                  //     },
+                  //   ),
+                  ),
               const SizedBox(
                 height: 10,
               ),

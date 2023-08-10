@@ -7,14 +7,14 @@ import '../controller/cart_controller.dart';
 
 class CartProducts extends StatelessWidget {
   final cart_Controller controller;
-  final Product_Model dummyProducts;
-  final int quantity;
+  final Product_Model Products;
+  
 
-  const CartProducts(
-      {super.key,
-      required this.controller,
-      required this.dummyProducts,
-      required this.quantity});
+  const CartProducts({
+    super.key,
+    required this.controller,
+    required this.Products,
+  }); 
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -39,7 +39,7 @@ class CartProducts extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: Image.network(
-              dummyProducts.product_media[0],
+              Products.product_media[0],
               width: 50,
               height: 50,
               fit: BoxFit.cover,
@@ -53,7 +53,7 @@ class CartProducts extends StatelessWidget {
             children: [
               Text(
                 // 'Macbook Pro 15" 2019 - Intel core i7',
-                dummyProducts.name,
+                Products.name,
                 maxLines: 2,
               ),
               SizedBox(height: 5),
@@ -62,7 +62,7 @@ class CartProducts extends StatelessWidget {
                 children: [
                   Text.rich(TextSpan(children: [
                     TextSpan(
-                      text: '\$' + dummyProducts.discountedPrice.toString(),
+                      text: '\$' + Products.discountedPrice.toString(),
                       style: TextStyle(
                           fontSize: 15,
                           color: Theme.of(context).hintColor,
@@ -70,7 +70,7 @@ class CartProducts extends StatelessWidget {
                           fontFamily: 'plusjakarta'),
                     ),
                     TextSpan(
-                      text: '\$' + dummyProducts.price,
+                      text: '\$' + Products.price,
                       style: TextStyle(
                           decoration: TextDecoration.lineThrough,
                           fontFamily: 'plusjakarta',
@@ -95,7 +95,7 @@ class CartProducts extends StatelessWidget {
                         color: Theme.of(context).hintColor,
                       ),
                       onPressed: () {
-                        controller.removeProduct(dummyProducts);
+                        controller.addorRemoveCart(Products, context);
                         // No need to handle quantity changes since it's a stateless widget
                       },
                     ),
@@ -103,7 +103,7 @@ class CartProducts extends StatelessWidget {
                   SizedBox(
                     width: 10,
                   ),
-                  Text('${quantity}'),
+                  Text('${Products.quantity}'),
                   SizedBox(
                     width: 10,
                   ),
@@ -118,7 +118,7 @@ class CartProducts extends StatelessWidget {
                         color: Theme.of(context).hintColor,
                       ),
                       onPressed: () {
-                        // controller.addProduct(dummyProducts);
+                        // controller.addProduct(Products);
                       },
                     ),
                   ),
@@ -130,7 +130,7 @@ class CartProducts extends StatelessWidget {
                         Theme.of(context).disabledColor.withOpacity(0.1),
                     child: IconButton(
                       onPressed: () {
-                        controller.removeCartItem(dummyProducts);
+                        controller.addorRemoveCart(Products, context);
                       },
                       icon: Icon(
                         Icons.delete_outline,

@@ -6,10 +6,10 @@ class Multi_Language extends Translations {
         //------------------------en_US
         'en_US': {
           'product_failed': 'Product Failed',
-          'new_arrival':"New  Arrival",
-          'out_stuck':"Out Of Stuck",
-          'No_address_available':'No address available.',
-          'No_product_available':'No Product Available',
+          'new_arrival': "New  Arrival",
+          'out_stuck': "Out Of Stuck",
+          'No_address_available': 'No address available.',
+          'No_product_available': 'No Product Available',
           "select_language": "Select Language",
           'indonesia': 'indonesia',
           'English(US)': 'English(US)',
@@ -161,6 +161,8 @@ class Multi_Language extends Translations {
           "change_password": "Change Password",
           "Add_to_cart": "Add to cart",
           "Add_to_cart_succesfully": "Add to cart succesfully",
+          "form": "Form",
+          "please_Fill_the_form": "Please fill the form",
           "": "",
           "": "",
           "": "",

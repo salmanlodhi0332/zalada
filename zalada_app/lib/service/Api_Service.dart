@@ -15,6 +15,7 @@ import '../MVC/model/payment_model.dart';
 import '../MVC/model/privacy_policy_model.dart';
 import '../MVC/model/product_model.dart';
 import '../MVC/model/categories_model.dart';
+import '../MVC/model/shiping_model.dart';
 import '../MVC/views/payment_method.dart';
 import '../utiles/constent.dart';
 import '../utiles/loader.dart';
@@ -538,10 +539,10 @@ class ApiService {
       Response response;
       response = await dio.post('${baseURL}payment-card',
           data: {
-            'cardName': data.CardName,
-            'card_number': data.CardNumber,
-            "expire_date": data.Expire_date,
-            'Cvv': data.Cvv,
+            'cardName': data.cardName,
+            'card_number': data.cardNumber,
+            "expire_date": data.expire_date,
+            'Cvv': data.cvv,
           },
           options: Options(
             headers: {
@@ -570,47 +571,122 @@ class ApiService {
     }
   }
 
-  Update_payment(Payment_model data, BuildContext context) async {
+  getAllcards() async {
     try {
-      Loader.poploader(context);
       Response response;
-      response = await dio.patch('${baseURL}payment-card/',
-          data: {
-            'CardName': data.CardName,
-            'CardNumber': data.CardNumber,
-            // 'expir'
-            'Cvv': data.Cvv,
-          },
+      response = await dio.get('${baseURL}payment-card',
           options: Options(
             headers: {
               'Authorization': 'Bearer $AuthUserToken',
             },
           ));
+
+      print("statusCode => " + response.statusCode.toString());
+      print('getAllcards API done 👌✅');
       print(response.data);
       if (response.statusCode == 200) {
-        print("Payments updated");
-        Get.snackbar('payment'.tr, "Payment_updated".tr,
-            colorText: Theme.of(context).hintColor,
-            backgroundColor: Theme.of(context).cardColor);
-        // Page_Navigation.getInstance.Page(
-        //     context,
-        //     Bottom_Bar(
-        //       initialIndex: 4,
-        //     )
-        //     );
-
-        Page_Navigation.getInstance.Page(context, payment_method());
-      } else {
-        Get.snackbar('error'.tr, response.data['message'],
-            colorText: Theme.of(context).hintColor,
-            backgroundColor: Theme.of(context).cardColor);
+        final responseData = response.data;
+        if (responseData is List) {
+          List<Payment_model> cardlist = (response.data as List)
+              .map((data) => Payment_model.fromJson(data))
+              .toList();
+          return cardlist;
+        } else if (responseData is Map) {
+          List<Payment_model> cardlist = (responseData['data'] as List)
+              .map((data) => Payment_model.fromJson(data))
+              .toList();
+          return cardlist;
+          // } else {
+          //   throw Exception('Failed to load posts: ${response.statusCode}');
+          // }
+        }
       }
+      // return product_dummyData.dummyProducts;
     } on DioException catch (e) {
-      Get.back();
-      print("Payment  ${e.response?.data['message']}");
-      Get.snackbar('payment_failed'.tr, "${e.response?.data['message']}",
-          colorText: Theme.of(context).hintColor,
-          backgroundColor: Theme.of(context).cardColor);
+      print(e);
+      // throw Exception('Failed to load posts: $e');
+      return [];
     }
   }
+
+  getShiping() async {
+    try {
+      Response response;
+      response = await dio.get('${baseURL}order/shipping',
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $AuthUserToken',
+            },
+          ));
+
+      print("statusCode => " + response.statusCode.toString());
+      print('getShiping API done 👌✅');
+      print(response.data);
+      if (response.statusCode == 200) {
+        final responseData = response.data;
+        if (responseData is List) {
+          List<Shiping_Model> shiplist = (response.data as List)
+              .map((data) => Shiping_Model.fromJson(data))
+              .toList();
+          return shiplist;
+        } else if (responseData is Map) {
+          List<Shiping_Model> shiplist = (responseData['data'] as List)
+              .map((data) => Shiping_Model.fromJson(data))
+              .toList();
+          return shiplist;
+          // } else {
+          //   throw Exception('Failed to load posts: ${response.statusCode}');
+          // }
+        }
+      }
+      // return product_dummyData.dummyProducts;
+    } on DioException catch (e) {
+      print(e);
+      // throw Exception('Failed to load posts: $e');
+      return [];
+    }
+  }
+  // Update_payment(Payment_model data, BuildContext context) async {
+  //   try {
+  //     Loader.poploader(context);
+  //     Response response;
+  //     response = await dio.patch('${baseURL}payment-card/',
+  //         data: {
+  //           'CardName': data.CardName,
+  //           'CardNumber': data.CardNumber,
+  //           // 'expir'
+  //           'Cvv': data.Cvv,
+  //         },
+  //         options: Options(
+  //           headers: {
+  //             'Authorization': 'Bearer $AuthUserToken',
+  //           },
+  //         ));
+  //     print(response.data);
+  //     if (response.statusCode == 200) {
+  //       print("Payments updated");
+  //       Get.snackbar('payment'.tr, "Payment_updated".tr,
+  //           colorText: Theme.of(context).hintColor,
+  //           backgroundColor: Theme.of(context).cardColor);
+  //       // Page_Navigation.getInstance.Page(
+  //       //     context,
+  //       //     Bottom_Bar(
+  //       //       initialIndex: 4,
+  //       //     )
+  //       //     );
+
+  //       Page_Navigation.getInstance.Page(context, payment_method());
+  //     } else {
+  //       Get.snackbar('error'.tr, response.data['message'],
+  //           colorText: Theme.of(context).hintColor,
+  //           backgroundColor: Theme.of(context).cardColor);
+  //     }
+  //   } on DioException catch (e) {
+  //     Get.back();
+  //     print("Payment  ${e.response?.data['message']}");
+  //     Get.snackbar('payment_failed'.tr, "${e.response?.data['message']}",
+  //         colorText: Theme.of(context).hintColor,
+  //         backgroundColor: Theme.of(context).cardColor);
+  //   }
+  // }
 }

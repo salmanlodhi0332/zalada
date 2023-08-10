@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:zalada_app/MVC/controller/payment_controller.dart';
 import 'package:zalada_app/MVC/views/add_payment.dart';
 import 'package:zalada_app/custom/payment_methods/CD_selected_paymentBox.dart';
 import 'package:zalada_app/custom/payment_methods/paymentgetway_selected.dart';
@@ -14,6 +15,8 @@ class Add_Payment_Method extends GetView {
   RxBool select_card = false.obs;
   RxBool select_paypal = false.obs;
   RxBool select_applepay = false.obs;
+
+  final controller = Get.put(Payment_Controller());
 
   @override
   Widget build(BuildContext context) {

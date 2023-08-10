@@ -4,27 +4,28 @@ import 'package:zalada_app/MVC/model/Address_model.dart';
 import '../../service/Api_Service.dart';
 import '../../utiles/constent.dart';
 import '../model/payment_model.dart';
+import '../model/shiping_model.dart';
 
 final dio = Dio();
 
-class Payment_Controller extends GetxController {
+class Shiping_Controller extends GetxController {
   static const String baseURL = "${Constants.baseURL}/api/v1/";
-  RxList<Payment_model> paymentList = <Payment_model>[].obs;
+  RxList<Shiping_Model> shipingList = <Shiping_Model>[].obs;
   RxBool isLoading = false.obs;
 
   @override
   void onInit() {
     super.onInit();
-    getpayment();
+    getShiping();
   }
 
-  getpayment() async {
+  getShiping() async {
     try {
       isLoading.value = true;
-      var ServerResponse = await ApiService.getInstance.getAllcards();
-      paymentList.value = ServerResponse;
+      var ServerResponse = await ApiService.getInstance.getShiping();
+      shipingList.value = ServerResponse;
     } catch (e) {
-      print('getpayment error: $e');
+      print('getShiping error: $e');
     } finally {
       isLoading.value = false;
     }

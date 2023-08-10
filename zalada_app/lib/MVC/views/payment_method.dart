@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -11,6 +12,7 @@ import '../../custom/botton_widget.dart';
 import '../../custom/payment_card.dart';
 import '../../utiles/getxcontroller.dart';
 import '../../utiles/page_navigation.dart';
+import '../../utiles/themeData.dart';
 import 'Address_Screen.dart';
 
 class payment_method extends StatefulWidget {
@@ -23,7 +25,7 @@ class payment_method extends StatefulWidget {
 }
 
 class _payment_methodState extends State<payment_method> {
-final controller = Get.put(Payment_Controller());
+  final controller = Get.put(Payment_Controller());
   final getcontroller = Get.put(getx_GetController());
 
   String? name;
@@ -31,6 +33,7 @@ final controller = Get.put(Payment_Controller());
   void initState() {
     super.initState();
     _saveLoginData();
+    controller.getpayment();
   }
 
 // final String? name;
@@ -69,24 +72,87 @@ final controller = Get.put(Payment_Controller());
           scrollDirection: Axis.vertical,
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 50),
-                child: Obx(() => GestureDetector(
-                      onTap: () {
-                        // Use the observable variables here to trigger updates
-                        select_mastercard.value = !select_mastercard.value;
-                        select_paypal.value = false;
-                        select_appleplay.value = false;
-                      },
-                      child: payment_card(
-                        preffixIcon: Icon(Icons.arrow_forward_ios_outlined),
-                        label: "MasterCard".tr,
-                        selected: select_mastercard.value,
-                        hintText: name ?? "",
-                        images: Image.asset("assets/images/mastercard.png"),
-                      ),
-                    )),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.only(top: 50),
+              //   child: Obx(() => GestureDetector(
+              //         onTap: () {
+              //           // Use the observable variables here to trigger updates
+              //           select_mastercard.value = !select_mastercard.value;
+              //           select_paypal.value = false;
+              //           select_appleplay.value = false;
+              //         },
+              //         child: payment_card(
+              //           preffixIcon: Icon(Icons.arrow_forward_ios_outlined),
+              //           label: "MasterCard".tr,
+              //           selected: select_mastercard.value,
+              //           hintText: name ?? "",
+              //           images: Image.asset("assets/images/mastercard.png"),
+              //         ),
+              //       )),
+              // ),
+
+              Obx(() => GestureDetector(
+                    onTap: () {
+                      // Use the observable variables here to trigger updates
+                      select_mastercard.value = !select_mastercard.value;
+                      select_paypal.value = false;
+                      select_appleplay.value = false;
+                    },
+                    child: Column(
+                      children: controller.paymentList.map((payment) {
+                        return Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors
+                                  .white, // Set your desired background color
+                              borderRadius: BorderRadius.circular(
+                                  10), // Set your desired border radius
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.3),
+                                  spreadRadius: 1,
+                                  blurRadius: 5,
+                                  offset: Offset(
+                                      0, 3), // changes position of shadow
+                                ),
+                              ],
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(18, 8, 18, 8),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: ListTile(
+                                  leading: Padding(
+                                    padding: const EdgeInsets.only(
+                                      right: 20,
+                                    ),
+                                    child: Image.asset(
+                                        "assets/images/mastercard.png"),
+                                  ),
+                                  title: Text(
+                                    '${payment.cardName}',
+                                    style: TextStyle(
+                                      color: Colors
+                                          .black, // Temporarily set a visible color
+                                    ),
+                                  ),
+                                  subtitle: Text(
+                                    '${payment.cardNumber}',
+                                    style: TextStyle(
+                                      color: Colors
+                                          .black, // Temporarily set a visible color
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  )),
+
               SizedBox(
                 height: 10,
               ),

@@ -107,6 +107,7 @@ class _AddPaymentState extends State<AddPayment> {
                             label: 'card_name'.tr,
                           ).px(10),
                           textfeild_widget(
+                            keyboardtype: TextInputType.streetAddress,
                             controller: controllernumber,
                             hintText: '2727 8907 1278 3726',
                             label: 'card_num'.tr,
@@ -204,20 +205,20 @@ class _AddPaymentState extends State<AddPayment> {
                                 if (widget.id != null) {
                                   var paymentData = Payment_model(
                                       //id: widget.id,
-                                      CardName: controllername.text,
-                                      CardNumber: controllernumber.text,
-                                      Expire_date: dateController.text,
-                                      Cvv: controllercvv.text);
+                                      cardName: controllername.text,
+                                      cardNumber: controllernumber.text,
+                                      expire_date: dateController.text,
+                                      cvv: controllercvv.text);
 
                                   // ApiService.getInstance
                                   //     .Update_payment(paymentData, context);
                                 } else {
                                   var paymentData = Payment_model(
                                       //id: widget.id,
-                                      CardName: controllername.text,
-                                      CardNumber: controllernumber.text,
-                                      Expire_date: dateController.text,
-                                      Cvv: controllercvv.text);
+                                      cardName: controllername.text,
+                                      cardNumber: controllernumber.text,
+                                      expire_date: dateController.text,
+                                      cvv: controllercvv.text);
                                   ApiService.getInstance
                                       .Add_payment(paymentData, context);
                                 }

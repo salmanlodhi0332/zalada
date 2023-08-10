@@ -1,17 +1,17 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:zalada_app/MVC/model/product_model.dart';
 import 'package:zalada_app/MVC/model/wishlist_model.dart';
 
 import '../../service/Api_Service.dart';
 import '../../utiles/constent.dart';
-import '../model/product_model.dart';
 
 final dio = Dio();
 
 class Wishlist_Controller extends GetxController {
   static const String baseURL = "${Constants.baseURL}/api/v1/";
-  RxList<Wishlist_model> wishlist = <Wishlist_model>[].obs;
+  RxList<Product_Model> wishlist = <Product_Model>[].obs;
   RxBool isLoading = false.obs;
 
   @override

@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/MVC/controller/home_controller.dart';
+import 'package:zalada_app/MVC/controller/wishlist_controller.dart';
+import 'package:zalada_app/MVC/model/product_model.dart';
 import 'package:zalada_app/MVC/views/wishlist_cart_screen.dart';
 import 'package:zalada_app/custom/back_button.dart';
 import 'package:readmore/readmore.dart';
 import 'package:zalada_app/custom/custom_appbar.dart';
 import 'package:zalada_app/custom/product_card.dart';
+import 'package:zalada_app/service/Api_Service.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
 import '../../custom/add_to_cart_button.dart';
 import '../../custom/botton_widget.dart';
@@ -15,13 +18,30 @@ import 'Address_Screen.dart';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:badges/badges.dart' as badges;
 
-class Product_Detail_Screen extends StatelessWidget {
+class Product_Detail_Screen extends StatefulWidget {
   final int id;
 
   Product_Detail_Screen({required this.id});
+
+  @override
+  State<Product_Detail_Screen> createState() => _Product_Detail_ScreenState();
+}
+
+class _Product_Detail_ScreenState extends State<Product_Detail_Screen> {
   final controller = Get.put(home_Controller());
+
   final cartController = Get.put(cart_Controller());
+
   final groupcontroller = SingleValueDropDownController();
+
+  bool isFavorite = false;
+
+  void toggleFavorite() {
+    setState(() {
+      isFavorite = !isFavorite;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final RxString displayimages = ''.obs;
@@ -37,20 +57,23 @@ class Product_Detail_Screen extends StatelessWidget {
         actionButtons: [
           back_button(
             ontap: () {
-              Page_Navigation.getInstance.Page(context, Wishlist_Screen());
+              toggleFavorite();
+              ApiService.getInstance.Add_Wishlist(widget.id, context);
+              // Page_Navigation.getInstance.Page(context, Wishlist_Screen());
             },
             icon_widget: Image.asset(
               'assets/images/favorite.png',
-              color: Theme.of(context).hintColor,
+              color: isFavorite ? Colors.red : Theme.of(context).hintColor,
             ).p(5),
           )
         ],
       ),
       body: SingleChildScrollView(
         child: Wrap(
-          children:
-              controller.Productslist.where((p0) => p0.id == id).map((item) {
-            displayimages.value = item.discountedPrice![0];
+          children: controller.productslist
+              .where((p0) => p0.id == widget.id)
+              .map((item) {
+            displayimages.value = item.product_media[0];
             return Wrap(
               // alignment: WrapAlignment.center,
               children: [
@@ -172,9 +195,10 @@ class Product_Detail_Screen extends StatelessWidget {
                 Column(
                   children: item.subsections
                       .map((e) => Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                e.toString(),
+                                e.name,
                                 style: TextStyle(
                                     fontSize: 14,
                                     fontFamily: 'plusjakarta',
@@ -201,11 +225,11 @@ class Product_Detail_Screen extends StatelessWidget {
                                             borderRadius:
                                                 BorderRadius.circular(10.0),
                                           ),
-                                          hintText: e[0] == null
+                                          hintText: e.value[0] == null
                                               ? 'Select Stroge'
-                                              : e[0]),
+                                              : e.value[0]),
                                       controller: groupcontroller,
-                                      dropDownList: e.map((p0) {
+                                      dropDownList: e.value.map((p0) {
                                         return DropDownValueModel(
                                             name: p0, value: p0);
                                       }).toList())
@@ -299,9 +323,10 @@ class Product_Detail_Screen extends StatelessWidget {
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
-                        children: controller.Productslist
+                        children: controller.productslist
                             .where((p0) => p0.category_id == item.category_id)
                             .map((PR_item) {
+                      print(PR_item.category_id);
                       return Product_Card(
                         hotdeal: '',
                         id: PR_item.id,
@@ -351,8 +376,8 @@ class Product_Detail_Screen extends StatelessWidget {
                     //  from here onwords
                     add_to_cart_button(
                   ontap: () {
-                    cartController.addProduct(controller.Productslist
-                        .firstWhere((product) => product.id == id));
+                    cartController.addProduct(controller.productslist
+                        .firstWhere((product) => product.id == widget.id));
                   },
                   pic: Image.asset(
                     'assets/images/cart.png',

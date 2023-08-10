@@ -67,7 +67,7 @@ class Wishlist_Card extends StatelessWidget {
                       color: Theme.of(context).hintColor,
                       fontWeight: FontWeight.w600),
                 ),
-                hotdeal == 'false'
+                hotdeal == ''
                     ? Text(
                         price,
                         textAlign: TextAlign.center,
@@ -107,9 +107,9 @@ class Wishlist_Card extends StatelessWidget {
                           GestureDetector(
                             onTap: () {
                               if (id != null) {
-                                cartController.addProduct(
-                                    controller.Productslist.firstWhere(
-                                        (product) => product.id == id));
+                                cartController.addProduct(controller
+                                    .productslist
+                                    .firstWhere((product) => product.id == id));
                               }
                             },
                             child: Container(
@@ -142,7 +142,7 @@ class Wishlist_Card extends StatelessWidget {
                       )
               ],
             ),
-            hotdeal == 'false'
+            hotdeal == ''
                 ? status.isNotEmpty
                     ? Positioned(
                         bottom: -10,

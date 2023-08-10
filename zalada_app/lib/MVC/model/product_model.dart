@@ -6,7 +6,7 @@ class Product_Model {
   final String price;
   final String? discountedPrice;
   final List product_media;
-  final List<List> subsections;
+  final List<Subsection> subsections;
   final String createdAt;
   final String updatedAt;
   final String? isNewArrival;
@@ -43,28 +43,55 @@ class Product_Model {
       };
 
   factory Product_Model.fromjson(Map<String, dynamic> json) {
+    List<dynamic> subsectionsData = json['subsections'] ?? [];
+
     return Product_Model(
-      id: json['product_id'],
+      id: json['id'],
       discountedPrice:
-          json['discountedPrice'] == null ? json['discountedPrice'] : '',
+          json['discountedPrice'] == null ? '' : json['discountedPrice'],
       isNewArrival: json['isNewArrival'].toString(),
       outOfStock: json['outOfStock'].toString(),
-      name: json['product_name'],
-      description: json['product_description'],
+      name: json['name'],
+      description: json['description'],
       category_id: json['category_id'],
       price: json['price'].toString(),
       product_media: json['product_media'] == null
           ? [
-              // 'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
+              'https://www.gme.net.au/app/plugins/wp-media-folder/assets/images/default.png'
+                  'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
             ]
           : json['product_media'].toList(),
-      subsections:
-          json['subsections'] == null ? [] : json['subsections'].toList(),
+      subsections: subsectionsData
+          .map((subsectionJson) => Subsection.fromJson(subsectionJson))
+          .toList(),
+      // json['subsections'] == null ? [] : json['subsections'].toList(),
+      // subsections:
+      //     json['subsections'] == null ? [] : json['subsections'].toList(),
       updatedAt: json['updatedAt'],
       createdAt: json['createdAt'],
     );
   }
 }
+
+class Subsection {
+  final String name;
+  final List value;
+
+  Subsection({
+    required this.name,
+    required this.value,
+  });
+
+  factory Subsection.fromJson(Map<String, dynamic> json) {
+    return Subsection(
+        name: json['name'] == null ? "" : json['name'],
+        value: List<String>.from(json['value'])
+        // json['value'] == null ? [] : json['value'].toLisT(),
+        );
+  }
+}
+
+
 
 //   static List<Product_Model> dummyProducts = [
 //     Product_Model(

@@ -137,7 +137,7 @@ class Cart_Screen extends StatelessWidget {
                     children: [
                       const Product_Card(
                         id: 1,
-                        hotdeal: 'false',
+                        hotdeal: '',
                         imageurl:
                             'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
                         product_name: 'Macbook Pro 15" 2019 -Intel corei7',
@@ -145,7 +145,7 @@ class Cart_Screen extends StatelessWidget {
                       ),
                       const Product_Card(
                         id: 1,
-                        hotdeal: 'false',
+                        hotdeal: '',
                         imageurl:
                             'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
                         product_name: 'Macbook Pro 15" 2019 -Intel corei7',
@@ -153,7 +153,7 @@ class Cart_Screen extends StatelessWidget {
                       ).px(10),
                       const Product_Card(
                         id: 1,
-                        hotdeal: 'false',
+                        hotdeal: '',
                         imageurl:
                             'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
                         product_name: 'Macbook Pro 15" 2019 -Intel corei7',
@@ -161,7 +161,7 @@ class Cart_Screen extends StatelessWidget {
                       ).py(25),
                       const Product_Card(
                         id: 1,
-                        hotdeal: 'false',
+                        hotdeal: '',
                         imageurl:
                             'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
                         product_name: 'Macbook Pro 15" 2019 -Intel corei7',

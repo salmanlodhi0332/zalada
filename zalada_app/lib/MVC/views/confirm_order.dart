@@ -184,13 +184,17 @@ class _ConfirmOrderState extends State<ConfirmOrder> {
                               ),
                               child: Column(children: [
                                 ListTile(
-                                  leading: Image.asset(
-                                          "assets/images/Rectangle14.png"
-                                          // '${ship.image}'
-                                          )
-                                      .px(25),
+                                  leading:
+                                      // Image.asset(
+                                      //     "assets/images/Rectangle14.png"),
+                                      // '${ship.image}').px(25),
+                                      Image.network(
+                                    '${ship.image}',
+                                    height: 45,
+                                  ),
                                   title: Text(
-                                    "J&T Express",
+                                    '${ship.name} ',
+                                    // "J&T Express",
                                     style: TextStyle(
                                         fontSize: 16,
                                         fontFamily: 'plusjakarta',
@@ -209,7 +213,7 @@ class _ConfirmOrderState extends State<ConfirmOrder> {
                                 ListTile(
                                   title: Text(
                                           // "Regular (\$8)",
-                                          '${ship.name} (${ship.charges})',
+                                          '${ship.type} (${ship.charges})',
                                           style: TextStyle(
                                               fontFamily: 'plusjakarta',
                                               //fontSize: 18,

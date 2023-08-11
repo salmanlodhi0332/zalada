@@ -2,11 +2,11 @@ class Payment_model {
   final String cardName;
   final String cardNumber;
   final String cvv;
-  // final int? id;
+  final int? id;
   final String expire_date;
 
   Payment_model({
-    // this.id,
+    this.id,
     required this.cardName,
     required this.cardNumber,
     required this.cvv,
@@ -14,7 +14,7 @@ class Payment_model {
   });
 
   Map<String, dynamic> tojson() => {
-        //  'id': id,
+        'id': id,
         'cardName': cardName,
         'card_number': cardNumber,
         'Cvv': cvv,
@@ -23,7 +23,7 @@ class Payment_model {
 
   factory Payment_model.fromJson(Map<String, dynamic> json) {
     return Payment_model(
-      //id: json['id'],
+      id: json['id'],
       cardName: json['cardName'].toString(),
       cardNumber: json['card_number'].toString(),
       expire_date: json['expire_date'].toString(),

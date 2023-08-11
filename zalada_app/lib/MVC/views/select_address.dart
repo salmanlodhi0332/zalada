@@ -254,8 +254,8 @@ class _Select_AddressState extends State<Select_Address> {
                   value: "apartment",
                 ),
                 DropDownValueModel(
-                  name: 'others',
-                  value: "others",
+                  name: 'other',
+                  value: "other",
                 ),
               ],
             ).px(25).py(10),

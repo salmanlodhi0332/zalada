@@ -23,7 +23,7 @@ class Address_Model {
 
   Map<String, dynamic> tojson() => {
         'id': id,
-        'locationname': locationname,
+        'location_name': locationname,
         'address': address,
         'lat': latitude,
         'long': longitude,
@@ -37,7 +37,9 @@ class Address_Model {
     return Address_Model(
         id: json['id'],
         addressType: json['address_type'] != null ? json['address_type'] : '',
-        locationname: json['locationName'],
+        locationname: json['location_name'] == null
+            ? ''
+            : json['location_name'].toString(),
         address: json['address'],
         latitude: json['lat'].toString(),
         longitude: json['long'].toString(),

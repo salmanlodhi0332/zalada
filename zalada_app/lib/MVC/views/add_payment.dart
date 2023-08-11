@@ -15,16 +15,18 @@ import '../../service/Api_Service.dart';
 
 class AddPayment extends StatefulWidget {
   final int? id;
-  final String? CardName;
-  final String? CardNumber;
-  final String? Cvv;
+  final String? card_name;
+  final String? card_num;
+  final String? cvv;
+  final String? expire_date;
 
   const AddPayment({
     super.key,
     this.id,
-    this.CardName,
-    this.CardNumber,
-    this.Cvv,
+    this.card_name,
+    this.card_num,
+    this.cvv,
+    this.expire_date,
   });
 
   @override
@@ -39,17 +41,37 @@ class _AddPaymentState extends State<AddPayment> {
 
   TextEditingController controllercvv = TextEditingController();
 
+  String? name;
+  String? card_name;
+  String? card_num;
+  String? cvv;
+  String? expire_date;
+
   void _saveLoginData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('Cardname', controllername.text);
     await prefs.setString('Cardnumber', controllernumber.toString());
-
     await prefs.setString('cvv', controllercvv.toString());
-
     await prefs.setString('Cardnumber', controllernumber.toString());
     print("object Sharedprefernce 0");
     await prefs.getString('Cardname');
     await prefs.getString('Cardnumber');
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    if (widget.id != null) {
+      editPayment();
+    }
+  }
+
+  void editPayment() {
+    card_name = widget.card_name!;
+    card_num = widget.card_num!;
+    cvv = widget.cvv!;
+    expire_date = widget.expire_date!;
   }
 
   @override
@@ -204,17 +226,17 @@ class _AddPaymentState extends State<AddPayment> {
                                 // Get.to(payment_method());
                                 if (widget.id != null) {
                                   var paymentData = Payment_model(
-                                      //id: widget.id,
+                                      id: widget.id,
                                       cardName: controllername.text,
                                       cardNumber: controllernumber.text,
                                       expire_date: dateController.text,
                                       cvv: controllercvv.text);
 
-                                  // ApiService.getInstance
-                                  //     .Update_payment(paymentData, context);
+                                  ApiService.getInstance
+                                      .Update_payment(paymentData, context);
                                 } else {
                                   var paymentData = Payment_model(
-                                      //id: widget.id,
+                                      id: widget.id,
                                       cardName: controllername.text,
                                       cardNumber: controllernumber.text,
                                       expire_date: dateController.text,

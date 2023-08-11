@@ -9,6 +9,7 @@ import 'package:zalada_app/MVC/views/Address_Screen.dart';
 import 'package:zalada_app/MVC/views/bottom_bar.dart';
 import 'package:zalada_app/dummyData/product_dummyData.dart';
 import 'package:zalada_app/utiles/shared_preferences.dart';
+import '../MVC/model/all_Orders_model.dart';
 import '../MVC/model/help_center_model.dart';
 import '../MVC/model/home_model.dart';
 import '../MVC/model/notification_model.dart';
@@ -607,14 +608,14 @@ class ApiService {
       print("c  ${e.response?.data['message']}");
     }
   }
-AddOrRemoveCart(int productId,String action_type,BuildContext context) async {
+
+  AddOrRemoveCart(
+      int productId, String action_type, BuildContext context) async {
     try {
       // Loader.poploader(context);
       Response response;
       response = await dio.patch('${baseURL}carts/$productId',
-          data: {
-            "action_type":action_type
-          },
+          data: {"action_type": action_type},
           options: Options(
             headers: {
               'Authorization': 'Bearer $AuthUserToken',
@@ -623,11 +624,7 @@ AddOrRemoveCart(int productId,String action_type,BuildContext context) async {
       print("statusCode => " + response.statusCode.toString());
       print('AddOrRemoveCart  API done 👌✅');
       if (response.statusCode == 201) {
-        
         Get.back();
-        Get.snackbar('Add_to_cart'.tr, "Add_to_cart_succesfully".tr,
-            colorText: Theme.of(context).hintColor,
-            backgroundColor: Theme.of(context).cardColor);
       } else {
         Get.snackbar('error'.tr, response.data['message'],
             colorText: Theme.of(context).hintColor,
@@ -641,8 +638,6 @@ AddOrRemoveCart(int productId,String action_type,BuildContext context) async {
       print("c  ${e.response?.data['message']}");
     }
   }
-
-
 
 // Add Payment Work starts from here,
 
@@ -703,9 +698,6 @@ AddOrRemoveCart(int productId,String action_type,BuildContext context) async {
       print(response.data);
       if (response.statusCode == 200) {
         print("Payments updated");
-        Get.snackbar('payment'.tr, "Payment_updated".tr,
-            colorText: Theme.of(context).hintColor,
-            backgroundColor: Theme.of(context).cardColor);
 
         Get.snackbar('Payment', "Payment Updated",
             colorText: Theme.of(context).hintColor,
@@ -790,6 +782,44 @@ AddOrRemoveCart(int productId,String action_type,BuildContext context) async {
               .map((data) => Shiping_Model.fromJson(data))
               .toList();
           return shiplist;
+          // } else {
+          //   throw Exception('Failed to load posts: ${response.statusCode}');
+          // }
+        }
+      }
+      // return product_dummyData.dummyProducts;
+    } on DioException catch (e) {
+      print(e);
+      // throw Exception('Failed to load posts: $e');
+      return [];
+    }
+  }
+
+  getAllOrders() async {
+    try {
+      Response response;
+      response = await dio.get('${baseURL}order',
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $AuthUserToken',
+            },
+          ));
+
+      print("statusCode => " + response.statusCode.toString());
+      print('getAllOrders API done 👌✅');
+      print(response.data);
+      if (response.statusCode == 200) {
+        final responseData = response.data;
+        if (responseData is List) {
+          List<AllOrders_Model> orderlist = (response.data as List)
+              .map((data) => AllOrders_Model.fromjson(data))
+              .toList();
+          return orderlist;
+        } else if (responseData is Map) {
+          List<AllOrders_Model> orderlist = (responseData['orders'] as List)
+              .map((data) => AllOrders_Model.fromjson(data))
+              .toList();
+          return orderlist;
           // } else {
           //   throw Exception('Failed to load posts: ${response.statusCode}');
           // }

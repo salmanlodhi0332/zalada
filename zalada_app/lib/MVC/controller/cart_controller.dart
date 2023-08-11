@@ -5,10 +5,9 @@ import '../model/product_model.dart';
 
 class cart_Controller extends GetxController {
   RxList cartproductlist = [].obs;
-    final product_youlike_list = [].obs;
+  final product_youlike_list = [].obs;
   final islikeLoading = false.obs;
 
-  
   @override
   void onInit() {
     super.onInit();
@@ -28,7 +27,6 @@ class cart_Controller extends GetxController {
 
   Future<void> addCart(Product_Model ProductsData, BuildContext context) async {
     try {
-      
       var ServerResponse = await ApiService.getInstance
           .AddOrRemoveCart(ProductsData.id, 'Add', context);
       getuserCart();
@@ -60,7 +58,7 @@ class cart_Controller extends GetxController {
       // isLoading.value = false;
     }
   }
-  
+
   getproductLike() async {
     try {
       islikeLoading(true);
@@ -72,5 +70,4 @@ class cart_Controller extends GetxController {
       islikeLoading(false);
     }
   }
-
 }

@@ -21,6 +21,7 @@ import '../../custom/custom_appbar.dart';
 import '../../custom/back_button.dart';
 import '../../custom/language/language_bottom_sheet.dart';
 import '../controller/authentication_controller.dart';
+import 'all_Orders.dart';
 
 class Profile_Screen extends StatefulWidget {
   const Profile_Screen({super.key});
@@ -116,6 +117,10 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                         Padding(
                           padding: const EdgeInsets.only(right: 12),
                           child: GestureDetector(
+                            onTap: () {
+                              Page_Navigation.getInstance
+                                  .Page(context, All_Orders());
+                            },
                             child: Text(
                               "see_all".tr,
                               style: TextStyle(

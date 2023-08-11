@@ -216,19 +216,52 @@ class _Cart_ScreenState extends State<Cart_Screen> {
                       ),
                 )
               ]).px(ph).py(5),
-              cartController.cartproductlist.isEmpty
-                  ? SizedBox()
-                  : Button_Widget(
-                      ontap: () {
-                        Page_Navigation.getInstance
-                            .Page(context, ConfirmOrder());
-                      },
-                      width: width,
-                      title: 'checkout'.tr),
+              // cartController.cartproductlist.isEmpty
+              //     ? SizedBox()
+              //     : Button_Widget(
+              //         ontap: () {
+              //           Page_Navigation.getInstance
+              //               .Page(context, ConfirmOrder());
+              //         },
+              //         width: width,
+              //         title: 'checkout'.tr),
             ],
           ),
         ),
       ),
+      bottomNavigationBar: cartController.cartproductlist.isEmpty
+          ? SizedBox()
+          : Container(
+              height: 80,
+              decoration: BoxDecoration(
+                  color: Theme.of(context).cardColor,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.white70.withOpacity(0.1),
+                      blurRadius: 10,
+                      offset: const Offset(1.0, 1.0), // soften the shadow
+                      spreadRadius: 0.0, //extend the shadow
+                    ),
+                  ],
+                  border: Border.all(color: Colors.black.withOpacity(0.05)),
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20))),
+              child: Row(
+                children: [
+                  Button_Widget(
+                          ontap: () {
+                            Page_Navigation.getInstance.Page(
+                              context,
+                              ConfirmOrder(),
+                            );
+                          },
+                          width: width / 1.2,
+                          title: "checkout".tr)
+                      .py(11),
+                ],
+              ),
+            ),
     );
   }
 }

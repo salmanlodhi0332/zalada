@@ -188,9 +188,12 @@ class _ConfirmOrderState extends State<ConfirmOrder> {
                                       // Image.asset(
                                       //     "assets/images/Rectangle14.png"),
                                       // '${ship.image}').px(25),
-                                      Image.network(
-                                    '${ship.image}',
-                                    height: 45,
+                                      Padding(
+                                    padding: const EdgeInsets.only(top: 8),
+                                    child: Image.network(
+                                      '${ship.image}',
+                                      height: 45,
+                                    ),
                                   ),
                                   title: Text(
                                     '${ship.name} ',

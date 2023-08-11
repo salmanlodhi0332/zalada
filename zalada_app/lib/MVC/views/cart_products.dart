@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:zalada_app/MVC/controller/product_controller.dart';
 import 'package:zalada_app/MVC/model/product_model.dart';
 
 import '../controller/cart_controller.dart';

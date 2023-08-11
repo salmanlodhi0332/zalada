@@ -152,7 +152,7 @@ class _Cart_ScreenState extends State<Cart_Screen> {
                                 'no_data'.tr,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    fontSize: 12,
+                                    fontSize: 15,
                                     color: Theme.of(context).hintColor),
                               )
                             ]

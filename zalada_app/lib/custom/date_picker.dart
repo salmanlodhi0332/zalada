@@ -133,6 +133,6 @@ class datepicker_widget extends StatelessWidget {
           ).px(10),
         ),
       ],
-    ).px(20);
+    );
   }
 }

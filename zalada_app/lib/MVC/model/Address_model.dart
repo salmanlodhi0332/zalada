@@ -37,7 +37,8 @@ class Address_Model {
     return Address_Model(
         id: json['id'],
         addressType: json['address_type'] != null ? json['address_type'] : '',
-        locationname: json['locationName'],
+        locationname:
+            json['location_name'] != null ? json['location_name'] : '',
         address: json['address'],
         latitude: json['lat'].toString(),
         longitude: json['long'].toString(),

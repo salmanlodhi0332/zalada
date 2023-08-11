@@ -58,7 +58,7 @@ class _login_screenState extends State<login_screen> {
                   controller: email,
                   hintText: 'email_address'.tr,
                   label: 'email_address'.tr,
-                ),
+                ).px(15),
                 SizedBox(
                   height: 20,
                 ),
@@ -82,7 +82,7 @@ class _login_screenState extends State<login_screen> {
                         color: Theme.of(context).hintColor,
                       ),
                     ),
-                  ),
+                  ).px(15),
                 ),
                 SizedBox(
                   height: 20,

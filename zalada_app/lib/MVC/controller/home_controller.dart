@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:zalada_app/MVC/model/reacetsaerch_Model.dart';
 
 import 'package:zalada_app/utiles/shared_preferences.dart';
 import '../../service/Api_Service.dart';
@@ -16,6 +17,7 @@ final dio = Dio();
 class home_Controller extends GetxController {
   static const String baseURL = "${Constants.baseURL}/api/v1/";
   RxList<Product_Model> productslist = <Product_Model>[].obs;
+  RxList<RecentSearch_Model> recentsearchlist = <RecentSearch_Model>[].obs;
   RxList<Product_Model> hotdeal_list = <Product_Model>[].obs;
   final notificationlist = <Notification_Model>[].obs;
   RxList<categories_Model> categoriesList = <categories_Model>[].obs;
@@ -28,6 +30,15 @@ class home_Controller extends GetxController {
     getHomeData();
     getnotificatonData();
     print(shared_preferences.userToken.value);
+  }
+
+  getrecentsearch() async {
+    try {
+      var ServerResponse = await ApiService.getInstance.getrecentsearch();
+      recentsearchlist.value = ServerResponse;
+    } catch (e) {
+      print('get recent product  error: $e');
+    }
   }
 
   getnotificatonData() async {
@@ -73,12 +84,12 @@ class home_Controller extends GetxController {
     }
   }
 
-  getAllproducts(int? Category_Id, int pageNo,BuildContext context) async {
+  getAllproducts(int? Category_Id, int pageNo, BuildContext context) async {
     try {
       isLoading(true);
 
-      var ServerResponse =
-          await ApiService.getInstance.getAllproducts(Category_Id, pageNo,context);
+      var ServerResponse = await ApiService.getInstance
+          .getAllproducts(Category_Id, pageNo, context);
       if (pageNo > 1) {
         // productslist.addAll(ServerResponse);
         productslist.value.addAll(ServerResponse);

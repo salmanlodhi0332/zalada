@@ -84,6 +84,7 @@ class _edit_profileState extends State<edit_profile> {
           ),
         ),
         body: SingleChildScrollView(
+            padding: EdgeInsets.symmetric(horizontal: 15),
             physics: BouncingScrollPhysics(),
             scrollDirection: Axis.vertical,
             child: Column(children: [
@@ -151,7 +152,7 @@ class _edit_profileState extends State<edit_profile> {
                       color: Theme.of(context).hintColor,
                       fontSize: 15),
                 ),
-              ).px(25).py(10),
+              ).p(10),
               DropDownTextField(
                 textFieldDecoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
@@ -183,7 +184,7 @@ class _edit_profileState extends State<edit_profile> {
                     value: "Female ",
                   ),
                 ],
-              ).px(25).py(10),
+              ).py(10),
               SizedBox(
                 height: 20,
               ),

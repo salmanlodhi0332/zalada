@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
             translations: Multi_Language(),
             locale: Locale('en', 'US'),
             themeMode: ThemeMode.light,
+            
             theme: AppTheme.lightTheme,
             debugShowCheckedModeBanner: false,
             home: splash_screen(),

@@ -5,7 +5,6 @@ import 'package:zalada_app/MVC/views/password_change_screen.dart';
 import 'package:zalada_app/MVC/views/Explore_Screen.dart';
 import 'package:zalada_app/MVC/views/search_result_screen.dart';
 import '../controller/cart_controller.dart';
-import '../controller/product_controller.dart';
 import 'Live_Stream_Screen.dart';
 import 'order_tracker.dart';
 import 'profile_screen.dart';

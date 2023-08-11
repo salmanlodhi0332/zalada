@@ -16,6 +16,7 @@ import '../MVC/model/payment_model.dart';
 import '../MVC/model/privacy_policy_model.dart';
 import '../MVC/model/product_model.dart';
 import '../MVC/model/categories_model.dart';
+import '../MVC/model/reacetsaerch_Model.dart';
 import '../MVC/model/shiping_model.dart';
 import '../MVC/views/payment_method.dart';
 import '../utiles/constent.dart';
@@ -25,17 +26,111 @@ import '../utiles/page_navigation.dart';
 final dio = Dio();
 
 class ApiService {
-  static final Dio dio =
-      Dio(BaseOptions(baseUrl: 'http://localhost:3001/api/v1/'));
-
   static ApiService? _instance;
   static ApiService get getInstance => _instance ??= ApiService();
+  static final Dio dio =
+      Dio(BaseOptions(baseUrl: 'http://localhost:3001/api/v1/'));
 
   static const String baseURL = "${Constants.baseURL}/api/v1/";
   late BuildContext context;
   static String AuthUserToken = shared_preferences.userToken.value;
   static int currentUserId =
       int.parse(shared_preferences.currentUserId.value.toString());
+
+  delete_recentsearch(BuildContext context) async {
+    try {
+      Loader.poploader(context);
+      Response response;
+      response = await dio.patch('${baseURL}products/recentsearch',
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $AuthUserToken',
+            },
+          ));
+      print(response.data);
+      if (response.data['status'] == 'success') {
+        Get.back();
+        print("search are delete");
+      } else {
+        Get.snackbar('error'.tr, response.data['message'],
+            colorText: Theme.of(context).hintColor,
+            backgroundColor: Theme.of(context).cardColor);
+      }
+    } on DioException catch (e) {
+      Get.back();
+      print("Search Failed  ${e.response?.data['message']}");
+      Get.snackbar('search_failed'.tr, "${e.response?.data['message']}",
+          colorText: Theme.of(context).hintColor,
+          backgroundColor: Theme.of(context).cardColor);
+    }
+  }
+
+  getrecentsearch() async {
+    try {
+      Response response;
+      response = await dio.get('${baseURL}products/recentsearch',
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $AuthUserToken',
+            },
+          ));
+
+      print("statusCode => " + response.statusCode.toString());
+      print('get recent searc API done 👌✅');
+      if (response.statusCode == 200) {
+        final responseData = response.data;
+        if (responseData is List) {
+          List<RecentSearch_Model> searchlist = (response.data as List)
+              .map((data) => RecentSearch_Model.fromJson(data))
+              .toList();
+          return searchlist;
+        } else if (responseData is Map) {
+          List<RecentSearch_Model> searchlist =
+              (responseData['recent_search'] as List)
+                  .map((data) => RecentSearch_Model.fromJson(data))
+                  .toList();
+          return searchlist;
+          // } else {
+          //   throw Exception('Failed to load posts: ${response.statusCode}');
+          // }
+        }
+      }
+      // return product_dummyData.dummyProducts;
+    } on DioException catch (e) {
+      print(e);
+      // throw Exception('Failed to load posts: $e');
+      return [];
+    }
+  }
+
+  Add_recentsearch(String searchtext, BuildContext context) async {
+    try {
+      Loader.poploader(context);
+      Response response;
+      response = await dio.post('${baseURL}products/recentsearch',
+          data: {"search_query": searchtext},
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $AuthUserToken',
+            },
+          ));
+      print(response.data);
+      if (response.statusCode == 201) {
+        Get.back();
+        print("search data are added");
+      } else {
+        Get.snackbar('error'.tr, response.data['message'],
+            colorText: Theme.of(context).hintColor,
+            backgroundColor: Theme.of(context).cardColor);
+      }
+    } on DioException catch (e) {
+      Get.back();
+      print("Search Failed  ${e.response?.data['message']}");
+      Get.snackbar('search_failed'.tr, "${e.response?.data['message']}",
+          colorText: Theme.of(context).hintColor,
+          backgroundColor: Theme.of(context).cardColor);
+    }
+  }
 
   getnotificatonData() async {
     try {
@@ -293,7 +388,7 @@ class ApiService {
       Response response;
       response = await dio.post('${baseURL}address/',
           data: {
-            'locationName': data.locationname,
+            'location_name': data.locationname,
             'address': data.address,
             'lat': double.parse(data.latitude),
             'long': double.parse(data.longitude),
@@ -334,7 +429,7 @@ class ApiService {
       Response response;
       response = await dio.patch('${baseURL}address/${data.id}',
           data: {
-            'locationName': data.locationname,
+            'location_name': data.locationname,
             'address': data.address,
             'lat': double.parse(data.latitude),
             'long': double.parse(data.longitude),
@@ -393,13 +488,14 @@ class ApiService {
     } on DioException catch (e) {
       Get.back();
       print("Address  ${e.response?.data['message']}");
-      // Get.snackbar('address_failed'.tr, "${e.response?.data['message']}",
-      //     colorText: Theme.of(context).secondaryHeaderColor,
-      //     backgroundColor: Theme.of(context).cardColor);
+      Get.snackbar('address_failed'.tr, "${e.response?.data['message']}",
+          colorText: Theme.of(context).secondaryHeaderColor,
+          backgroundColor: Theme.of(context).cardColor);
     }
   }
 
   getAddress() async {
+    print(AuthUserToken);
     try {
       Response response;
       response = await dio.get('${baseURL}address/',

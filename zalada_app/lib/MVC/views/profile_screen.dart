@@ -74,7 +74,6 @@ class _Profile_ScreenState extends State<Profile_Screen> {
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w400,
-                fontFamily: 'plusjakarta',
               ),
             ),
             SizedBox(

@@ -1,22 +1,16 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
-import 'package:zalada_app/MVC/controller/product_controller.dart';
 import 'package:zalada_app/custom/image_widget.dart';
 import 'package:zalada_app/custom/product_card.dart';
-
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:zalada_app/utiles/loader.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
 import 'package:zalada_app/MVC/views/notification_screen.dart';
 import 'package:zalada_app/MVC/views/product_detail.dart';
 import '../../custom/add_to_cart_button.dart';
 import '../../custom/all_custom_btn.dart';
 import 'package:badges/badges.dart' as badges;
-
 import '../../utiles/shimmer_custom.dart';
 import '../controller/cart_controller.dart';
 import '../controller/home_controller.dart';

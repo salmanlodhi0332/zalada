@@ -133,6 +133,19 @@ class shared_preferences extends GetxController {
   logout() async {
     final SharedPreferences? prefs = await _prefs;
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    await preferences.clear();
+    // await preferences.clear();
+    username.value = '';
+    userEmail.value = '';
+    userPhoto.value = '';
+    userphone.value = '';
+    userToken.value = '';
+    currentUserId.value = '';
+    await prefs?.setString('token', '');
+    await prefs?.setString('id', '');
+    await prefs?.setString('name', '');
+    await prefs?.setString('email', '');
+    await prefs?.setString('phone_number', '');
+    await prefs?.setString('image', '');
+    print('Shared Preference  $userToken');
   }
 }

@@ -7,6 +7,7 @@ import 'package:zalada_app/MVC/views/search_result_screen.dart';
 import '../controller/cart_controller.dart';
 import '../controller/product_controller.dart';
 import 'Live_Stream_Screen.dart';
+import 'order_tracker.dart';
 import 'profile_screen.dart';
 import 'confirm_order.dart';
 import 'cart_screen.dart';
@@ -162,7 +163,7 @@ class _Bottom_BarState extends State<Bottom_Bar> {
       case 1:
         return Explore_Screen();
       case 2:
-        return ChangePasswordScreen();
+        return ConfirmOrder();
       //Live_Stream_Screen();
       case 3:
         return Cart_Screen();

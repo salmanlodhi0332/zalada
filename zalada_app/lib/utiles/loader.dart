@@ -3,9 +3,9 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 
 class Loader {
-  static poploader() {
+  static poploader(BuildContext context) {
     Get.dialog(SpinKitFadingCircle(
-      color: Color.fromARGB(255, 9, 201, 12).withOpacity(0.3),
+      color: Theme.of(context).primaryColor,
       size: 50.0,
       duration: Duration(seconds: 2),
     ));

@@ -16,6 +16,7 @@ import '../MVC/model/payment_model.dart';
 import '../MVC/model/privacy_policy_model.dart';
 import '../MVC/model/product_model.dart';
 import '../MVC/model/categories_model.dart';
+import '../MVC/model/shiping_model.dart';
 import '../MVC/views/payment_method.dart';
 import '../utiles/constent.dart';
 import '../utiles/loader.dart';
@@ -33,6 +34,8 @@ class ApiService {
   static const String baseURL = "${Constants.baseURL}/api/v1/";
   late BuildContext context;
   static String AuthUserToken = shared_preferences.userToken.value;
+  static int currentUserId =
+      int.parse(shared_preferences.currentUserId.value.toString());
 
   getnotificatonData() async {
     try {
@@ -151,7 +154,7 @@ class ApiService {
     }
   }
 
-  getAllproducts(int? Category_Id, int page) async {
+  getAllproducts(int? Category_Id, int page, BuildContext context) async {
     try {
       Response response;
 
@@ -197,9 +200,9 @@ class ApiService {
       // return product_dummyData.dummyProducts;
     } on DioException catch (e) {
       print(e);
-      // Get.snackbar('error'.tr, response.data['message'],
-      //   colorText: Theme.of(context).hintColor,
-      //   backgroundColor: Theme.of(context).cardColor);
+      Get.snackbar('product_failed'.tr, "${e.response?.data['message']}",
+          colorText: Theme.of(context).secondaryHeaderColor,
+          backgroundColor: Theme.of(context).cardColor);
 
       return [];
     }
@@ -217,16 +220,17 @@ class ApiService {
 
       print("statusCode => " + response.statusCode.toString());
       print('getAllwishlist API done 👌✅');
+      print(response.data);
       if (response.statusCode == 200) {
         final responseData = response.data;
         if (responseData is List) {
-          List<Wishlist_model> Wishlist = (response.data as List)
-              .map((data) => Wishlist_model.fromJson(data))
+          List<Product_Model> Wishlist = (response.data as List)
+              .map((data) => Product_Model.fromjson(data))
               .toList();
           return Wishlist;
         } else if (responseData is Map) {
-          List<Wishlist_model> Wishlist = (responseData['data'] as List)
-              .map((data) => Wishlist_model.fromJson(data))
+          List<Product_Model> Wishlist = (responseData['data'] as List)
+              .map((data) => Product_Model.fromjson(data))
               .toList();
           return Wishlist;
           // } else {
@@ -242,26 +246,33 @@ class ApiService {
     }
   }
 
-  Add_Wishlist(Wishlist_model data, BuildContext context) async {
+  Add_Wishlist(int id, BuildContext context) async {
     try {
-      Loader.poploader();
+      Loader.poploader(context);
+      Get.back();
       Response response;
-      response = await dio.post('${baseURL}wishlist',
-          data: {
-            'product_ids': data.productId,
-          },
+      response = await dio.post('${baseURL}wishlist/${id}',
+          // data: {
+          //   'product_ids': id,
+          // },
           options: Options(
             headers: {
               'Authorization': 'Bearer $AuthUserToken',
             },
           ));
       print(response.data);
-      if (response.statusCode == 201) {
+      if (response.data['status'] == 201) {
         print("Wishlist are succesfully Added");
         Get.snackbar('Wishlist', "Added",
             colorText: Theme.of(context).hintColor,
             backgroundColor: Theme.of(context).cardColor);
-        Page_Navigation.getInstance.Page(context, Address_Screen());
+        Page_Navigation.getInstance.Page(context, Bottom_Bar());
+      } else if (response.statusCode == 200) {
+        print("Wishlist Removed");
+        Get.snackbar('Wishlist', "Removed",
+            colorText: Theme.of(context).hintColor,
+            backgroundColor: Theme.of(context).cardColor);
+        Page_Navigation.getInstance.Page(context, Bottom_Bar());
       } else {
         Get.snackbar('error'.tr, response.data['message'],
             colorText: Theme.of(context).hintColor,
@@ -270,15 +281,15 @@ class ApiService {
     } on DioException catch (e) {
       Get.back();
       print("Wishlist  ${e.response?.data['message']}");
-      Get.snackbar('address_failed'.tr, "${e.response?.data['message']}",
-          colorText: Theme.of(context).secondaryHeaderColor,
+      Get.snackbar('Add failed'.tr, "${e.response?.data['message']}",
+          colorText: Theme.of(context).hintColor,
           backgroundColor: Theme.of(context).cardColor);
     }
   }
 
   Add_Address(Address_Model data, BuildContext context) async {
     try {
-      Loader.poploader();
+      Loader.poploader(context);
       Response response;
       response = await dio.post('${baseURL}address/',
           data: {
@@ -319,7 +330,7 @@ class ApiService {
 
   Update_Address(Address_Model data, BuildContext context) async {
     try {
-      Loader.poploader();
+      Loader.poploader(context);
       Response response;
       response = await dio.patch('${baseURL}address/${data.id}',
           data: {
@@ -359,7 +370,7 @@ class ApiService {
 
   Delete_Address(int id, BuildContext context) async {
     try {
-      Loader.poploader();
+      Loader.poploader(context);
       Response response;
       response = await dio.delete('${baseURL}address/${id}',
           options: Options(
@@ -529,16 +540,86 @@ class ApiService {
     }
   }
 
+  getuserCart() async {
+    try {
+      Response response;
+      response = await dio.get('${baseURL}carts/',
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $AuthUserToken',
+            },
+          ));
+
+      print("statusCode => " + response.statusCode.toString());
+      print('getuserCart  API done 👌✅');
+      if (response.statusCode == 200) {
+        final responseData = response.data;
+        if (responseData is List) {
+          List<Help_center_model> helpcenterData = (response.data as List)
+              .map((data) => Help_center_model.fromJson(data))
+              .toList();
+          return helpcenterData;
+        } else if (responseData is Map) {
+          List<Help_center_model> helpcenterData =
+              (responseData['data'] as List)
+                  .map((data) => Help_center_model.fromJson(data))
+                  .toList();
+          return helpcenterData;
+        }
+        return responseData;
+      }
+    } on DioException catch (e) {
+      print(e);
+      // throw Exception('Failed to load posts: $e');
+      // return [];
+    }
+  }
+
+  AddtoCart(int productId, BuildContext context) async {
+    try {
+      Loader.poploader(context);
+      Response response;
+      response = await dio.post('${baseURL}carts/$productId',
+          data: {
+            'quantity': 1,
+          },
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $AuthUserToken',
+            },
+          ));
+      if (response.statusCode == 201) {
+        print("Add to cart succesfully ");
+        Get.back();
+        Get.snackbar('Add_to_cart'.tr, "Add_to_cart_succesfully".tr,
+            colorText: Theme.of(context).hintColor,
+            backgroundColor: Theme.of(context).cardColor);
+      } else {
+        Get.snackbar('error'.tr, response.data['message'],
+            colorText: Theme.of(context).hintColor,
+            backgroundColor: Theme.of(context).cardColor);
+      }
+    } on DioException catch (e) {
+      Get.back();
+      Get.snackbar('Payment_field'.tr, "${e.response?.data['message']}",
+          colorText: Theme.of(context).hintColor,
+          backgroundColor: Theme.of(context).cardColor);
+      print("c  ${e.response?.data['message']}");
+    }
+  }
+
 // Add Payment Work starts from here,
+
   Add_payment(Payment_model data, BuildContext context) async {
     try {
-      Loader.poploader();
+      Loader.poploader(context);
       Response response;
-      response = await dio.post('${baseURL}payment/',
+      response = await dio.post('${baseURL}payment-card',
           data: {
-            'CardName': data.CardName,
-            'CardNumber': data.CardNumber,
-            'Cvv': data.Cvv,
+            'cardName': data.cardName,
+            'card_number': data.cardNumber,
+            "expire_date": data.expire_date,
+            'Cvv': data.cvv,
           },
           options: Options(
             headers: {
@@ -567,46 +648,122 @@ class ApiService {
     }
   }
 
-  Update_payment(Payment_model data, BuildContext context) async {
+  getAllcards() async {
     try {
-      Loader.poploader();
       Response response;
-      response = await dio.patch('${baseURL}payment/${data.id}',
-          data: {
-            'CardName': data.CardName,
-            'CardNumber': data.CardNumber,
-            'Cvv': data.Cvv,
-          },
+      response = await dio.get('${baseURL}payment-card',
           options: Options(
             headers: {
               'Authorization': 'Bearer $AuthUserToken',
             },
           ));
+
+      print("statusCode => " + response.statusCode.toString());
+      print('getAllcards API done 👌✅');
       print(response.data);
       if (response.statusCode == 200) {
-        print("Payments updated");
-        Get.snackbar('payment'.tr, "Payment_updated".tr,
-            colorText: Theme.of(context).hintColor,
-            backgroundColor: Theme.of(context).cardColor);
-        // Page_Navigation.getInstance.Page(
-        //     context,
-        //     Bottom_Bar(
-        //       initialIndex: 4,
-        //     )
-        //     );
-
-        Page_Navigation.getInstance.Page(context, payment_method());
-      } else {
-        Get.snackbar('error'.tr, response.data['message'],
-            colorText: Theme.of(context).hintColor,
-            backgroundColor: Theme.of(context).cardColor);
+        final responseData = response.data;
+        if (responseData is List) {
+          List<Payment_model> cardlist = (response.data as List)
+              .map((data) => Payment_model.fromJson(data))
+              .toList();
+          return cardlist;
+        } else if (responseData is Map) {
+          List<Payment_model> cardlist = (responseData['data'] as List)
+              .map((data) => Payment_model.fromJson(data))
+              .toList();
+          return cardlist;
+          // } else {
+          //   throw Exception('Failed to load posts: ${response.statusCode}');
+          // }
+        }
       }
+      // return product_dummyData.dummyProducts;
     } on DioException catch (e) {
-      Get.back();
-      print("Payment  ${e.response?.data['message']}");
-      Get.snackbar('payment_failed'.tr, "${e.response?.data['message']}",
-          colorText: Theme.of(context).hintColor,
-          backgroundColor: Theme.of(context).cardColor);
+      print(e);
+      // throw Exception('Failed to load posts: $e');
+      return [];
     }
   }
+
+  getShiping() async {
+    try {
+      Response response;
+      response = await dio.get('${baseURL}order/shipping',
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $AuthUserToken',
+            },
+          ));
+
+      print("statusCode => " + response.statusCode.toString());
+      print('getShiping API done 👌✅');
+      print(response.data);
+      if (response.statusCode == 200) {
+        final responseData = response.data;
+        if (responseData is List) {
+          List<Shiping_Model> shiplist = (response.data as List)
+              .map((data) => Shiping_Model.fromJson(data))
+              .toList();
+          return shiplist;
+        } else if (responseData is Map) {
+          List<Shiping_Model> shiplist = (responseData['data'] as List)
+              .map((data) => Shiping_Model.fromJson(data))
+              .toList();
+          return shiplist;
+          // } else {
+          //   throw Exception('Failed to load posts: ${response.statusCode}');
+          // }
+        }
+      }
+      // return product_dummyData.dummyProducts;
+    } on DioException catch (e) {
+      print(e);
+      // throw Exception('Failed to load posts: $e');
+      return [];
+    }
+  }
+  // Update_payment(Payment_model data, BuildContext context) async {
+  //   try {
+  //     Loader.poploader(context);
+  //     Response response;
+  //     response = await dio.patch('${baseURL}payment-card/',
+  //         data: {
+  //           'CardName': data.CardName,
+  //           'CardNumber': data.CardNumber,
+  //           // 'expir'
+  //           'Cvv': data.Cvv,
+  //         },
+  //         options: Options(
+  //           headers: {
+  //             'Authorization': 'Bearer $AuthUserToken',
+  //           },
+  //         ));
+  //     print(response.data);
+  //     if (response.statusCode == 200) {
+  //       print("Payments updated");
+  //       Get.snackbar('payment'.tr, "Payment_updated".tr,
+  //           colorText: Theme.of(context).hintColor,
+  //           backgroundColor: Theme.of(context).cardColor);
+  //       // Page_Navigation.getInstance.Page(
+  //       //     context,
+  //       //     Bottom_Bar(
+  //       //       initialIndex: 4,
+  //       //     )
+  //       //     );
+
+  //       Page_Navigation.getInstance.Page(context, payment_method());
+  //     } else {
+  //       Get.snackbar('error'.tr, response.data['message'],
+  //           colorText: Theme.of(context).hintColor,
+  //           backgroundColor: Theme.of(context).cardColor);
+  //     }
+  //   } on DioException catch (e) {
+  //     Get.back();
+  //     print("Payment  ${e.response?.data['message']}");
+  //     Get.snackbar('payment_failed'.tr, "${e.response?.data['message']}",
+  //         colorText: Theme.of(context).hintColor,
+  //         backgroundColor: Theme.of(context).cardColor);
+  //   }
+  // }
 }

@@ -46,7 +46,7 @@ class _Home_ScreenState extends State<Home_Screen> {
     Timer(Duration(seconds: 3), () {
       showshimmer.value = false;
     });
-    controller.getAllproducts(0, pageNo);
+
     _scrollController.addListener(_scrollListener);
   }
 
@@ -64,7 +64,7 @@ class _Home_ScreenState extends State<Home_Screen> {
           _isLoadingMore = true;
         });
         pageNo++;
-        controller.getAllproducts(0, pageNo).then((_) {
+        controller.getAllproducts(0, pageNo, context).then((_) {
           setState(() {
             _isLoadingMore = false;
           });
@@ -324,6 +324,8 @@ class _Home_ScreenState extends State<Home_Screen> {
                                               selectedCategories.value = e.id;
                                               print('Category_Id');
                                               print(selectedCategories.value);
+                                              controller.getAllproducts(
+                                                  e.id, pageNo, context);
                                             },
                                             child: Container(
                                               decoration: BoxDecoration(

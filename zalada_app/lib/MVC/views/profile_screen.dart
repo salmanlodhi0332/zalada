@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/MVC/views/edit_profile.dart';
 import 'package:zalada_app/MVC/views/help_center.dart';
+import 'package:zalada_app/MVC/views/password_change_screen.dart';
 import 'package:zalada_app/MVC/views/payment_method.dart';
 import 'package:zalada_app/MVC/views/Address_Screen.dart';
 import 'package:zalada_app/MVC/views/wishlist_cart_screen.dart';
@@ -311,7 +312,10 @@ class _Profile_ScreenState extends State<Profile_Screen> {
             ),
             custom_divider(context),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Page_Navigation.getInstance
+                    .Page(context, ChangePasswordScreen());
+              },
               child: account_section(
                 backgroundcolor: Theme.of(context).hintColor,
                 title: "Account_Security".tr,
@@ -445,7 +449,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                           title: 'logout'.tr,
                           ontap: () async {
                             final auth = Get.put(AuthenticationController());
-                            auth.logout();
+                            auth.logout(context);
                           },
                         )
                       ],
@@ -470,8 +474,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                           child: Text('logout'.tr),
                           onPressed: () async {
                             final auth = Get.put(AuthenticationController());
-                            auth.logout();
-                            Navigator.of(context).pop();
+                            auth.logout(context);
                           },
                         ),
                       ],

@@ -1,9 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import '../../service/Api_Service.dart';
 import '../model/product_model.dart';
 
 class cart_Controller extends GetxController {
   var cartproductlist = {}.obs;
+
+  //
+
   final product_youlike_list = [].obs;
   final islikeLoading = false.obs;
 
@@ -31,9 +35,17 @@ class cart_Controller extends GetxController {
     } else {
       cartproductlist[dummyProducts] = 1;
     }
+  }
+  //
 
-    Get.snackbar("Product Added", "You have added the product",
-        snackPosition: SnackPosition.TOP, duration: Duration(seconds: 2));
+  Future<void> addtoCart(
+      Product_Model ProductsData, BuildContext context) async {
+    try {
+      var ServerResponse =
+          await ApiService.getInstance.AddtoCart(ProductsData.id, context);
+    } catch (e) {
+      print('getAddress error: $e');
+    }
   }
 
   void removeProduct(Product_Model dummyProducts) {

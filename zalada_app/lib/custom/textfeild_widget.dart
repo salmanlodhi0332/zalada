@@ -1,6 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:velocity_x/velocity_x.dart';
+
+bool _isLeadingSpace = false;
+
+String? validateInput(String? value) {
+  if (value != null && value.isNotEmpty && value.startsWith(' ')) {
+    _isLeadingSpace = true;
+    return 'Leading spaces are not allowed';
+  }
+  _isLeadingSpace = false;
+  return null;
+}
 
 class textfeild_widget extends StatelessWidget {
   final String label;
@@ -55,6 +67,11 @@ class textfeild_widget extends StatelessWidget {
                   validator: validator,
                   keyboardType: keyboardtype,
                   obscureText: obscureText ?? false,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.deny(
+                        RegExp(r'\s\s+')), // Deny consecutive spaces
+                    LeadingSpaceTrimmerInputFormatter(), // Custom input formatter to trim leading spaces
+                  ],
                   decoration: InputDecoration(
                       suffixIcon: suffixIcon,
                       hintText: hintText,
@@ -70,5 +87,23 @@ class textfeild_widget extends StatelessWidget {
         ),
       ],
     ).px(5);
+  }
+}
+
+class LeadingSpaceTrimmerInputFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
+    // Trim leading spaces from the text value
+    if (newValue.text.startsWith(' ')) {
+      final trimmedText = newValue.text.trimLeft();
+      return newValue.copyWith(
+        text: trimmedText,
+        composing: TextRange.collapsed(trimmedText.length),
+      );
+    }
+    return newValue;
   }
 }

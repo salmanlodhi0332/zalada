@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/MVC/controller/home_controller.dart';
+import 'package:zalada_app/MVC/controller/wishlist_controller.dart';
+import 'package:zalada_app/MVC/model/product_model.dart';
 import 'package:zalada_app/MVC/views/wishlist_cart_screen.dart';
 import 'package:zalada_app/custom/back_button.dart';
 import 'package:readmore/readmore.dart';
 import 'package:zalada_app/custom/custom_appbar.dart';
 import 'package:zalada_app/custom/product_card.dart';
+import 'package:zalada_app/service/Api_Service.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
 import '../../custom/add_to_cart_button.dart';
 import '../../custom/botton_widget.dart';
@@ -15,13 +18,30 @@ import 'Address_Screen.dart';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:badges/badges.dart' as badges;
 
-class Product_Detail_Screen extends StatelessWidget {
+class Product_Detail_Screen extends StatefulWidget {
   final int id;
 
   Product_Detail_Screen({required this.id});
+
+  @override
+  State<Product_Detail_Screen> createState() => _Product_Detail_ScreenState();
+}
+
+class _Product_Detail_ScreenState extends State<Product_Detail_Screen> {
   final controller = Get.put(home_Controller());
+
   final cartController = Get.put(cart_Controller());
+
   final groupcontroller = SingleValueDropDownController();
+
+  bool isFavorite = false;
+
+  void toggleFavorite() {
+    setState(() {
+      isFavorite = !isFavorite;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final RxString displayimages = ''.obs;
@@ -37,19 +57,22 @@ class Product_Detail_Screen extends StatelessWidget {
         actionButtons: [
           back_button(
             ontap: () {
-              Page_Navigation.getInstance.Page(context, Wishlist_Screen());
+              toggleFavorite();
+              ApiService.getInstance.Add_Wishlist(widget.id, context);
+              // Page_Navigation.getInstance.Page(context, Wishlist_Screen());
             },
             icon_widget: Image.asset(
               'assets/images/favorite.png',
-              color: Theme.of(context).hintColor,
+              color: isFavorite ? Colors.red : Theme.of(context).hintColor,
             ).p(5),
           )
         ],
       ),
       body: SingleChildScrollView(
         child: Wrap(
-          children:
-              controller.productslist.where((p0) => p0.id == id).map((item) {
+          children: controller.productslist
+              .where((p0) => p0.id == widget.id)
+              .map((item) {
             displayimages.value = item.product_media[0];
             return Wrap(
               // alignment: WrapAlignment.center,
@@ -250,31 +273,18 @@ class Product_Detail_Screen extends StatelessWidget {
                     //  from here onwords
                     add_to_cart_button(
                   ontap: () {
-                    cartController.addProduct(controller.productslist
-                        .firstWhere((product) => product.id == id));
+                    var productData = controller.productslist
+                        .firstWhere((product) => product.id == widget.id);
+
+                    cartController.addtoCart(productData, context);
                   },
                   pic: Image.asset(
                     'assets/images/cart.png',
                     color: Theme.of(context).hintColor,
                   ).p(15),
                 ),
-//  end the button, new component comes here.
               ),
             ),
-            // back_button(
-            //   // ontap: () {
-            //   //   cartController.addProduct(Product_Model.dummyProducts[id]);
-            //   // },
-            //   ontap: () {
-            //     cartController.addProduct(controller.Productslist.firstWhere(
-            //         (product) => product.id == id));
-            //   },
-
-            //   pic: Image.asset(
-            //     'assets/images/cart.png',
-            //     color: Theme.of(context).hintColor,
-            //   ).p(15),
-            // ),
             Button_Widget(
                     ontap: () {
                       Page_Navigation.getInstance

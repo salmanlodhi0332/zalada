@@ -118,7 +118,7 @@ class CartProducts extends StatelessWidget {
                         color: Theme.of(context).hintColor,
                       ),
                       onPressed: () {
-                        controller.addProduct(dummyProducts);
+                        // controller.addProduct(dummyProducts);
                       },
                     ),
                   ),

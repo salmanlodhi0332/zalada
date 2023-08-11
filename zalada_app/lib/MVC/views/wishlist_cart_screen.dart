@@ -38,9 +38,22 @@ class Wishlist_Screen extends StatelessWidget {
   }
 }
 
-class wishlist_grid extends StatelessWidget {
+class wishlist_grid extends StatefulWidget {
   wishlist_grid({super.key});
+
+  @override
+  State<wishlist_grid> createState() => _wishlist_gridState();
+}
+
+class _wishlist_gridState extends State<wishlist_grid> {
   final controller = Get.put(Wishlist_Controller());
+
+  @override
+  void initState() {
+    super.initState();
+    controller.getAllwishlist();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -58,7 +71,7 @@ class wishlist_grid extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 final item = controller.wishlist[index];
                 return Product_Card(
-                  id: item.productId,
+                  id: item.id,
                   ontap: () {
                     // {
                     //   Page_Navigation().Page(
@@ -69,9 +82,9 @@ class wishlist_grid extends StatelessWidget {
                     // }
                   },
                   hotdeal: '',
-                  imageurl: item.images[0],
-                  product_name: item.productName,
-                  price: '\$' + item.productPrice,
+                  imageurl: item.product_media[0],
+                  product_name: item.name,
+                  price: '\$' + item.price,
                 );
               },
               mainAxisSpacing: 50.0,

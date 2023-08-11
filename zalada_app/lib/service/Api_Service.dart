@@ -529,13 +529,13 @@ class ApiService {
       print("c  ${e.response?.data['message']}");
     }
   }
-  addorRemoveCart(int productId, BuildContext context) async {
+AddOrRemoveCart(int productId,String action_type,BuildContext context) async {
     try {
-      Loader.poploader(context);
+      // Loader.poploader(context);
       Response response;
-      response = await dio.post('${baseURL}carts/$productId',
+      response = await dio.patch('${baseURL}carts/$productId',
           data: {
-            'quantity': 1,
+            "action_type":action_type
           },
           options: Options(
             headers: {
@@ -543,9 +543,9 @@ class ApiService {
             },
           ));
       print("statusCode => " + response.statusCode.toString());
-      print('AddtoCart  API done 👌✅');
+      print('AddOrRemoveCart  API done 👌✅');
       if (response.statusCode == 201) {
-        print("Add to cart succesfully ");
+        
         Get.back();
         Get.snackbar('Add_to_cart'.tr, "Add_to_cart_succesfully".tr,
             colorText: Theme.of(context).hintColor,
@@ -563,6 +563,8 @@ class ApiService {
       print("c  ${e.response?.data['message']}");
     }
   }
+
+
 
 // Add Payment Work starts from here,
 

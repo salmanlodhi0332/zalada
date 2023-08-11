@@ -16,6 +16,28 @@ class cart_Controller extends GetxController {
     }
   }
 
+  Future<void> addCart(Product_Model ProductsData, BuildContext context) async {
+    try {
+      
+      var ServerResponse = await ApiService.getInstance
+          .AddOrRemoveCart(ProductsData.id, 'Add', context);
+      getuserCart();
+    } catch (e) {
+      print('addCart error: $e');
+    }
+  }
+
+  Future<void> removeCart(
+      Product_Model ProductsData, BuildContext context) async {
+    try {
+      var ServerResponse = await ApiService.getInstance
+          .AddOrRemoveCart(ProductsData.id, 'removed', context);
+      getuserCart();
+    } catch (e) {
+      print('removeCart error: $e');
+    }
+  }
+
   getuserCart() async {
     try {
       // isLoading.value = true;
@@ -29,13 +51,5 @@ class cart_Controller extends GetxController {
     }
   }
 
-  Future<void> addorRemoveCart(
-      Product_Model ProductsData, BuildContext context) async {
-    try {
-      var ServerResponse =
-          await ApiService.getInstance.AddtoCart(ProductsData.id, context);
-    } catch (e) {
-      print('getAddress error: $e');
-    }
-  }
+  
 }

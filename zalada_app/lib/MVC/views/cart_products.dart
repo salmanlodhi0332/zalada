@@ -8,13 +8,12 @@ import '../controller/cart_controller.dart';
 class CartProducts extends StatelessWidget {
   final cart_Controller controller;
   final Product_Model Products;
-  
 
   const CartProducts({
     super.key,
     required this.controller,
     required this.Products,
-  }); 
+  });
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -95,7 +94,7 @@ class CartProducts extends StatelessWidget {
                         color: Theme.of(context).hintColor,
                       ),
                       onPressed: () {
-                        controller.addorRemoveCart(Products, context);
+                        controller.removeCart(Products, context);
                         // No need to handle quantity changes since it's a stateless widget
                       },
                     ),
@@ -118,7 +117,7 @@ class CartProducts extends StatelessWidget {
                         color: Theme.of(context).hintColor,
                       ),
                       onPressed: () {
-                        // controller.addProduct(Products);
+                        controller.addCart(Products, context);
                       },
                     ),
                   ),
@@ -130,7 +129,7 @@ class CartProducts extends StatelessWidget {
                         Theme.of(context).disabledColor.withOpacity(0.1),
                     child: IconButton(
                       onPressed: () {
-                        controller.addorRemoveCart(Products, context);
+                        // controller.addCart(Products, context);
                       },
                       icon: Icon(
                         Icons.delete_outline,

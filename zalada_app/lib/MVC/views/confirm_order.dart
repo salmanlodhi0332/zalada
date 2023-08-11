@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:zalada_app/MVC/controller/shiping_controller.dart';
 import 'package:zalada_app/MVC/views/Address_Screen.dart';
 import 'package:zalada_app/MVC/views/select_Address.dart';
 import 'package:zalada_app/auth/order_successful_bottom_bar.dart';
@@ -20,6 +21,7 @@ class ConfirmOrder extends StatefulWidget {
 }
 
 class _ConfirmOrderState extends State<ConfirmOrder> {
+  final controller = Get.put(Shiping_Controller());
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -165,52 +167,67 @@ class _ConfirmOrderState extends State<ConfirmOrder> {
                   SizedBox(
                     height: 10,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Theme.of(context)
-                              .disabledColor
-                              .withOpacity(0.4), // Border color
-                          width: 1.0, // Border width
-                        ),
-                        borderRadius:
-                            BorderRadius.circular(12.0), // Border radius
-                      ),
-                      child: Column(children: [
-                        ListTile(
-                          leading: Image.asset("assets/images/Rectangle14.png")
-                              .px(25),
-                          title: Text(
-                            "J&T Express",
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontFamily: 'plusjakarta',
-                                fontWeight: FontWeight.w700),
-                          ),
-                          trailing: IconButton(
-                              onPressed: () {},
-                              icon: Icon(Icons.navigate_next_outlined)),
-                        ),
-                        Divider(
-                          color:
-                              Theme.of(context).disabledColor.withOpacity(0.4),
-                          thickness: 1,
-                        ),
-                        ListTile(
-                          title: Text("Regular (\$8)",
-                                  style: TextStyle(
-                                      fontFamily: 'plusjakarta',
-                                      //fontSize: 18,
-                                      fontWeight: FontWeight.w700))
-                              .px(25),
-                          subtitle:
-                              Text("Estimate time 01 - 03 November").px(25),
-                        ),
-                      ]),
-                    ),
-                  ),
+                  Obx(() => Column(
+                        children: controller.shipingList.map((ship) {
+                          return Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Theme.of(context)
+                                      .disabledColor
+                                      .withOpacity(0.4), // Border color
+                                  width: 1.0, // Border width
+                                ),
+                                borderRadius: BorderRadius.circular(
+                                    12.0), // Border radius
+                              ),
+                              child: Column(children: [
+                                ListTile(
+                                  leading:
+                                      // Image.asset(
+                                      //     "assets/images/Rectangle14.png"),
+                                      // '${ship.image}').px(25),
+                                      Image.network(
+                                    '${ship.image}',
+                                    height: 45,
+                                  ),
+                                  title: Text(
+                                    '${ship.name} ',
+                                    // "J&T Express",
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontFamily: 'plusjakarta',
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                  trailing: IconButton(
+                                      onPressed: () {},
+                                      icon: Icon(Icons.navigate_next_outlined)),
+                                ),
+                                Divider(
+                                  color: Theme.of(context)
+                                      .disabledColor
+                                      .withOpacity(0.4),
+                                  thickness: 1,
+                                ),
+                                ListTile(
+                                  title: Text(
+                                          // "Regular (\$8)",
+                                          '${ship.type} (${ship.charges})',
+                                          style: TextStyle(
+                                              fontFamily: 'plusjakarta',
+                                              //fontSize: 18,
+                                              fontWeight: FontWeight.w700))
+                                      .px(25),
+                                  subtitle: Text(
+                                      // "Estimate time 01 - 03 November"
+                                      '${ship.estimated_time}').px(25),
+                                ),
+                              ]),
+                            ),
+                          );
+                        }).toList(),
+                      )),
                   Divider(
                     color: Theme.of(context).disabledColor.withOpacity(0.4),
                     thickness: 4,

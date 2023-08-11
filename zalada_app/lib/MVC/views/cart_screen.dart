@@ -11,9 +11,20 @@ import '../../custom/product_card.dart';
 import '../controller/cart_controller.dart';
 import 'cart_products.dart';
 
-class Cart_Screen extends StatelessWidget {
-  final cart_Controller controller = Get.find();
+class Cart_Screen extends StatefulWidget {
+  @override
+  State<Cart_Screen> createState() => _Cart_ScreenState();
+}
+
+class _Cart_ScreenState extends State<Cart_Screen> {
   final cartController = Get.put(cart_Controller());
+
+  @override
+  void initState() {
+    super.initState();
+    cartController.getproductLike();
+  }
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -87,10 +98,10 @@ class Cart_Screen extends StatelessWidget {
                           ],
                         )
                       : Column(
-                          children: controller.cartproductlist
+                          children: cartController.cartproductlist
                               .map(
                                 (e) => CartProducts(
-                                  controller: controller,
+                                  controller: cartController,
                                   Products: e,
                                 ),
                               )
@@ -136,7 +147,7 @@ class Cart_Screen extends StatelessWidget {
               ),
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Text(
-                  'product_related'.tr,
+                  'product_you_like'.tr,
                   style: const TextStyle(
                       fontFamily: 'plusjakarta',
                       fontSize: 18,
@@ -145,49 +156,75 @@ class Cart_Screen extends StatelessWidget {
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
-                    children: [
-                      const Product_Card(
-                        id: 1,
-                        hotdeal: '',
-                        imageurl:
-                            'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
-                        product_name: 'Macbook Pro 15" 2019 -Intel corei7',
-                        price: '\$1240',
+                      children: cartController.islikeLoading.value == false
+                          ? [
+                              Text(
+                                'no_data'.tr,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 12,
+                                    color: Theme.of(context).hintColor),
+                              )
+                            ]
+                          : cartController.product_youlike_list
+                              .map(
+                                (element) => Product_Card(
+                                  id: 1,
+                                  hotdeal: '',
+                                  imageurl:
+                                      'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
+                                  product_name:
+                                      'Macbook Pro 15" 2019 -Intel corei7',
+                                  price: '\$1240',
+                                ),
+                              )
+                              .toList()
+                      // [
+                      //   const Product_Card(
+                      //     id: 1,
+                      //     hotdeal: '',
+                      //     imageurl:
+                      //         'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
+                      //     product_name: 'Macbook Pro 15" 2019 -Intel corei7',
+                      //     price: '\$1240',
+                      //   ),
+                      //   const Product_Card(
+                      //     id: 1,
+                      //     hotdeal: '',
+                      //     imageurl:
+                      //         'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
+                      //     product_name: 'Macbook Pro 15" 2019 -Intel corei7',
+                      //     price: '\$1240',
+                      //   ).px(10),
+                      //   const Product_Card(
+                      //     id: 1,
+                      //     hotdeal: '',
+                      //     imageurl:
+                      //         'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
+                      //     product_name: 'Macbook Pro 15" 2019 -Intel corei7',
+                      //     price: '\$1240',
+                      //   ).py(25),
+                      //   const Product_Card(
+                      //     id: 1,
+                      //     hotdeal: '',
+                      //     imageurl:
+                      //         'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
+                      //     product_name: 'Macbook Pro 15" 2019 -Intel corei7',
+                      //     price: '\$1240',
+                      //   ).px(10),
+                      // ],
                       ),
-                      const Product_Card(
-                        id: 1,
-                        hotdeal: '',
-                        imageurl:
-                            'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
-                        product_name: 'Macbook Pro 15" 2019 -Intel corei7',
-                        price: '\$1240',
-                      ).px(10),
-                      const Product_Card(
-                        id: 1,
-                        hotdeal: '',
-                        imageurl:
-                            'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
-                        product_name: 'Macbook Pro 15" 2019 -Intel corei7',
-                        price: '\$1240',
-                      ).py(25),
-                      const Product_Card(
-                        id: 1,
-                        hotdeal: '',
-                        imageurl:
-                            'https://firebasestorage.googleapis.com/v0/b/salmantest-ee1a4.appspot.com/o/p4.png?alt=media&token=5c2529c2-18ca-4c21-baac-8548793b2107',
-                        product_name: 'Macbook Pro 15" 2019 -Intel corei7',
-                        price: '\$1240',
-                      ).px(10),
-                    ],
-                  ),
                 )
               ]).px(ph).py(5),
-              Button_Widget(
-                  ontap: () {
-                    Page_Navigation.getInstance.Page(context, ConfirmOrder());
-                  },
-                  width: width,
-                  title: 'checkout'.tr),
+              cartController.cartproductlist.isEmpty
+                  ? SizedBox()
+                  : Button_Widget(
+                      ontap: () {
+                        Page_Navigation.getInstance
+                            .Page(context, ConfirmOrder());
+                      },
+                      width: width,
+                      title: 'checkout'.tr),
             ],
           ),
         ),

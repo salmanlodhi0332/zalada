@@ -5,6 +5,16 @@ import '../model/product_model.dart';
 
 class cart_Controller extends GetxController {
   RxList cartproductlist = [].obs;
+    final product_youlike_list = [].obs;
+  final islikeLoading = false.obs;
+
+  
+  @override
+  void onInit() {
+    super.onInit();
+    getproductLike();
+  }
+
   Future<void> addtoCart(
       Product_Model ProductsData, BuildContext context) async {
     try {
@@ -50,6 +60,17 @@ class cart_Controller extends GetxController {
       // isLoading.value = false;
     }
   }
-
   
+  getproductLike() async {
+    try {
+      islikeLoading(true);
+      var ServerResponse = await ApiService.getInstance.getproductLike();
+      product_youlike_list.value = ServerResponse;
+    } catch (e) {
+      print('getAllCategories  error: $e');
+    } finally {
+      islikeLoading(false);
+    }
+  }
+
 }

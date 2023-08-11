@@ -135,12 +135,6 @@ class _Home_ScreenState extends State<Home_Screen> {
                       ),
                     ),
                   ),
-
-                  // add_to_cart_button(
-                  //   ontap: () {},
-                  // ),
-
-                  // end of the widget
                   Container(
                     margin: const EdgeInsets.all(7),
                     decoration: BoxDecoration(
@@ -255,7 +249,8 @@ class _Home_ScreenState extends State<Home_Screen> {
               SliverToBoxAdapter(
                   child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Wrap(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       'hot_deal'.tr,
@@ -267,22 +262,52 @@ class _Home_ScreenState extends State<Home_Screen> {
                     Obx(() => SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
-                            children: controller.hotdeal_list.map((e) {
-                              var discountprice =
-                                  e.discountedPrice!.toStringAsFixed(2);
-                              print(discountprice);
-                              return Product_Card(
-                                id: e.id,
-                                hotdeal: 'true',
-                                imageurl: e.product_media[0],
-                                product_name: e.name,
-                                price: discountprice,
-                                disprice: e.price,
-                                outOfStock: e.outOfStock,
-                                isNewArrival: e.isNewArrival,
-                              ).pOnly(right: 15).py(15);
-                            }).toList(),
-                          ),
+                              children: controller.hotdeal_list.isNotEmpty
+                                  ? controller.hotdeal_list.map((e) {
+                                      var discountprice =
+                                          e.discountedPrice!.toStringAsFixed(2);
+                                      print(discountprice);
+                                      return Product_Card(
+                                        id: e.id,
+                                        hotdeal: 'true',
+                                        imageurl: e.product_media[0],
+                                        product_name: e.name,
+                                        price: discountprice,
+                                        disprice: e.price,
+                                        outOfStock: e.outOfStock,
+                                        isNewArrival: e.isNewArrival,
+                                      ).pOnly(right: 15).py(15);
+                                    }).toList()
+                                  : showshimmer.value
+                                      ? [
+                                          custom_shimmer(
+                                              width: size.width / 2.3,
+                                              height: size.height / 5.5),
+                                          custom_shimmer(
+                                              width: size.width / 2.3,
+                                              height: size.height / 5.5),
+                                          custom_shimmer(
+                                              width: size.width / 2.3,
+                                              height: size.height / 5.5),
+                                          custom_shimmer(
+                                              width: size.width / 2.3,
+                                              height: size.height / 5.5)
+                                        ]
+                                      : [
+                                          Center(
+                                            child: Text(
+                                              "No_product_available".tr,
+                                              style: TextStyle(
+                                                fontFamily: 'plusjakarta',
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.normal,
+                                                color:
+                                                    Theme.of(context).hintColor,
+                                              ),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          )
+                                        ]),
                         )).pOnly(bottom: 10),
                     Obx(
                       () => SingleChildScrollView(

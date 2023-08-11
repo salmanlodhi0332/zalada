@@ -5,6 +5,7 @@ class OnboardingModel {
 
   OnboardingModel(
       {required this.image, required this.text, required this.title});
+
   static List<OnboardingModel> list = [
     OnboardingModel(
         image: "assets/images/pick_&_pay.png",

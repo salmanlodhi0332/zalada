@@ -172,9 +172,9 @@ class _Select_AddressState extends State<Select_Address> {
             ),
             textfeild_widget(
               label: "Address_name".tr,
-              hintText: widget.locationName ?? 'Apartment'.tr,
+              hintText: widget.locationName ?? 'enter_address'.tr,
               controller: addressController,
-            ),
+            ).px(15),
             SizedBox(
               height: 15,
             ),
@@ -254,8 +254,8 @@ class _Select_AddressState extends State<Select_Address> {
                   value: "apartment",
                 ),
                 DropDownValueModel(
-                  name: 'others',
-                  value: "others",
+                  name: 'other',
+                  value: "other",
                 ),
               ],
             ).px(25).py(10),
@@ -351,15 +351,22 @@ class _Select_AddressState extends State<Select_Address> {
 
               ApiService.getInstance.Update_Address(addressData, context);
             } else {
-              var addressData = Address_Model(
-                locationname: addressController.text,
-                address: _address,
-                latitude: lat.toString(),
-                longitude: long.toString(),
-                addressType: typecontroller.dropDownValue!.name,
-                userid: 1,
-              );
-              ApiService.getInstance.Add_Address(addressData, context);
+              if (typecontroller.dropDownValue != null &&
+                  addressController.text != '') {
+                var addressData = Address_Model(
+                  locationname: addressController.text,
+                  address: _address,
+                  latitude: lat.toString(),
+                  longitude: long.toString(),
+                  addressType: typecontroller.dropDownValue!.name,
+                  userid: 1,
+                );
+                ApiService.getInstance.Add_Address(addressData, context);
+              } else {
+                Get.snackbar('address_failed'.tr, "please_fill".tr,
+                    colorText: Theme.of(context).hintColor,
+                    backgroundColor: Theme.of(context).cardColor);
+              }
             }
           },
           width: size.width,

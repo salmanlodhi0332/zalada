@@ -5,6 +5,10 @@ class Multi_Language extends Translations {
   Map<String, Map<String, String>> get keys => {
         //------------------------en_US
         'en_US': {
+          'enter_address':"Enter Your Address",
+          'please_fill': "Please Fill The Form",
+          'no_data': "No Data Here",
+          'product_you_like': "Products May You Like",
           'product_failed': 'Product Failed',
           'new_arrival': "New  Arrival",
           'out_stuck': "Out Of Stuck",

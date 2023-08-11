@@ -2,12 +2,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:zalada_app/MVC/views/password_change_screen.dart';
-import 'package:zalada_app/MVC/views/search_product_screen.dart';
+import 'package:zalada_app/MVC/views/Explore_Screen.dart';
 import 'package:zalada_app/MVC/views/search_result_screen.dart';
 import '../controller/cart_controller.dart';
 import '../controller/product_controller.dart';
-import 'Explore_Screeen.dart';
 import 'Live_Stream_Screen.dart';
+import 'order_tracker.dart';
 import 'profile_screen.dart';
 import 'confirm_order.dart';
 import 'cart_screen.dart';
@@ -161,9 +161,9 @@ class _Bottom_BarState extends State<Bottom_Bar> {
       case 0:
         return Home_Screen();
       case 1:
-        return SearchScreen();
+        return Explore_Screen();
       case 2:
-        return ChangePasswordScreen();
+        return ConfirmOrder();
       //Live_Stream_Screen();
       case 3:
         return Cart_Screen();

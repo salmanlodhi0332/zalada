@@ -1,33 +1,33 @@
 class Payment_model {
-  final String CardName;
-  final String CardNumber;
-  final String Cvv;
-  // final int? id;
-  final String Expire_date;
+  final String cardName;
+  final String cardNumber;
+  final String cvv;
+  final int? id;
+  final String expire_date;
 
   Payment_model({
-    // this.id,
-    required this.CardName,
-    required this.CardNumber,
-    required this.Cvv,
-    required this.Expire_date,
+    this.id,
+    required this.cardName,
+    required this.cardNumber,
+    required this.cvv,
+    required this.expire_date,
   });
 
   Map<String, dynamic> tojson() => {
-        //  'id': id,
-        'cardName': CardName,
-        'card_number': CardNumber,
-        'Cvv': Cvv,
-        'expire_date': Expire_date,
+        'id': id,
+        'cardName': cardName,
+        'card_number': cardNumber,
+        'Cvv': cvv,
+        'expire_date': expire_date,
       };
 
   factory Payment_model.fromJson(Map<String, dynamic> json) {
     return Payment_model(
-      //id: json['id'],
-      CardName: json['cardName'],
-      CardNumber: json['card_number'],
-      Expire_date: json['expire_date'],
-      Cvv: json['Cvv'].toString(),
+      id: json['id'],
+      cardName: json['cardName'].toString(),
+      cardNumber: json['card_number'].toString(),
+      expire_date: json['expire_date'].toString(),
+      cvv: json['Cvv'].toString(),
     );
   }
 }

@@ -5,12 +5,14 @@ class Shiping_Model {
   final String charges;
   final String estimated_time;
 
+  final String type;
   final String? createdAt;
   final String? updatedAt;
 
   Shiping_Model({
     this.id,
     required this.name,
+    required this.type,
     required this.image,
     required this.charges,
     required this.estimated_time,
@@ -21,6 +23,7 @@ class Shiping_Model {
   Map<String, dynamic> tojson() => {
         'id': id,
         'name': name,
+        'type': type,
         'image': image,
         'charges': charges,
         'estimated_time': estimated_time,
@@ -32,6 +35,7 @@ class Shiping_Model {
     return Shiping_Model(
         id: json['id'],
         name: json['name'],
+        type: json['type'],
         image: json['image'],
         charges: json['charges'].toString(),
         estimated_time: json['estimated_time'].toString(),

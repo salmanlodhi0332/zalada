@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:flutter_svg/svg.dart';
@@ -45,18 +46,16 @@ class _selected_boxState extends State<selected_box> {
         title: Text(
           widget.label,
           style: TextStyle(
-            fontFamily: 'plusjakarta',
             color: Theme.of(context).hintColor.withOpacity(0.5),
-            fontSize: 15,
+            fontSize: 15.sp,
             fontWeight: FontWeight.w500,
           ),
         ),
         subtitle: Text(
           widget.hintText,
           style: TextStyle(
-            fontFamily: 'plusjakarta',
             color: Theme.of(context).hintColor,
-            fontSize: 13,
+            fontSize: 13.sp,
             fontWeight: FontWeight.w800,
           ),
         ),
@@ -104,7 +103,7 @@ class _selected_boxState extends State<selected_box> {
     //             Text(
     //               widget.label,
     //               style: TextStyle(
-    //                 fontFamily: 'plusjakarta',
+    //
     //                 color: Theme.of(context).hintColor.withOpacity(0.5),
     //                 fontSize: 15,
     //                 fontWeight: FontWeight.w500,
@@ -113,7 +112,7 @@ class _selected_boxState extends State<selected_box> {
     //             Text(
     //               widget.hintText,
     //               style: TextStyle(
-    //                 fontFamily: 'plusjakarta',
+    //
     //                 color: Theme.of(context).hintColor,
     //                 fontSize: 20,
     //                 fontWeight: FontWeight.w800,

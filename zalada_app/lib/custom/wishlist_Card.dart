@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/instance_manager.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/MVC/controller/home_controller.dart';
@@ -60,8 +61,7 @@ class Wishlist_Card extends StatelessWidget {
                   maxLines: 2,
                   softWrap: false,
                   style: TextStyle(
-                      fontFamily: 'plusjakarta',
-                      fontSize: 14,
+                      fontSize: 14.sp,
                       color: Theme.of(context).hintColor,
                       fontWeight: FontWeight.w600),
                 ),
@@ -73,8 +73,7 @@ class Wishlist_Card extends StatelessWidget {
                         maxLines: 1,
                         softWrap: false,
                         style: TextStyle(
-                            fontFamily: 'plusjakarta',
-                            fontSize: 16,
+                            fontSize: 16.sp,
                             color: Theme.of(context).focusColor,
                             fontWeight: FontWeight.bold),
                       ).pOnly(bottom: 15)
@@ -85,17 +84,15 @@ class Wishlist_Card extends StatelessWidget {
                             TextSpan(
                               text: '\$1240',
                               style: TextStyle(
-                                  fontFamily: 'plusjakarta',
-                                  fontSize: 15,
+                                  fontSize: 15.sp,
                                   color: Theme.of(context).focusColor,
                                   fontWeight: FontWeight.w600),
                             ),
                             TextSpan(
                               text: '\$1540',
                               style: TextStyle(
-                                  fontFamily: 'plusjakarta',
                                   decoration: TextDecoration.lineThrough,
-                                  fontSize: 12,
+                                  fontSize: 12.sp,
                                   color: Theme.of(context)
                                       .disabledColor
                                       .withOpacity(0.5),
@@ -153,10 +150,9 @@ class Wishlist_Card extends StatelessWidget {
                             child: Text(
                               status,
                               style: TextStyle(
-                                  fontFamily: 'plusjakarta',
                                   color: Theme.of(context).secondaryHeaderColor,
                                   fontWeight: FontWeight.w300,
-                                  fontSize: 10),
+                                  fontSize: 10.sp),
                             )))
                     : SizedBox()
                 : SizedBox()

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -58,10 +59,9 @@ class _splash_screenState extends State<splash_screen> {
             Text(
               'zalada'.tr,
               style: TextStyle(
-                  fontFamily: 'plusjakarta',
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).hintColor,
-                  fontSize: 25),
+                  fontSize: 25.sp),
             )
           ],
         ),

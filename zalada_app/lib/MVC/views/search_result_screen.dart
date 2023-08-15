@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -82,7 +83,7 @@ class _search_result_screenState extends State<search_result_screen> {
                             'search_history'.tr,
                             style: TextStyle(
                                 color: Theme.of(context).hintColor,
-                                fontSize: 18),
+                                fontSize: 18.sp),
                           ),
                           GestureDetector(
                             onTap: () {
@@ -117,12 +118,11 @@ class _search_result_screenState extends State<search_result_screen> {
                                   child: Text(
                                     e.search_query!,
                                     style: TextStyle(
-                                        fontFamily: 'plusjakarta',
                                         color: Theme.of(context)
                                             .hintColor
                                             .withOpacity(0.6),
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 10),
+                                        fontSize: 10.sp),
                                   )).pOnly(right: 10))
                               .toList())
                     ],

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zalada_app/MVC/model/user_model.dart';
@@ -148,9 +149,7 @@ class _edit_profileState extends State<edit_profile> {
                 child: Text(
                   "Gender".tr,
                   style: TextStyle(
-                      fontFamily: 'plusjakarta',
-                      color: Theme.of(context).hintColor,
-                      fontSize: 15),
+                      color: Theme.of(context).hintColor, fontSize: 15.sp),
                 ),
               ).p(10),
               DropDownTextField(

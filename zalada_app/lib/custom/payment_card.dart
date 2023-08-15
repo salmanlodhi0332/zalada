@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class payment_card extends StatelessWidget {
@@ -55,8 +56,7 @@ class payment_card extends StatelessWidget {
           title: Text(
             label,
             style: TextStyle(
-              fontFamily: 'plusjakarta',
-              fontSize: 18,
+              fontSize: 18.sp,
               fontWeight: FontWeight.w500,
               color: Theme.of(context).hintColor,
             ),
@@ -64,9 +64,8 @@ class payment_card extends StatelessWidget {
           subtitle: Text(
             hintText,
             style: TextStyle(
-              fontFamily: 'plusjakarta',
               color: Theme.of(context).disabledColor.withOpacity(0.4),
-              fontSize: 15,
+              fontSize: 15.sp,
               fontWeight: FontWeight.w600,
             ),
           ),

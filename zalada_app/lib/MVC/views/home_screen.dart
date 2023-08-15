@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/custom/image_widget.dart';
@@ -106,7 +107,6 @@ class _Home_ScreenState extends State<Home_Screen> {
                         cartController.cartproductlist.length.toString(),
                         style: TextStyle(
                           color: Colors.white,
-                          fontFamily: 'plusjakarta',
                         ),
                       ),
                       ignorePointer: false,
@@ -175,7 +175,6 @@ class _Home_ScreenState extends State<Home_Screen> {
                           Text(
                             'home_card_description'.tr,
                             style: TextStyle(
-                                fontFamily: 'plusjakarta',
                                 color:
                                     Theme.of(context).scaffoldBackgroundColor,
                                 fontSize: 36,
@@ -231,9 +230,8 @@ class _Home_ScreenState extends State<Home_Screen> {
                             Text(
                               "search_product".tr,
                               style: TextStyle(
-                                  fontFamily: 'plusjakarta',
                                   color: Theme.of(context).disabledColor,
-                                  fontSize: 14),
+                                  fontSize: 14.sp),
                             )
                           ],
                         ),
@@ -249,9 +247,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                     Text(
                       'hot_deal'.tr,
                       style: const TextStyle(
-                          fontFamily: 'plusjakarta',
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700),
+                          fontSize: 18, fontWeight: FontWeight.w700),
                     ).pOnly(top: 10),
                     Obx(() => SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
@@ -292,7 +288,6 @@ class _Home_ScreenState extends State<Home_Screen> {
                                             child: Text(
                                               "No_product_available".tr,
                                               style: TextStyle(
-                                                fontFamily: 'plusjakarta',
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.normal,
                                                 color:
@@ -352,7 +347,6 @@ class _Home_ScreenState extends State<Home_Screen> {
                                                   Text(
                                                     e.name,
                                                     style: TextStyle(
-                                                      fontFamily: 'plusjakarta',
                                                       fontWeight:
                                                           FontWeight.w600,
                                                       color: Theme.of(context)
@@ -432,7 +426,6 @@ class _Home_ScreenState extends State<Home_Screen> {
                                     child: Text(
                                       "No_product_available".tr,
                                       style: TextStyle(
-                                        fontFamily: 'plusjakarta',
                                         fontSize: 15,
                                         fontWeight: FontWeight.normal,
                                         color: Theme.of(context).hintColor,

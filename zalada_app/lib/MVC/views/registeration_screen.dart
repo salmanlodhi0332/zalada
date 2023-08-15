@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -57,9 +58,8 @@ class _registeration_screenState extends State<registeration_screen> {
                     Text(
                       'Create_account'.tr,
                       style: TextStyle(
-                          fontFamily: 'plusjakarta',
                           color: Theme.of(context).hintColor,
-                          fontSize: 30,
+                          fontSize: 30.sp,
                           fontWeight: FontWeight.w500),
                     ).px(20),
                   ],
@@ -188,9 +188,7 @@ class _registeration_screenState extends State<registeration_screen> {
                     Text(
                       'or_continue_with'.tr,
                       style: TextStyle(
-                          fontFamily: 'plusjakarta',
-                          color: Theme.of(context).hintColor,
-                          fontSize: 20),
+                          color: Theme.of(context).hintColor, fontSize: 20.sp),
                     ).px(10),
                     SizedBox(
                       child: Divider(
@@ -238,9 +236,7 @@ class _registeration_screenState extends State<registeration_screen> {
                     Text(
                       'If_you_already_have_an_account'.tr,
                       style: TextStyle(
-                          fontFamily: 'plusjakarta',
-                          color: Theme.of(context).hintColor,
-                          fontSize: 20),
+                          color: Theme.of(context).hintColor, fontSize: 20.sp),
                     ),
                     GestureDetector(
                       onTap: () {
@@ -250,9 +246,8 @@ class _registeration_screenState extends State<registeration_screen> {
                       child: Text(
                         'login'.tr,
                         style: TextStyle(
-                            fontFamily: 'plusjakarta',
                             color: Theme.of(context).focusColor,
-                            fontSize: 16,
+                            fontSize: 16.sp,
                             fontWeight: FontWeight.w800),
                       ),
                     )

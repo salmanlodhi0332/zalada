@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
@@ -37,9 +38,8 @@ class PhoneNumberInputWidget extends StatelessWidget {
         inputDecoration: InputDecoration(
           hintText: 'Enter phone number',
           hintStyle: TextStyle(
-            fontFamily: 'plusjakarta',
             color: Theme.of(context).hintColor.withOpacity(0.3),
-            fontSize: 15,
+            fontSize: 15.sp,
           ),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide.none,

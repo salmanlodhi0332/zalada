@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class account_section extends StatelessWidget {
   final String title;
@@ -30,8 +31,7 @@ class account_section extends StatelessWidget {
           title: Text(
             title,
             style: TextStyle(
-                fontFamily: 'plusjakarta',
-                fontSize: 18,
+                fontSize: 18.sp,
                 color: backgroundcolor,
                 // color: Theme.of(context).hintColor,
                 fontWeight: FontWeight.w500),

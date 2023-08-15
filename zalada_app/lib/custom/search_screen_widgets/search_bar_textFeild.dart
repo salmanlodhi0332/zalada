@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class search_bar_textfeild extends StatelessWidget {
@@ -43,7 +44,7 @@ class search_bar_textfeild extends StatelessWidget {
                   hintText: hintText,
                   hintStyle: TextStyle(
                       color: Theme.of(context).hintColor.withOpacity(0.3),
-                      fontSize: 12),
+                      fontSize: 12.sp),
                   enabledBorder:
                       OutlineInputBorder(borderSide: BorderSide.none),
                   focusedBorder:

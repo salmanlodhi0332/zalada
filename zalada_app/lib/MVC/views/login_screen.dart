@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/custom/botton_widget.dart';
@@ -47,9 +48,8 @@ class _login_screenState extends State<login_screen> {
                     Text(
                       'login_account'.tr,
                       style: TextStyle(
-                          fontFamily: 'plusjakarta',
                           color: Theme.of(context).hintColor,
-                          fontSize: 30,
+                          fontSize: 30.sp,
                           fontWeight: FontWeight.w500),
                     ).px(20),
                   ],
@@ -97,7 +97,7 @@ class _login_screenState extends State<login_screen> {
                   child: Text(
                     'Forget_password'.tr,
                     style: TextStyle(
-                        color: Theme.of(context).hintColor, fontSize: 20),
+                        color: Theme.of(context).hintColor, fontSize: 20.sp),
                   ),
                 ),
                 SizedBox(
@@ -136,7 +136,7 @@ class _login_screenState extends State<login_screen> {
                     Text(
                       'or_continue_with'.tr,
                       style: TextStyle(
-                          color: Theme.of(context).hintColor, fontSize: 20),
+                          color: Theme.of(context).hintColor, fontSize: 20.sp),
                     ).px(10),
                     SizedBox(
                       child: Divider(
@@ -184,7 +184,7 @@ class _login_screenState extends State<login_screen> {
                     Text(
                       'Dont_have_an_account'.tr,
                       style: TextStyle(
-                          color: Theme.of(context).hintColor, fontSize: 20),
+                          color: Theme.of(context).hintColor, fontSize: 20.sp),
                     ),
                     GestureDetector(
                       onTap: () {
@@ -194,9 +194,8 @@ class _login_screenState extends State<login_screen> {
                       child: Text(
                         'Register'.tr,
                         style: TextStyle(
-                            fontFamily: 'plusjakarta',
                             color: Theme.of(context).focusColor,
-                            fontSize: 16,
+                            fontSize: 16.sp,
                             fontWeight: FontWeight.w800),
                       ),
                     )

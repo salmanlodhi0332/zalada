@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class CD_selected_paymentbox extends StatefulWidget {
@@ -52,18 +53,16 @@ class _CD_selected_paymentboxState extends State<CD_selected_paymentbox> {
                 Text(
                   widget.label,
                   style: TextStyle(
-                    fontFamily: 'plusjakarta',
                     color: Theme.of(context).hintColor,
-                    fontSize: 20,
+                    fontSize: 20.sp,
                     fontWeight: FontWeight.w800,
                   ),
                 ).py(5),
                 Text(
                   widget.hintText,
                   style: TextStyle(
-                    fontFamily: 'plusjakarta',
                     color: Theme.of(context).hintColor.withOpacity(0.5),
-                    fontSize: 13,
+                    fontSize: 13.sp,
                     fontWeight: FontWeight.w300,
                   ),
                 )

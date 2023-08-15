@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class Hot_deal_Product_Card extends StatelessWidget {
@@ -38,9 +39,7 @@ class Hot_deal_Product_Card extends StatelessWidget {
                   'Macbook Pro 15" 2019 -Intel corei7',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    
-                fontFamily: 'plusjakarta',
-                      fontSize: 15,
+                      fontSize: 15.sp,
                       color: Theme.of(context).hintColor,
                       fontWeight: FontWeight.w600),
                 ).pOnly(bottom: 10),
@@ -51,19 +50,15 @@ class Hot_deal_Product_Card extends StatelessWidget {
                       TextSpan(
                         text: '\$1240',
                         style: TextStyle(
-                          
-                fontFamily: 'plusjakarta',
-                            fontSize: 15,
+                            fontSize: 15.sp,
                             color: Theme.of(context).focusColor,
                             fontWeight: FontWeight.w600),
                       ),
                       TextSpan(
                         text: '\$1540',
                         style: TextStyle(
-                          
-                fontFamily: 'plusjakarta',
                             decoration: TextDecoration.lineThrough,
-                            fontSize: 12,
+                            fontSize: 12.sp,
                             color: Theme.of(context)
                                 .disabledColor
                                 .withOpacity(0.5),

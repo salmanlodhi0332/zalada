@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/MVC/views/select_Address.dart';
@@ -89,8 +90,7 @@ class _Address_ScreenState extends State<Address_Screen> {
                               child: Text(
                                 "No_address_available".tr,
                                 style: TextStyle(
-                                  fontFamily: 'plusjakarta',
-                                  fontSize: 15,
+                                  fontSize: 15.sp,
                                   fontWeight: FontWeight.normal,
                                   color: Theme.of(context).hintColor,
                                 ),
@@ -131,15 +131,13 @@ class _Address_ScreenState extends State<Address_Screen> {
                             contentPadding: EdgeInsets.all(10),
                             title: Text(e.locationname,
                                 style: TextStyle(
-                                  fontFamily: 'plusjakarta',
-                                  fontSize: 15,
+                                  fontSize: 15.sp,
                                   fontWeight: FontWeight.normal,
                                   color: Theme.of(context).hintColor,
                                 )),
                             subtitle: Text(e.address,
                                 style: TextStyle(
-                                  fontFamily: 'plusjakarta',
-                                  fontSize: 14,
+                                  fontSize: 14.sp,
                                   fontWeight: FontWeight.bold,
                                   color: Theme.of(context).hintColor,
                                 )).py(10),

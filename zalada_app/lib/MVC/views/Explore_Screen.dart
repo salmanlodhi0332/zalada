@@ -115,7 +115,6 @@ class Explore_Screen extends StatelessWidget {
                                             Text(
                                               e.name,
                                               style: TextStyle(
-                                                fontFamily: 'plusjakarta',
                                                 fontWeight: FontWeight.w600,
                                                 color:
                                                     Theme.of(context).hintColor,

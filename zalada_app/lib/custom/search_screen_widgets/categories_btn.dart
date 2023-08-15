@@ -38,7 +38,6 @@ class _categories_btnState extends State<categories_btn> {
           Text(
             widget.label,
             style: TextStyle(
-              fontFamily: 'plusjakarta',
               fontWeight: FontWeight.w600,
               color: Theme.of(context).hintColor,
             ),

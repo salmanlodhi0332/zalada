@@ -6,8 +6,8 @@ import 'package:velocity_x/velocity_x.dart';
 
 class search_bar_widget extends StatelessWidget {
   final Function()? onTap;
-   search_bar_widget({ this.onTap});
-  
+  search_bar_widget({this.onTap});
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -46,8 +46,6 @@ class search_bar_widget extends StatelessWidget {
             Text(
               "search_product".tr,
               style: TextStyle(
-                
-                fontFamily: 'plusjakarta',
                   color: Theme.of(context).disabledColor, fontSize: 14),
             )
           ],

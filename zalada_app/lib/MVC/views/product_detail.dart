@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/MVC/controller/home_controller.dart';
@@ -82,8 +83,7 @@ class _Product_Detail_ScreenState extends State<Product_Detail_Screen> {
                   // 'Macbook Pro 15" 2019 -Intel Corei7',
                   textAlign: TextAlign.start,
                   style: TextStyle(
-                      fontFamily: 'plusjakarta',
-                      fontSize: 47,
+                      fontSize: 47.sp,
                       color: Theme.of(context).hintColor,
                       fontWeight: FontWeight.bold),
                 ).pOnly(bottom: 10).px(ph),
@@ -132,8 +132,7 @@ class _Product_Detail_ScreenState extends State<Product_Detail_Screen> {
                               Text(
                                 e.name,
                                 style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'plusjakarta',
+                                    fontSize: 14.sp,
                                     fontWeight: FontWeight.w600,
                                     color: Theme.of(context).disabledColor),
                               ).px(15).pOnly(bottom: 10, top: 15),
@@ -180,10 +179,8 @@ class _Product_Detail_ScreenState extends State<Product_Detail_Screen> {
                   children: [
                     Text(
                       'product_descritpion'.tr,
-                      style: const TextStyle(
-                          fontFamily: 'plusjakarta',
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600),
+                      style:  TextStyle(
+                          fontSize: 18.sp, fontWeight: FontWeight.w600),
                     ).pOnly(bottom: 10),
                     ReadMoreText(
                       item.description,
@@ -193,13 +190,11 @@ class _Product_Detail_ScreenState extends State<Product_Detail_Screen> {
                       trimCollapsedText: 'read_more'.tr,
                       trimExpandedText: 'read_less'.tr,
                       style: TextStyle(
-                          fontFamily: 'plusjakarta',
-                          fontSize: 14,
+                          fontSize: 14.sp,
                           fontWeight: FontWeight.normal,
                           color: Theme.of(context).disabledColor),
                       moreStyle: TextStyle(
-                          fontFamily: 'plusjakarta',
-                          fontSize: 14,
+                          fontSize: 14.sp,
                           fontWeight: FontWeight.w500,
                           color: Theme.of(context).focusColor),
                     ),
@@ -212,10 +207,8 @@ class _Product_Detail_ScreenState extends State<Product_Detail_Screen> {
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   Text(
                     'product_related'.tr,
-                    style: const TextStyle(
-                        fontFamily: 'plusjakarta',
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600),
+                    style:  TextStyle(
+                        fontSize: 18.sp, fontWeight: FontWeight.w600),
                   ).pOnly(bottom: 10),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
@@ -264,7 +257,6 @@ class _Product_Detail_ScreenState extends State<Product_Detail_Screen> {
                   cartController.cartproductlist.length.toString(),
                   style: TextStyle(
                     color: Colors.white,
-                    fontFamily: 'plusjakarta',
                   ),
                 ),
                 ignorePointer: false,

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/MVC/views/edit_profile.dart';
@@ -72,7 +73,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
             Text(
               "Bryan Adam",
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 20.sp,
                 fontWeight: FontWeight.w400,
               ),
             ),
@@ -82,8 +83,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
             Text(
               "BryanAdam@hotmail.com",
               style: TextStyle(
-                  fontFamily: 'plusjakarta',
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                   color: Theme.of(context).hintColor.withOpacity(0.3)),
             ),
@@ -107,9 +107,8 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                           child: Text(
                             "My_Order".tr,
                             style: TextStyle(
-                                fontSize: 18,
-                                fontFamily: 'plusjakarta',
-                                fontWeight: FontWeight.w400),
+                                fontSize: 18.sp
+                                , fontWeight: FontWeight.w400),
                           ),
                         ),
                         Padding(
@@ -118,8 +117,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                             child: Text(
                               "see_all".tr,
                               style: TextStyle(
-                                  fontFamily: 'plusjakarta',
-                                  fontSize: 15,
+                                  fontSize: 15.sp,
                                   fontWeight: FontWeight.w600,
                                   color: Colors.blue),
                             ),
@@ -138,8 +136,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                           child: Text(
                             "Order ID 231319",
                             style: TextStyle(
-                                fontFamily: 'plusjakarta',
-                                fontSize: 15,
+                                fontSize: 15.sp,
                                 fontWeight: FontWeight.w400,
                                 color: Theme.of(context).disabledColor),
                           ),
@@ -155,9 +152,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                               child: Text(
                                 "In_delievery".tr,
                                 style: TextStyle(
-                                    fontSize: 10,
-                                    fontFamily: 'plusjakarta',
-                                    color: Colors.white),
+                                    fontSize: 10.sp, color: Colors.white),
                               ),
                             )),
                       ],
@@ -191,9 +186,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                         Text(
                           "Ipad pro 2020",
                           style: TextStyle(
-                              fontFamily: 'plusjakarta',
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400),
+                              fontSize: 18.sp, fontWeight: FontWeight.w400),
                         ),
                         SizedBox(width: 10),
                         GestureDetector(
@@ -211,8 +204,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                   child: Text(
                                     "Track_Order".tr,
                                     style: TextStyle(
-                                      fontFamily: 'plusjakarta',
-                                      fontSize: 10,
+                                      fontSize: 10.sp,
                                     ),
                                   ),
                                 ),
@@ -239,10 +231,10 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                   Text(
                     "Account Setting",
                     style: TextStyle(
-                        fontFamily: 'plusjakarta',
                         color: Theme.of(context).disabledColor,
                         fontWeight: FontWeight.w500,
-                        fontSize: 15),
+                        fontSize: 15.sp
+                        ),
                   ),
                 ],
               ),
@@ -341,10 +333,9 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                   Text(
                     "General",
                     style: TextStyle(
-                        fontFamily: 'plusjakarta',
                         color: Theme.of(context).disabledColor,
                         fontWeight: FontWeight.w500,
-                        fontSize: 15),
+                        fontSize: 15.sp),
                   ),
                 ],
               ),

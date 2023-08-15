@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import '../../custom/back_button.dart';
@@ -42,16 +42,12 @@ class _OrderTrackerState extends State<OrderTracker> {
                     Text(
                       "invoice".tr,
                       style: TextStyle(
-                          fontFamily: 'plusjakarta',
-                          fontSize: 18,
-                          color: Theme.of(context).disabledColor),
+                          fontSize: 18.sp, color: Theme.of(context).disabledColor),
                     ),
                     Text(
                       "INV/37662/7899",
                       style: TextStyle(
-                          fontFamily: 'plusjakarta',
-                          fontSize: 18,
-                          color: Theme.of(context).hintColor),
+                          fontSize: 18.sp, color: Theme.of(context).hintColor),
                     ),
                   ],
                 ).pOnly(top: 20),
@@ -61,16 +57,12 @@ class _OrderTrackerState extends State<OrderTracker> {
                     Text(
                       "receipt_num".tr,
                       style: TextStyle(
-                          fontFamily: 'plusjakarta',
-                          fontSize: 18,
-                          color: Theme.of(context).disabledColor),
+                          fontSize: 18.sp, color: Theme.of(context).disabledColor),
                     ),
                     Text(
                       "37893278761",
                       style: TextStyle(
-                          fontFamily: 'plusjakarta',
-                          fontSize: 18,
-                          color: Theme.of(context).hintColor),
+                          fontSize: 18.sp, color: Theme.of(context).hintColor),
                     ),
                   ],
                 ).pOnly(top: 10),
@@ -96,9 +88,7 @@ class _OrderTrackerState extends State<OrderTracker> {
                       Text(
                         "package_delivery".tr,
                         style: TextStyle(
-                            fontFamily: 'plusjakarta',
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700),
+                            fontSize: 18.sp, fontWeight: FontWeight.w700),
                       ).p(15).px(20),
                       Wrap(children: [
                         Column(
@@ -200,10 +190,7 @@ class _OrderTrackerState extends State<OrderTracker> {
               children: [
                 Text(
                   "order_status".tr,
-                  style: TextStyle(
-                      fontFamily: 'plusjakarta',
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700),
+                  style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w700),
                 ).px(20).pOnly(right: 220),
 
                 ListTile(
@@ -219,8 +206,7 @@ class _OrderTrackerState extends State<OrderTracker> {
                   ).p(10),
                   title: Text(
                     "Thu, 03 November2022",
-                    style: TextStyle(
-                        fontFamily: 'plusjakarta', fontWeight: FontWeight.w700),
+                    style: TextStyle(fontWeight: FontWeight.w700),
                   ),
                   subtitle: Text("Your package is in transit"),
                 ).px(10),
@@ -237,27 +223,7 @@ class _OrderTrackerState extends State<OrderTracker> {
                   ).p(10),
                   title: Text(
                     "Thu, 03 November2022",
-                    style: TextStyle(
-                        fontFamily: 'plusjakarta', fontWeight: FontWeight.w700),
-                  ),
-                  subtitle: Text("Your package is in transit"),
-                ).px(10),
-
-                ListTile(
-                  leading: Container(
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).cardColor,
-                      shape: BoxShape.circle,
-                    ),
-                    child: Icon(
-                      Icons.check_circle,
-                      color: Colors.green,
-                    ),
-                  ).p(10),
-                  title: Text(
-                    "Thu, 03 November2022",
-                    style: TextStyle(
-                        fontFamily: 'plusjakarta', fontWeight: FontWeight.w700),
+                    style: TextStyle(fontWeight: FontWeight.w700),
                   ),
                   subtitle: Text("Your package is in transit"),
                 ).px(10),
@@ -275,8 +241,25 @@ class _OrderTrackerState extends State<OrderTracker> {
                   ).p(10),
                   title: Text(
                     "Thu, 03 November2022",
-                    style: TextStyle(
-                        fontFamily: 'plusjakarta', fontWeight: FontWeight.w700),
+                    style: TextStyle(fontWeight: FontWeight.w700),
+                  ),
+                  subtitle: Text("Your package is in transit"),
+                ).px(10),
+
+                ListTile(
+                  leading: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).cardColor,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(
+                      Icons.check_circle,
+                      color: Colors.green,
+                    ),
+                  ).p(10),
+                  title: Text(
+                    "Thu, 03 November2022",
+                    style: TextStyle(fontWeight: FontWeight.w700),
                   ),
                   subtitle: Text("Your package is in transit"),
                 ).px(10),

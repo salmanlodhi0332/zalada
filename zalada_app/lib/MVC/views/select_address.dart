@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -150,8 +151,7 @@ class _Select_AddressState extends State<Select_Address> {
               child: Text(
                 "Select_Your_location_from_the_map".tr,
                 style: TextStyle(
-                    fontFamily: 'plusjakarta',
-                    fontSize: 20,
+                    fontSize: 20.sp,
                     fontWeight: FontWeight.w600,
                     color: Theme.of(context).hintColor),
               ),
@@ -164,7 +164,6 @@ class _Select_AddressState extends State<Select_Address> {
                   .tr,
               style: TextStyle(
                 color: Theme.of(context).disabledColor,
-                fontFamily: 'plusjakarta',
               ),
             ),
             textfeild_widget(
@@ -180,9 +179,7 @@ class _Select_AddressState extends State<Select_Address> {
                 child: Text(
                   "location".tr,
                   style: TextStyle(
-                      fontFamily: 'plusjakarta',
-                      color: Theme.of(context).hintColor,
-                      fontSize: 15),
+                      color: Theme.of(context).hintColor, fontSize: 15.sp),
                 )).pOnly(left: 5, bottom: 5),
             Container(
                 height:
@@ -211,9 +208,8 @@ class _Select_AddressState extends State<Select_Address> {
                 child: Text(
                   "Type".tr,
                   style: TextStyle(
-                      fontFamily: 'plusjakarta',
-                      color: Theme.of(context).hintColor,
-                      fontSize: 15),
+                      color: Theme.of(context).hintColor, fontSize: 15.sp
+                      ),
                 )).pOnly(left: 5, top: 10),
 
             DropDownTextField(
@@ -275,7 +271,7 @@ class _Select_AddressState extends State<Select_Address> {
             //   child: Text(
             //     "Phone_number".tr,
             //     style: TextStyle(
-            //         fontFamily: 'plusjakarta',
+            //
             //         color: Theme.of(context).hintColor,
             //         fontSize: 15),
             //   ),

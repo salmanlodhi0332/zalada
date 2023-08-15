@@ -1,6 +1,7 @@
 // ignore_for_file: use_key_in_widget_constructors, must_be_immutable, camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -62,18 +63,16 @@ class Filter_Bottom_Bar extends GetView {
                 Text(
                   'filter'.tr,
                   style: TextStyle(
-                      fontFamily: 'plusjakarta',
                       color: Theme.of(context).hintColor,
-                      fontSize: 18,
+                      fontSize: 18.sp,
                       fontWeight: FontWeight.w600),
                 ),
                 Text(
                   'reset'.tr,
                   style: TextStyle(
-                      fontFamily: 'plusjakarta',
                       color: Theme.of(context).focusColor,
                       fontWeight: FontWeight.w600,
-                      fontSize: 14),
+                      fontSize: 14.sp),
                 ),
               ],
             ),
@@ -82,7 +81,7 @@ class Filter_Bottom_Bar extends GetView {
               'price_range'.tr,
               style: TextStyle(
                   color: Theme.of(context).hintColor,
-                  fontSize: 18,
+                  fontSize: 18.sp,
                   fontWeight: FontWeight.w600),
             ),
             Obx(() => SliderTheme(
@@ -115,10 +114,9 @@ class Filter_Bottom_Bar extends GetView {
                   'sort_by'.tr,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontFamily: 'plusjakarta',
                       fontWeight: FontWeight.bold,
                       color: Theme.of(context).hintColor,
-                      fontSize: 18),
+                      fontSize: 18.sp),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -142,12 +140,11 @@ class Filter_Bottom_Bar extends GetView {
                               child: Text(
                                 "new_arrived".tr,
                                 style: TextStyle(
-                                    fontFamily: 'plusjakarta',
                                     color: selected1.value
                                         ? Theme.of(context).secondaryHeaderColor
                                         : Theme.of(context).hintColor,
                                     fontWeight: FontWeight.w600,
-                                    fontSize: 16),
+                                    fontSize: 16.sp),
                               ).centered()),
                         )),
                     Obx(() => GestureDetector(
@@ -169,12 +166,11 @@ class Filter_Bottom_Bar extends GetView {
                               child: Text(
                                 "higher_price".tr,
                                 style: TextStyle(
-                                    fontFamily: 'plusjakarta',
                                     color: selected2.value
                                         ? Theme.of(context).secondaryHeaderColor
                                         : Theme.of(context).hintColor,
                                     fontWeight: FontWeight.w600,
-                                    fontSize: 16),
+                                    fontSize: 16.sp),
                               ).centered()),
                         )),
                   ],
@@ -201,12 +197,11 @@ class Filter_Bottom_Bar extends GetView {
                               child: Text(
                                 "lower_price".tr,
                                 style: TextStyle(
-                                    fontFamily: 'plusjakarta',
                                     color: selected3.value
                                         ? Theme.of(context).secondaryHeaderColor
                                         : Theme.of(context).hintColor,
                                     fontWeight: FontWeight.w600,
-                                    fontSize: 16),
+                                    fontSize: 16.sp),
                               ).centered()),
                         )),
                     Obx(() => GestureDetector(
@@ -228,12 +223,11 @@ class Filter_Bottom_Bar extends GetView {
                               child: Text(
                                 "discount".tr,
                                 style: TextStyle(
-                                    fontFamily: 'plusjakarta',
                                     color: selected4.value
                                         ? Theme.of(context).secondaryHeaderColor
                                         : Theme.of(context).hintColor,
                                     fontWeight: FontWeight.w600,
-                                    fontSize: 16),
+                                    fontSize: 16.sp),
                               ).centered()),
                         )),
                   ],

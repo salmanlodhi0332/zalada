@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class other_loginBtn_Widget extends StatelessWidget {
@@ -31,8 +32,7 @@ class other_loginBtn_Widget extends StatelessWidget {
           title: Text(
             title,
             style: TextStyle(
-                fontFamily: 'plusjakarta',
-                fontSize: 20,
+                fontSize: 20.sp,
                 fontWeight: FontWeight.w300,
                 color: Theme.of(context).hintColor),
           ).py(12).centered(),

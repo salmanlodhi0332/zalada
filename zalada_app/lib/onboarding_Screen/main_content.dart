@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'fade_animation.dart';
 import 'onboard_model.dart';
 
@@ -41,7 +42,7 @@ class MainContent extends StatelessWidget {
               style: TextStyle(
                   color: Colors.amber,
                   fontWeight: FontWeight.w500,
-                  fontSize: 26),
+                  fontSize: 26.sp),
             ),
           ),
           SizedBox(
@@ -53,7 +54,9 @@ class MainContent extends StatelessWidget {
               list[index].text,
               textAlign: TextAlign.center,
               style: TextStyle(
-                  color: Colors.red, fontWeight: FontWeight.w400, fontSize: 14),
+                  color: Colors.red,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14.sp),
             ),
           ),
         ],

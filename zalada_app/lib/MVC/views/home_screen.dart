@@ -231,7 +231,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                               "search_product".tr,
                               style: TextStyle(
                                   color: Theme.of(context).disabledColor,
-                                  fontSize: 14.sp),
+                                  fontSize: 12.sp),
                             )
                           ],
                         ),
@@ -246,8 +246,8 @@ class _Home_ScreenState extends State<Home_Screen> {
                   children: [
                     Text(
                       'hot_deal'.tr,
-                      style: const TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.w700),
+                      style: TextStyle(
+                          fontSize: 18.sp, fontWeight: FontWeight.w700),
                     ).pOnly(top: 10),
                     Obx(() => SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
@@ -288,7 +288,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                                             child: Text(
                                               "No_product_available".tr,
                                               style: TextStyle(
-                                                fontSize: 15,
+                                                fontSize: 15.sp,
                                                 fontWeight: FontWeight.normal,
                                                 color:
                                                     Theme.of(context).hintColor,

@@ -99,7 +99,7 @@ class Product_Card extends StatelessWidget {
                               text: '\$' + disprice!,
                               style: TextStyle(
                                   decoration: TextDecoration.lineThrough,
-                                  fontSize: 10.sp,
+                                  fontSize: 9.sp,
                                   color: Theme.of(context)
                                       .disabledColor
                                       .withOpacity(0.5),

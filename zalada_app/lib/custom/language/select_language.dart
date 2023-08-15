@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class select_language extends StatefulWidget {
@@ -38,9 +39,8 @@ class _select_languageState extends State<select_language> {
         title: Text(
           widget.label,
           style: TextStyle(
-            fontFamily: 'plusjakarta',
             color: Theme.of(context).hintColor,
-            fontSize: 18,
+            fontSize: 18.sp,
             fontWeight: FontWeight.w700,
           ),
         ),

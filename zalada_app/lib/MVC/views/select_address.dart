@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -98,6 +99,7 @@ class _Select_AddressState extends State<Select_Address> {
       ),
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       body: SingleChildScrollView(
+        padding: EdgeInsets.symmetric(horizontal: 15),
         scrollDirection: Axis.vertical,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -144,14 +146,12 @@ class _Select_AddressState extends State<Select_Address> {
             SizedBox(
               height: 10,
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 30),
+            Align(
+              alignment: Alignment.centerLeft,
               child: Text(
                 "Select_Your_location_from_the_map".tr,
-                textAlign: TextAlign.right,
                 style: TextStyle(
-                    fontFamily: 'plusjakarta',
-                    fontSize: 20,
+                    fontSize: 20.sp,
                     fontWeight: FontWeight.w600,
                     color: Theme.of(context).hintColor),
               ),
@@ -159,36 +159,29 @@ class _Select_AddressState extends State<Select_Address> {
             SizedBox(
               height: 5,
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 30),
-              child: Text(
-                "Move_the_pin_on_the_map_to_find_your_location_and_select_the_delievery_address"
-                    .tr,
-                style: TextStyle(
-                  color: Theme.of(context).disabledColor,
-                  fontFamily: 'plusjakarta',
-                ),
+            Text(
+              "Move_the_pin_on_the_map_to_find_your_location_and_select_the_delievery_address"
+                  .tr,
+              style: TextStyle(
+                color: Theme.of(context).disabledColor,
               ),
             ),
             textfeild_widget(
               label: "Address_name".tr,
               hintText: widget.locationName ?? 'enter_address'.tr,
               controller: addressController,
-            ).px(15),
+            ),
             SizedBox(
               height: 15,
             ),
             Align(
-                alignment: Alignment.bottomLeft,
+                alignment: Alignment.centerLeft,
                 child: Text(
                   "location".tr,
                   style: TextStyle(
-                      fontFamily: 'plusjakarta',
-                      color: Theme.of(context).hintColor,
-                      fontSize: 15),
-                )).pOnly(left: 30, bottom: 10),
+                      color: Theme.of(context).hintColor, fontSize: 15.sp),
+                )).pOnly(left: 5, bottom: 5),
             Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
                 height:
                     MediaQuery.of(context).orientation == Orientation.portrait
                         ? size.height / 13
@@ -202,7 +195,7 @@ class _Select_AddressState extends State<Select_Address> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(_address.isNotEmpty ? _address : 'tap on location'.tr),
+                    Text(_address.isNotEmpty ? _address : 'tap_on_location'.tr),
                     IconButton(
                         onPressed: () {
                           // _getCurrentLocation();
@@ -211,14 +204,13 @@ class _Select_AddressState extends State<Select_Address> {
                   ],
                 ).px(15)),
             Align(
-                alignment: Alignment.bottomLeft,
+                alignment: Alignment.centerLeft,
                 child: Text(
                   "Type".tr,
                   style: TextStyle(
-                      fontFamily: 'plusjakarta',
-                      color: Theme.of(context).hintColor,
-                      fontSize: 15),
-                )).pOnly(left: 30, top: 5),
+                      color: Theme.of(context).hintColor, fontSize: 15.sp
+                      ),
+                )).pOnly(left: 5, top: 10),
 
             DropDownTextField(
               textFieldDecoration: InputDecoration(
@@ -258,7 +250,7 @@ class _Select_AddressState extends State<Select_Address> {
                   value: "other",
                 ),
               ],
-            ).px(25).py(10),
+            ).py(10),
 
             // textfeild_widget(
             //   label: "Address_detail".tr,
@@ -279,7 +271,7 @@ class _Select_AddressState extends State<Select_Address> {
             //   child: Text(
             //     "Phone_number".tr,
             //     style: TextStyle(
-            //         fontFamily: 'plusjakarta',
+            //
             //         color: Theme.of(context).hintColor,
             //         fontSize: 15),
             //   ),

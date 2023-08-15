@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/MVC/controller/payment_controller.dart';
@@ -66,9 +67,8 @@ class Add_Payment_Method extends GetView {
               child: Text(
                 'Add_new_payment_method'.tr,
                 style: TextStyle(
-                  fontFamily: 'plusjakarta',
                   color: Theme.of(context).hintColor,
-                  fontSize: 25,
+                  fontSize: 25.sp,
                   fontWeight: FontWeight.w500,
                 ),
               ).py(10),

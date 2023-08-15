@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/MVC/views/bottom_bar.dart';
@@ -149,9 +150,7 @@ class _Cart_ScreenState extends State<Cart_Screen> {
                 Text(
                   'product_you_like'.tr,
                   style: const TextStyle(
-                      fontFamily: 'plusjakarta',
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600),
+                      fontSize: 18, fontWeight: FontWeight.w600),
                 ),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -162,7 +161,7 @@ class _Cart_ScreenState extends State<Cart_Screen> {
                                 'no_data'.tr,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    fontSize: 12,
+                                    fontSize: 15.sp,
                                     color: Theme.of(context).hintColor),
                               )
                             ]

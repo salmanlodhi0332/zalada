@@ -89,7 +89,6 @@ class _AddPaymentState extends State<AddPayment> {
             'add_new_card'.tr,
             style: TextStyle(
               color: Theme.of(context).cardColor,
-              fontFamily: 'plusjakarta',
             ),
           ),
           centerTitle: true,
@@ -162,7 +161,6 @@ class _AddPaymentState extends State<AddPayment> {
                                               Text(
                                                 "CVV",
                                                 style: TextStyle(
-                                                    fontFamily: 'plusjakarta',
                                                     color: Theme.of(context)
                                                         .hintColor,
                                                     fontSize: 15),
@@ -188,7 +186,6 @@ class _AddPaymentState extends State<AddPayment> {
                                                   // suffixIcon: suffixIcon,
                                                   hintText: "778",
                                                   hintStyle: TextStyle(
-                                                      fontFamily: 'plusjakarta',
                                                       color: Theme.of(context)
                                                           .hintColor
                                                           .withOpacity(0.3),

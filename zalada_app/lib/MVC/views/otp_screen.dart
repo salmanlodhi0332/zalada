@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/utiles/getxcontroller.dart';
@@ -60,8 +61,7 @@ class _OTP_ScreenState extends State<OTP_Screen> {
           centerTitle: true,
           title: Text(
             'otp'.tr,
-            style: TextStyle(
-                fontFamily: 'plusjakarta', color: Theme.of(context).hintColor),
+            style: TextStyle(color: Theme.of(context).hintColor),
           ),
           leading: back_button(
             icon_widget: Icon(Icons.arrow_back),
@@ -80,24 +80,21 @@ class _OTP_ScreenState extends State<OTP_Screen> {
             'verfication_code'.tr,
             textAlign: TextAlign.center,
             style: TextStyle(
-                fontFamily: 'plusjakarta',
                 fontWeight: FontWeight.bold,
                 color: Theme.of(context).hintColor,
-                fontSize: 24),
+                fontSize: 24.sp),
           ),
           Text.rich(TextSpan(children: [
             TextSpan(
               text: 'otp_description'.tr,
               style: TextStyle(
-                  fontFamily: 'plusjakarta',
                   fontWeight: FontWeight.w400,
                   color: Theme.of(context).disabledColor,
-                  fontSize: 15),
+                  fontSize: 15.sp),
             ),
             TextSpan(
               text: '  +62812 788 6XXXX',
               style: TextStyle(
-                  fontFamily: 'plusjakarta',
                   color: Theme.of(context).hintColor,
                   fontWeight: FontWeight.w700),
             )
@@ -124,18 +121,14 @@ class _OTP_ScreenState extends State<OTP_Screen> {
                       : Text(
                           'recent_code'.tr,
                           style: TextStyle(
-                              fontFamily: 'plusjakarta',
-                              color: Theme.of(context).hintColor,
-                              fontSize: 16),
+                              color: Theme.of(context).hintColor, fontSize: 16.sp),
                         ),
                   Text(
                       controller.countdown == 0
                           ? ''
                           : controller.countdown.toString() + 's',
                       style: TextStyle(
-                          fontFamily: 'plusjakarta',
-                          color: Theme.of(context).hintColor,
-                          fontSize: 16)),
+                          color: Theme.of(context).hintColor, fontSize: 16.sp)),
                 ],
               )).py(20),
           Button_Widget(
@@ -189,8 +182,7 @@ class _OTP_ScreenState extends State<OTP_Screen> {
             LengthLimitingTextInputFormatter(1),
             FilteringTextInputFormatter.digitsOnly
           ],
-          style: TextStyle(
-              fontFamily: 'plusjakarta', color: Theme.of(context).hintColor),
+          style: TextStyle(color: Theme.of(context).hintColor),
         ),
       ),
     );

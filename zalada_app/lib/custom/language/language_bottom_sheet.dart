@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/custom/language/language_data.dart';
@@ -53,9 +54,8 @@ class language_bottom_sheet extends GetView {
             Text(
               'select_language'.tr,
               style: TextStyle(
-                fontFamily: 'plusjakarta',
                 color: Theme.of(context).hintColor,
-                fontSize: 24,
+                fontSize: 24.sp,
                 fontWeight: FontWeight.bold,
               ),
             ).py(10),
@@ -95,9 +95,8 @@ class language_bottom_sheet extends GetView {
                               title: Text(
                                 e.label,
                                 style: TextStyle(
-                                  fontFamily: 'plusjakarta',
                                   color: Theme.of(context).hintColor,
-                                  fontSize: 18,
+                                  fontSize: 18.sp,
                                   fontWeight: FontWeight.w700,
                                 ),
                               ),

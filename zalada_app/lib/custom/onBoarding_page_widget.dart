@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../MVC/model/onBoarding_model.dart';
@@ -31,10 +32,9 @@ class OnBoardingPageWidget extends StatelessWidget {
                 model.title,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontFamily: 'plusjakarta',
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).hintColor,
-                    fontSize: 25),
+                    fontSize: 25.sp),
               ).pOnly(bottom: 10),
               // style: Theme.of(context).textTheme.headline3,
 
@@ -42,10 +42,9 @@ class OnBoardingPageWidget extends StatelessWidget {
                 model.subTitle,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontFamily: 'plusjakarta',
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).disabledColor,
-                    fontSize: 16),
+                    fontSize: 16.sp),
               ).pOnly(bottom: screenHeight * 0.04).px(2),
             ],
           ),

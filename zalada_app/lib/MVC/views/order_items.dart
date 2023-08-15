@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class OrderItems extends StatefulWidget {
@@ -52,10 +53,7 @@ class _OrderItemsState extends State<OrderItems> {
                 Text(
                   'Macbook Pro 15" 2019 - Intel core i7 - Grey',
                   maxLines: 2,
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontFamily: 'plusjakarta',
-                      fontWeight: FontWeight.w700),
+                  style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w700),
                 ).pOnly(right: 10),
                 SizedBox(height: 5),
                 Row(
@@ -65,7 +63,7 @@ class _OrderItemsState extends State<OrderItems> {
                       TextSpan(
                         text: '\$910 ',
                         style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 16.sp,
                             color: Theme.of(context).focusColor,
                             fontWeight: FontWeight.w600),
                       ),
@@ -82,10 +80,8 @@ class _OrderItemsState extends State<OrderItems> {
                     ])),
                     Text(
                       "x1",
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontFamily: 'plusjakarta',
-                          fontWeight: FontWeight.w700),
+                      style:
+                          TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w700),
                     ).pOnly(right: 20),
                   ],
                 ),

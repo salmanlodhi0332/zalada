@@ -1,6 +1,7 @@
 // ignore_for_file: use_key_in_widget_constructors, must_be_immutable, camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/MVC/views/bottom_bar.dart';
@@ -58,10 +59,9 @@ class Order_successful_Bottom_Bar extends GetView {
                 'order_successfull'.tr,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontFamily: 'plusjakarta',
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).hintColor,
-                    fontSize: 24),
+                    fontSize: 24.sp),
               ),
             ).py(10),
             Align(
@@ -70,10 +70,9 @@ class Order_successful_Bottom_Bar extends GetView {
                 'successfull_bar_description'.tr,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontFamily: 'plusjakarta',
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).disabledColor,
-                    fontSize: 15),
+                    fontSize: 15.sp),
               ).pOnly(bottom: 10),
             ),
             Button_Widget(
@@ -98,8 +97,7 @@ class Order_successful_Bottom_Bar extends GetView {
                 child: Text(
                   'back_to_home'.tr,
                   style: TextStyle(
-                      fontFamily: 'plusjakarta',
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.w500,
                       color: Theme.of(context).hintColor),
                 ).py(20).centered(),

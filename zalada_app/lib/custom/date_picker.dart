@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class datepicker_widget extends StatelessWidget {
@@ -32,9 +34,8 @@ class datepicker_widget extends StatelessWidget {
             Text(
               label,
               style: TextStyle(
-                fontFamily: 'plusjakarta',
                 color: Theme.of(context).hintColor,
-                fontSize: 15,
+                fontSize: 15.sp,
               ),
             ).p(10),
           ],
@@ -123,9 +124,8 @@ class datepicker_widget extends StatelessWidget {
               suffixIcon: suffixIcon,
               hintText: hintText,
               hintStyle: TextStyle(
-                fontFamily: 'plusjakarta',
                 color: Theme.of(context).hintColor.withOpacity(0.3),
-                fontSize: 15,
+                fontSize: 15.sp,
               ),
               enabledBorder: OutlineInputBorder(borderSide: BorderSide.none),
               focusedBorder: OutlineInputBorder(borderSide: BorderSide.none),
@@ -133,6 +133,6 @@ class datepicker_widget extends StatelessWidget {
           ).px(10),
         ),
       ],
-    ).px(20);
+    );
   }
 }

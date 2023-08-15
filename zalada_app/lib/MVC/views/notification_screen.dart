@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -31,15 +32,13 @@ class Notification_Screen extends StatelessWidget {
                 Text(
                   'your_notification'.tr,
                   style: TextStyle(
-                      fontSize: 24,
-                      fontFamily: 'plusjakarta',
+                      fontSize: 24.sp,
                       fontWeight: FontWeight.w600,
                       color: Theme.of(context).hintColor),
                 ),
                 Text(
                   'today'.tr,
                   style: TextStyle(
-                      fontFamily: 'plusjakarta',
                       fontWeight: FontWeight.w600,
                       color: Theme.of(context).hintColor),
                 ).py(15),
@@ -68,9 +67,7 @@ class Notification_Screen extends StatelessWidget {
                         ),
                         title: Text(
                           e.title!,
-                          style: TextStyle(
-                              fontFamily: 'plusjakarta',
-                              fontWeight: FontWeight.w700),
+                          style: TextStyle(fontWeight: FontWeight.w700),
                         ),
                         subtitle: Text(e.body!),
                       );
@@ -89,7 +86,6 @@ class Notification_Screen extends StatelessWidget {
                 Text(
                   'yesterday'.tr,
                   style: TextStyle(
-                      fontFamily: 'plusjakarta',
                       fontWeight: FontWeight.w600,
                       color: Theme.of(context).hintColor),
                 ).py(15),
@@ -120,9 +116,7 @@ class Notification_Screen extends StatelessWidget {
                             ),
                             title: Text(
                               e.title!,
-                              style: TextStyle(
-                                  fontFamily: 'plusjakarta',
-                                  fontWeight: FontWeight.w700),
+                              style: TextStyle(fontWeight: FontWeight.w700),
                             ),
                             subtitle: Text(e.body!),
                           ),

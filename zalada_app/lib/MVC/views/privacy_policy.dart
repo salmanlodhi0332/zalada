@@ -31,7 +31,6 @@ class _privacy_policyState extends State<privacy_policy> {
           "Privacy Policy".tr,
           style: TextStyle(
             color: Theme.of(context).hintColor,
-            fontFamily: 'plusjakarta',
           ),
         ),
         leading: back_button(

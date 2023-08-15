@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class search_bar_textfeild extends StatelessWidget {
@@ -8,10 +9,12 @@ class search_bar_textfeild extends StatelessWidget {
   final FormFieldValidator<String>? validator;
   final Widget? suffixIcon;
   final bool? obscureText;
-  const search_bar_textfeild(
+  void Function(String)? onFieldSubmitted;
+  search_bar_textfeild(
       {super.key,
       required this.hintText,
       required this.controller,
+      this.onFieldSubmitted,
       this.validator,
       this.suffixIcon,
       this.obscureText});
@@ -34,13 +37,14 @@ class search_bar_textfeild extends StatelessWidget {
           borderRadius: BorderRadius.circular(30)),
       child: TextFormField(
               validator: validator,
+              onFieldSubmitted: onFieldSubmitted,
               obscureText: obscureText ?? false,
               decoration: InputDecoration(
                   suffixIcon: suffixIcon,
                   hintText: hintText,
                   hintStyle: TextStyle(
                       color: Theme.of(context).hintColor.withOpacity(0.3),
-                      fontSize: 15),
+                      fontSize: 12.sp),
                   enabledBorder:
                       OutlineInputBorder(borderSide: BorderSide.none),
                   focusedBorder:

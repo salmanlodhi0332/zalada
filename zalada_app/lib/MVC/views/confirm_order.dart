@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/MVC/controller/shiping_controller.dart';
@@ -49,10 +50,8 @@ class _ConfirmOrderState extends State<ConfirmOrder> {
                   children: [
                     Text(
                       "address".tr,
-                      style: TextStyle(
-                          fontFamily: 'plusjakarta',
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700),
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
                     ).px(20),
                     TextButton(
                             onPressed: () {
@@ -62,8 +61,7 @@ class _ConfirmOrderState extends State<ConfirmOrder> {
                             child: Text("edit".tr,
                                 style: TextStyle(
                                     color: Theme.of(context).focusColor,
-                                    fontFamily: 'plusjakarta',
-                                    fontSize: 16,
+                                    fontSize: 16.sp,
                                     fontWeight: FontWeight.w600)))
                         .pOnly(right: 20)
                   ],
@@ -77,10 +75,8 @@ class _ConfirmOrderState extends State<ConfirmOrder> {
                     ),
                     Text(
                       "home".tr,
-                      style: TextStyle(
-                          fontFamily: 'plusjakarta',
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700),
+                      style:
+                          TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w700),
                     )
                   ],
                 ),
@@ -93,8 +89,7 @@ class _ConfirmOrderState extends State<ConfirmOrder> {
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          fontFamily: 'plusjakarta',
-                          fontSize: 14,
+                          fontSize: 14.sp,
                         ),
                       ),
                     ),
@@ -116,10 +111,7 @@ class _ConfirmOrderState extends State<ConfirmOrder> {
                 children: [
                   Text(
                     "item".tr,
-                    style: TextStyle(
-                        fontFamily: 'plusjakarta',
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700),
+                    style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w700),
                   ).px(20),
                 ],
               ),
@@ -158,9 +150,7 @@ class _ConfirmOrderState extends State<ConfirmOrder> {
                       Text(
                         "shiping".tr,
                         style: TextStyle(
-                            fontFamily: 'plusjakarta',
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700),
+                            fontSize: 18.sp, fontWeight: FontWeight.w700),
                       ).px(20),
                     ],
                   ),
@@ -199,8 +189,7 @@ class _ConfirmOrderState extends State<ConfirmOrder> {
                                     '${ship.name} ',
                                     // "J&T Express",
                                     style: TextStyle(
-                                        fontSize: 16,
-                                        fontFamily: 'plusjakarta',
+                                        fontSize: 16.sp,
                                         fontWeight: FontWeight.w700),
                                   ),
                                   trailing: IconButton(
@@ -218,7 +207,7 @@ class _ConfirmOrderState extends State<ConfirmOrder> {
                                           // "Regular (\$8)",
                                           '${ship.type} (${ship.charges})',
                                           style: TextStyle(
-                                              fontFamily: 'plusjakarta',
+
                                               //fontSize: 18,
                                               fontWeight: FontWeight.w700))
                                       .px(25),
@@ -247,10 +236,8 @@ class _ConfirmOrderState extends State<ConfirmOrder> {
                   children: [
                     Text(
                       "payment_summary".tr,
-                      style: TextStyle(
-                          fontFamily: 'plusjakarta',
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700),
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
                     ).px(20),
                   ],
                 ),
@@ -263,16 +250,13 @@ class _ConfirmOrderState extends State<ConfirmOrder> {
                     Text(
                       "price".tr,
                       style: TextStyle(
-                        fontFamily: 'plusjakarta',
-                        fontSize: 18,
+                        fontSize: 18.sp,
                       ),
                     ).px(20),
                     Text(
                       "\$4.53",
-                      style: TextStyle(
-                          fontFamily: 'plusjakarta',
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700),
+                      style:
+                          TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w700),
                     ).pOnly(right: 20),
                   ],
                 ),
@@ -285,16 +269,13 @@ class _ConfirmOrderState extends State<ConfirmOrder> {
                     Text(
                       "delivery_fee".tr,
                       style: TextStyle(
-                        fontFamily: 'plusjakarta',
-                        fontSize: 18,
+                        fontSize: 18.sp,
                       ),
                     ).px(20),
                     Text(
                       "\$1.0",
-                      style: TextStyle(
-                          fontFamily: 'plusjakarta',
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700),
+                      style:
+                          TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w700),
                     ).pOnly(right: 20),
                   ],
                 ),
@@ -314,16 +295,13 @@ class _ConfirmOrderState extends State<ConfirmOrder> {
                     Text(
                       "total_payment".tr,
                       style: TextStyle(
-                        fontFamily: 'plusjakarta',
-                        fontSize: 18,
+                        fontSize: 18.sp,
                       ),
                     ).px(20),
                     Text(
                       "\$5.53",
-                      style: TextStyle(
-                          fontFamily: 'plusjakarta',
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700),
+                      style:
+                          TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w700),
                     ).pOnly(right: 20),
                   ],
                 ),
@@ -345,9 +323,7 @@ class _ConfirmOrderState extends State<ConfirmOrder> {
                           Text(
                             "payment_method".tr,
                             style: TextStyle(
-                                fontFamily: 'plusjakarta',
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700),
+                                fontSize: 18.sp, fontWeight: FontWeight.w700),
                           ).px(20),
                         ],
                       ),
@@ -375,13 +351,11 @@ class _ConfirmOrderState extends State<ConfirmOrder> {
                               title: Text(
                                 "master_card".tr,
                                 style: TextStyle(
-                                    fontSize: 16,
-                                    fontFamily: 'plusjakarta',
-                                    fontWeight: FontWeight.w700),
+                                    fontSize: 16, fontWeight: FontWeight.w700),
                               ),
                               subtitle: Text(
                                 "**** **** 07837873",
-                                style: TextStyle(fontSize: 16),
+                                style: TextStyle(fontSize: 16.sp),
                               ),
                               trailing: IconButton(
                                   onPressed: () {},

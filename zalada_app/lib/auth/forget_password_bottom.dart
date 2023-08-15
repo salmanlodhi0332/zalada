@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/custom/forget_password_widget/selectedbox.dart';
@@ -58,9 +59,8 @@ class Forget_password_bottom extends GetView {
             Text(
               'Forget_password_title'.tr,
               style: TextStyle(
-                fontFamily: 'plusjakarta',
                 color: Theme.of(context).hintColor,
-                fontSize: 30,
+                fontSize: 30.sp,
                 fontWeight: FontWeight.w500,
               ),
             ).py(10),
@@ -69,10 +69,9 @@ class Forget_password_bottom extends GetView {
                 'Forget_password_description'.tr,
                 textAlign: TextAlign.start,
                 style: TextStyle(
-                  fontFamily: 'plusjakarta',
                   fontWeight: FontWeight.w400,
                   color: Theme.of(context).disabledColor,
-                  fontSize: 20,
+                  fontSize: 20.sp,
                 ),
               ).pOnly(bottom: 10),
             ]),

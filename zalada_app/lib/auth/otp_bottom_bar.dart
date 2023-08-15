@@ -3,6 +3,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/MVC/views/login_screen.dart';
@@ -59,20 +60,18 @@ class OTP_Bottom_Bar extends GetView {
                 'congratulation'.tr,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontFamily: 'plusjakarta',
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).hintColor,
-                    fontSize: 24),
+                    fontSize: 24.sp),
               ),
             ),
             Text(
               'congratulation_bar_description'.tr,
               textAlign: TextAlign.center,
               style: TextStyle(
-                  fontFamily: 'plusjakarta',
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).disabledColor,
-                  fontSize: 15),
+                  fontSize: 15.sp),
             ).pOnly(bottom: 10),
             Button_Widget(
               width: width,

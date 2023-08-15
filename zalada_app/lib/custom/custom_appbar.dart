@@ -17,14 +17,13 @@ class Custom_Appbar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  AppBar(
+    return AppBar(
       centerTitle: true,
       title: title != null
           ? Text(
               title!,
               style: TextStyle(
                   color: Theme.of(context).hintColor,
-                  fontFamily: 'plusjakarta',
                   fontWeight: FontWeight.w700),
             )
           : null,

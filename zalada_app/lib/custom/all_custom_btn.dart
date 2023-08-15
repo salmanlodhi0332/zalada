@@ -29,7 +29,6 @@ class all_custom_btn extends StatelessWidget {
           Text(
             'all'.tr,
             style: TextStyle(
-              fontFamily: 'plusjakarta',
               color: Theme.of(context).cardColor,
             ),
           ).pOnly(right: 5),

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class select_address_card extends StatelessWidget {
@@ -59,8 +60,7 @@ class select_address_card extends StatelessWidget {
               SizedBox(width: 10),
               Text(label,
                   style: TextStyle(
-                    fontFamily: 'plusjakarta',
-                    fontSize: 15,
+                    fontSize: 15.sp,
                     fontWeight: FontWeight.normal,
                     color: Theme.of(context).hintColor,
                   )),
@@ -68,8 +68,7 @@ class select_address_card extends StatelessWidget {
           ),
           subtitle: Text(hintText,
               style: TextStyle(
-                fontFamily: 'plusjakarta',
-                fontSize: 14,
+                fontSize: 14.sp,
                 fontWeight: FontWeight.bold,
                 color: Theme.of(context).hintColor,
               )).p(10),
@@ -121,7 +120,7 @@ class select_address_card extends StatelessWidget {
     //               SizedBox(width: 10),
     //               Text(label,
     //                   style: TextStyle(
-    //                     fontFamily: 'plusjakarta',
+    //
     //                     fontSize: 20,
     //                     fontWeight: FontWeight.w300,
     //                     color: Theme.of(context).hintColor,
@@ -137,7 +136,7 @@ class select_address_card extends StatelessWidget {
     //             children: [
     //               Text(hintText,
     //                   style: TextStyle(
-    //                     fontFamily: 'plusjakarta',
+    //
     //                     fontSize: 18,
     //                     fontWeight: FontWeight.w500,
     //                     color: Theme.of(context).hintColor,
@@ -158,7 +157,7 @@ class select_address_card extends StatelessWidget {
     //           ),
     //           // Text(NumberText,
     //           //     style: TextStyle(
-    //           //       fontFamily: 'plusjakarta',
+    //           //
     //           //       fontSize: 17,
     //           //       fontWeight: FontWeight.w300,
     //           //       color: Theme.of(context).hintColor,

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zalada_app/utiles/page_navigation.dart';
@@ -26,9 +27,7 @@ class Onboard_One extends StatelessWidget {
               },
               child: Text(
                 'skip'.tr,
-                style: TextStyle(
-                    fontFamily: 'plusjakarta',
-                    color: Theme.of(context).hintColor),
+                style: TextStyle(color: Theme.of(context).hintColor),
               ))
         ],
       ),
@@ -44,19 +43,17 @@ class Onboard_One extends StatelessWidget {
               'onboard_heading_one'.tr,
               textAlign: TextAlign.center,
               style: TextStyle(
-                  fontFamily: 'plusjakarta',
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).hintColor,
-                  fontSize: 25),
+                  fontSize: 25.sp),
             ).pOnly(bottom: 10),
             Text(
               'onboard_one_description'.tr,
               textAlign: TextAlign.center,
               style: TextStyle(
-                  fontFamily: 'plusjakarta',
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).disabledColor,
-                  fontSize: 15),
+                  fontSize: 15.sp),
             ).pOnly(bottom: screenHeight * 0.04),
             GestureDetector(
                 onTap: () {

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:zalada_app/MVC/controller/product_controller.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:zalada_app/MVC/model/product_model.dart';
 
 import '../controller/cart_controller.dart';
@@ -63,7 +63,7 @@ class CartProducts extends StatelessWidget {
                     TextSpan(
                       text: '\$' + Products.discountedPrice.toString(),
                       style: TextStyle(
-                          fontSize: 15,
+                          fontSize: 15.sp,
                           color: Theme.of(context).hintColor,
                           fontWeight: FontWeight.w600,
                           fontFamily: 'plusjakarta'),
@@ -72,8 +72,7 @@ class CartProducts extends StatelessWidget {
                       text: '\$' + Products.price,
                       style: TextStyle(
                           decoration: TextDecoration.lineThrough,
-                          fontFamily: 'plusjakarta',
-                          fontSize: 12,
+                          fontSize: 12.sp,
                           color:
                               Theme.of(context).disabledColor.withOpacity(0.5),
                           fontWeight: FontWeight.w600),

@@ -32,7 +32,6 @@ class _help_centerState extends State<help_center> {
           "Help_Center".tr,
           style: TextStyle(
             color: Theme.of(context).hintColor,
-            fontFamily: 'plusjakarta',
           ),
         ),
         leading: back_button(

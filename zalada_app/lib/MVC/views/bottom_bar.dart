@@ -1,3 +1,4 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -5,7 +6,6 @@ import 'package:zalada_app/MVC/views/password_change_screen.dart';
 import 'package:zalada_app/MVC/views/Explore_Screen.dart';
 import 'package:zalada_app/MVC/views/search_result_screen.dart';
 import '../controller/cart_controller.dart';
-import '../controller/product_controller.dart';
 import 'Live_Stream_Screen.dart';
 import 'order_tracker.dart';
 import 'profile_screen.dart';
@@ -43,15 +43,13 @@ class _Bottom_BarState extends State<Bottom_Bar> {
         selectedItemColor: Theme.of(context).hoverColor,
         unselectedItemColor: Theme.of(context).disabledColor,
         selectedLabelStyle: TextStyle(
-            fontFamily: 'plusjakarta',
             color: Theme.of(context).hoverColor,
             fontWeight: FontWeight.w700,
-            fontSize: 13),
+            fontSize: 13.sp),
         unselectedLabelStyle: TextStyle(
-            fontFamily: 'plusjakarta',
             color: Theme.of(context).disabledColor,
             fontWeight: FontWeight.normal,
-            fontSize: 12),
+            fontSize: 12.sp),
         onTap: (index) {
           setState(() {
             _currentIndex = index;

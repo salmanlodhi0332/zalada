@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:zalada_app/MVC/views/bottom_bar.dart';
 import 'package:zalada_app/service/fcm_token.dart';
 import 'package:zalada_app/utiles/multi_language.dart';
 import 'package:zalada_app/utiles/themeData.dart';
@@ -27,6 +26,7 @@ class MyApp extends StatelessWidget {
             translations: Multi_Language(),
             locale: Locale('en', 'US'),
             themeMode: ThemeMode.light,
+            
             theme: AppTheme.lightTheme,
             debugShowCheckedModeBanner: false,
             home: splash_screen(),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class Button_Widget extends StatelessWidget {
@@ -40,8 +41,7 @@ class Button_Widget extends StatelessWidget {
             Text(
               title,
               style: TextStyle(
-                  fontFamily: 'plusjakarta',
-                  fontSize: 16,
+                  fontSize: 16.sp,
                   fontWeight: FontWeight.w500,
                   color: brodercolor ?? Theme.of(context).secondaryHeaderColor),
             ).centered(),

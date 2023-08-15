@@ -172,3 +172,149 @@ class _Bottom_BarState extends State<Bottom_Bar> {
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // @override
+  // Widget build(BuildContext context) {
+  //   return Scaffold(
+  //     body: _buildPage(_currentIndex),
+  //     bottomNavigationBar: BottomNavigationBar(
+  //       currentIndex: _currentIndex,
+  //       selectedIconTheme: IconThemeData(color: Theme.of(context).hoverColor),
+  //       unselectedIconTheme:
+  //           IconThemeData(color: Theme.of(context).disabledColor),
+  //       selectedItemColor: Theme.of(context).hoverColor,
+  //       unselectedItemColor: Theme.of(context).disabledColor,
+  //       selectedLabelStyle: TextStyle(
+  //           color: Theme.of(context).hoverColor,
+  //           fontWeight: FontWeight.w700,
+  //           fontSize: 13.sp),
+  //       unselectedLabelStyle: TextStyle(
+  //           color: Theme.of(context).disabledColor,
+  //           fontWeight: FontWeight.normal,
+  //           fontSize: 12.sp),
+  //       onTap: (index) {
+  //         setState(() {
+  //           _currentIndex = index;
+  //         });
+  //       },
+  //       type: BottomNavigationBarType.fixed, // To show all labels
+  //       items: [
+  //         BottomNavigationBarItem(
+  //           icon: Padding(
+  //             padding: const EdgeInsets.all(8.0),
+  //             child: _currentIndex == 0
+  //                 ? SvgPicture.asset(
+  //                     "assets/svg/homebg.svg",
+  //                     height: 18,
+  //                     width: 18,
+  //                   )
+  //                 : SvgPicture.asset(
+  //                     "assets/svg/home.svg",
+  //                     height: 18,
+  //                     width: 18,
+  //                     color: Theme.of(context).disabledColor,
+  //                   ),
+  //           ),
+  //           label: 'home'.tr,
+  //         ),
+  //         BottomNavigationBarItem(
+  //           icon: Padding(
+  //             padding: const EdgeInsets.all(8.0),
+  //             child: _currentIndex == 1
+  //                 ? SvgPicture.asset(
+  //                     "assets/svg/searchbg.svg",
+  //                     height: 20,
+  //                     width: 20,
+  //                   )
+  //                 : SvgPicture.asset(
+  //                     "assets/svg/brower.svg",
+  //                     height: 17,
+  //                     width: 17,
+  //                     color: Theme.of(context).disabledColor,
+  //                   ),
+  //           ),
+  //           label: 'explore'.tr,
+  //         ),
+  //         BottomNavigationBarItem(
+  //           icon: Padding(
+  //             padding: const EdgeInsets.all(8.0),
+  //             child: _currentIndex == 2
+  //                 ? SvgPicture.asset(
+  //                     "assets/svg/wishlistbg.svg",
+  //                     height: 20,
+  //                     width: 20,
+  //                   )
+  //                 : SvgPicture.asset(
+  //                     "assets/svg/wishlist.svg",
+  //                     height: 20,
+  //                     width: 20,
+  //                     color: Theme.of(context).disabledColor,
+  //                   ),
+  //           ),
+  //           label: 'live'.tr,
+  //         ),
+  //         BottomNavigationBarItem(
+  //           icon: Padding(
+  //             padding: const EdgeInsets.all(8.0),
+  //             child: _currentIndex == 3
+  //                 ? SvgPicture.asset(
+  //                     "assets/svg/cartbg.svg",
+  //                     height: 22,
+  //                     width: 22,
+  //                   )
+  //                 : SvgPicture.asset(
+  //                     "assets/svg/cart.svg",
+  //                     height: 22,
+  //                     width: 22,
+  //                     color: Theme.of(context).disabledColor,
+  //                   ),
+  //           ),
+  //           label: 'cart'.tr,
+  //         ),
+  //         BottomNavigationBarItem(
+  //           icon: Padding(
+  //             padding: const EdgeInsets.all(8.0),
+  //             child: _currentIndex == 4
+  //                 ? SvgPicture.asset(
+  //                     "assets/svg/profilebg.svg",
+  //                     height: 20,
+  //                     width: 20,
+  //                   )
+  //                 : SvgPicture.asset(
+  //                     "assets/svg/profile.svg",
+  //                     height: 20,
+  //                     width: 20,
+  //                     color: Theme.of(context).disabledColor,
+  //                   ),
+  //           ),
+  //           label: 'Profile',
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }

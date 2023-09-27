@@ -16,7 +16,7 @@ import '../../utiles/shimmer_custom.dart';
 import '../controller/cart_controller.dart';
 import '../controller/home_controller.dart';
 import 'cart_screen.dart';
-
+import 'package:zalada_app/dummyData/product_dummyData.dart';
 class Home_Screen extends StatefulWidget {
   Home_Screen({Key? key}) : super(key: key);
 
@@ -252,21 +252,28 @@ class _Home_ScreenState extends State<Home_Screen> {
                     Obx(() => SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
-                              children: controller.hotdeal_list.isNotEmpty
-                                  ? controller.hotdeal_list.map((e) {
-                                      var discountprice =
-                                          e.discountedPrice!.toStringAsFixed(2);
-                                      print(discountprice);
-                                      return Product_Card(
-                                        id: e.id,
-                                        hotdeal: 'true',
-                                        imageurl: e.product_media[0],
-                                        product_name: e.name,
-                                        price: discountprice,
-                                        disprice: e.price,
-                                        outOfStock: e.outOfStock,
-                                        isNewArrival: e.isNewArrival,
-                                      ).pOnly(right: 15).py(15);
+                              children: 
+                              // controller.hotdeal_list.isNotEmpty
+                              product_dummyData.dummyProducts.isNotEmpty
+                                  ? 
+                                  // controller.hotdeal_list
+                                  product_dummyData.dummyProducts.map((e) {
+                                      // var discountprice =
+                                      //     e.discountedPrice!.toStringAsFixed(2);
+                                      // print(discountprice);
+                                      return
+                                      Product_Card(id: e.id,hotdeal: 'true',imageurl: e.images[0],product_name: e.name,price: e.price.toString(),).pOnly(right: 15).py(15); 
+                                      // Product_Card(
+                                      //   id: e.id,
+                                      //   hotdeal: 'true',
+                                      //   imageurl: e.product_media[0],
+                                      //   product_name: e.name,
+                                      //   price: discountprice,
+                                      //   disprice: e.price,
+                                      //   outOfStock: e.outOfStock,
+                                      //   isNewArrival: e.isNewArrival,
+                                      // )
+                                      // .pOnly(right: 15).py(15);
                                     }).toList()
                                   : showshimmer.value
                                       ? [

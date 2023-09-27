@@ -108,8 +108,10 @@ class _login_screenState extends State<login_screen> {
                   title: 'login'.tr,
                   ontap: () {
                     if (_formKey.currentState!.validate()) {
-                      controller.loginwithEmail(
-                          email.text, password.text, context);
+                      // controller.loginwithEmail(
+                      //     email.text, password.text, context);
+                      Page_Navigation.getInstance
+                          .Page_pushAndRemoveUntil(context, Bottom_Bar());
                     } else {
                       Get.snackbar(
                           'form_validation'.tr, 'please_Fill_the_form'.tr,

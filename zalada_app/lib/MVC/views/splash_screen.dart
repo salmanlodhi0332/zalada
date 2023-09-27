@@ -57,7 +57,7 @@ class _splash_screenState extends State<splash_screen> {
               child: Image.asset('assets/icon/Icon.png'),
             ).pOnly(bottom: 10),
             Text(
-              'zalada'.tr,
+              'Kidfit'.tr,
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).hintColor,
